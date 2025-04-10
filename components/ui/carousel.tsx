@@ -44,7 +44,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
     };
   }, []);
 
-  const handleMouseMove = (event: React.MouseEvent) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLLIElement>) => {
     const el = slideRef.current;
     if (!el) return;
 
@@ -144,7 +144,7 @@ const CarouselControl = ({
       title={title}
       onClick={handleClick}
     >
-      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" />
+      <IconArrowNarrowRight className="text-neutral-600 dark:text-neutral-200" size={20} />
     </button>
   );
 };
