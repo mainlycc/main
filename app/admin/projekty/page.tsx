@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { projects as initialProjects } from "../../../components/ProjectsCarousel";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,13 +9,33 @@ import { Edit, Trash, Plus, Save, X } from "lucide-react";
 // W rzeczywistej aplikacji dane byłyby przechowywane w bazie danych
 // Na potrzeby demonstracji używamy lokalnego stanu
 
+// Definicja typu dla projektu
+interface Project {
+  id: number;
+  name: string;
+  slug: string;
+  image: string;
+  description: string;
+  fullDescription: string;
+  technologies: string[];
+  features: string[];
+  client: string;
+  year: number;
+  url: string;
+}
+
+// Definicja typu dla edytowanego projektu (może być nowy projekt z niepełnymi danymi)
+interface EditingProject extends Partial<Project> {
+  id: number; // id jest zawsze wymagane, nawet dla nowego projektu (wtedy ustawiamy na 0)
+}
+
 export default function AdminProjectsPage() {
-  const [projects, setProjects] = useState(initialProjects);
-  const [editingProject, setEditingProject] = useState<any>(null);
+  const [projects, setProjects] = useState<Project[]>(initialProjects);
+  const [editingProject, setEditingProject] = useState<EditingProject | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleEditProject = (project: any) => {
-    setEditingProject({...project});
+  const handleEditProject = (project: Project) => {
+    setEditingProject(project as EditingProject);
     setIsModalOpen(true);
   };
 
@@ -30,11 +50,17 @@ export default function AdminProjectsPage() {
     if (editingProject) {
       if (editingProject.id) {
         // Aktualizacja istniejącego projektu
-        setProjects(projects.map(p => p.id === editingProject.id ? editingProject : p));
+        setProjects(projects.map(p => p.id === editingProject.id ? editingProject as Project : p));
       } else {
         // Dodawanie nowego projektu
         const newId = Math.max(...projects.map(p => p.id)) + 1;
-        setProjects([...projects, {...editingProject, id: newId}]);
+        const newProject = {
+          ...editingProject,
+          id: newId,
+          technologies: editingProject.technologies || [],
+          features: editingProject.features || [],
+        } as Project;
+        setProjects([...projects, newProject]);
       }
       // Tu byłby kod do zapisania zmian w bazie danych
       setIsModalOpen(false);
@@ -61,12 +87,16 @@ export default function AdminProjectsPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setEditingProject({...editingProject, [name]: value});
+    if (editingProject) {
+      setEditingProject({...editingProject, [name]: value});
+    }
   };
 
-  const handleArrayChange = (e: React.ChangeEvent<HTMLTextAreaElement>, field: string) => {
+  const handleArrayChange = (e: React.ChangeEvent<HTMLTextAreaElement>, field: 'technologies' | 'features') => {
     const value = e.target.value.split('\n').filter(item => item.trim() !== '');
-    setEditingProject({...editingProject, [field]: value});
+    if (editingProject) {
+      setEditingProject({...editingProject, [field]: value});
+    }
   };
 
   return (
@@ -265,7 +295,7 @@ export default function AdminProjectsPage() {
                     Technologie (każda w nowej linii)
                   </label>
                   <textarea 
-                    value={editingProject.technologies.join('\n')} 
+                    value={editingProject.technologies?.join('\n') || ''} 
                     onChange={(e) => handleArrayChange(e, 'technologies')}
                     rows={4}
                     className="w-full p-3 bg-zinc-800 rounded border border-zinc-700 text-white"
@@ -277,7 +307,7 @@ export default function AdminProjectsPage() {
                     Funkcjonalności (każda w nowej linii)
                   </label>
                   <textarea 
-                    value={editingProject.features.join('\n')} 
+                    value={editingProject.features?.join('\n') || ''} 
                     onChange={(e) => handleArrayChange(e, 'features')}
                     rows={6}
                     className="w-full p-3 bg-zinc-800 rounded border border-zinc-700 text-white"

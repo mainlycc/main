@@ -214,7 +214,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold mb-2">Zawsze na czasie</h3>
                 <p className="text-gray-400">
-                  Śledzimy trendy i testujemy nowe rozwiązania, żebyś Ty nie musiał. Dzięki temu Twoja strona będzie nowoczesna, a nie tylko "ładna".
+                  Śledzimy trendy i testujemy nowe rozwiązania, żebyś Ty nie musiał. Dzięki temu Twoja strona będzie nowoczesna, a nie tylko &quot;ładna&quot;.
                 </p>
               </div>
 

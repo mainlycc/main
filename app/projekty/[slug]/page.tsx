@@ -7,9 +7,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
 
+// Definiujemy interfejs dla projektu
+interface Project {
+  id: number;
+  name: string;
+  slug: string;
+  image: string;
+  description: string;
+  fullDescription: string;
+  technologies: string[];
+  features: string[];
+  client: string;
+  year: number;
+  url?: string;
+}
+
 export default function ProjectDetailPage() {
   const params = useParams();
-  const [project, setProject] = useState<any>(null);
+  const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
