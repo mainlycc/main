@@ -169,7 +169,7 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              Umów rozmowę z Namya
+              Skontaktuj się
             </Link>
           </div>
 
