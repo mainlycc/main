@@ -4,11 +4,13 @@ import { projects } from "../../components/ProjectsCarousel";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Footer from "../../components/Footer";
+import { ArrowBigRightIcon } from "../../components/ui/arrow-big-right";
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-24">
+    <div className="min-h-screen bg-black text-white flex flex-col">
+      <div className="container mx-auto px-6 py-24 flex-1 max-w-5xl">
         <h1 className="text-5xl font-bold mb-12 text-center">Nasze Projekty</h1>
         <p className="text-xl text-gray-400 mb-16 text-center max-w-3xl mx-auto">
           Odkryj nasze portfolio zrealizowanych projektów. Każdy z nich to unikalne rozwiązanie 
@@ -40,13 +42,15 @@ export default function ProjectsPage() {
                   href={`/projekty/${project.slug}`}
                   className="inline-flex items-center text-[#FA6503] hover:text-[#FA6503]/80"
                 >
-                  Zobacz szczegóły <ArrowRight className="ml-2 h-4 w-4" />
+                  Zobacz szczegóły <ArrowBigRightIcon className="ml-2" size={16} />
                 </Link>
               </div>
             </div>
           ))}
         </div>
       </div>
+      
+      <Footer />
     </div>
   );
 } 

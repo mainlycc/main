@@ -62,7 +62,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-24">
+      <div className="container mx-auto px-6 py-24 max-w-5xl">
         <Link 
           href="/projekty"
           className="inline-flex items-center text-gray-400 hover:text-white mb-12"

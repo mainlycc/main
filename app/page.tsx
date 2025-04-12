@@ -2,12 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Zap, Check, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe } from "lucide-react"
+import { Zap, Check, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Mail, Clock, Shield, Brain, Scissors } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
 import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
 import ProjectsCarousel from "../components/ProjectsCarousel"
 import { AvatarCircles } from "../components/magicui/avatar-circles"
+import Footer from "../components/Footer"
+import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
 
 export default function Home() {
   const avatars = [
@@ -20,57 +22,49 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
-      <header className="container mx-auto pt-8 px-4">
+      <header className="container mx-auto pt-8 px-6">
         <div className="flex justify-center">
         
         </div>
       </header>
 
-      <main className="flex-1 flex flex-col items-center px-4 text-center">
-        <div className="max-w-5xl mx-auto">
-          {/* Testimonial Section */}
-          <div className="flex flex-col items-center mb-12 mt-16">
-            <AvatarCircles 
-              avatarUrls={avatars}
-              numPeople={150}
-              className="mb-4"
-            />
-            <div className="flex text-[#FA6503] mb-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <span key={i} className="text-xl">
-                  ★
-                </span>
-              ))}
-            </div>
-          </div>
-
+      <main className="flex-1 flex flex-col items-center px-6 text-center">
+        <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8 mt-16">
             Zmieniamy pomysły w rzeczywistość – cyfrową, piękną i skuteczną.
           </h2>
 
           {/* Tagline */}
           <p className="text-xl text-gray-400 mb-16">
-            Partner kreatywny skupiony na wynikach—bo zgadywanie jest przereklamowane.
+            Strony, aplikacje i systemy, które zmieniają biznesy – od pomysłu po gotowy produkt. Szybko, konkretnie, skutecznie.
           </p>
 
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             <div className="flex items-center">
-              <Zap className="mr-2" />
-              <span>Na żądanie, Design i Programowanie</span>
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
+                <Clock className="h-5 w-5 text-white" />
+              </div>
+              <span>Przejrzyste etapy i terminy – wiesz, co się dzieje</span>
             </div>
             <div className="flex items-center">
-              <Zap className="mr-2" />
-              <span>Eksperci: Poziom Senior</span>
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
+                <Shield className="h-5 w-5 text-white" />
+              </div>
+              <span>Bez ryzyka – umowa i gwarancja poprawnej realizacji</span>
             </div>
             <div className="flex items-center">
-              <Zap className="mr-2" />
-              <span>Wstrzymaj lub Anuluj w Dowolnym Momencie</span>
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
+                <Brain className="h-5 w-5 text-white" />
+              </div>
+              <span>Analiza, strategia, projekt – robimy to z głową</span>
             </div>
             <div className="flex items-center">
-              <Zap className="mr-2" />
-              <span>48-Godzinne Cykle Iteracji</span>
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
+                <Scissors className="h-5 w-5 text-white" />
+              </div>
+              <span>Projekt szyty na miarę, zero szablonów</span>
             </div>
           </div>
 
@@ -83,104 +77,88 @@ export default function Home() {
               Ostatnie Projekty
             </Link>
             <Link
-              href="#"
+              href="/kontakt"
               className="px-8 py-3 rounded-full bg-white text-black hover:bg-gray-200 transition-colors flex items-center"
             >
-              Rozpocznij Swój Projekt <Zap className="ml-2 h-4 w-4" />
+              Rozpocznij Swój Projekt <ArrowBigRightIcon className="ml-2" size={20} />
             </Link>
           </div>
 
           {/* Dodany komponent ProjectsCarousel */}
           <ProjectsCarousel />
 
-          {/* Trusted By Section */}
-          <div className="mb-16">
-            <p className="text-xl text-gray-400 mb-8">Nasi klienci z całego świata</p>
-
-            <div className="flex flex-wrap justify-center gap-8 mb-16">
-              {["macro", "Aomni", "Arrow", "rosebud", "Y Combinator"].map((company) => (
-                <div key={company} className="text-gray-400 text-xl font-bold">
-                  {company}
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Projects Showcase */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16">
-            <Image
-              src="/np@kulio.png"
-              alt="Projekt 1"
-              width={400}
-              height={600}
-              className="w-full h-auto"
-              style={{ display: 'block', backgroundColor: 'transparent' }}
-              unoptimized
-            />
-            <Image
-              src="/np@kulio.png"
-              alt="Projekt 2"
-              width={500}
-              height={600}
-              className="w-full h-auto"
-              style={{ display: 'block', backgroundColor: 'transparent' }}
-              unoptimized
-            />
-            <Image
-              src="/np@kulio.png"
-              alt="Projekt 3"
-              width={400}
-              height={600}
-              className="w-full h-auto"
-              style={{ display: 'block', backgroundColor: 'transparent' }}
-              unoptimized
-            />
+            <a href="https://gapauto.pl" target="_blank" rel="noopener noreferrer" className="block transition-transform duration-300 hover:-translate-y-2">
+              <Image
+                src="/np@kulio.png"
+                alt="GapAuto"
+                width={400}
+                height={600}
+                className="w-full h-auto rounded-lg"
+                style={{ display: 'block', backgroundColor: 'transparent' }}
+                unoptimized
+              />
+              <p className="mt-2 text-white text-lg font-medium">gapauto.pl</p>
+            </a>
+            <a href="https://kuliostudios.pl" target="_blank" rel="noopener noreferrer" className="block transition-transform duration-300 hover:-translate-y-2">
+              <Image
+                src="/np@kulio.png"
+                alt="Kulio Studios"
+                width={500}
+                height={600}
+                className="w-full h-auto rounded-lg"
+                style={{ display: 'block', backgroundColor: 'transparent' }}
+                unoptimized
+              />
+              <p className="mt-2 text-white text-lg font-medium">kuliostudios.pl</p>
+            </a>
+            <a href="https://cytomania.pl" target="_blank" rel="noopener noreferrer" className="block transition-transform duration-300 hover:-translate-y-2">
+              <Image
+                src="/np@kulio.png"
+                alt="Cytomania"
+                width={400}
+                height={600}
+                className="w-full h-auto rounded-lg"
+                style={{ display: 'block', backgroundColor: 'transparent' }}
+                unoptimized
+              />
+              <p className="mt-2 text-white text-lg font-medium">cytomania.pl</p>
+            </a>
           </div>
 
           {/* Bottom CTA */}
           <div className="inline-flex items-center rounded-full border border-gray-700 p-1 pl-6 mb-24">
             <div className="flex items-center mr-4">
-              <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
-                <Image
-                  src="/placeholder.svg?height=32&width=32"
-                  alt="Mainly logo"
-                  width={32}
-                  height={32}
-                  className="object-cover"
-                />
+              <div className="w-8 h-8 rounded-full overflow-hidden mr-2 flex items-center justify-center bg-zinc-800">
+                <Zap className="text-[#FA6503]" size={18} />
               </div>
               <Link href="#" className="text-white hover:text-gray-200 mr-4">
                 Jak to działa
               </Link>
-              <Link href="#" className="text-white hover:text-gray-200">
+              <Link href="/projekty" className="text-white hover:text-gray-200">
                 Przykładowe Projekty
               </Link>
             </div>
             <Link
-              href="#"
+              href="/kontakt"
               className="flex items-center bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition-colors"
             >
-              <div className="w-8 h-8 rounded-full overflow-hidden mr-2">
-                <Image
-                  src="/placeholder.svg?height=32&width=32"
-                  alt="Profil"
-                  width={32}
-                  height={32}
-                  className="object-cover"
-                />
+              <div className="w-8 h-8 rounded-full overflow-hidden mr-2 flex items-center justify-center bg-zinc-800">
+                <Mail className="text-[#FA6503]" size={18} />
               </div>
-              Skontaktuj się
+              Skontaktuj się <ArrowBigRightIcon className="ml-2" size={20} />
             </Link>
           </div>
 
           {/* Company Features */}
           <div className="mb-24">
-            <h2 className="text-4xl font-bold mb-12">Dlaczego Mainly?</h2>
+            <h2 className="text-4xl font-bold mb-12 text-center">Dlaczego Mainly?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Zap className="text-[#FA6503]" />
+                  <Code className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Nowoczesna technologia pod Twoją markę</h3>
                 <p className="text-gray-400">
@@ -188,9 +166,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Check className="text-green-400" />
+                  <Paintbrush className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Zero szablonów, 100% unikalności</h3>
                 <p className="text-gray-400">
@@ -198,9 +176,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Zap className="text-[#FA6503]" />
+                  <Globe className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Spersonalizowane grafiki i animacje</h3>
                 <p className="text-gray-400">
@@ -208,9 +186,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Check className="text-green-400" />
+                  <GitBranch className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Zawsze na czasie</h3>
                 <p className="text-gray-400">
@@ -218,9 +196,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Zap className="text-[#FA6503]" />
+                  <FileType className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Dopasowanie do Twojej branży</h3>
                 <p className="text-gray-400">
@@ -228,9 +206,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Check className="text-green-400" />
+                  <Mail className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Pełna przejrzystość i stały kontakt</h3>
                 <p className="text-gray-400">
@@ -238,9 +216,9 @@ export default function Home() {
                 </p>
               </div>
               
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Zap className="text-[#FA6503]" />
+                  <ArrowBigRightIcon className="text-[#FA6503]" size={20} />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Poprawki bez stresu</h3>
                 <p className="text-gray-400">
@@ -248,9 +226,9 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
                 <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Check className="text-green-400" />
+                  <Box className="text-[#FA6503]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Wszystko w jednym miejscu</h3>
                 <p className="text-gray-400">
@@ -266,7 +244,7 @@ export default function Home() {
             <p className="text-xl text-gray-400 mb-12">Elastyczne plany dopasowane do Twoich potrzeb</p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white">
+              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white transition-transform duration-300 hover:-translate-y-2">
                 <CardHeader>
                   <CardTitle>Startup</CardTitle>
                   <CardDescription className="text-gray-300">Idealny dla nowych projektów</CardDescription>
@@ -286,18 +264,22 @@ export default function Home() {
                       "1 runda poprawek",
                     ].map((feature, i) => (
                       <li key={i} className="flex items-start">
-                        <Check className="h-5 w-5 text-green-400 mr-2 mt-0.5" />
+                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
+                          <Check className="h-3 w-3 text-green-400" />
+                        </div>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-white text-black hover:bg-gray-200">Wybierz plan</Button>
+                  <Button asChild className="w-full bg-white text-black hover:bg-gray-200">
+                    <Link href="/kontakt">Wybierz plan</Link>
+                  </Button>
                 </CardFooter>
               </Card>
 
-              <Card className="bg-zinc-950 border border-[#FA6503] text-left text-white relative">
+              <Card className="bg-zinc-950 border border-[#FA6503] text-left text-white relative transition-transform duration-300 hover:-translate-y-2">
                 <div className="absolute -top-4 left-0 right-0 flex justify-center">
                   <span className="bg-[#FA6503] text-black px-4 py-1 rounded-full text-sm font-bold">
                     Najpopularniejszy
@@ -324,18 +306,22 @@ export default function Home() {
                       "Integracja z narzędziami analitycznymi",
                     ].map((feature, i) => (
                       <li key={i} className="flex items-start">
-                        <Check className="h-5 w-5 text-green-400 mr-2 mt-0.5" />
+                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
+                          <Check className="h-3 w-3 text-green-400" />
+                        </div>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-[#FA6503] text-black hover:bg-[#FA6503]/90">Wybierz plan</Button>
+                  <Button asChild className="w-full bg-[#FA6503] text-black hover:bg-[#FA6503]/90">
+                    <Link href="/kontakt">Wybierz plan</Link>
+                  </Button>
                 </CardFooter>
               </Card>
 
-              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white">
+              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white transition-transform duration-300 hover:-translate-y-2">
                 <CardHeader>
                   <CardTitle>Enterprise</CardTitle>
                   <CardDescription className="text-gray-300">Rozwiązania szyte na miarę</CardDescription>
@@ -357,14 +343,18 @@ export default function Home() {
                       "Strategia marketingowa",
                     ].map((feature, i) => (
                       <li key={i} className="flex items-start">
-                        <Check className="h-5 w-5 text-green-400 mr-2 mt-0.5" />
+                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
+                          <Check className="h-3 w-3 text-green-400" />
+                        </div>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-white text-black hover:bg-gray-200">Skontaktuj się</Button>
+                  <Button asChild className="w-full bg-white text-black hover:bg-gray-200">
+                    <Link href="/kontakt">Skontaktuj się</Link>
+                  </Button>
                 </CardFooter>
               </Card>
             </div>
@@ -429,12 +419,12 @@ export default function Home() {
                 { name: "Supabase", icon: "database" },
                 { name: "PostgreSQL", icon: "database" },
                 { name: "Tailwind CSS", icon: "paintbrush" },
-                { name: "Docker", icon: "container" },
+                { name: "Blender", icon: "container" },
                 { name: "Vercel", icon: "cloud" },
                 { name: "GraphQL", icon: "git-branch" },
                 { name: "Framer", icon: "globe" },
               ].map((tech, i) => (
-                <div key={i} className="flex flex-col items-center justify-center p-4 bg-zinc-950 border border-[#FA6503]/20 rounded-lg h-32">
+                <div key={i} className="flex flex-col items-center justify-center p-4 bg-zinc-950 border border-[#FA6503]/20 rounded-lg h-32 transition-transform duration-300 hover:-translate-y-2">
                   <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-3">
                     {tech.icon === "code" && <Code className="text-blue-400" />}
                     {tech.icon === "brain" && <Zap className="text-cyan-400" />}
@@ -460,93 +450,16 @@ export default function Home() {
             <p className="text-xl text-gray-400 mb-8">
               Dołącz do setek zadowolonych klientów i zacznij generować realne wyniki.
             </p>
-            <Button className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg">
-              Rozpocznij projekt <Zap className="ml-2" />
+            <Button asChild className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg">
+              <Link href="/kontakt">
+                Rozpocznij projekt <ArrowBigRightIcon className="ml-2" size={24} />
+              </Link>
             </Button>
           </div>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-zinc-900 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <h3 className="text-xl font-bold mb-4">Mainly</h3>
-              <p className="text-gray-400 mb-4">
-                Zamieniamy teksty, design i programowanie w kliknięcia, konwersje i zyski.
-              </p>
-              <div className="flex space-x-4">
-                <Link href="#" className="text-gray-400 hover:text-white">
-                  <Facebook size={20} />
-                </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
-                  <Twitter size={20} />
-                </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
-                  <Instagram size={20} />
-                </Link>
-                <Link href="#" className="text-gray-400 hover:text-white">
-                  <Linkedin size={20} />
-                </Link>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-4">Usługi</h3>
-              <ul className="space-y-2">
-                {["Strony internetowe", "Aplikacje webowe", "E-commerce", "UX/UI Design", "Branding", "SEO"].map(
-                  (service, i) => (
-                    <li key={i}>
-                      <Link href="#" className="text-gray-400 hover:text-white">
-                        {service}
-                      </Link>
-                    </li>
-                  ),
-                )}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-4">Firma</h3>
-              <ul className="space-y-2">
-                {["O nas", "Zespół", "Kariera", "Blog", "Kontakt", "Polityka prywatności"].map((item, i) => (
-                  <li key={i}>
-                    <Link href={item === "O nas" ? "#" : item === "Kontakt" ? "#" : item === "Blog" ? "#" : "/projekty"} className="text-gray-400 hover:text-white">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold mb-4">Kontakt</h3>
-              <ul className="space-y-2">
-                <li className="flex items-center text-gray-400">
-                  <Mail size={16} className="mr-2" />
-                  kontakt@mainly.pl
-                </li>
-                <li className="flex items-center text-gray-400">
-                  <Phone size={16} className="mr-2" />
-                  +48 123 456 789
-                </li>
-                <li className="text-gray-400 mt-4">
-                  ul. Przykładowa 123
-                  <br />
-                  00-001 Warszawa
-                  <br />
-                  Polska
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-zinc-800 pt-8 text-center text-gray-400">
-            <p>© {new Date().getFullYear()} Mainly. Wszelkie prawa zastrzeżone.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }
