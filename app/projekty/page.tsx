@@ -3,7 +3,6 @@
 import { projects } from "../../components/ProjectsCarousel";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Footer from "../../components/Footer";
 import { ArrowBigRightIcon } from "../../components/ui/arrow-big-right";
 

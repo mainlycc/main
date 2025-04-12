@@ -7,19 +7,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
 import ProjectsCarousel from "../components/ProjectsCarousel"
-import { AvatarCircles } from "../components/magicui/avatar-circles"
 import Footer from "../components/Footer"
 import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
 
 export default function Home() {
-  const avatars = [
-    { imageUrl: "/placeholder.svg?height=40&width=40", profileUrl: "#" },
-    { imageUrl: "/placeholder.svg?height=40&width=40", profileUrl: "#" },
-    { imageUrl: "/placeholder.svg?height=40&width=40", profileUrl: "#" },
-    { imageUrl: "/placeholder.svg?height=40&width=40", profileUrl: "#" },
-    { imageUrl: "/placeholder.svg?height=40&width=40", profileUrl: "#" },
-  ];
-
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
       <header className="container mx-auto pt-8 px-6">

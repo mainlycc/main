@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { Zap } from "lucide-react";
 import { ArrowBigRightIcon } from "./ui/arrow-big-right";
 
 export default function ContactForm() {
