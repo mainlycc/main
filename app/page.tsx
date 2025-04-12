@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image"
 import Link from "next/link"
 import { Zap, Check, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Mail, Clock, Shield, Brain, Scissors } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
