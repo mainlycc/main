@@ -99,7 +99,7 @@ export default function PolitykaPrywatnosci() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">6. Pliki cookies</h2>
             <p className="mb-4">
-              Strona internetowa Administratora wykorzystuje pliki cookies (tzw. "ciasteczka"), które stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika i przeznaczone są do korzystania ze stron internetowych. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer.
+              Strona internetowa Administratora wykorzystuje pliki cookies (tzw. &ldquo;ciasteczka&rdquo;), które stanowią dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym Użytkownika i przeznaczone są do korzystania ze stron internetowych. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer.
             </p>
             <p className="mb-4">
               Pliki cookies wykorzystywane są w celu:
