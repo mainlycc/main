@@ -1,0 +1,9 @@
+# Allow crawling of all content
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin/
+
+# Reference to sitemap
+Sitemap: https://mainly.pl/sitemap.xml 

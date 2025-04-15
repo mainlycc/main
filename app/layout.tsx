@@ -7,10 +7,20 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Mainly - Zamieniamy teksty, design i programowanie w kliknięcia, konwersje i zyski",
-  description: "Tworzymy nowoczesne i responsywne serwisy oraz aplikacje. Strony internetowe i aplikacje webowe na zamówienie.",
+  description: "Tworzymy nowoczesne i responsywne serwisy oraz aplikacje. Strony internetowe i aplikacje webowe na zamówienie. Specjalizujemy się w tworzeniu stron internetowych i aplikacji webowych.",
+  keywords: ["strony internetowe", "aplikacje webowe", "projektowanie stron", "tworzenie stron", "design", "programowanie", "Next.js", "React", "serwisy internetowe"],
+  authors: [{ name: "Mainly" }],
+  creator: "Mainly",
+  publisher: "Mainly",
+  metadataBase: new URL("https://mainly.pl"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Mainly - Strony internetowe & Aplikacje webowe",
     description: "Tworzymy nowoczesne i responsywne serwisy oraz aplikacje.",
+    url: "https://mainly.pl",
+    siteName: "Mainly",
     images: [
       {
         url: "/og-image.png",
@@ -27,6 +37,16 @@ export const metadata: Metadata = {
     title: "Mainly - Strony internetowe & Aplikacje webowe",
     description: "Tworzymy nowoczesne i responsywne serwisy oraz aplikacje.",
     images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
