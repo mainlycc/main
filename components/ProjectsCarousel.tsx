@@ -35,9 +35,9 @@ export const projects: Project[] = [
       "Zaawansowane algorytmy kalkulacyjne",
       "Integracja z API ubezpieczeniowym"
     ],
-    client: "Firma Ubezpieczeniowa XYZ",
-    year: 2023,
-    url: "https://example.com/kalkulator-gap"
+    client: "Firma Ubezpieczeniowa Bussiness Care",
+    year: 2025,
+    url: "https://gapauto.pl"
   },
   {
     id: 2,
@@ -55,8 +55,8 @@ export const projects: Project[] = [
       "Personalizowane kolekcje cytatów",
       "Moduł administratora"
     ],
-    client: "Projekt własny",
-    year: 2022,
+    client: "Grupa facebookowa Cytaty filmowe",
+    year: 2024,
     url: "https://cytomania.pl"
   },
   {
@@ -76,8 +76,8 @@ export const projects: Project[] = [
       "Panel administracyjny"
     ],
     client: "Kulio Studio",
-    year: 2023,
-    url: "https://kuliostudio.com"
+    year: 2024,
+    url: "https://kuliostudio.pl"
   }
 ];
 
