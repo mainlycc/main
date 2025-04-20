@@ -6,6 +6,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, message, recipient = 'kontakt@mainly.pl' } = body;
 
+    if (!process.env.EMAIL_PASSWORD) {
+      throw new Error('Brak skonfigurowanego hasła email (EMAIL_PASSWORD)');
+    }
+
     // Konfiguracja transportera Nodemailer dla Zoho
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.eu',
@@ -36,9 +40,23 @@ export async function POST(request: Request) {
     
     return NextResponse.json({ success: true, message: 'Wiadomość wysłana pomyślnie' });
   } catch (error) {
-    console.error('Błąd podczas przetwarzania formularza kontaktowego:', error);
+    // Bardziej szczegółowe logowanie błędu
+    const errorMessage = error instanceof Error ? error.message : 'Nieznany błąd';
+    const errorStack = error instanceof Error ? error.stack : undefined;
+    const errorName = error instanceof Error ? error.name : undefined;
+
+    console.error('Szczegóły błędu formularza kontaktowego:', {
+      message: errorMessage,
+      stack: errorStack,
+      name: errorName
+    });
+    
     return NextResponse.json(
-      { success: false, message: 'Wystąpił błąd podczas wysyłania wiadomości' },
+      { 
+        success: false, 
+        message: 'Wystąpił błąd podczas wysyłania wiadomości',
+        error: errorMessage
+      },
       { status: 500 }
     );
   }

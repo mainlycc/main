@@ -15,6 +15,7 @@ export default function ContactForm() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -57,6 +58,7 @@ export default function ContactForm() {
     } catch (error) {
       console.error("Błąd wysyłania formularza:", error);
       setSubmitStatus("error");
+      setError(error instanceof Error ? error.message : "Wystąpił nieznany błąd");
     } finally {
       setIsSubmitting(false);
     }
@@ -75,7 +77,8 @@ export default function ContactForm() {
         </div>
       ) : submitStatus === "error" ? (
         <div className="bg-red-900/20 border border-red-500 text-red-200 p-4 rounded-md mb-6">
-          Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później lub skontaktuj się z nami bezpośrednio.
+          <p>Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie później lub skontaktuj się z nami bezpośrednio.</p>
+          {error && <p className="mt-2 text-sm">Szczegóły błędu: {error}</p>}
         </div>
       ) : null}
 
