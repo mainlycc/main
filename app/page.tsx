@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link"
-import { Zap, Check, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Mail, Clock, Shield, Brain, Scissors } from "lucide-react"
+import { Zap, Check, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Mail, Clock, Shield, Brain, Scissors, Smartphone } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
 import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
@@ -99,6 +99,16 @@ export default function Home() {
                 <h3 className="text-xl font-bold mb-2">Zero szablonów, 100% unikalności</h3>
                 <p className="text-gray-400">
                   Otrzymasz projekt dopasowany do Twojej marki, stworzony od zera – bez gotowców, które widziałeś już setki razy.
+                </p>
+              </div>
+
+              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
+                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                  <Smartphone className="text-[#FA6503]" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Działa idealnie na każdym urządzeniu</h3>
+                <p className="text-gray-400">
+                  Twoja strona będzie wyglądać świetnie zarówno na dużym monitorze, jak i na małym ekranie telefonu. Każdy element dopasowuje się automatycznie, zapewniając wygodne przeglądanie bez względu na to, jakiego urządzenia używasz.
                 </p>
               </div>
 
