@@ -3,12 +3,13 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
+import Navbar from "../components/Navbar"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mainly - Zamieniamy teksty, design i programowanie w kliknięcia, konwersje i zyski",
-  description: "Tworzymy nowoczesne i responsywne serwisy oraz aplikacje. Strony internetowe i aplikacje webowe na zamówienie. Specjalizujemy się w tworzeniu stron internetowych i aplikacji webowych.",
+  title: "Mainly - Tworzenie Stron Internetowych",
+  description: "Profesjonalne tworzenie stron internetowych i aplikacji webowych. Nowoczesny design, optymalizacja SEO i wsparcie techniczne.",
   keywords: ["strony internetowe", "aplikacje webowe", "projektowanie stron", "tworzenie stron", "design", "programowanie", "Next.js", "React", "serwisy internetowe"],
   authors: [{ name: "Mainly" }],
   creator: "Mainly",
@@ -59,6 +60,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={`${inter.className} bg-black text-white`}>
+        <Navbar />
         {children}
         <Analytics />
       </body>

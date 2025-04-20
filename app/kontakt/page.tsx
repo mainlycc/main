@@ -16,7 +16,9 @@ export default function ContactPage() {
             Masz pytania? Chcesz rozpocząć projekt? Jesteśmy tutaj, aby pomóc Ci zrealizować Twoje cele cyfrowe.
           </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+          <ContactForm />
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center">
               <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
                 <Mail className="text-[#FA6503]" />
@@ -61,8 +63,6 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
-
-          <ContactForm />
         </div>
       </main>
 
