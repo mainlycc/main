@@ -25,8 +25,8 @@ export default function ContactPage() {
               <p className="text-gray-400 mb-4">
                 Wyślij nam wiadomość w dowolnym momencie
               </p>
-              <a href="mailto:mainly.agn@gmail.com" className="text-[#FA6503] hover:underline">
-                mainly.agn@gmail.com
+              <a href="mailto:kontakt@mainly.pl" className="text-[#FA6503] hover:underline">
+                kontakt@mainly.pl
               </a>
             </div>
 

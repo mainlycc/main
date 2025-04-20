@@ -44,7 +44,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           ...formData,
-          recipient: "mainly.agn@gmail.com",
+          recipient: "kontakt@mainly.pl",
         }),
       });
 
@@ -135,8 +135,8 @@ export default function ContactForm() {
         </Button>
       </form>
 
-      <div className="mt-8 text-center text-sm text-gray-400">
-        Lub napisz do nas bezpośrednio: <a href="mailto:mainly.agn@gmail.com" className="text-[#FA6503]">mainly.agn@gmail.com</a>
+      <div className="mt-8 text-center text-gray-400">
+        Lub napisz do nas bezpośrednio: <a href="mailto:kontakt@mainly.pl" className="text-[#FA6503]">kontakt@mainly.pl</a>
         <div className="mt-2">
           <p className="text-gray-400">ul. Filtrowa 83, 02-032 Warszawa</p>
           <p className="text-gray-400">NIP: 7010961986</p>

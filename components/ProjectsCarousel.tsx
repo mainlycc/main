@@ -28,14 +28,14 @@ export const projects: Project[] = [
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Kalkulator ubezpieczeniowy z intuicyjnym interfejsem",
     fullDescription: "Kompleksowe narzędzie do obliczania ubezpieczenia GAP z intuicyjnym interfejsem użytkownika. Projekt obejmował pełen proces UX/UI oraz front-end development.",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    technologies: ["Next.js", "Shadcn", "React", "TypeScript", "Tailwind CSS"],
     features: [
       "Intuicyjny interfejs użytkownika",
       "Responsywny design",
       "Zaawansowane algorytmy kalkulacyjne",
       "Integracja z API ubezpieczeniowym"
     ],
-    client: "Firma Ubezpieczeniowa Bussiness Care",
+    client: "Firma Ubezpieczeniowa Business Care",
     year: 2025,
     url: "https://gapauto.pl"
   },
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Portal z cytatami filmowymi",
     fullDescription: "Społecznościowy portal gromadzący cytaty z filmów i seriali. Użytkownicy mogą dodawać, oceniać i komentować cytaty oraz tworzyć własne kolekcje.",
-    technologies: ["Next.js", "MongoDB", "Express", "Node.js"],
+    technologies: ["Next.js", "Shadcn", "React", "TypeScript", "Tailwind CSS"],
     features: [
       "System użytkowników i kont",
       "Wyszukiwarka cytatów",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Agencja marketingowa",
     fullDescription: "Strona internetowa dla agencji marketingowej Kulio Studio. Projekt obejmował kompleksowy design, development oraz system CMS do zarządzania portfolio i blogiem.",
-    technologies: ["WordPress", "PHP", "SCSS", "JavaScript"],
+    technologies: ["Framer", "Spline"],
     features: [
       "Portfolio projektów",
       "System blogowy",
@@ -118,7 +118,8 @@ export default function ProjectsCarousel() {
                   src={project.image}
                   alt={project.name}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover !object-top"
+                  style={{ objectPosition: 'top' }}
                   priority={index === 0}
                   loading={index === 0 ? "eager" : "lazy"}
                   sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
