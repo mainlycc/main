@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { Button } from "../components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
 import ProjectsCarousel from "../components/ProjectsCarousel"
+import CompanySlider from "../components/CompanySlider"
 import Footer from "../components/Footer"
 import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
 
@@ -21,17 +22,17 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center px-6 text-center">
         <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8 mt-16">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8 mt-24">
             Zmieniamy pomysły w rzeczywistość – cyfrową, piękną i skuteczną.
           </h2>
 
           {/* Tagline */}
-          <p className="text-xl text-gray-400 mb-16">
+          <p className="text-xl text-gray-400 mb-24">
             Strony, aplikacje i systemy, które zmieniają biznesy – od pomysłu po gotowy produkt. Szybko, konkretnie, skutecznie.
           </p>
 
           {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
                 <Clock className="h-5 w-5 text-white" />
@@ -59,7 +60,7 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center gap-4 mb-20">
+          <div className="flex justify-center gap-4 mb-32">
             <Link
               href="/projekty"
               className="px-8 py-3 rounded-full border border-white text-white hover:bg-white/10 transition-colors"
@@ -75,10 +76,17 @@ export default function Home() {
           </div>
 
           {/* Dodany komponent ProjectsCarousel */}
-          <ProjectsCarousel />
+          <div className="mb-32">
+            <ProjectsCarousel />
+          </div>
+
+          {/* Dodany komponent CompanySlider */}
+          <div className="mb-32">
+            <CompanySlider />
+          </div>
 
           {/* Company Features */}
-          <div className="mb-24">
+          <div className="mb-32">
             <h2 className="text-4xl font-bold mb-12 text-center">Dlaczego Mainly?</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -175,7 +183,7 @@ export default function Home() {
           </div>
 
           {/* Pricing */}
-          <div className="mb-24">
+          <div className="mb-32">
             <h2 className="text-4xl font-bold mb-4">Cennik</h2>
             <p className="text-xl text-gray-400 mb-12">Elastyczne plany dopasowane do Twoich potrzeb</p>
 
@@ -297,7 +305,7 @@ export default function Home() {
           </div>
 
           {/* FAQ */}
-          <div className="mb-24">
+          <div className="mb-32">
             <h2 className="text-4xl font-bold mb-12">Często zadawane pytania</h2>
 
             <Accordion type="single" collapsible className="w-full text-left">
@@ -342,7 +350,7 @@ export default function Home() {
           </div>
 
           {/* Client List */}
-          <div className="mb-24">
+          <div className="mb-32">
             <h2 className="text-4xl font-bold mb-12">Nasze technologie</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -381,7 +389,7 @@ export default function Home() {
           </div>
 
           {/* Final CTA */}
-          <div className="bg-zinc-900 rounded-xl p-12 mb-24 text-center">
+          <div className="bg-zinc-900 rounded-xl p-12 mb-32 text-center">
             <h2 className="text-3xl font-bold mb-4">Gotowy na transformację swojej obecności online?</h2>
             <p className="text-xl text-gray-400 mb-8">
               Dołącz do setek zadowolonych klientów i zacznij generować realne wyniki.

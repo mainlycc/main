@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
+.companies-scroll {
+  animation: scroll 40s linear infinite;
+}
 
 @layer base {
   :root {
@@ -108,8 +119,6 @@
     --chart-5: 340 75% 55%
   }
 }
-
-
 
 @layer base {
   * {
