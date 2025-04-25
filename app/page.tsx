@@ -22,17 +22,17 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center px-6 text-center">
         <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-8 mt-24">
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-4 mt-12">
             Zmieniamy pomysły w rzeczywistość – cyfrową, piękną i skuteczną.
           </h2>
 
           {/* Tagline */}
-          <p className="text-xl text-gray-400 mb-24">
+          <p className="text-xl text-gray-400 mb-12">
             Strony, aplikacje i systemy, które zmieniają biznesy – od pomysłu po gotowy produkt. Szybko, konkretnie, skutecznie.
           </p>
 
           {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
                 <Clock className="h-5 w-5 text-white" />
@@ -60,7 +60,7 @@ export default function Home() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center gap-4 mb-32">
+          <div className="flex justify-center gap-4 mb-24">
             <Link
               href="/projekty"
               className="px-8 py-3 rounded-full border border-white text-white hover:bg-white/10 transition-colors"

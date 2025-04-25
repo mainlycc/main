@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -102,7 +104,7 @@ export default function ProjectsCarousel() {
   }, []);
 
   return (
-    <section className="w-full py-12 bg-zinc-900">
+    <section className="w-full py-12 bg-black">
       <div className="container mx-auto px-4">
         <div className="relative max-w-6xl mx-auto">
           {/* Karuzela */}
@@ -118,20 +120,16 @@ export default function ProjectsCarousel() {
                   src={project.image}
                   alt={project.name}
                   fill
-                  className="object-cover !object-top"
-                  style={{ objectPosition: 'top' }}
-                  priority={index === 0}
-                  loading={index === 0 ? "eager" : "lazy"}
-                  sizes="(max-width: 900px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  quality={80}
-                  placeholder="blur"
+                  className="object-cover"
+                  priority={index === currentIndex}
+                  quality={100}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     if (project.fallbackImage) {
                       target.src = project.fallbackImage;
                     }
                   }}
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/2wBDAQMDAwQDBAgEBAgQCwkLEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBD/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAdEAACAQUBAQAAAAAAAAAAAAAAAQIDBAUSEyFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwb/xAAaEQACAgMAAAAAAAAAAAAAAAABAgADBBIh/9oADAMBAAIRAxEAPwCvxXd2uiwU01NQ06c1Fxk9RTSafD55JSrIaAYF3naZ+IfRERVd3H//2Q=="
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <h3 className="text-2xl font-bold text-white">{project.name}</h3>
