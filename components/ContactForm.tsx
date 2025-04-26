@@ -147,7 +147,7 @@ export default function ContactForm() {
         <div className="mt-2 sm:mt-4 space-y-1">
           <p className="text-gray-400">ul. Filtrowa 83, 02-032 Warszawa</p>
           <p className="text-gray-400">NIP: 7010961986</p>
-          <p className="text-gray-400">Tel: +48 604 819 972</p>
+          <p className="text-gray-400">Tel: +48 500 789 826</p>
         </div>
       </div>
     </div>

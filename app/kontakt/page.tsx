@@ -40,8 +40,8 @@ export default function ContactPage() {
               <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
                 Dostępni od poniedziałku do piątku, 9:00 - 17:00
               </p>
-              <a href="tel:+48604819972" className="text-[#FA6503] hover:underline text-sm sm:text-base">
-                +48 604 819 972
+              <a href="tel:+48500789826" className="text-[#FA6503] hover:underline text-sm sm:text-base">
+                +48 500 789 826
               </a>
             </div>
 
