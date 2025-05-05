@@ -3,7 +3,6 @@ import { ElementType, ComponentPropsWithoutRef } from "react"
 
 interface StarBorderProps<T extends ElementType> {
   as?: T
-  color?: string
   speed?: string
   className?: string
   children: React.ReactNode
@@ -12,7 +11,6 @@ interface StarBorderProps<T extends ElementType> {
 export function StarBorder<T extends ElementType = "button">({
   as,
   className,
-  color,
   speed = "6s",
   children,
   ...props
