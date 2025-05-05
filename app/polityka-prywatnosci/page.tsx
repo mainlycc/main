@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import Footer from '../../components/Footer'
 
 export const metadata: Metadata = {
   title: 'Polityka Prywatności | Mainly',
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
 
 export default function PolitykaPrywatnosci() {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <main className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-black text-white flex flex-col">
+      <main className="flex-1 container mx-auto py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">Polityka Prywatności</h1>
           
@@ -24,7 +25,7 @@ export default function PolitykaPrywatnosci() {
               Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych przekazanych przez Użytkowników w związku z korzystaniem ze strony internetowej Mainly.
             </p>
             <p className="mb-4">
-              Administratorem danych osobowych zawartych na stronie jest firma Mainly z siedzibą w [Adres siedziby], NIP: [numer NIP], REGON: [numer REGON], zwana dalej Administratorem.
+              Administratorem danych osobowych zawartych na stronie jest firma Mainly z siedzibą w ul. Filtrowa 83, 02-032 Warszawa, NIP: 7010961986, zwana dalej Administratorem.
             </p>
             <p className="mb-4">
               Administrator dokłada szczególnej staranności w celu ochrony interesów osób, których dane dotyczą, a w szczególności zapewnia, że zbierane przez niego dane są przetwarzane zgodnie z prawem, zbierane dla oznaczonych, zgodnych z prawem celów i niepoddawane dalszemu przetwarzaniu niezgodnemu z tymi celami.
@@ -145,7 +146,7 @@ export default function PolitykaPrywatnosci() {
             </p>
             <ul className="list-disc pl-6 mb-4">
               <li>E-mail: kontakt@mainly.pl</li>
-              <li>Adres korespondencyjny: [adres siedziby]</li>
+              <li>Adres korespondencyjny: ul. Filtrowa 83, 02-032 Warszawa</li>
             </ul>
           </section>
 
@@ -166,6 +167,8 @@ export default function PolitykaPrywatnosci() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   )
 } 

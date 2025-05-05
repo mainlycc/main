@@ -71,7 +71,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center text-gray-400">
                 <Phone size={16} className="mr-2" />
-                +48 604 819 972
+                +48 500 789 826
               </li>
               <li className="text-gray-400 mt-4">
                 ul. Filtrowa 83

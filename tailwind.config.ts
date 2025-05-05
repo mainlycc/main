@@ -10,8 +10,8 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'rgb(0 0 0)',
+  			foreground: 'rgb(255 255 255)',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -28,10 +28,7 @@ export default {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
-  			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
-  			},
+  			muted: 'rgb(38 38 38)',
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
@@ -40,7 +37,7 @@ export default {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
-  			border: 'hsl(var(--border))',
+  			border: 'rgb(51 51 51)',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
   			chart: {
@@ -52,6 +49,7 @@ export default {
   			}
   		},
   		borderRadius: {
+  			DEFAULT: '0.5rem',
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
@@ -72,11 +70,25 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+  			'star-movement-top': {
+  				'0%': { transform: 'translateX(0)' },
+  				'100%': { transform: 'translateX(100%)' },
+  			},
+  			'star-movement-bottom': {
+  				'0%': { transform: 'translateX(0)' },
+  				'100%': { transform: 'translateX(-100%)' },
+  			},
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'star-movement-top': 'star-movement-top 6s linear infinite',
+  			'star-movement-bottom': 'star-movement-bottom 6s linear infinite',
+  		},
+  		backgroundImage: {
+  			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+  			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
   		}
   	}
   },

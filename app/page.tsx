@@ -9,6 +9,8 @@ import ProjectsCarousel from "../components/ProjectsCarousel"
 import CompanySlider from "../components/CompanySlider"
 import Footer from "../components/Footer"
 import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
+import CallToAction from "../components/CallToAction"
+import { StarBorder } from "../components/ui/star-border"
 
 export default function Home() {
   return (
@@ -22,8 +24,8 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center px-6 text-center">
         <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-4 mt-12">
-            Zmieniamy pomysły w rzeczywistość – cyfrową, piękną i skuteczną.
+          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-4 mt-24 sm:mt-32">
+            Strona internetowa to Twoje najważniejsze narzędzie sprzedaży. Zróbmy ją dobrze.
           </h2>
 
           {/* Tagline */}
@@ -63,16 +65,13 @@ export default function Home() {
           <div className="flex justify-center gap-4 mb-24">
             <Link
               href="/projekty"
-              className="px-8 py-3 rounded-full border border-white text-white hover:bg-white/10 transition-colors"
+              className="px-8 py-3 rounded-full border border-white text-white hover:bg-white/10 transition-colors flex items-center justify-center"
             >
               Ostatnie Projekty
             </Link>
-            <Link
-              href="/kontakt"
-              className="px-8 py-3 rounded-full bg-white text-black hover:bg-gray-200 transition-colors flex items-center"
-            >
-              Rozpocznij Swój Projekt <ArrowBigRightIcon className="ml-2" size={20} />
-            </Link>
+            <StarBorder as={Link} href="/kontakt" className="text-white">
+              Rozpocznij Swój Projekt <ArrowBigRightIcon size={24} className="text-[#FA6503] flex-shrink-0" />
+            </StarBorder>
           </div>
 
           {/* Dodany komponent ProjectsCarousel */}
@@ -304,6 +303,45 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Client List */}
+          <div className="mb-32">
+            <h2 className="text-4xl font-bold mb-12">Nasze technologie</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+              {[
+                { name: "Next.js", icon: "code" },
+                { name: "React", icon: "brain" },
+                { name: "TypeScript", icon: "file-type" },
+                { name: "Node.js", icon: "server" },
+                { name: "Python", icon: "file-code" },
+                { name: "Supabase", icon: "database" },
+                { name: "PostgreSQL", icon: "database" },
+                { name: "Tailwind CSS", icon: "paintbrush" },
+                { name: "Blender", icon: "container" },
+                { name: "Vercel", icon: "cloud" },
+                { name: "GraphQL", icon: "git-branch" },
+                { name: "Framer", icon: "globe" },
+              ].map((tech, i) => (
+                <div key={i} className="flex flex-col items-center justify-center p-4 bg-zinc-950 border border-[#FA6503]/20 rounded-lg h-32 transition-transform duration-300 hover:-translate-y-2">
+                  <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-3">
+                    {tech.icon === "code" && <Code className="text-blue-400" />}
+                    {tech.icon === "brain" && <Zap className="text-cyan-400" />}
+                    {tech.icon === "file-type" && <FileType className="text-blue-500" />}
+                    {tech.icon === "server" && <Server className="text-green-400" />}
+                    {tech.icon === "file-code" && <FileCode className="text-[#FA6503]" />}
+                    {tech.icon === "database" && <Database className="text-purple-400" />}
+                    {tech.icon === "paintbrush" && <Paintbrush className="text-pink-400" />}
+                    {tech.icon === "container" && <Box className="text-blue-400" />}
+                    {tech.icon === "cloud" && <Cloud className="text-sky-400" />}
+                    {tech.icon === "git-branch" && <GitBranch className="text-red-400" />}
+                    {tech.icon === "globe" && <Globe className="text-green-500" />}
+                  </div>
+                  <span className="text-gray-200 font-medium text-center">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* FAQ */}
           <div className="mb-32">
             <h2 className="text-4xl font-bold mb-12">Często zadawane pytania</h2>
@@ -349,56 +387,9 @@ export default function Home() {
             </Accordion>
           </div>
 
-          {/* Client List */}
-          <div className="mb-32">
-            <h2 className="text-4xl font-bold mb-12">Nasze technologie</h2>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-              {[
-                { name: "Next.js", icon: "code" },
-                { name: "React", icon: "brain" },
-                { name: "TypeScript", icon: "file-type" },
-                { name: "Node.js", icon: "server" },
-                { name: "Python", icon: "file-code" },
-                { name: "Supabase", icon: "database" },
-                { name: "PostgreSQL", icon: "database" },
-                { name: "Tailwind CSS", icon: "paintbrush" },
-                { name: "Blender", icon: "container" },
-                { name: "Vercel", icon: "cloud" },
-                { name: "GraphQL", icon: "git-branch" },
-                { name: "Framer", icon: "globe" },
-              ].map((tech, i) => (
-                <div key={i} className="flex flex-col items-center justify-center p-4 bg-zinc-950 border border-[#FA6503]/20 rounded-lg h-32 transition-transform duration-300 hover:-translate-y-2">
-                  <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-3">
-                    {tech.icon === "code" && <Code className="text-blue-400" />}
-                    {tech.icon === "brain" && <Zap className="text-cyan-400" />}
-                    {tech.icon === "file-type" && <FileType className="text-blue-500" />}
-                    {tech.icon === "server" && <Server className="text-green-400" />}
-                    {tech.icon === "file-code" && <FileCode className="text-[#FA6503]" />}
-                    {tech.icon === "database" && <Database className="text-purple-400" />}
-                    {tech.icon === "paintbrush" && <Paintbrush className="text-pink-400" />}
-                    {tech.icon === "container" && <Box className="text-blue-400" />}
-                    {tech.icon === "cloud" && <Cloud className="text-sky-400" />}
-                    {tech.icon === "git-branch" && <GitBranch className="text-red-400" />}
-                    {tech.icon === "globe" && <Globe className="text-green-500" />}
-                  </div>
-                  <span className="text-gray-200 font-medium text-center">{tech.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Final CTA */}
-          <div className="bg-zinc-900 rounded-xl p-12 mb-32 text-center">
-            <h2 className="text-3xl font-bold mb-4">Gotowy na transformację swojej obecności online?</h2>
-            <p className="text-xl text-gray-400 mb-8">
-              Dołącz do setek zadowolonych klientów i zacznij generować realne wyniki.
-            </p>
-            <Button asChild className="bg-white text-black hover:bg-gray-200 px-8 py-6 text-lg">
-              <Link href="/kontakt">
-                Rozpocznij projekt <ArrowBigRightIcon className="ml-2" size={24} />
-              </Link>
-            </Button>
+          <div className="mb-32">
+            <CallToAction />
           </div>
         </div>
       </main>
