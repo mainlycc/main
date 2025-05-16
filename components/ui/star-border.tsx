@@ -16,7 +16,7 @@ export function StarBorder<T extends ElementType = "button">({
   ...props
 }: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
   const Component = as || "button"
-  const defaultColor = "#FA6503"
+  const defaultColor = "#FFFFFF"
 
   return (
     <Component 
@@ -48,9 +48,9 @@ export function StarBorder<T extends ElementType = "button">({
       />
       <div className={cn(
         "relative z-1 border text-foreground text-base py-4 px-8 rounded-full w-full",
-        "bg-gradient-to-b from-zinc-800/90 to-zinc-900/90 border-border/40",
-        "hover:from-zinc-700/90 hover:to-zinc-800/90 transition-colors duration-300",
-        "dark:from-zinc-800 dark:to-zinc-900 dark:border-border inline-flex items-center justify-center gap-3"
+        "bg-[#FA6503] border-[#FA6503]/40 text-white",
+        "hover:bg-[#FA6503]/90 transition-colors duration-300",
+        "dark:bg-[#FA6503] dark:border-[#FA6503]/40 inline-flex items-center justify-center gap-3"
       )}>
         {children}
       </div>

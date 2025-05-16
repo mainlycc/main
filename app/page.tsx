@@ -24,12 +24,12 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center px-6 text-center">
         <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight mb-4 mt-24 sm:mt-32">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 mt-24 sm:mt-32">
             Strona internetowa to Twoje najważniejsze narzędzie sprzedaży. Zróbmy ją dobrze.
           </h2>
 
           {/* Tagline */}
-          <p className="text-xl text-gray-400 mb-12">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12">
             Strony, aplikacje i systemy, które zmieniają biznesy – od pomysłu po gotowy produkt. Szybko, konkretnie, skutecznie.
           </p>
 
@@ -70,7 +70,7 @@ export default function Home() {
               Ostatnie Projekty
             </Link>
             <StarBorder as={Link} href="/kontakt" className="text-white">
-              Rozpocznij Swój Projekt <ArrowBigRightIcon size={24} className="text-[#FA6503] flex-shrink-0" />
+              Rozpocznij Swój Projekt <ArrowBigRightIcon size={24} className="text-white flex-shrink-0" />
             </StarBorder>
           </div>
 

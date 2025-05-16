@@ -23,6 +23,135 @@ interface Project {
 // Rozszerzona struktura danych projektów
 export const projects: Project[] = [
   {
+    id: 9,
+    name: "Interaktywny Pad Muzyczny",
+    slug: "music-pad",
+    image: "/musicpad.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Kreatywne narzędzie do tworzenia muzyki w przeglądarce",
+    fullDescription: "Innowacyjna aplikacja webowa umożliwiająca tworzenie muzyki w czasie rzeczywistym. Użytkownicy mogą komponować własne utwory wykorzystując 16 programowalnych padów z różnymi trybami odtwarzania (normalny, pulsujący, ciągły). Aplikacja oferuje bogaty wybór instrumentów i melodii, zaawansowaną wizualizację dźwięku oraz możliwość nagrywania sesji. Intuicyjne sterowanie za pomocą klawiatury oraz interaktywny interfejs sprawiają, że tworzenie muzyki staje się dostępne dla każdego.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Web Audio API", "Tone.js"],
+    features: [
+      "16 programowalnych padów muzycznych",
+      "Trzy tryby odtwarzania dźwięków",
+      "Biblioteka instrumentów i melodii",
+      "Wizualizacja fali dźwiękowej",
+      "System nagrywania i eksportu do MP3",
+      "Sterowanie za pomocą klawiatury",
+      "Interaktywny interfejs użytkownika",
+      "Responsywny design"
+    ],
+    client: "Projekt własny",
+    year: 2024,
+    url: "https://musicpad-mainly.vercel.app/"
+  },
+  {
+    id: 8,
+    name: "Lease1 - Partner Leasingowy",
+    slug: "lease1-leasing",
+    image: "/lease1.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Platforma dla globalnego partnera leasingowego",
+    fullDescription: "Nowoczesna platforma internetowa dla firmy Lease1, specjalizującej się w kompleksowych rozwiązaniach leasingowych na skalę międzynarodową. Strona oferuje przejrzystą prezentację różnych form leasingu (maszyn, samochodów, nieruchomości) wraz z intuicyjnym procesem składania wniosków. Zaimplementowano wielojęzyczność (PL, EN, DE) oraz zaawansowany system kalkulatorów leasingowych. Projekt wyróżnia się profesjonalnym designem i płynną ścieżką użytkownika od pierwszego kontaktu do finalizacji umowy.",
+    technologies: ["Next.js", "TypeScript", "Shadcn/ui", "Tailwind CSS", "i18n"],
+    features: [
+      "System wielojęzyczności (PL, EN, DE)",
+      "Kalkulatory leasingowe",
+      "Interaktywne formularze wniosków",
+      "Panel klienta",
+      "Prezentacja ofert leasingowych",
+      "Blog z poradami finansowymi",
+      "Moduł FAQ z wyszukiwarką",
+      "Responsywny design dostosowany do wszystkich urządzeń"
+    ],
+    client: "Lease1",
+    year: 2024,
+    url: "https://lease1.pl"
+  },
+  {
+    id: 7,
+    name: "Business Care SC",
+    slug: "bcsc-ksiegowosc",
+    image: "/bcsc.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Nowoczesna strona dla biura księgowego specjalizującego się w startupach",
+    fullDescription: "Profesjonalna strona internetowa dla biura księgowego Business Care SC, zaprojektowana z myślą o startupach i młodych firmach. Strona charakteryzuje się nowoczesnym designem, przejrzystą prezentacją usług oraz intuicyjną nawigacją. Zaimplementowano system formularzy kontaktowych, automatyczne kalkulatory oraz sekcję z opiniami klientów. Projekt wyróżnia się elegancką typografią, spójną kolorystyką oraz płynną responsywnością na wszystkich urządzeniach.",
+    technologies: ["Next.js", "TypeScript", "Shadcn/ui", "Tailwind CSS"],
+    features: [
+      "Nowoczesny, responsywny design",
+      "Interaktywne formularze kontaktowe",
+      "Sekcja opinii klientów",
+      "Automatyczne kalkulatory wycen",
+      "Blog z poradami księgowymi",
+      "Optymalizacja SEO",
+      "System CMS do zarządzania treścią"
+    ],
+    client: "Business Care SC",
+    year: 2024,
+    url: "https://bcsc.pl"
+  },
+  {
+    id: 6,
+    name: "Generator Ofert Rolety3miasto",
+    slug: "generator-ofert-rolety",
+        image: "/rolety-generator.png",    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "System automatyzacji wycen i generowania ofert dla firmy roletowej",
+    fullDescription: "Zaawansowane narzędzie do tworzenia spersonalizowanych ofert dla klientów firmy Rolety3miasto. System umożliwia błyskawiczne kalkulacje cen na podstawie wybranych parametrów, automatycznie generuje profesjonalne dokumenty PDF z ofertą, uwzględniając wszystkie specyfikacje techniczne i preferencje klienta. Dzięki temu rozwiązaniu firma może szybko przedstawić dokładną i profesjonalną wycenę dostosowaną do indywidualnych potrzeb każdego klienta.",
+    technologies: ["Next.js", "TypeScript", "Shadcn/ui", "React PDF", "Tailwind CSS"],
+    features: [
+      "Automatyczne kalkulacje cenowe",
+      "Generowanie spersonalizowanych ofert PDF",
+      "Zarządzanie bazą produktów i materiałów",
+      "Konfiguracja różnych wariantów produktów",
+      "System rabatów i promocji",
+      "Eksport danych do różnych formatów"
+    ],
+    client: "Rolety3miasto",
+    year: 2024,
+    url: "https://oferty.rolety3miasto.pl"
+  },
+  {
+    id: 5,
+    name: "Kreator Faktur",
+    slug: "kreator-faktur",
+    image: "/faktury.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Intuicyjne narzędzie do generowania faktur VAT",
+    fullDescription: "Nowoczesna aplikacja webowa do tworzenia i zarządzania fakturami. Umożliwia szybkie generowanie profesjonalnych faktur VAT w formacie PDF z możliwością personalizacji. System oferuje automatyczne obliczenia, zarządzanie kontrahentami oraz eksport dokumentów.",
+    technologies: ["Next.js", "TypeScript", "React PDF", "Tailwind CSS"],
+    features: [
+      "Generowanie faktur VAT w PDF",
+      "Automatyczne obliczenia podatku",
+      "Zarządzanie bazą kontrahentów",
+      "Personalizacja szablonów faktur",
+      "Eksport do różnych formatów",
+      "Intuicyjny interfejs użytkownika"
+    ],
+    client: "Projekt własny",
+    year: 2024,
+    url: "https://faktury.mainly.pl"
+  },
+  {
+    id: 4,
+    name: "Audiogen",
+    slug: "audiogen",
+    image: "/audiogen.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "System automatyzacji zbierania leadów dla startupu",
+    fullDescription: "Strona typu landing page dla innowacyjnego startupu Audiogen, specjalizującego się w tworzeniu audiobooków. Projekt obejmował stworzenie systemu automatycznego zbierania i zarządzania bazą potencjalnych klientów poprzez formularz zapisu na whitelistę. Zaimplementowano zaawansowaną automatyzację procesu wraz z systemem powiadomień.",
+    technologies: ["Framer", "React", "TypeScript", "Automation"],
+    features: [
+      "System zapisu na whitelistę",
+      "Automatyzacja zbierania leadów",
+      "Integracja z systemem mailingowym",
+      "Responsywny design",
+      "Animacje i efekty interaktywne"
+    ],
+    client: "Audiogen",
+    year: 2024,
+    url: "https://audiogen.framer.website"
+  },
+  {
     id: 1,
     name: "Kalkulator GAP",
     slug: "kalkulator-gap",
@@ -108,7 +237,7 @@ export default function ProjectsCarousel() {
       <div className="container mx-auto px-4">
         <div className="relative max-w-6xl mx-auto">
           {/* Karuzela */}
-          <div className="relative h-[600px] overflow-hidden rounded-xl">
+          <div className="relative h-[600px] overflow-hidden rounded-xl backdrop-blur-sm bg-black/5">
             {projects.map((project, index) => (
               <div
                 key={project.id}
@@ -116,24 +245,26 @@ export default function ProjectsCarousel() {
                   index === currentIndex ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
                 }`}
               >
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  className="object-cover"
-                  priority={index === currentIndex}
-                  quality={100}
-                  sizes="(max-width: 1200px) 100vw, 1200px"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    if (project.fallbackImage) {
-                      target.src = project.fallbackImage;
-                    }
-                  }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <h3 className="text-2xl font-bold text-white">{project.name}</h3>
-                  <p className="text-gray-200">{project.description}</p>
+                <div className="relative w-full h-full border-[12px] border-gray-500/20 rounded-xl overflow-hidden backdrop-blur-sm">
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
+                    priority={index === currentIndex}
+                    quality={100}
+                    sizes="(max-width: 1200px) 100vw, 1200px"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      if (project.fallbackImage) {
+                        target.src = project.fallbackImage;
+                      }
+                    }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 backdrop-blur-sm">
+                    <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
+                    <p className="text-gray-200 text-lg">{project.description}</p>
+                  </div>
                 </div>
               </div>
             ))}

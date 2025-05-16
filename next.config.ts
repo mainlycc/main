@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   compress: true,
+  output: 'standalone',
+  poweredByHeader: false,
+  reactStrictMode: true,
+  swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -27,6 +31,38 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ];
+  },
+  webpack: (config, { dev, isServer }) => {
+    // Optymalizacje dla produkcji
+    if (!dev && !isServer) {
+      Object.assign(config.optimization.splitChunks, {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        minChunks: 1,
+        maxAsyncRequests: 30,
+        maxInitialRequests: 30,
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          commons: {
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2,
+          },
+          shared: {
+            name: (module: any, chunks: any) => {
+              const allChunksNames = chunks.map((item: any) => item.name).join('~');
+              return `shared-${allChunksNames}`;
+            },
+            test: /[\\/]node_modules[\\/]/,
+            chunks: 'all',
+            minChunks: 1,
+          },
+        },
+      });
+    }
+    return config;
   },
 };
 
