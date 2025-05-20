@@ -209,6 +209,32 @@ export const projects: Project[] = [
     client: "Kulio Studio",
     year: 2024,
     url: "https://kuliostudio.pl"
+  },
+  {
+    id: 10,
+    name: "Coin Milei",
+    slug: "milei-coin",
+    image: "/milei.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Dynamiczna strona one-pager dla kryptowaluty $MILEI inspirowanej Javierem Milei.",
+    fullDescription: "Strona internetowa dla tokena $MILEI – kryptowaluty opartej na ideologii libertariańskiej, łączącej memecoin z komentarzem polityczno-ekonomicznym. Projekt obejmował pełny design i wdrożenie we Framerze, integrację wykresu TradingView, dynamicznych tweetów z Twittera/X, sekcji partnerów oraz liczników statystyk. Strona zoptymalizowana pod urządzenia mobilne i desktopowe, z nowoczesną grafiką, AI-generowanym portretem oraz neonowymi akcentami. Wyróżnia się pełną responsywnością, szybkością ładowania i animacjami w stylu Framera.",
+    technologies: ["Framer", "TradingView", "Twitter/X embed", "SVG", "Responsywny design"],
+    features: [
+      "Sekcja Hero z AI-generowanym portretem Javiera Milei i CTA",
+      "Osadzony wykres TradingView kursu $MILEI",
+      "Interaktywne karty funkcjonalności tokena (tokenomics, decentralizacja, memiczność)",
+      "Instrukcja zakupu (iOS/Android)",
+      "Sekcja partnerów (Telegram, CoinMarketCap, Uniswap)",
+      "Dynamiczne statystyki: licznik czasu, liczba holderów, tokenów, liquidity",
+      "Wbudowane tweety z Twittera/X",
+      "Opis ideologii tokena i motywów politycznych",
+      "Pełna responsywność i optymalizacja UX",
+      "Szybkość ładowania (SVG, brak backendu)",
+      "Animacje i mikrointerakcje w stylu Framera"
+    ],
+    client: "Projekt komercyjny (Web3/Crypto)",
+    year: 2024,
+    url: "https://milei.framer.ai/"
   }
 ];
 

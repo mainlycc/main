@@ -6,6 +6,7 @@ import { projects } from "../../../components/ProjectsCarousel";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle } from "lucide-react";
+import Footer from "../../../components/Footer";
 
 // Definiujemy interfejs dla projektu
 interface Project {
@@ -178,6 +179,7 @@ export default function ProjectDetailPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 } 
