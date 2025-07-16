@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen text-white flex flex-col">
       <main className="flex-1 flex flex-col items-center px-4 sm:px-6 py-16 sm:py-24">
         <div className="max-w-5xl mx-auto w-full">
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 sm:mb-8 text-center">

@@ -59,7 +59,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className={`${inter.className} bg-black text-white`}>
+      <body className={`${inter.className} text-white`}>
+        <div
+          className="fixed inset-0 -z-10 h-full w-full bg-black"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: '6rem 4rem'
+          }}
+        ></div>
         <Navbar />
         {children}
         <Analytics />

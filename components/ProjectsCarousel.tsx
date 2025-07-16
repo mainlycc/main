@@ -235,6 +235,29 @@ export const projects: Project[] = [
     client: "Projekt komercyjny (Web3/Crypto)",
     year: 2024,
     url: "https://milei.framer.ai/"
+  },
+  {
+    id: 11,
+    name: "Prawo Jazdy w Czechach",
+    slug: "prawkoczechy",
+    image: "/prawkoczechy.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description: "Strona dla firmy świadczącej usługi zdawania egzaminów na prawo jazdy w Czechach, zintegrowana z Google Ads i zoptymalizowana pod kątem konwersji.",
+    fullDescription: "Strona internetowa dla firmy oferującej kompleksowe usługi związane z egzaminami na prawo jazdy w Czechach. W ramach współpracy zapewniliśmy nie tylko nowoczesny design i responsywność, ale również wsparcie w zakresie Google Ads oraz optymalizację pod kątem maksymalizacji konwersji. Strona została zaprojektowana tak, aby przyciągać potencjalnych klientów i zachęcać ich do kontaktu.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Google Ads", "SEO"],
+    features: [
+      "Responsywny design",
+      "Integracja z Google Ads",
+      "Optymalizacja pod kątem konwersji",
+      "Szybki czas ładowania",
+      "Intuicyjna nawigacja",
+      "Formularz kontaktowy",
+      "Sekcja FAQ",
+      "Testimonials"
+    ],
+    client: "Prawo Jazdy w Czechach",
+    year: 2024,
+    url: "https://www.prawkoczechy.pl/"
   }
 ];
 
@@ -259,8 +282,8 @@ export default function ProjectsCarousel() {
   }, []);
 
   return (
-    <section className="w-full py-12 bg-black">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-8 bg-gray-500/30 backdrop-blur-lg rounded-3xl border border-white/10 border-[0.5px]">
+      <div className="container mx-auto px-8">
         <div className="relative max-w-6xl mx-auto">
           {/* Karuzela */}
           <div className="relative h-[600px] overflow-hidden rounded-xl backdrop-blur-sm bg-black/5">
@@ -271,25 +294,27 @@ export default function ProjectsCarousel() {
                   index === currentIndex ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
                 }`}
               >
-                <div className="relative w-full h-full border-[12px] border-gray-500/20 rounded-xl overflow-hidden backdrop-blur-sm">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-500 ease-in-out"
-                    priority={index === currentIndex}
-                    quality={100}
-                    sizes="(max-width: 1200px) 100vw, 1200px"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      if (project.fallbackImage) {
-                        target.src = project.fallbackImage;
-                      }
-                    }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 backdrop-blur-sm">
-                    <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                    <p className="text-gray-200 text-lg">{project.description}</p>
+                <div className="relative w-full h-full rounded-xl overflow-hidden backdrop-blur-sm">
+                  <div className="relative w-full h-full p-8 rounded-xl overflow-hidden bg-gray-500/20">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
+                      priority={index === currentIndex}
+                      quality={100}
+                      sizes="(max-width: 1200px) 100vw, 1200px"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (project.fallbackImage) {
+                          target.src = project.fallbackImage;
+                        }
+                      }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-8 backdrop-blur-sm">
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
+                      <p className="text-gray-200 text-lg">{project.description}</p>
+                    </div>
                   </div>
                 </div>
               </div>

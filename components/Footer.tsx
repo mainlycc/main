@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 py-16">
+    <footer className="bg-black border-t border-white/10 py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
@@ -13,20 +13,6 @@ export default function Footer() {
             <p className="text-gray-400 mb-4">
               Zamieniamy teksty, design i programowanie w kliknięcia, konwersje i zyski.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-gray-400 hover:text-white">
-                <Facebook size={20} />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white">
-                <Twitter size={20} />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white">
-                <Instagram size={20} />
-              </Link>
-              <Link href="#" className="text-gray-400 hover:text-white">
-                <Linkedin size={20} />
-              </Link>
-            </div>
           </div>
 
           <div>

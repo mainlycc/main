@@ -10,8 +10,8 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'rgb(0 0 0)',
-  			foreground: 'rgb(255 255 255)',
+  			background: 'hsl(var(--background))',
+  			foreground: 'hsl(var(--foreground))',
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -28,7 +28,7 @@ export default {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
-  			muted: 'rgb(38 38 38)',
+  			muted: 'hsl(var(--muted))',
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
@@ -46,7 +46,10 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+  			brand: 'hsl(var(--brand))',
+  			'brand-foreground': 'hsl(var(--brand-foreground))',
+  			'muted-foreground': 'hsl(var(--muted-foreground))'
   		},
   		borderRadius: {
   			DEFAULT: '0.5rem',
@@ -72,23 +75,43 @@ export default {
   				}
   			},
   			'star-movement-top': {
-  				'0%': { transform: 'translateX(0)' },
-  				'100%': { transform: 'translateX(100%)' },
+  				'0%': {
+  					transform: 'translateX(0)'
+  				},
+  				'100%': {
+  					transform: 'translateX(100%)'
+  				}
   			},
   			'star-movement-bottom': {
-  				'0%': { transform: 'translateX(0)' },
-  				'100%': { transform: 'translateX(-100%)' },
+  				'0%': {
+  					transform: 'translateX(0)'
+  				},
+  				'100%': {
+  					transform: 'translateX(-100%)'
+  				}
   			},
+  			marquee: {
+  				from: {
+  					transform: 'translateX(0)'
+  				},
+  				to: {
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				}
+  			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			'star-movement-top': 'star-movement-top 6s linear infinite',
   			'star-movement-bottom': 'star-movement-bottom 6s linear infinite',
+  			marquee: 'marquee var(--duration) linear infinite'
   		},
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+  		},
+  		maxWidth: {
+  			container: '1280px'
   		}
   	}
   },

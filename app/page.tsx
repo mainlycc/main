@@ -11,10 +11,12 @@ import Footer from "../components/Footer"
 import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
 import CallToAction from "../components/CallToAction"
 import { StarBorder } from "../components/ui/star-border"
+import { ClientTestimonials } from "../components/ui/testimonials-section"
+import PricingSection from "../components/PricingSection"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen text-white flex flex-col">
       <header className="container mx-auto pt-8 px-6">
         <div className="flex justify-center">
         
@@ -25,7 +27,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto w-full">
           {/* Main Headline */}
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 mt-24 sm:mt-32">
-            Strona internetowa to Twoje najważniejsze narzędzie sprzedaży. Zróbmy ją dobrze.
+            Tworzymy technologię, która rozwija Twój biznes.
           </h2>
 
           {/* Tagline */}
@@ -39,7 +41,7 @@ export default function Home() {
               <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
                 <Clock className="h-5 w-5 text-white" />
               </div>
-              <span>Przejrzyste etapy i terminy – wiesz, co się dzieje</span>
+              <span>Zapewniamy najnowsze technologiczne rozwiązania</span>
             </div>
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center mr-3 flex-shrink-0">
@@ -84,225 +86,6 @@ export default function Home() {
             <CompanySlider />
           </div>
 
-          {/* Company Features */}
-          <div className="mb-32">
-            <h2 className="text-4xl font-bold mb-12 text-center">Dlaczego Mainly?</h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Code className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Nowoczesna technologia pod Twoją markę</h3>
-                <p className="text-gray-400">
-                  Twoja strona powstaje w oparciu o Next.js – rozwiązanie używane przez największe firmy świata. Zyskujesz szybkość działania, świetne SEO i gotowość na integracje z AI.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Paintbrush className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Zero szablonów, 100% unikalności</h3>
-                <p className="text-gray-400">
-                  Otrzymasz projekt dopasowany do Twojej marki, stworzony od zera – bez gotowców, które widziałeś już setki razy.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Smartphone className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Działa idealnie na każdym urządzeniu</h3>
-                <p className="text-gray-400">
-                  Twoja strona będzie wyglądać świetnie zarówno na dużym monitorze, jak i na małym ekranie telefonu. Każdy element dopasowuje się automatycznie, zapewniając wygodne przeglądanie bez względu na to, jakiego urządzenia używasz.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Globe className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Spersonalizowane grafiki i animacje</h3>
-                <p className="text-gray-400">
-                  Twoja strona będzie wyglądać dokładnie tak, jak chcesz. Tworzymy dedykowane grafiki i animacje, które przyciągają wzrok i budują wizerunek.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <GitBranch className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Zawsze na czasie</h3>
-                <p className="text-gray-400">
-                  Śledzimy trendy i testujemy nowe rozwiązania, żebyś Ty nie musiał. Dzięki temu Twoja strona będzie nowoczesna, a nie tylko &quot;ładna&quot;.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <FileType className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Dopasowanie do Twojej branży</h3>
-                <p className="text-gray-400">
-                  Niezależnie, czy potrzebujesz strony dla startupu, marki osobistej czy sklepu – stworzymy coś, co pasuje do Twojej grupy odbiorców i celów biznesowych.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Mail className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Pełna przejrzystość i stały kontakt</h3>
-                <p className="text-gray-400">
-                  Wiesz, na jakim etapie jest Twój projekt i co dzieje się dalej. Regularnie informujemy o postępach i wysyłamy podglądy, byś miał wszystko pod kontrolą.
-                </p>
-              </div>
-              
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <ArrowBigRightIcon className="text-[#FA6503]" size={20} />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Poprawki bez stresu</h3>
-                <p className="text-gray-400">
-                  Nie musisz od razu wiedzieć, czego dokładnie chcesz. Pracujemy elastycznie – możesz wprowadzać zmiany na bieżąco i rozwijać projekt wspólnie z nami.
-                </p>
-              </div>
-
-              <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                <div className="bg-zinc-800 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-                  <Box className="text-[#FA6503]" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">Wszystko w jednym miejscu</h3>
-                <p className="text-gray-400">
-                  Otrzymasz kompletną stronę – od koncepcji i projektu graficznego, po wdrożenie i optymalizację. Bez konieczności szukania kolejnych specjalistów.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Pricing */}
-          <div className="mb-32">
-            <h2 className="text-4xl font-bold mb-4">Cennik</h2>
-            <p className="text-xl text-gray-400 mb-12">Elastyczne plany dopasowane do Twoich potrzeb</p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white transition-transform duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  <CardTitle>Startup</CardTitle>
-                  <CardDescription className="text-gray-300">Idealny dla nowych projektów</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-white">1 200 zł</span>
-                    <span className="text-gray-300">/miesiąc</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {[
-                      "Jedna strona lub landing page",
-                      "Do 5 podstron",
-                      "Podstawowy design",
-                      "Responsywność na wszystkich urządzeniach",
-                      "Podstawowe SEO",
-                      "1 runda poprawek",
-                    ].map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
-                          <Check className="h-3 w-3 text-green-400" />
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild className="w-full bg-white text-black hover:bg-gray-200">
-                    <Link href="/kontakt">Wybierz plan</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              <Card className="bg-zinc-950 border border-[#FA6503] text-left text-white relative transition-transform duration-300 hover:-translate-y-2">
-                <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                  <span className="bg-[#FA6503] text-black px-4 py-1 rounded-full text-sm font-bold">
-                    Najpopularniejszy
-                  </span>
-                </div>
-                <CardHeader>
-                  <CardTitle>Business</CardTitle>
-                  <CardDescription className="text-gray-300">Dla rozwijających się firm</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-white">2 500 zł</span>
-                    <span className="text-gray-300">/miesiąc</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {[
-                      "Pełna strona firmowa",
-                      "Do 15 podstron",
-                      "Zaawansowany design",
-                      "Responsywność na wszystkich urządzeniach",
-                      "Pełna optymalizacja SEO",
-                      "System CMS",
-                      "3 rundy poprawek",
-                      "Integracja z narzędziami analitycznymi",
-                    ].map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
-                          <Check className="h-3 w-3 text-green-400" />
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild className="w-full bg-[#FA6503] text-black hover:bg-[#FA6503]/90">
-                    <Link href="/kontakt">Wybierz plan</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              <Card className="bg-zinc-950 border border-[#FA6503]/20 text-left text-white transition-transform duration-300 hover:-translate-y-2">
-                <CardHeader>
-                  <CardTitle>Enterprise</CardTitle>
-                  <CardDescription className="text-gray-300">Rozwiązania szyte na miarę</CardDescription>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-white">Wycena</span>
-                    <span className="text-gray-300"> indywidualna</span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {[
-                      "Kompleksowe rozwiązania webowe",
-                      "Aplikacje internetowe",
-                      "Sklepy e-commerce",
-                      "Niestandardowe funkcjonalności",
-                      "Dedykowany zespół",
-                      "Priorytetowe wsparcie",
-                      "Nielimitowane poprawki",
-                      "Strategia marketingowa",
-                    ].map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <div className="w-5 h-5 rounded-full bg-green-400/20 flex items-center justify-center mr-2 mt-0.5 flex-shrink-0">
-                          <Check className="h-3 w-3 text-green-400" />
-                        </div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild className="w-full bg-white text-black hover:bg-gray-200">
-                    <Link href="/kontakt">Skontaktuj się</Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </div>
-          </div>
-
           {/* Client List */}
           <div className="mb-32">
             <h2 className="text-4xl font-bold mb-12">Nasze technologie</h2>
@@ -341,6 +124,14 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Cennik */}
+          <div className="mb-32">
+            <PricingSection />
+          </div>
+
+          {/* Sekcja opinii klientów */}
+          <ClientTestimonials />
 
           {/* FAQ */}
           <div className="mb-32">
