@@ -1,7 +1,6 @@
-import { TestimonialsSection } from "../testimonials-with-marquee"
 import { motion } from "framer-motion"
 
-export function ClientTestimonials() {
+export function TestimonialsSection() {
   const testimonials = [
     {
       author: {
@@ -99,7 +98,7 @@ export function ClientTestimonials() {
             {testimonials.map((testimonial, i) => (
               <div key={`first-${i}`} className="flex-shrink-0 w-80">
                 <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
-                  <p className="text-gray-300 mb-4">"{testimonial.text}"</p>
+                  <p className="text-gray-300 mb-4">&ldquo;{testimonial.text}&rdquo;</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-zinc-800 rounded-full mr-3"></div>
                     <div>
@@ -116,7 +115,7 @@ export function ClientTestimonials() {
             {testimonials.map((testimonial, i) => (
               <div key={`second-${i}`} className="flex-shrink-0 w-80">
                 <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
-                  <p className="text-gray-300 mb-4">"{testimonial.text}"</p>
+                  <p className="text-gray-300 mb-4">&ldquo;{testimonial.text}&rdquo;</p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-zinc-800 rounded-full mr-3"></div>
                     <div>

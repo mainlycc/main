@@ -1,17 +1,16 @@
 "use client";
 
 import Link from "next/link"
-import { Zap, Check, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Mail, Clock, Shield, Brain, Scissors, Smartphone } from "lucide-react"
+import { Zap, Code, FileType, Server, FileCode, Database, Paintbrush, Box, Cloud, GitBranch, Globe, Clock, Shield, Brain, Scissors } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
-import { Button } from "../components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card"
+
 import ProjectsCarousel from "../components/ProjectsCarousel"
 import CompanySlider from "../components/CompanySlider"
 import Footer from "../components/Footer"
 import { ArrowBigRightIcon } from "../components/ui/arrow-big-right"
 import CallToAction from "../components/CallToAction"
 import { StarBorder } from "../components/ui/star-border"
-import { ClientTestimonials } from "../components/ui/testimonials-section"
+import { TestimonialsSection } from "../components/ui/testimonials-section"
 import PricingSection from "../components/PricingSection"
 
 export default function Home() {
@@ -131,7 +130,7 @@ export default function Home() {
           </div>
 
           {/* Sekcja opinii klientów */}
-          <ClientTestimonials />
+          <TestimonialsSection />
 
           {/* FAQ */}
           <div className="mb-32">
