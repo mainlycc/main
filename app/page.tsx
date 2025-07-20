@@ -12,6 +12,7 @@ import CallToAction from "../components/CallToAction"
 import { StarBorder } from "../components/ui/star-border"
 import { TestimonialsSection } from "../components/ui/testimonials-section"
 import PricingSection from "../components/PricingSection"
+import Component from "../components/comp-412"
 
 export default function Home() {
   return (
@@ -24,8 +25,13 @@ export default function Home() {
 
       <main className="flex-1 flex flex-col items-center px-6 text-center">
         <div className="max-w-5xl mx-auto w-full">
+          {/* Client Trust Component */}
+          <div className="flex justify-center mb-6 mt-24 sm:mt-32">
+            <Component />
+          </div>
+          
           {/* Main Headline */}
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 mt-24 sm:mt-32">
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
             Tworzymy technologię, która rozwija Twój biznes.
           </h2>
 
