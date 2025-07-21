@@ -14,6 +14,7 @@ export default function Navbar() {
         {[
           { href: "/", label: "Główna" },
           { href: "/projekty", label: "Portfolio" },
+          { href: "/blog", label: "Blog" },
           { href: "/kontakt", label: "Kontakt" }
         ].map(({ href, label }) => (
           <Link

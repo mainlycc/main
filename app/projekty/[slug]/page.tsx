@@ -38,7 +38,7 @@ export default function ProjectDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen text-white flex items-center justify-center">
         <div className="animate-spin h-12 w-12 border-4 border-white border-t-transparent rounded-full"></div>
       </div>
     );
@@ -46,7 +46,7 @@ export default function ProjectDetailPage() {
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-black text-white">
+      <div className="min-h-screen text-white">
         <div className="container mx-auto px-4 py-24 text-center">
           <h1 className="text-4xl font-bold mb-6">Projekt nie znaleziony</h1>
           <p className="text-xl text-gray-400 mb-8">Niestety, nie mogliśmy znaleźć projektu, którego szukasz.</p>
@@ -62,7 +62,7 @@ export default function ProjectDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white">
       <div className="container mx-auto px-6 py-24 max-w-5xl">
         <Link 
           href="/projekty"
