@@ -17,6 +17,17 @@ export default function Blog() {
       readTime: "8 min czytania",
       category: "Web Development",
       image: "/budowa_strony.jpg"
+    },
+    {
+      id: 2,
+      slug: "strona-internetowa-ktora-sprzedaje-7-elementow",
+      title: "Strona internetowa, która sprzedaje — 7 elementów, o których większość firm zapomina",
+      excerpt: "Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.",
+      author: "Zespół Mainly",
+      date: "20 stycznia 2025",
+      readTime: "6 min czytania",
+      category: "Marketing",
+      image: "/kowdlo.png"
     }
   ];
 

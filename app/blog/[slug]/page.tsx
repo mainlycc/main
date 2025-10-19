@@ -286,6 +286,256 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
       image: "/blog-1.jpg",
       metaDescription: "Poznaj najnowsze trendy i technologie tworzenia stron internetowych w 2025 roku. AI, Web 3.0, SEO i najlepsze praktyki dla nowoczesnych stron.",
       keywords: "strona internetowa 2025, web development, AI, SEO, trendy technologiczne, nowoczesne strony"
+    },
+    "strona-internetowa-ktora-sprzedaje-7-elementow": {
+      title: "Strona internetowa, która sprzedaje — 7 elementów, o których większość firm zapomina",
+      excerpt: "Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.",
+      content: `
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl mb-8">
+          <p class="text-lg leading-relaxed mb-0">
+            <strong>Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.</strong> W 2025 roku liczy się nie tylko wygląd, ale strategia: jak prowadzisz użytkownika od wejścia po kontakt.
+          </p>
+        </div>
+
+        <p class="text-lg mb-8">W tym artykule pokażę Ci 7 konkretnych elementów, które sprawiają, że strona zaczyna działać jak handlowiec — 24/7.</p>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">1. Jasna propozycja wartości (Value Proposition)</h2>
+        <p class="text-lg mb-4">Pierwsze 5 sekund po wejściu na stronę decyduje, czy ktoś zostanie, czy zamknie kartę.</p>
+        <p class="text-lg mb-4">Dlatego nagłówek na stronie głównej musi mówić wprost:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">•</span>
+              <span><strong>Co robisz</strong></span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">•</span>
+              <span><strong>Dla kogo</strong></span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">•</span>
+              <span><strong>Jaką wartość dajesz</strong></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503] mb-4">💡 Przykład:</p>
+          <p class="text-lg mb-2"><strong>Zamiast:</strong> „Tworzymy strony internetowe"</p>
+          <p class="text-lg mb-0"><strong>Napisz:</strong> „Budujemy nowoczesne strony, które pozyskują klientów dla firm z sektora usług."</p>
+        </div>
+
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">💡 Tip: użyj prostego przycisku „Sprawdź ofertę" lub „Zamów wycenę" tuż obok — to działa jak zaproszenie do rozmowy.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">2. Struktura sekcji „nad zgięciem"</h2>
+        <p class="text-lg mb-4">Większość odwiedzających nigdy nie przewija. Dlatego górna część strony (tzw. above the fold) musi działać jak landing page:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✓</span>
+              <span>nagłówek z wartością</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✓</span>
+              <span>krótki opis</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✓</span>
+              <span>CTA</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✓</span>
+              <span>tło lub grafika ilustrująca efekt (np. screen projektu)</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">⚠️ Nie chowaj CTA w stopce — daj je od razu w pierwszym ekranie.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">3. Społeczny dowód słuszności (social proof)</h2>
+        <p class="text-lg mb-4"><strong>Zaufanie = konwersja.</strong></p>
+        <p class="text-lg mb-4">Dodaj:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-3">🏢</span>
+              <span>logotypy klientów</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-3">💬</span>
+              <span>krótkie cytaty z opinii (1 zdanie, imię, branża)</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-blue-400 mr-3">📊</span>
+              <span>liczby: „+50 projektów dla firm w Polsce"</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">To sygnały, które uspokajają umysł klienta: „OK, oni wiedzą co robią."</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">4. Proces współpracy krok po kroku</h2>
+        <p class="text-lg mb-4">Ludzie boją się rzeczy, których nie rozumieją.</p>
+        <p class="text-lg mb-4">Gdy pokazujesz proces w 4–6 krokach, zdejmujesz z nich niepewność.</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <h3 class="text-xl font-bold mb-4 text-[#FA6503]">Przykład:</h3>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
+                <span>Brief i analiza potrzeb</span>
+              </div>
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</span>
+                <span>Projekt UX/UI</span>
+              </div>
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">3</span>
+                <span>Wdrożenie</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">4</span>
+                <span>Testy i optymalizacja</span>
+              </div>
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">5</span>
+                <span>Publikacja</span>
+              </div>
+              <div class="flex items-center">
+                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">6</span>
+                <span>Wsparcie po wdrożeniu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">💬 „Zrozumiałem, jak to działa. To nie takie straszne." — to efekt, którego chcesz.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">5. CTA na każdym etapie</h2>
+        <p class="text-lg mb-4">Użytkownik może być gotowy do kontaktu w dowolnym momencie.</p>
+        <p class="text-lg mb-4">Dlatego dodaj mikro-wezwania do działania co kilka sekcji:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-purple-400 mr-3">🎯</span>
+              <span>„Zobacz portfolio"</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-purple-400 mr-3">💰</span>
+              <span>„Poznaj wycenę"</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-purple-400 mr-3">👥</span>
+              <span>„Zobacz, jak pracujemy"</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">💡 Nie wymuszaj decyzji — zapraszaj do kolejnego kroku.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">6. Dostosowanie do mobile i prędkość ładowania</h2>
+        <p class="text-lg mb-4">To nie banał — ponad 70% ruchu B2C pochodzi z telefonu.</p>
+        <p class="text-lg mb-4">Jeśli strona ładuje się 3+ sekundy, tracisz nawet połowę odwiedzających.</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✅</span>
+              <span><strong>Testuj stronę w Google PageSpeed</strong> i na różnych urządzeniach</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-400 mr-3">✅</span>
+              <span><strong>Skróć animacje, zoptymalizuj obrazy</strong> (WebP), użyj lazy loading</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">⚠️ Dla klienta „wolna strona" = „nieprofesjonalna firma".</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">7. Autentyczność i osobisty ton</h2>
+        <p class="text-lg mb-4">Firmy boją się pokazać twarz — i to błąd.</p>
+        <p class="text-lg mb-4">Nie musisz publikować swojego zdjęcia, ale pokaż styl, osobowość marki:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-yellow-400 mr-3">🎨</span>
+              <span>własny sposób mówienia</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-yellow-400 mr-3">🎨</span>
+              <span>dopasowane kolory i typografię</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-yellow-400 mr-3">🎨</span>
+              <span>język, który brzmi jak Ty (nie jak korporacyjny robot)</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
+          <p class="text-lg font-bold text-[#FA6503]">Autentyczność sprzedaje lepiej niż perfekcja.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🧩 Podsumowanie</h2>
+        <p class="text-lg mb-4">Skuteczna strona internetowa to nie tylko design. To narzędzie sprzedażowe, które:</p>
+        
+        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-8">
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
+              <span>jasno komunikuje wartość</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
+              <span>prowadzi użytkownika krok po kroku</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
+              <span>buduje zaufanie i usuwa niepewność</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="text-lg mb-8"><strong>Zanim zlecisz kolejny redesign — upewnij się, że te 7 elementów działa u Ciebie.</strong></p>
+
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-8 rounded-xl">
+          <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🚀 CTA</h2>
+          <p class="text-lg mb-4">
+            Chcesz, żebym przeanalizował Twoją stronę i wskazał, dlaczego nie sprzedaje tak dobrze, jak mogłaby?
+          </p>
+          <p class="text-lg mb-0">
+            📩 Napisz przez formularz kontaktowy lub zadzwoń: <a href="/kontakt" class="text-[#FA6503] hover:underline">mainly.pl/kontakt</a> — zrobię bezpłatny audyt UX + konwersji i podpowiem, co poprawić.
+          </p>
+        </div>
+      `,
+      author: "Zespół Mainly",
+      date: "20 stycznia 2025",
+      readTime: "6 min czytania",
+      category: "Marketing",
+      tags: ["Marketing", "Konwersja", "UX", "Sprzedaż", "Strona internetowa", "CTA"],
+      image: "/kowdlo.png",
+      metaDescription: "Poznaj 7 kluczowych elementów, które sprawiają, że strona internetowa skutecznie sprzedaje. Praktyczne porady dla firm, które chcą zwiększyć konwersję.",
+      keywords: "strona internetowa sprzedaje, konwersja, UX, CTA, marketing, sprzedaż online"
     }
   };
 
@@ -326,8 +576,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         {/* Główny obraz artykułu */}
         <div className="relative h-[400px] rounded-xl overflow-hidden mb-16">
           <Image
-            src="/budowa_strony.jpg"
-            alt="Proces tworzenia nowoczesnej strony internetowej - maszyna innowacji w laptopie"
+            src="/kowdlo.png"
+            alt="Strona internetowa, która sprzedaje - kowadło z iskrami i interfejsem webowym"
             fill
             className="object-cover"
             priority
