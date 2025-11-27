@@ -37,7 +37,8 @@ export default function Footer() {
                 { name: "O nas", href: "#" },
                 { name: "Kontakt", href: "/kontakt" },
                 { name: "Projekty", href: "/projekty" },
-                { name: "Polityka prywatności", href: "/polityka-prywatnosci" }
+                { name: "Opinie klientów", href: "/opinie" },
+                { name: "Polityka prywatności", href: "/polityka-prywatnosci" },
               ].map((item, i) => (
                 <li key={i}>
                   <Link href={item.href} className="text-gray-400 hover:text-white">

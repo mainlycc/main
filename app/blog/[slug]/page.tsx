@@ -288,18 +288,28 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
       keywords: "strona internetowa 2025, web development, AI, SEO, trendy technologiczne, nowoczesne strony"
     },
     "strona-internetowa-ktora-sprzedaje-7-elementow": {
-      title: "Strona internetowa, która sprzedaje — 7 elementów, o których większość firm zapomina",
+      title: "Strona internetowa, która sprzedaje: 7 kluczowych elementów, o których zapomina większość firm",
       excerpt: "Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.",
       content: `
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl mb-8">
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8">
+          <p class="text-xl font-bold text-[#FA6503] mb-4">📌 Najkrócej mówiąc:</p>
+          <p class="text-lg leading-relaxed mb-4">
+            <strong>Skuteczna strona internetowa = jasna wartość + dowód społeczny + CTA w odpowiednim miejscu.</strong> Jeśli brakuje któregoś z tych elementów, tracisz potencjalnych klientów.
+          </p>
           <p class="text-lg leading-relaxed mb-0">
-            <strong>Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.</strong> W 2025 roku liczy się nie tylko wygląd, ale strategia: jak prowadzisz użytkownika od wejścia po kontakt.
+            <em>Chcesz uniknąć najczęstszych błędów na stronach firmowych? Sprawdź nasz przewodnik o tym, <a href="/blog/jak-stworzyc-nowoczesna-strone-internetowa-2025" class="text-[#FA6503] hover:underline font-semibold">jak stworzyć nowoczesną stronę internetową w 2025 roku</a>.</em>
           </p>
         </div>
 
-        <p class="text-lg mb-8">W tym artykule pokażę Ci 7 konkretnych elementów, które sprawiają, że strona zaczyna działać jak handlowiec — 24/7.</p>
+        <div class="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl mb-8">
+          <p class="text-lg leading-relaxed mb-0">
+            <strong>Wielu przedsiębiorców inwestuje w stronę jak w wizytówkę, ale zapomina, że to ich najskuteczniejszy handlowiec pracujący 24/7.</strong> Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców. W 2025 roku liczy się nie tylko wygląd, ale strategia: jak prowadzisz użytkownika od wejścia po kontakt.
+          </p>
+        </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">1. Jasna propozycja wartości (Value Proposition)</h2>
+        <p class="text-lg mb-8">W tym artykule pokażę Ci 7 konkretnych elementów, które sprawiają, że strona zaczyna działać jak handlowiec — 24/7. Jeśli chcesz dowiedzieć się, jak napisać skuteczny tekst na stronę główną, zajrzyj do naszych innych poradników.</p>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🔹 1. Jasna propozycja wartości (Value Proposition)</h2>
         <p class="text-lg mb-4">Pierwsze 5 sekund po wejściu na stronę decyduje, czy ktoś zostanie, czy zamknie kartę.</p>
         <p class="text-lg mb-4">Dlatego nagłówek na stronie głównej musi mówić wprost:</p>
         
@@ -330,7 +340,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">💡 Tip: użyj prostego przycisku „Sprawdź ofertę" lub „Zamów wycenę" tuż obok — to działa jak zaproszenie do rozmowy.</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">2. Struktura sekcji „nad zgięciem"</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🧩 2. Struktura sekcji „nad zgięciem"</h2>
         <p class="text-lg mb-4">Większość odwiedzających nigdy nie przewija. Dlatego górna część strony (tzw. above the fold) musi działać jak landing page:</p>
         
         <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
@@ -358,7 +368,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">⚠️ Nie chowaj CTA w stopce — daj je od razu w pierwszym ekranie.</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">3. Społeczny dowód słuszności (social proof)</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">💬 3. Społeczny dowód słuszności (social proof)</h2>
         <p class="text-lg mb-4"><strong>Zaufanie = konwersja.</strong></p>
         <p class="text-lg mb-4">Dodaj:</p>
         
@@ -383,13 +393,19 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">To sygnały, które uspokajają umysł klienta: „OK, oni wiedzą co robią."</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">4. Proces współpracy krok po kroku</h2>
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8 mt-8">
+          <p class="text-lg font-bold text-[#FA6503] mb-2">💡 Zastanawiasz się, czy Twoja strona ma te elementy?</p>
+          <p class="text-lg mb-0">Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> — sprawdzę to za darmo i podpowiem, co poprawić.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">📱 4. Proces współpracy krok po kroku</h2>
         <p class="text-lg mb-4">Ludzie boją się rzeczy, których nie rozumieją.</p>
         <p class="text-lg mb-4">Gdy pokazujesz proces w 4–6 krokach, zdejmujesz z nich niepewność.</p>
         
         <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <h3 class="text-xl font-bold mb-4 text-[#FA6503]">Przykład:</h3>
-          <div class="grid md:grid-cols-2 gap-4">
+          <h3 class="text-xl font-bold mb-4 text-[#FA6503]">Przykład realnego procesu:</h3>
+          <p class="text-lg mb-4">Klient zgłasza się z pomysłem → ustalamy cele i potrzeby → pokazuję 2 makiety UX/UI → po akceptacji wdrażam technologię i optymalizuję pod SEO → testuję na różnych urządzeniach → publikacja i wsparcie po wdrożeniu.</p>
+          <div class="grid md:grid-cols-2 gap-4 mt-4">
             <div class="space-y-3">
               <div class="flex items-center">
                 <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
@@ -425,7 +441,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">💬 „Zrozumiałem, jak to działa. To nie takie straszne." — to efekt, którego chcesz.</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">5. CTA na każdym etapie</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🔥 5. CTA na każdym etapie</h2>
         <p class="text-lg mb-4">Użytkownik może być gotowy do kontaktu w dowolnym momencie.</p>
         <p class="text-lg mb-4">Dlatego dodaj mikro-wezwania do działania co kilka sekcji:</p>
         
@@ -450,7 +466,12 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">💡 Nie wymuszaj decyzji — zapraszaj do kolejnego kroku.</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">6. Dostosowanie do mobile i prędkość ładowania</h2>
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8 mt-8">
+          <p class="text-lg font-bold text-[#FA6503] mb-2">💡 Zastanawiasz się, czy Twoja strona ma te elementy?</p>
+          <p class="text-lg mb-0">Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> — sprawdzę to za darmo i podpowiem, co poprawić.</p>
+        </div>
+
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">📱 6. Dostosowanie do mobile i prędkość ładowania</h2>
         <p class="text-lg mb-4">To nie banał — ponad 70% ruchu B2C pochodzi z telefonu.</p>
         <p class="text-lg mb-4">Jeśli strona ładuje się 3+ sekundy, tracisz nawet połowę odwiedzających.</p>
         
@@ -458,7 +479,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <ul class="space-y-3 text-lg">
             <li class="flex items-start">
               <span class="text-green-400 mr-3">✅</span>
-              <span><strong>Testuj stronę w Google PageSpeed</strong> i na różnych urządzeniach</span>
+              <span><strong>Testuj stronę w <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer" class="text-[#FA6503] hover:underline">Google PageSpeed Insights</a></strong> i na różnych urządzeniach</span>
             </li>
             <li class="flex items-start">
               <span class="text-green-400 mr-3">✅</span>
@@ -471,7 +492,7 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
           <p class="text-lg font-bold text-[#FA6503]">⚠️ Dla klienta „wolna strona" = „nieprofesjonalna firma".</p>
         </div>
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">7. Autentyczność i osobisty ton</h2>
+        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🎨 7. Autentyczność i osobisty ton</h2>
         <p class="text-lg mb-4">Firmy boją się pokazać twarz — i to błąd.</p>
         <p class="text-lg mb-4">Nie musisz publikować swojego zdjęcia, ale pokaż styl, osobowość marki:</p>
         
@@ -493,7 +514,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         </div>
 
         <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">Autentyczność sprzedaje lepiej niż perfekcja.</p>
+          <p class="text-lg font-bold text-[#FA6503] mb-2">Autentyczność sprzedaje lepiej niż perfekcja.</p>
+          <p class="text-lg mb-0">Na Mainly.pl wierzymy, że ton marki to nie styl pisania, ale sposób myślenia o kliencie.</p>
         </div>
 
         <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🧩 Podsumowanie</h2>
@@ -518,13 +540,16 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
 
         <p class="text-lg mb-8"><strong>Zanim zlecisz kolejny redesign — upewnij się, że te 7 elementów działa u Ciebie.</strong></p>
 
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-8 rounded-xl">
+        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-8 rounded-xl mt-12">
           <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🚀 CTA</h2>
+          <p class="text-lg mb-4">
+            <strong>Większość firm traci klientów przez brak tych 7 elementów — nie pozwól, żeby Twoja była jedną z nich.</strong>
+          </p>
           <p class="text-lg mb-4">
             Chcesz, żebym przeanalizował Twoją stronę i wskazał, dlaczego nie sprzedaje tak dobrze, jak mogłaby?
           </p>
           <p class="text-lg mb-0">
-            📩 Napisz przez formularz kontaktowy lub zadzwoń: <a href="/kontakt" class="text-[#FA6503] hover:underline">mainly.pl/kontakt</a> — zrobię bezpłatny audyt UX + konwersji i podpowiem, co poprawić.
+            📩 <strong>Zrób szybki audyt — zajmie mi to 5 minut, a może Ci przynieść dziesiątki nowych zapytań.</strong> Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> lub zadzwoń — zrobię bezpłatny audyt UX + konwersji i podpowiem, co poprawić.
           </p>
         </div>
       `,
@@ -534,8 +559,8 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
       category: "Marketing",
       tags: ["Marketing", "Konwersja", "UX", "Sprzedaż", "Strona internetowa", "CTA"],
       image: "/kowdlo.png",
-      metaDescription: "Poznaj 7 kluczowych elementów, które sprawiają, że strona internetowa skutecznie sprzedaje. Praktyczne porady dla firm, które chcą zwiększyć konwersję.",
-      keywords: "strona internetowa sprzedaje, konwersja, UX, CTA, marketing, sprzedaż online"
+      metaDescription: "Strona internetowa, która sprzedaje — poznaj 7 kluczowych elementów skutecznej strony firmowej. Jak zwiększyć konwersję? Dowiedz się, co zrobić, żeby Twoja strona konwertowała jak prawdziwy handlowiec.",
+      keywords: "strona internetowa, która sprzedaje, strony sprzedażowe, konwertująca strona, skuteczna strona firmowa, jak zwiększyć konwersję strony, konwersja, UX, CTA, marketing, sprzedaż online"
     }
   };
 
@@ -615,51 +640,12 @@ export default function BlogPost({ params }: { params: Promise<{ slug: string }>
         </div>
 
         {/* Treść artykułu */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 mb-16">
-          <div className="lg:col-span-2">
-            <div className="prose prose-invert prose-lg max-w-none">
-              <div 
-                className="text-gray-300 leading-relaxed text-lg"
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-            </div>
-          </div>
-
-          <div className="bg-zinc-950 border border-[#FA6503]/20 p-8 rounded-xl h-fit">
-            <h3 className="text-xl font-bold mb-6 border-b border-zinc-800 pb-4">Szczegóły artykułu</h3>
-            
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-sm text-gray-400">Autor</h4>
-                <p className="text-lg">{post.author}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm text-gray-400">Data publikacji</h4>
-                <p className="text-lg">{post.date}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm text-gray-400">Czas czytania</h4>
-                <p className="text-lg">{post.readTime}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm text-gray-400">Kategoria</h4>
-                <p className="text-lg">{post.category}</p>
-              </div>
-              
-              <div>
-                <h4 className="text-sm text-gray-400">Tagi</h4>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {post.tags.map((tag: string, index: number) => (
-                    <span key={index} className="bg-zinc-800 px-3 py-1 rounded-full text-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
+        <div className="mb-16">
+          <div className="prose prose-invert prose-lg max-w-none">
+            <div 
+              className="text-gray-300 leading-relaxed text-lg"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
           </div>
         </div>
 
