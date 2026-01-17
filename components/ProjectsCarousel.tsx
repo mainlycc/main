@@ -298,7 +298,7 @@ export default function ProjectsCarousel() {
                   <div className="relative w-full h-full p-8 rounded-xl overflow-hidden bg-gray-500/20">
                     <Image
                       src={project.image}
-                      alt={project.name}
+                      alt={`${project.name} - projekt strony internetowej stworzonej przez agencję Mainly. ${project.description}`}
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
                       priority={index === currentIndex}

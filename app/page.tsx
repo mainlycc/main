@@ -14,9 +14,152 @@ import { TestimonialsSection } from "../components/ui/testimonials-section"
 import PricingSection from "../components/PricingSection"
 import Component from "../components/comp-412"
 
+// FAQ data for schema
+const faqData = [
+  {
+    question: "Jak długo trwa realizacja projektu?",
+    answer: "Czas realizacji zależy od złożoności projektu. Proste landing page możemy dostarczyć w ciągu 1-2 tygodni, podczas gdy bardziej rozbudowane strony firmowe lub aplikacje internetowe mogą zająć od 4 do 8 tygodni. Zawsze na początku współpracy ustalamy dokładny harmonogram.",
+  },
+  {
+    question: "Czy mogę wprowadzać zmiany w trakcie realizacji projektu?",
+    answer: "Tak, nasz proces jest elastyczny i pozwala na wprowadzanie zmian w trakcie realizacji. Każdy plan zawiera określoną liczbę rund poprawek. Dodatkowe zmiany są możliwe za dodatkową opłatą.",
+  },
+  {
+    question: "Czy zajmujecie się hostingiem i utrzymaniem strony?",
+    answer: "Tak, oferujemy kompleksowe usługi hostingu i utrzymania stron. Po zakończeniu projektu możemy przejąć pełną odpowiedzialność za techniczną stronę Twojej witryny, aktualizacje, kopie zapasowe i bezpieczeństwo.",
+  },
+  {
+    question: "Jak wygląda proces współpracy?",
+    answer: "Nasz proces składa się z kilku etapów: 1) Konsultacja i określenie wymagań, 2) Propozycja rozwiązania i wycena, 3) Projektowanie UX/UI, 4) Programowanie, 5) Testowanie, 6) Wdrożenie, 7) Wsparcie po wdrożeniu. Na każdym etapie otrzymujesz regularne aktualizacje i masz możliwość przekazania feedbacku.",
+  },
+  {
+    question: "Czy pomagacie w optymalizacji SEO?",
+    answer: "Tak, wszystkie nasze strony są tworzone z myślą o SEO. Oferujemy podstawową optymalizację w ramach każdego pakietu oraz zaawansowane usługi SEO jako dodatkową usługę.",
+  },
+  {
+    question: "Co jeśli nie jestem zadowolony z efektów?",
+    answer: "Satysfakcja klienta jest dla nas priorytetem. Jeśli nie jesteś zadowolony z efektów, pracujemy nad poprawkami do momentu, aż osiągniemy oczekiwany rezultat. Oferujemy również gwarancję zwrotu pieniędzy w ciągu pierwszych 14 dni współpracy.",
+  },
+];
+
 export default function Home() {
+  // Schema Markup JSON-LD
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://mainly.pl/#organization",
+    "name": "Mainly",
+    "description": "Profesjonalne tworzenie stron internetowych i aplikacji webowych. Nowoczesny design, SEO i wsparcie techniczne.",
+    "url": "https://mainly.pl",
+    "logo": "https://mainly.pl/og-image.png",
+    "image": "https://mainly.pl/og-image.png",
+    "telephone": "+48-XXX-XXX-XXX",
+    "email": "kontakt@mainly.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Warszawa",
+      "addressCountry": "PL"
+    },
+    "priceRange": "1500-7000 PLN",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Poland"
+    },
+    "sameAs": [
+      "https://mainly.pl"
+    ]
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Tworzenie Stron Internetowych",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Mainly",
+      "url": "https://mainly.pl"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Poland"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Usługi Webowe",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tworzenie Stron Internetowych",
+            "description": "Profesjonalne strony internetowe z optymalizacją SEO"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Aplikacje Webowe",
+            "description": "Nowoczesne aplikacje internetowe w Next.js i React"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Optymalizacja SEO",
+            "description": "Zaawansowana optymalizacja stron pod kątem wyszukiwarek"
+          }
+        }
+      ]
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
+  const aggregateRatingSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Mainly",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  };
+
   return (
     <div className="min-h-screen text-white flex flex-col">
+      {/* Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
+      />
       <header className="container mx-auto pt-8 px-6">
         <div className="flex justify-center">
         
@@ -31,9 +174,9 @@ export default function Home() {
           </div>
           
           {/* Main Headline */}
-          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
-            Tworzymy technologię, która rozwija Twój biznes.
-          </h2>
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+            Tworzenie Stron Internetowych - Technologia, która rozwija Twój biznes
+          </h1>
 
           {/* Tagline */}
           <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-12">
@@ -143,38 +286,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-12">Często zadawane pytania</h2>
 
             <Accordion type="single" collapsible className="w-full text-left">
-              {[
-                {
-                  question: "Jak długo trwa realizacja projektu?",
-                  answer:
-                    "Czas realizacji zależy od złożoności projektu. Proste landing page możemy dostarczyć w ciągu 1-2 tygodni, podczas gdy bardziej rozbudowane strony firmowe lub aplikacje internetowe mogą zająć od 4 do 8 tygodni. Zawsze na początku współpracy ustalamy dokładny harmonogram.",
-                },
-                {
-                  question: "Czy mogę wprowadzać zmiany w trakcie realizacji projektu?",
-                  answer:
-                    "Tak, nasz proces jest elastyczny i pozwala na wprowadzanie zmian w trakcie realizacji. Każdy plan zawiera określoną liczbę rund poprawek. Dodatkowe zmiany są możliwe za dodatkową opłatą.",
-                },
-                {
-                  question: "Czy zajmujecie się hostingiem i utrzymaniem strony?",
-                  answer:
-                    "Tak, oferujemy kompleksowe usługi hostingu i utrzymania stron. Po zakończeniu projektu możemy przejąć pełną odpowiedzialność za techniczną stronę Twojej witryny, aktualizacje, kopie zapasowe i bezpieczeństwo.",
-                },
-                {
-                  question: "Jak wygląda proces współpracy?",
-                  answer:
-                    "Nasz proces składa się z kilku etapów: 1) Konsultacja i określenie wymagań, 2) Propozycja rozwiązania i wycena, 3) Projektowanie UX/UI, 4) Programowanie, 5) Testowanie, 6) Wdrożenie, 7) Wsparcie po wdrożeniu. Na każdym etapie otrzymujesz regularne aktualizacje i masz możliwość przekazania feedbacku.",
-                },
-                {
-                  question: "Czy pomagacie w optymalizacji SEO?",
-                  answer:
-                    "Tak, wszystkie nasze strony są tworzone z myślą o SEO. Oferujemy podstawową optymalizację w ramach każdego pakietu oraz zaawansowane usługi SEO jako dodatkową usługę.",
-                },
-                {
-                  question: "Co jeśli nie jestem zadowolony z efektów?",
-                  answer:
-                    "Satysfakcja klienta jest dla nas priorytetem. Jeśli nie jesteś zadowolony z efektów, pracujemy nad poprawkami do momentu, aż osiągniemy oczekiwany rezultat. Oferujemy również gwarancję zwrotu pieniędzy w ciągu pierwszych 14 dni współpracy.",
-                },
-              ].map((faq, i) => (
+              {faqData.map((faq, i) => (
                 <AccordionItem key={i} value={`item-${i}`}>
                   <AccordionTrigger className="text-lg font-medium">{faq.question}</AccordionTrigger>
                   <AccordionContent className="text-gray-400">{faq.answer}</AccordionContent>

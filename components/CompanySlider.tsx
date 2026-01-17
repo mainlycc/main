@@ -49,7 +49,7 @@ export default function CompanySlider() {
                 <div className="w-52 h-28 relative bg-zinc-900/20 rounded-lg flex items-center justify-center p-4 hover:bg-zinc-900/40 transition-all duration-300 transform hover:scale-110 hover:z-10">
                   <Image
                     src={company.logo}
-                    alt={company.name}
+                    alt={`Logo klienta ${company.name} - firma współpracująca z agencją Mainly przy tworzeniu stron internetowych`}
                     fill
                     className="object-contain p-2"
                   />
@@ -65,7 +65,7 @@ export default function CompanySlider() {
                 <div className="w-52 h-28 relative bg-zinc-900/20 rounded-lg flex items-center justify-center p-4 hover:bg-zinc-900/40 transition-all duration-300 transform hover:scale-110 hover:z-10">
                   <Image
                     src={company.logo}
-                    alt={company.name}
+                    alt={`Logo klienta ${company.name} - firma współpracująca z agencją Mainly przy tworzeniu stron internetowych`}
                     fill
                     className="object-contain p-2"
                   />

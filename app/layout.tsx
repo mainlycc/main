@@ -8,9 +8,9 @@ import Navbar from "../components/Navbar"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Mainly - Tworzenie Stron Internetowych",
-  description: "Profesjonalne tworzenie stron internetowych i aplikacji webowych. Nowoczesny design, optymalizacja SEO i wsparcie techniczne.",
-  keywords: ["strony internetowe", "aplikacje webowe", "projektowanie stron", "tworzenie stron", "design", "programowanie", "Next.js", "React", "serwisy internetowe"],
+  title: "Tworzenie Stron Internetowych Warszawa | Mainly - Aplikacje Web",
+  description: "Profesjonalne tworzenie stron internetowych i aplikacji webowych. Nowoczesny design, SEO i wsparcie techniczne. Ponad 50 zrealizowanych projektów. Zamów bezpłatną wycenę!",
+  keywords: ["tworzenie stron internetowych", "strony internetowe Warszawa", "aplikacje webowe", "projektowanie stron", "agencja webowa", "cennik stron internetowych", "strony w Next.js", "aplikacje React", "firma tworząca strony", "serwisy internetowe"],
   authors: [{ name: "Mainly" }],
   creator: "Mainly",
   publisher: "Mainly",
