@@ -31,6 +31,9 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  // Turbopack configuration (Next.js 16+ uses Turbopack by default)
+  turbopack: {},
+  // Webpack configuration (kept for backward compatibility, but Turbopack takes precedence)
   webpack: (config, { dev, isServer }) => {
     // Optymalizacje dla produkcji
     if (!dev && !isServer) {
