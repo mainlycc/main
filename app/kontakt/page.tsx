@@ -1,8 +1,19 @@
-"use client";
-
+import type { Metadata } from "next";
 import ContactForm from "../../components/ContactForm";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Footer from "../../components/Footer";
+
+export const metadata: Metadata = {
+  title: "Kontakt i bezpłatna wycena strony | Mainly",
+  description: "Skontaktuj się z nami. Bezpłatna wycena projektu w ciągu 24h. Warszawa, ul. Filtrowa 83. Tel: +48 500 789 826. Email: kontakt@mainly.pl",
+  alternates: { canonical: "/kontakt" },
+  openGraph: {
+    title: "Kontakt | Mainly",
+    description: "Napisz do nas i otrzymaj bezpłatną wycenę w 24h. Tworzymy strony i aplikacje webowe w Warszawie.",
+    url: "https://mainly.pl/kontakt",
+    type: "website",
+  },
+};
 
 export default function ContactPage() {
   return (
@@ -69,4 +80,4 @@ export default function ContactPage() {
       <Footer />
     </div>
   );
-} 
+}

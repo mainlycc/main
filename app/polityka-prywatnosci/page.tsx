@@ -6,6 +6,7 @@ import Footer from '../../components/Footer'
 export const metadata: Metadata = {
   title: 'Polityka Prywatności | Mainly',
   description: 'Polityka prywatności firmy Mainly. Dowiedz się, jak chronimy Twoje dane osobowe i dbamy o Twoją prywatność.',
+  alternates: { canonical: '/polityka-prywatnosci' },
   openGraph: {
     title: 'Polityka Prywatności | Mainly',
     description: 'Polityka prywatności firmy Mainly. Dowiedz się, jak chronimy Twoje dane osobowe i dbamy o Twoją prywatność.',

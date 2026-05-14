@@ -1,10 +1,21 @@
-"use client";
-
-import { projects } from "../../components/ProjectsCarousel";
+import type { Metadata } from "next";
+import { projects } from "../../lib/projects";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "../../components/Footer";
 import { ArrowBigRightIcon } from "../../components/ui/arrow-big-right";
+
+export const metadata: Metadata = {
+  title: "Portfolio projektów webowych | Mainly Warszawa",
+  description: "Zobacz 11+ zrealizowanych stron i aplikacji webowych. Każdy projekt to indywidualne podejście, nowoczesny design i mierzalne efekty. Sprawdź nasze case studies.",
+  alternates: { canonical: "/projekty" },
+  openGraph: {
+    title: "Portfolio projektów webowych | Mainly",
+    description: "11+ zrealizowanych projektów — strony firmowe, aplikacje webowe, generatory ofert, kalkulatory. Sprawdź case studies.",
+    url: "https://mainly.pl/projekty",
+    type: "website",
+  },
+};
 
 export default function ProjectsPage() {
   return (
@@ -12,7 +23,7 @@ export default function ProjectsPage() {
       <div className="container mx-auto px-6 py-24 flex-1 max-w-5xl">
         <h1 className="text-4xl font-bold mb-8 text-center">Nasze Projekty</h1>
         <p className="text-lg text-gray-400 mb-12 text-center max-w-3xl mx-auto">
-          Odkryj nasze portfolio zrealizowanych projektów. Każdy z nich to unikalne rozwiązanie 
+          Odkryj nasze portfolio zrealizowanych projektów. Każdy z nich to unikalne rozwiązanie
           dostosowane do potrzeb naszych klientów.
         </p>
 
@@ -51,8 +62,8 @@ export default function ProjectsPage() {
           ))}
         </div>
       </div>
-      
+
       <Footer />
     </div>
   );
-} 
+}
