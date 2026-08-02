@@ -30,7 +30,7 @@ export function TestimonialsSection() {
       author: {
         name: "Tomasz U.",
         handle: "",
-        avatar: "/avatars/tomek.png"
+        avatar: "/avatars/default.png"
       },
       text: "Świetna komunikacja, elastyczność i kreatywność. Mainly to partner, na którego można liczyć na każdym etapie projektu."
     },
@@ -38,7 +38,7 @@ export function TestimonialsSection() {
       author: {
         name: "Ewelina M.",
         handle: "",
-        avatar: "/avatars/ewelina.png"
+        avatar: "/avatars/default.png"
       },
       text: "Zespół Mainly wykazał się ogromnym zaangażowaniem i kreatywnością. Efekt końcowy przerósł nasze oczekiwania!"
     },
@@ -46,7 +46,7 @@ export function TestimonialsSection() {
       author: {
         name: "Paweł L.",
         handle: "",
-        avatar: "/avatars/pawel.png"
+        avatar: "/avatars/default.png"
       },
       text: "Bardzo sprawna realizacja i świetny kontakt. Strona działa bez zarzutu i wygląda profesjonalnie."
     },
@@ -54,7 +54,7 @@ export function TestimonialsSection() {
       author: {
         name: "Joanna K.",
         handle: "",
-        avatar: "/avatars/joanna.png"
+        avatar: "/avatars/default.png"
       },
       text: "Dzięki Mainly nasz portal zyskał nowoczesny wygląd i intuicyjną obsługę. Polecam!"
     },
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
       author: {
         name: "Grzegorz W.",
         handle: "",
-        avatar: "/avatars/grzegorz.png"
+        avatar: "/avatars/default.png"
       },
       text: "Wysoka jakość usług, terminowość i pełne wsparcie na każdym etapie projektu."
     },
@@ -70,7 +70,7 @@ export function TestimonialsSection() {
       author: {
         name: "Marcin C.",
         handle: "",
-        avatar: ""
+        avatar: "/avatars/default.png"
       },
       text: "Polecam do współpracy firmę Mainly. Byłem w kropce z czasem, moje kłopoty rozwiązał ów człowiek. Mój zarys i pomysł i materiały obrobił łącząc kropki ...dodał elementy AI i wyszedł materiał który wywołał łzy wzruszenia, uśmiech, okrzyki radości. Czas operacyjny to bardzo szybka realizacja. Polecam jeśli brak Ci czasu i chcesz wzbogacić swój materiał o materiały z AI"
     },
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
       author: {
         name: "Paulina O.",
         handle: "",
-        avatar: ""
+        avatar: "/avatars/default.png"
       },
       text: "Chciałabym serdecznie podziękować za współpracę. Pan Stanislaw jest niezwykle uprzejmy i pomocny. Efekt pracy przerósł moje najśmielsze oczekiwania. Zdecydowanie polecam współpracę."
     }
@@ -114,15 +114,17 @@ export function TestimonialsSection() {
               <div className="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl">
                 <p className="text-gray-300 mb-4">&ldquo;{testimonial.text}&rdquo;</p>
                 <div className="flex items-center">
-                  {testimonial.author.avatar ? (
-                    <img
-                      src={testimonial.author.avatar}
-                      alt={testimonial.author.name}
-                      className="w-10 h-10 rounded-full object-cover mr-3"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 bg-zinc-800 rounded-full mr-3"></div>
-                  )}
+                  <img
+                    src={testimonial.author.avatar || "/avatars/default.png"}
+                    alt={testimonial.author.name}
+                    className="w-10 h-10 rounded-full object-cover mr-3"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (!target.src.endsWith("/avatars/default.png")) {
+                        target.src = "/avatars/default.png";
+                      }
+                    }}
+                  />
                   <div>
                     <p className="font-medium text-white">{testimonial.author.name}</p>
                   </div>

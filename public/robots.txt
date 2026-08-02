@@ -6,4 +6,4 @@ Allow: /
 Disallow: /admin/
 
 # Reference to sitemap
-Sitemap: https://mainly.pl/sitemap.xml 
+Sitemap: https://www.mainly.pl/sitemap.xml

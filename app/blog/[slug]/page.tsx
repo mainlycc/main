@@ -1,657 +1,284 @@
-"use client";
-
-import Link from "next/link";
+import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowLeft, Calendar, Clock, User, Share2, Tag } from "lucide-react";
-import Footer from "../../../components/Footer";
-import { use } from "react";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  BlogPostCta,
+  BlogTitle,
+  RelatedPosts,
+} from "@/components/blog/BlogPostParts";
+import ReadingProgress from "@/components/blog/ReadingProgress";
+import Footer from "@/components/Footer";
+import { formatBlogDate } from "@/lib/blog";
+import {
+  absoluteUrl,
+  DEFAULT_OG_IMAGE,
+  postOgImages,
+  resolveImageUrl,
+  SITE_LOCALE,
+  SITE_NAME,
+  SITE_URL,
+  stripHtml,
+} from "@/lib/seo";
+import { supabase, type BlogPost } from "@/lib/supabase";
 
-export default function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  // This would typically come from a CMS or database
-  const blogPosts = {
-    "jak-stworzyc-nowoczesna-strone-internetowa-2025": {
-      title: "Jak stworzyć nowoczesną stronę internetową w 2025 roku",
-      excerpt: "Poznaj najnowsze trendy i technologie, które pomogą Ci stworzyć stronę internetową, która przyciąga uwagę i konwertuje w 2025 roku.",
-      content: `
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl mb-8">
-          <p class="text-lg leading-relaxed mb-0">
-            <strong>W 2025 roku nowoczesna strona internetowa to nie tylko ładny wygląd.</strong> To <em>szybkość, dostępność, SEO, responsywność, bezpieczeństwo i funkcjonalność</em>. Jeśli myślisz o stworzeniu strony internetowej dla swojej firmy lub osobistej marki, ten poradnik pokaże Ci, na co zwrócić uwagę, by Twoja witryna działała skutecznie i przyciągała klientów.
-          </p>
-        </div>
+export const revalidate = 3600;
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">Dlaczego warto mieć nowoczesną stronę www w 2025?</h2>
-        <p class="text-lg mb-4">Internet wciąż się zmienia, a użytkownicy mają coraz wyższe oczekiwania. <strong>Dobra strona internetowa w 2025 roku powinna:</strong></p>
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-8">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">⚡</span>
-              <span><strong>Ładować się w mniej niż 2 sekundy</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">📱</span>
-              <span><strong>Wyglądać i działać świetnie na telefonach</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">🔍</span>
-              <span><strong>Być łatwa do znalezienia w Google (SEO)</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">🎯</span>
-              <span><strong>Angażować odwiedzających do działania</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">✨</span>
-              <span><strong>Być zgodna z aktualnymi trendami UX/UI</strong></span>
-            </li>
-          </ul>
-        </div>
+export async function generateStaticParams() {
+  const { data } = await supabase
+    .from("blog_posts")
+    .select("slug")
+    .eq("published", true);
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">1. Określ cel swojej strony</h2>
-        <p class="text-lg mb-4">Zanim zamówisz stronę, odpowiedz sobie na pytanie:</p>
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-6">
-          <p class="text-xl font-bold text-[#FA6503] mb-4">👉 Po co mi ta strona?</p>
-          <p class="text-lg mb-4">Czy chcesz:</p>
-          <ul class="space-y-2 text-lg">
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <strong>zdobywać klientów?</strong>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <strong>pokazać portfolio?</strong>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <strong>sprzedawać produkty?</strong>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <strong>budować markę osobistą?</strong>
-            </li>
-          </ul>
-        </div>
-        <p class="text-lg mb-8"><em>Cel wpływa na strukturę strony, jej treść i funkcjonalność.</em></p>
+  return (data ?? []).map((post: { slug: string }) => ({ slug: post.slug }));
+}
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">2. Zadbaj o przemyślany design i user experience</h2>
-        <p class="text-lg mb-4"><strong>Nowoczesna strona to taka, która:</strong></p>
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>jest <strong>minimalistyczna i intuicyjna</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>ma <strong>czytelną typografię i dobrane kolory</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>prowadzi użytkownika do celu (np. formularza kontaktowego)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>dobrze wygląda na każdym urządzeniu (tzw. <strong>strona responsywna</strong>)</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">🎯 Używaj dużych nagłówków, jasnych komunikatów i CTA typu „Zamów wycenę", „Umów rozmowę".</p>
-        </div>
+async function getPost(slug: string): Promise<BlogPost | null> {
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("*")
+    .eq("slug", slug)
+    .eq("published", true)
+    .single();
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">3. Postaw na szybkość i technologię</h2>
-        <p class="text-lg mb-4"><strong>W 2025 roku nikt nie ma czasu na wolne strony. Google też nie.</strong> Dlatego:</p>
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-8">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">🚀</span>
-              <span><strong>Wybierz szybki hosting</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">⚙️</span>
-              <span><strong>Używaj nowoczesnych technologii</strong> (np. Next.js, Astro, WebP, Tailwind CSS)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">📦</span>
-              <span><strong>Zoptymalizuj obrazy, czcionki i kod</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">🔒</span>
-              <span><strong>Zainstaluj certyfikat SSL</strong> (https)</span>
-            </li>
-          </ul>
-        </div>
+  if (error || !data) return null;
+  return data as BlogPost;
+}
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">4. Twórz treści pod SEO</h2>
-        <p class="text-lg mb-6"><strong>Twoja strona nie będzie skuteczna bez ruchu. A ruch to efekt dobrego pozycjonowania.</strong> Oto, co musisz zrobić:</p>
-        
-        <div class="grid md:grid-cols-2 gap-6 mb-8">
-          <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl">
-            <h3 class="text-xl font-bold mb-4 text-green-400">✅ Frazy kluczowe</h3>
-            <p class="mb-4">Używaj fraz takich jak:</p>
-            <ul class="space-y-2">
-              <li class="flex items-center">
-                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                <span class="font-mono text-sm">„nowoczesna strona internetowa 2025"</span>
-              </li>
-              <li class="flex items-center">
-                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                <span class="font-mono text-sm">„tworzenie stron www dla firm"</span>
-              </li>
-              <li class="flex items-center">
-                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                <span class="font-mono text-sm">„strony internetowe z CMS"</span>
-              </li>
-              <li class="flex items-center">
-                <span class="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                <span class="font-mono text-sm">„projektowanie responsywnej strony"</span>
-              </li>
-            </ul>
-          </div>
+async function getRelatedPosts(
+  slug: string,
+  category: string
+): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select("slug,title,excerpt,category,read_time,image_url,published_at")
+    .eq("published", true)
+    .neq("slug", slug)
+    .order("published_at", { ascending: false })
+    .limit(6);
 
-          <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl">
-            <h3 class="text-xl font-bold mb-4 text-green-400">✅ Struktura tekstu</h3>
-            <ul class="space-y-3">
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">•</span>
-                <span><strong>Jeden nagłówek H1</strong> na stronę</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">•</span>
-                <span><strong>Sekcje z H2 i H3</strong> (tak jak w tym artykule)</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">•</span>
-                <span><strong>Naturalne użycie fraz</strong> w treści</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-green-400 mr-3">•</span>
-                <span><strong>Meta title i description</strong> zoptymalizowane pod SEO</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+  if (error || !data) return [];
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">5. Wybierz odpowiednią platformę</h2>
-        <p class="text-lg mb-6"><strong>Nie każda strona musi być na WordPressie. W 2025 masz wiele opcji:</strong></p>
-        <div class="overflow-x-auto mb-8">
-          <table class="w-full border-collapse border border-zinc-700">
-            <thead>
-              <tr class="bg-zinc-800">
-                <th class="border border-zinc-700 p-4 text-left font-bold">Platforma</th>
-                <th class="border border-zinc-700 p-4 text-left font-bold">Dla kogo?</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-zinc-900">
-                <td class="border border-zinc-700 p-4 font-semibold">WordPress</td>
-                <td class="border border-zinc-700 p-4">Dla blogów, prostych stron firmowych</td>
-              </tr>
-              <tr class="bg-zinc-900 hover:bg-zinc-800">
-                <td class="border border-zinc-700 p-4 font-semibold text-[#FA6503]">Next.js</td>
-                <td class="border border-zinc-700 p-4">Dla nowoczesnych stron z wysoką wydajnością</td>
-              </tr>
-              <tr class="hover:bg-zinc-900">
-                <td class="border border-zinc-700 p-4 font-semibold">Shopify</td>
-                <td class="border border-zinc-700 p-4">Dla e-commerce</td>
-              </tr>
-              <tr class="bg-zinc-900 hover:bg-zinc-800">
-                <td class="border border-zinc-700 p-4 font-semibold">Webflow</td>
-                <td class="border border-zinc-700 p-4">Dla osób, które chcą edytować bez kodowania</td>
-              </tr>
-              <tr class="hover:bg-zinc-900">
-                <td class="border border-zinc-700 p-4 font-semibold">Astro / Hugo</td>
-                <td class="border border-zinc-700 p-4">Dla super szybkich stron statycznych</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  const sameCategory = data.filter((post) => post.category === category);
+  const others = data.filter((post) => post.category !== category);
+  return [...sameCategory, ...others].slice(0, 3) as BlogPost[];
+}
 
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">6. Zaplanuj rozwój – blog, SEO, automatyzacje</h2>
-        <p class="text-lg mb-4"><strong>Nowoczesna strona nie kończy się na publikacji. W 2025 musisz:</strong></p>
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-8">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">📝</span>
-              <span><strong>dodawać treści na bloga</strong> (np. poradniki, case studies)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">📊</span>
-              <span><strong>analizować ruch</strong> (Google Analytics, Hotjar)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">🤖</span>
-              <span><strong>korzystać z automatyzacji</strong> (np. newsletter, CRM, AI chatbot)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">🛡️</span>
-              <span><strong>zadbać o aktualizacje i bezpieczeństwo</strong></span>
-            </li>
-          </ul>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">7. Ile kosztuje nowoczesna strona internetowa w 2025 roku?</h2>
-        <p class="text-lg mb-4"><strong>Cena zależy od:</strong></p>
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-2 text-lg">
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <span>liczby podstron</span>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <span>funkcjonalności (blog, formularze, integracje)</span>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <span>poziomu designu</span>
-            </li>
-            <li class="flex items-center">
-              <span class="w-2 h-2 bg-[#FA6503] rounded-full mr-3"></span>
-              <span>CMS-u i SEO</span>
-            </li>
-          </ul>
-        </div>
-        
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8">
-          <h3 class="text-2xl font-bold mb-4 text-[#FA6503]">📌 Średni koszt w Polsce w 2025 roku:</h3>
-          <div class="grid md:grid-cols-3 gap-4">
-            <div class="bg-zinc-950 p-4 rounded-lg text-center">
-              <div class="text-2xl font-bold text-[#FA6503] mb-2">od 1500 zł</div>
-              <div class="font-semibold">Strona One Page</div>
-            </div>
-            <div class="bg-zinc-950 p-4 rounded-lg text-center">
-              <div class="text-2xl font-bold text-[#FA6503] mb-2">od 3000 zł</div>
-              <div class="font-semibold">Strona firmowa z CMS i blogiem</div>
-            </div>
-            <div class="bg-zinc-950 p-4 rounded-lg text-center">
-              <div class="text-2xl font-bold text-[#FA6503] mb-2">od 5000 zł</div>
-              <div class="font-semibold">Rozbudowana strona z automatyzacjami i SEO</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-8 rounded-xl">
-          <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">Podsumowanie</h2>
-          <p class="text-lg leading-relaxed mb-0">
-            <strong>Nowoczesna strona internetowa w 2025 roku to nie moda – to narzędzie sprzedaży i wizerunku.</strong> Jeśli chcesz zdobywać klientów, budować zaufanie i działać profesjonalnie – warto zainwestować w dobrze zaprojektowaną, szybką i zoptymalizowaną stronę www.
-          </p>
-        </div>
-      `,
-      author: "Zespół Mainly",
-      date: "15 stycznia 2025",
-      readTime: "8 min czytania",
-      category: "Web Development",
-      tags: ["Web Development", "SEO", "AI", "2025", "Trendy", "Technologie"],
-      image: "/blog-1.jpg",
-      metaDescription: "Poznaj najnowsze trendy i technologie tworzenia stron internetowych w 2025 roku. AI, Web 3.0, SEO i najlepsze praktyki dla nowoczesnych stron.",
-      keywords: "strona internetowa 2025, web development, AI, SEO, trendy technologiczne, nowoczesne strony"
-    },
-    "strona-internetowa-ktora-sprzedaje-7-elementow": {
-      title: "Strona internetowa, która sprzedaje: 7 kluczowych elementów, o których zapomina większość firm",
-      excerpt: "Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.",
-      content: `
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8">
-          <p class="text-xl font-bold text-[#FA6503] mb-4">📌 Najkrócej mówiąc:</p>
-          <p class="text-lg leading-relaxed mb-4">
-            <strong>Skuteczna strona internetowa = jasna wartość + dowód społeczny + CTA w odpowiednim miejscu.</strong> Jeśli brakuje któregoś z tych elementów, tracisz potencjalnych klientów.
-          </p>
-          <p class="text-lg leading-relaxed mb-0">
-            <em>Chcesz uniknąć najczęstszych błędów na stronach firmowych? Sprawdź nasz przewodnik o tym, <a href="/blog/jak-stworzyc-nowoczesna-strone-internetowa-2025" class="text-[#FA6503] hover:underline font-semibold">jak stworzyć nowoczesną stronę internetową w 2025 roku</a>.</em>
-          </p>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-6 rounded-xl mb-8">
-          <p class="text-lg leading-relaxed mb-0">
-            <strong>Wielu przedsiębiorców inwestuje w stronę jak w wizytówkę, ale zapomina, że to ich najskuteczniejszy handlowiec pracujący 24/7.</strong> Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców. W 2025 roku liczy się nie tylko wygląd, ale strategia: jak prowadzisz użytkownika od wejścia po kontakt.
-          </p>
-        </div>
-
-        <p class="text-lg mb-8">W tym artykule pokażę Ci 7 konkretnych elementów, które sprawiają, że strona zaczyna działać jak handlowiec — 24/7. Jeśli chcesz dowiedzieć się, jak napisać skuteczny tekst na stronę główną, zajrzyj do naszych innych poradników.</p>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🔹 1. Jasna propozycja wartości (Value Proposition)</h2>
-        <p class="text-lg mb-4">Pierwsze 5 sekund po wejściu na stronę decyduje, czy ktoś zostanie, czy zamknie kartę.</p>
-        <p class="text-lg mb-4">Dlatego nagłówek na stronie głównej musi mówić wprost:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">•</span>
-              <span><strong>Co robisz</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">•</span>
-              <span><strong>Dla kogo</strong></span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">•</span>
-              <span><strong>Jaką wartość dajesz</strong></span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503] mb-4">💡 Przykład:</p>
-          <p class="text-lg mb-2"><strong>Zamiast:</strong> „Tworzymy strony internetowe"</p>
-          <p class="text-lg mb-0"><strong>Napisz:</strong> „Budujemy nowoczesne strony, które pozyskują klientów dla firm z sektora usług."</p>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">💡 Tip: użyj prostego przycisku „Sprawdź ofertę" lub „Zamów wycenę" tuż obok — to działa jak zaproszenie do rozmowy.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🧩 2. Struktura sekcji „nad zgięciem"</h2>
-        <p class="text-lg mb-4">Większość odwiedzających nigdy nie przewija. Dlatego górna część strony (tzw. above the fold) musi działać jak landing page:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>nagłówek z wartością</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>krótki opis</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>CTA</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✓</span>
-              <span>tło lub grafika ilustrująca efekt (np. screen projektu)</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">⚠️ Nie chowaj CTA w stopce — daj je od razu w pierwszym ekranie.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">💬 3. Społeczny dowód słuszności (social proof)</h2>
-        <p class="text-lg mb-4"><strong>Zaufanie = konwersja.</strong></p>
-        <p class="text-lg mb-4">Dodaj:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">🏢</span>
-              <span>logotypy klientów</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">💬</span>
-              <span>krótkie cytaty z opinii (1 zdanie, imię, branża)</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 mr-3">📊</span>
-              <span>liczby: „+50 projektów dla firm w Polsce"</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">To sygnały, które uspokajają umysł klienta: „OK, oni wiedzą co robią."</p>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8 mt-8">
-          <p class="text-lg font-bold text-[#FA6503] mb-2">💡 Zastanawiasz się, czy Twoja strona ma te elementy?</p>
-          <p class="text-lg mb-0">Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> — sprawdzę to za darmo i podpowiem, co poprawić.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">📱 4. Proces współpracy krok po kroku</h2>
-        <p class="text-lg mb-4">Ludzie boją się rzeczy, których nie rozumieją.</p>
-        <p class="text-lg mb-4">Gdy pokazujesz proces w 4–6 krokach, zdejmujesz z nich niepewność.</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <h3 class="text-xl font-bold mb-4 text-[#FA6503]">Przykład realnego procesu:</h3>
-          <p class="text-lg mb-4">Klient zgłasza się z pomysłem → ustalamy cele i potrzeby → pokazuję 2 makiety UX/UI → po akceptacji wdrażam technologię i optymalizuję pod SEO → testuję na różnych urządzeniach → publikacja i wsparcie po wdrożeniu.</p>
-          <div class="grid md:grid-cols-2 gap-4 mt-4">
-            <div class="space-y-3">
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
-                <span>Brief i analiza potrzeb</span>
-              </div>
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</span>
-                <span>Projekt UX/UI</span>
-              </div>
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">3</span>
-                <span>Wdrożenie</span>
-              </div>
-            </div>
-            <div class="space-y-3">
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">4</span>
-                <span>Testy i optymalizacja</span>
-              </div>
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">5</span>
-                <span>Publikacja</span>
-              </div>
-              <div class="flex items-center">
-                <span class="bg-[#FA6503] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">6</span>
-                <span>Wsparcie po wdrożeniu</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">💬 „Zrozumiałem, jak to działa. To nie takie straszne." — to efekt, którego chcesz.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🔥 5. CTA na każdym etapie</h2>
-        <p class="text-lg mb-4">Użytkownik może być gotowy do kontaktu w dowolnym momencie.</p>
-        <p class="text-lg mb-4">Dlatego dodaj mikro-wezwania do działania co kilka sekcji:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">🎯</span>
-              <span>„Zobacz portfolio"</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">💰</span>
-              <span>„Poznaj wycenę"</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-purple-400 mr-3">👥</span>
-              <span>„Zobacz, jak pracujemy"</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">💡 Nie wymuszaj decyzji — zapraszaj do kolejnego kroku.</p>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-6 rounded-xl mb-8 mt-8">
-          <p class="text-lg font-bold text-[#FA6503] mb-2">💡 Zastanawiasz się, czy Twoja strona ma te elementy?</p>
-          <p class="text-lg mb-0">Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> — sprawdzę to za darmo i podpowiem, co poprawić.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">📱 6. Dostosowanie do mobile i prędkość ładowania</h2>
-        <p class="text-lg mb-4">To nie banał — ponad 70% ruchu B2C pochodzi z telefonu.</p>
-        <p class="text-lg mb-4">Jeśli strona ładuje się 3+ sekundy, tracisz nawet połowę odwiedzających.</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✅</span>
-              <span><strong>Testuj stronę w <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer" class="text-[#FA6503] hover:underline">Google PageSpeed Insights</a></strong> i na różnych urządzeniach</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-green-400 mr-3">✅</span>
-              <span><strong>Skróć animacje, zoptymalizuj obrazy</strong> (WebP), użyj lazy loading</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503]">⚠️ Dla klienta „wolna strona" = „nieprofesjonalna firma".</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503] mt-12">🎨 7. Autentyczność i osobisty ton</h2>
-        <p class="text-lg mb-4">Firmy boją się pokazać twarz — i to błąd.</p>
-        <p class="text-lg mb-4">Nie musisz publikować swojego zdjęcia, ale pokaż styl, osobowość marki:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-6">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-yellow-400 mr-3">🎨</span>
-              <span>własny sposób mówienia</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-yellow-400 mr-3">🎨</span>
-              <span>dopasowane kolory i typografię</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-yellow-400 mr-3">🎨</span>
-              <span>język, który brzmi jak Ty (nie jak korporacyjny robot)</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="bg-zinc-950 border border-[#FA6503]/20 p-4 rounded-xl mb-8">
-          <p class="text-lg font-bold text-[#FA6503] mb-2">Autentyczność sprzedaje lepiej niż perfekcja.</p>
-          <p class="text-lg mb-0">Na Mainly.pl wierzymy, że ton marki to nie styl pisania, ale sposób myślenia o kliencie.</p>
-        </div>
-
-        <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🧩 Podsumowanie</h2>
-        <p class="text-lg mb-4">Skuteczna strona internetowa to nie tylko design. To narzędzie sprzedażowe, które:</p>
-        
-        <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-xl mb-8">
-          <ul class="space-y-3 text-lg">
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
-              <span>jasno komunikuje wartość</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
-              <span>prowadzi użytkownika krok po kroku</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-[#FA6503] mr-3 text-xl">✓</span>
-              <span>buduje zaufanie i usuwa niepewność</span>
-            </li>
-          </ul>
-        </div>
-
-        <p class="text-lg mb-8"><strong>Zanim zlecisz kolejny redesign — upewnij się, że te 7 elementów działa u Ciebie.</strong></p>
-
-        <div class="bg-[#FA6503]/10 border border-[#FA6503]/30 p-8 rounded-xl mt-12">
-          <h2 class="text-3xl font-bold mb-6 text-[#FA6503]">🚀 CTA</h2>
-          <p class="text-lg mb-4">
-            <strong>Większość firm traci klientów przez brak tych 7 elementów — nie pozwól, żeby Twoja była jedną z nich.</strong>
-          </p>
-          <p class="text-lg mb-4">
-            Chcesz, żebym przeanalizował Twoją stronę i wskazał, dlaczego nie sprzedaje tak dobrze, jak mogłaby?
-          </p>
-          <p class="text-lg mb-0">
-            📩 <strong>Zrób szybki audyt — zajmie mi to 5 minut, a może Ci przynieść dziesiątki nowych zapytań.</strong> Napisz przez <a href="/kontakt" class="text-[#FA6503] hover:underline font-semibold">formularz kontaktowy</a> lub zadzwoń — zrobię bezpłatny audyt UX + konwersji i podpowiem, co poprawić.
-          </p>
-        </div>
-      `,
-      author: "Zespół Mainly",
-      date: "20 stycznia 2025",
-      readTime: "6 min czytania",
-      category: "Marketing",
-      tags: ["Marketing", "Konwersja", "UX", "Sprzedaż", "Strona internetowa", "CTA"],
-      image: "/kowdlo.png",
-      metaDescription: "Strona internetowa, która sprzedaje — poznaj 7 kluczowych elementów skutecznej strony firmowej. Jak zwiększyć konwersję? Dowiedz się, co zrobić, żeby Twoja strona konwertowała jak prawdziwy handlowiec.",
-      keywords: "strona internetowa, która sprzedaje, strony sprzedażowe, konwertująca strona, skuteczna strona firmowa, jak zwiększyć konwersję strony, konwersja, UX, CTA, marketing, sprzedaż online"
-    }
-  };
-
-  const post = blogPosts[slug as keyof typeof blogPosts];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
 
   if (!post) {
-    return (
-      <div className="min-h-screen text-white flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold mb-4">Artykuł nie został znaleziony</h1>
-        <Link href="/blog" className="text-[#FA6503] hover:underline">
-          Powrót do bloga
-        </Link>
-      </div>
-    );
+    return { title: "Artykuł nie znaleziony | Blog Mainly" };
   }
 
+  const plainTitle = stripHtml(post.title);
+  const description = post.meta_description ?? post.excerpt;
+  const ogImages = postOgImages(post.image_url, plainTitle);
+  const twitterImages = post.image_url
+    ? [post.image_url]
+    : [DEFAULT_OG_IMAGE];
+
+  return {
+    title: `${plainTitle} | Blog Mainly`,
+    description,
+    keywords: post.keywords ?? undefined,
+    alternates: { canonical: `/blog/${post.slug}` },
+    openGraph: {
+      title: plainTitle,
+      description,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      siteName: SITE_NAME,
+      locale: SITE_LOCALE,
+      type: "article",
+      section: post.category,
+      publishedTime: post.published_at,
+      modifiedTime: post.updated_at,
+      authors: [post.author],
+      tags: post.tags,
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: plainTitle,
+      description,
+      images: twitterImages,
+    },
+  };
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) notFound();
+
+  const relatedPosts = await getRelatedPosts(slug, post.category);
+  const tagItems =
+    post.tags.length > 0 ? post.tags : [post.category].filter(Boolean);
+  const plainTitle = stripHtml(post.title);
+  const description = post.meta_description ?? post.excerpt;
+  const postUrl = absoluteUrl(`/blog/${post.slug}`);
+
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: plainTitle,
+    description,
+    datePublished: post.published_at,
+    dateModified: post.updated_at,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
+      },
+    },
+    articleSection: post.category,
+    url: postUrl,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+    ...(post.image_url && { image: resolveImageUrl(post.image_url) }),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: SITE_NAME,
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: absoluteUrl("/blog"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.category,
+        item: postUrl,
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen text-white">
-      <div className="container mx-auto px-6 py-24 max-w-5xl">
-        <Link 
-          href="/blog"
-          className="inline-flex items-center text-gray-400 hover:text-white mb-12"
-        >
-          <ArrowLeft className="mr-2 h-4 w-4" /> Wróć do wszystkich artykułów
-        </Link>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
-        {/* Nagłówek artykułu */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-sm bg-[#FA6503]/20 text-[#FA6503] px-3 py-1 rounded-full">
-              {post.category}
-            </span>
+      <ReadingProgress />
+
+      <header className="art-head">
+        <div className="wrap">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Mainly</Link>
+            <span className="sep">/</span>
+            <Link href="/blog">Blog</Link>
+            <span className="sep">/</span>
+            <span aria-current="page">{post.category}</span>
+          </nav>
+
+          <div className="tags">
+            {tagItems.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
           </div>
-          <h1 className="text-5xl font-bold mb-4">{post.title}</h1>
-          <p className="text-xl text-gray-400">{post.excerpt}</p>
-        </div>
 
-        {/* Główny obraz artykułu */}
-        <div className="relative h-[400px] rounded-xl overflow-hidden mb-16">
-          <Image
-            src="/kowdlo.png"
-            alt="Strona internetowa, która sprzedaje - kowadło z iskrami i interfejsem webowym"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+          <h1>
+            <BlogTitle title={post.title} />
+          </h1>
+          <p className="standfirst">{post.excerpt}</p>
 
-        {/* Meta informacje */}
-        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 mb-8 border-b border-zinc-800 pb-6">
-          <div className="flex items-center gap-2">
-            <User className="h-4 w-4" />
-            {post.author}
+          <div className="byline">
+            <span className="av" aria-hidden="true" />
+            <div className="who">
+              <strong>{post.author}</strong>
+              <span>Mainly</span>
+            </div>
+            <div className="when">
+              <time dateTime={post.published_at}>
+                {formatBlogDate(post.published_at)}
+              </time>
+              <br />
+              {post.read_time}
+            </div>
           </div>
-          <div className="flex items-center gap-2">
-            <Calendar className="h-4 w-4" />
-            {post.date}
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4" />
-            {post.readTime}
-          </div>
-          <button className="flex items-center gap-2 hover:text-white transition-colors">
-            <Share2 className="h-4 w-4" />
-            Udostępnij
-          </button>
         </div>
+      </header>
 
-        {/* Tagi */}
-        <div className="flex flex-wrap gap-2 mb-16">
-          {post.tags.map((tag, index) => (
-            <span key={index} className="flex items-center gap-1 text-xs bg-zinc-800 text-gray-300 px-2 py-1 rounded">
-              <Tag className="h-3 w-3" />
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Treść artykułu */}
-        <div className="mb-16">
-          <div className="prose prose-invert prose-lg max-w-none">
-            <div 
-              className="text-gray-300 leading-relaxed text-lg"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+      <div className="wrap">
+        <div className={`art-hero${post.image_url ? " has-image" : ""}`}>
+          {post.image_url ? (
+            <Image
+              src={post.image_url}
+              alt={plainTitle}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 1320px) 100vw, 1320px"
             />
+          ) : (
+            <div className="line" />
+          )}
+          <span className="cap">
+            {post.category} · {post.read_time}
+          </span>
+        </div>
+      </div>
+
+      <article className="wrap article">
+        <div
+          className="prose"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+        <div className="article-end">
+          <span className="av" aria-hidden="true" />
+          <div className="bio">
+            <strong>{post.author}</strong>
+            <div className="role">Mainly · custom web development</div>
+            <p>
+              Freelancer z Warszawy. Buduję szybkie strony, aplikacje webowe i
+              systemy szyte na miarę - od projektu po wdrożenie. Zwolennik
+              zasady „im mniej kodu, tym lepiej”.
+            </p>
           </div>
         </div>
+      </article>
 
+      <section className="wrap">
+        <RelatedPosts posts={relatedPosts} />
+        <BlogPostCta />
+      </section>
 
-      </div>
       <Footer />
-    </div>
+    </>
   );
-} 
+}

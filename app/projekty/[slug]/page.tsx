@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { projects } from "../../../lib/projects";
+import { notFound } from "next/navigation";
+import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
 import ProjectDetailClient from "./ProjectDetailClient";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getPublishedProjects();
   return projects.map((project) => ({ slug: project.slug }));
 }
 
@@ -12,14 +14,14 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     return { title: "Projekt nie znaleziony | Mainly" };
   }
 
   return {
-    title: `${project.name} — Case Study | Mainly`,
+    title: `${project.name} - Case Study | Mainly`,
     description: project.description,
     alternates: { canonical: `/projekty/${project.slug}` },
     openGraph: {
@@ -44,5 +46,16 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  return <ProjectDetailClient slug={slug} />;
+  const project = await getProjectBySlug(slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const allProjects = await getPublishedProjects();
+  const relatedProjects = allProjects
+    .filter((item) => item.slug !== slug)
+    .slice(0, 3);
+
+  return <ProjectDetailClient project={project} relatedProjects={relatedProjects} />;
 }

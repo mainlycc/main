@@ -1,122 +1,186 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
-import Footer from "../../components/Footer";
+import DisplayEm from "@/components/DisplayEm";
+import { BlogPostCard } from "@/components/blog/BlogPostParts";
+import Footer from "@/components/Footer";
+import {
+  absoluteUrl,
+  DEFAULT_OG_IMAGE,
+  resolveImageUrl,
+  SITE_LOCALE,
+  SITE_NAME,
+  SITE_URL,
+  stripHtml,
+} from "@/lib/seo";
+import { supabase, type BlogPost } from "@/lib/supabase";
 
-export default function Blog() {
-  const blogPosts = [
-    {
-      id: 1,
-      slug: "jak-stworzyc-nowoczesna-strone-internetowa-2025",
-      title: "Jak stworzyć nowoczesną stronę internetową w 2025 roku",
-      excerpt: "Poznaj najnowsze trendy i technologie, które pomogą Ci stworzyć stronę internetową, która przyciąga uwagę i konwertuje w 2025 roku.",
-      author: "Zespół Mainly",
-      date: "15 stycznia 2025",
-      readTime: "8 min czytania",
-      category: "Web Development",
-      image: "/budowa_strony.jpg"
+export const revalidate = 3600;
+
+const blogDescription =
+  "Wiedza, porady i najnowsze trendy z branży technologicznej. Tworzenie stron internetowych, SEO, marketing i automatyzacje dla firm.";
+
+export const metadata: Metadata = {
+  title: "Blog | Mainly - Tworzenie Stron i Aplikacji Webowych",
+  description: blogDescription,
+  keywords: [
+    "blog web development",
+    "porady SEO",
+    "tworzenie stron internetowych",
+    "marketing cyfrowy",
+    "automatyzacja biznesu",
+  ],
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    title: "Blog | Mainly",
+    description:
+      "Porady z web developmentu, SEO i marketingu cyfrowego dla polskich firm.",
+    url: absoluteUrl("/blog"),
+    siteName: SITE_NAME,
+    locale: SITE_LOCALE,
+    type: "website",
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Blog Mainly - Web Development i SEO",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Mainly",
+    description:
+      "Porady z web developmentu, SEO i marketingu cyfrowego dla polskich firm.",
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
+
+async function getPosts(): Promise<BlogPost[]> {
+  const { data, error } = await supabase
+    .from("blog_posts")
+    .select(
+      "id,slug,title,excerpt,author,published_at,read_time,category,image_url,tags"
+    )
+    .eq("published", true)
+    .order("published_at", { ascending: false });
+
+  if (error || !data) return [];
+  return data as BlogPost[];
+}
+
+function buildBlogJsonLd(posts: BlogPost[]) {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: SITE_NAME,
+        item: SITE_URL,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: absoluteUrl("/blog"),
+      },
+    ],
+  };
+
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Blog Mainly",
+    description: blogDescription,
+    url: absoluteUrl("/blog"),
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl(DEFAULT_OG_IMAGE),
+      },
     },
-    {
-      id: 2,
-      slug: "strona-internetowa-ktora-sprzedaje-7-elementow",
-      title: "Strona internetowa, która sprzedaje — 7 elementów, o których większość firm zapomina",
-      excerpt: "Twoja strona internetowa może być piękna, szybka i technicznie dopracowana — ale jeśli nie sprzedaje, to jest jak salon samochodowy bez sprzedawców.",
-      author: "Zespół Mainly",
-      date: "20 stycznia 2025",
-      readTime: "6 min czytania",
-      category: "Marketing",
-      image: "/kowdlo.png"
-    }
-  ];
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: stripHtml(post.title),
+      description: post.excerpt,
+      datePublished: post.published_at,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      ...(post.image_url && { image: resolveImageUrl(post.image_url) }),
+    })),
+  };
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Artykuły na blogu Mainly",
+    itemListElement: posts.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(`/blog/${post.slug}`),
+      name: stripHtml(post.title),
+    })),
+  };
+
+  return [breadcrumbJsonLd, blogJsonLd, itemListJsonLd];
+}
+
+export default async function BlogPage() {
+  const posts = await getPosts();
+  const jsonLdBlocks = buildBlogJsonLd(posts);
 
   return (
-    <div className="min-h-screen text-white flex flex-col">
-      <header className="container mx-auto pt-8 px-6">
-        <div className="flex justify-center">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Powrót do strony głównej
-          </Link>
-        </div>
-      </header>
+    <>
+      {jsonLdBlocks.map((jsonLd) => (
+        <script
+          key={jsonLd["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      ))}
 
-      <main className="flex-1 flex flex-col items-center px-6 text-center">
-        <div className="max-w-6xl mx-auto w-full">
-          {/* Blog Header */}
-          <div className="mb-16 mt-24 sm:mt-32">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Blog
+      <main>
+        <section className="wrap blog-index">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
+            <Link href="/">Mainly</Link>
+            <span className="sep">/</span>
+            <span aria-current="page">Blog</span>
+          </nav>
+
+          <div className="intro">
+            <div className="sec-label">
+              <span className="num">Blog</span>
+              <span>Wiedza i praktyka</span>
+            </div>
+            <h1>
+              Artykuły, które <DisplayEm>przyspieszają</DisplayEm> Twój biznes
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Wiedza, porady i najnowsze trendy z branży technologicznej. 
-              Dzielimy się naszym doświadczeniem, aby pomóc Ci rozwijać swój biznes w internecie.
-            </p>
+            <p className="lead">{blogDescription}</p>
           </div>
 
-          {/* Blog Posts Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {blogPosts.map((post) => (
-              <Link
-                key={post.id}
-                href={post.slug ? `/blog/${post.slug}` : "#"}
-                className="block"
-              >
-                <article
-                  className="bg-zinc-950 border border-[#FA6503]/20 rounded-xl overflow-hidden hover:border-[#FA6503]/40 transition-all duration-300 hover:-translate-y-2"
-                >
-                <div className="h-48 bg-zinc-900 flex items-center justify-center overflow-hidden">
-                  {post.image ? (
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      width={400}
-                      height={200}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-gray-500 text-sm">Obraz artykułu</div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-xs bg-[#FA6503]/20 text-[#FA6503] px-2 py-1 rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                  <h2 className="text-xl font-bold mb-3 text-left hover:text-[#FA6503] transition-colors">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-400 text-sm mb-4 text-left line-clamp-3">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-gray-500">
-                    <div className="flex items-center gap-1">
-                      <User className="h-3 w-3" />
-                      {post.author}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-3 w-3" />
-                      {post.date}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
-                    <Clock className="h-3 w-3" />
-                    {post.readTime}
-                  </div>
-                </div>
-              </article>
-              </Link>
-            ))}
-          </div>
-        </div>
+          {posts.length === 0 ? (
+            <p className="lead" style={{ marginTop: 48, marginBottom: 96 }}>
+              Brak opublikowanych artykułów.
+            </p>
+          ) : (
+            <div className="blog-grid">
+              {posts.map((post, index) => (
+                <BlogPostCard
+                  key={post.id}
+                  post={post}
+                  variant={((index % 3) + 1) as 1 | 2 | 3}
+                />
+              ))}
+            </div>
+          )}
+        </section>
       </main>
 
       <Footer />
-    </div>
+    </>
   );
-} 
+}

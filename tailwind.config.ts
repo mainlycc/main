@@ -10,8 +10,13 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: 'rgb(var(--background) / <alpha-value>)',
+  			foreground: 'rgb(var(--foreground) / <alpha-value>)',
+  			ember: {
+  				DEFAULT: '#ff2a14',
+  				deep: '#c41e1e',
+  				soft: '#ff6644',
+  			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -21,14 +26,14 @@ export default {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: 'rgb(var(--primary) / <alpha-value>)',
+  				foreground: 'rgb(var(--primary-foreground) / <alpha-value>)',
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: 'rgb(var(--secondary) / <alpha-value>)',
+  				foreground: 'rgb(var(--secondary-foreground) / <alpha-value>)',
   			},
-  			muted: 'hsl(var(--muted))',
+  			muted: 'rgb(var(--muted) / <alpha-value>)',
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'

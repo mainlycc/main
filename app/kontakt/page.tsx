@@ -1,83 +1,80 @@
 import type { Metadata } from "next";
 import ContactForm from "../../components/ContactForm";
-import { Mail, Phone, MapPin } from "lucide-react";
+import DisplayEm from "../../components/DisplayEm";
 import Footer from "../../components/Footer";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Kontakt i bezpłatna wycena strony | Mainly",
-  description: "Skontaktuj się z nami. Bezpłatna wycena projektu w ciągu 24h. Warszawa, ul. Filtrowa 83. Tel: +48 500 789 826. Email: kontakt@mainly.pl",
+  description:
+    "Skontaktuj się z nami. Bezpłatna wycena projektu w ciągu 24h. Warszawa, ul. Filtrowa 83. Tel: +48 500 789 826. Email: kontakt@mainly.pl",
   alternates: { canonical: "/kontakt" },
   openGraph: {
     title: "Kontakt | Mainly",
-    description: "Napisz do nas i otrzymaj bezpłatną wycenę w 24h. Tworzymy strony i aplikacje webowe w Warszawie.",
+    description:
+      "Napisz do nas i otrzymaj bezpłatną wycenę w 24h. Tworzymy strony i aplikacje webowe w Warszawie.",
     url: "https://mainly.pl/kontakt",
     type: "website",
   },
 };
 
+const contacts = [
+  {
+    label: "Email",
+    value: "kontakt@mainly.pl",
+    href: "mailto:kontakt@mainly.pl",
+  },
+  {
+    label: "Telefon",
+    value: "+48 500 789 826",
+    href: "tel:+48500789826",
+  },
+  {
+    label: "Biuro",
+    value: "Warszawa, Filtrowa 83",
+  },
+];
+
 export default function ContactPage() {
   return (
-    <div className="min-h-screen text-white flex flex-col">
-      <main className="flex-1 flex flex-col items-center px-4 sm:px-6 py-16 sm:py-24">
-        <div className="max-w-5xl mx-auto w-full">
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4 sm:mb-8 text-center">
-            Skontaktuj się z nami
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-16 text-center max-w-3xl mx-auto">
-            Masz pytania? Chcesz rozpocząć projekt? Jesteśmy tutaj, aby pomóc Ci zrealizować Twoje cele cyfrowe.
-          </p>
+    <>
+      <main className="kontakt-page">
+        <div className="wrap kontakt-shell">
+          <div className="kontakt-card">
+            <aside className="kontakt-visual">
+              <div className="kontakt-visual-glow" aria-hidden="true" />
+              <div className="kontakt-visual-grain" aria-hidden="true" />
+              <div className="kontakt-visual-inner">
+                <div className="kontakt-eyebrow">
+                  <span className="pulse" />
+                  <span>Bezpłatna konsultacja · 24h</span>
+                </div>
+                <h1>
+                  Porozmawiajmy o <DisplayEm>Twoim projekcie</DisplayEm>.
+                </h1>
+                <p className="kontakt-visual-lead">
+                  Masz pytania albo chcesz ruszyć z projektem? Napisz — bez
+                  zobowiązań.
+                </p>
 
-          <ContactForm />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 mt-8 sm:mt-16">
-            <div className="bg-zinc-950 border border-[#FA6503]/20 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center">
-              <div className="bg-zinc-800 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-3 sm:mb-4">
-                <Mail className="text-[#FA6503] w-5 sm:w-6 h-5 sm:h-6" />
+                <div className="kontakt-contacts">
+                  {contacts.map(({ label, value, href }) => (
+                    <div key={label} className="cta-contact">
+                      <span className="k">{label}</span>
+                      <span className="v">
+                        {href ? <Link href={href}>{value}</Link> : value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Email</h3>
-              <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
-                Wyślij nam wiadomość w dowolnym momencie
-              </p>
-              <a href="mailto:kontakt@mainly.pl" className="text-[#FA6503] hover:underline text-sm sm:text-base">
-                kontakt@mainly.pl
-              </a>
-            </div>
+            </aside>
 
-            <div className="bg-zinc-950 border border-[#FA6503]/20 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center">
-              <div className="bg-zinc-800 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-3 sm:mb-4">
-                <Phone className="text-[#FA6503] w-5 sm:w-6 h-5 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Telefon</h3>
-              <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
-                Dostępni od poniedziałku do piątku, 9:00 - 17:00
-              </p>
-              <a href="tel:+48500789826" className="text-[#FA6503] hover:underline text-sm sm:text-base">
-                +48 500 789 826
-              </a>
-            </div>
-
-            <div className="bg-zinc-950 border border-[#FA6503]/20 p-4 sm:p-6 rounded-xl flex flex-col items-center text-center md:col-span-2 lg:col-span-1">
-              <div className="bg-zinc-800 w-10 sm:w-12 h-10 sm:h-12 rounded-full flex items-center justify-center mb-3 sm:mb-4">
-                <MapPin className="text-[#FA6503] w-5 sm:w-6 h-5 sm:h-6" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Adres</h3>
-              <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4">
-                Nasze biuro
-              </p>
-              <address className="text-[#FA6503] not-italic text-sm sm:text-base">
-                ul. Filtrowa 83<br />
-                02-032 Warszawa<br />
-                Polska
-              </address>
-              <p className="text-sm sm:text-base text-gray-400 mt-2">
-                NIP: 7010961986
-              </p>
-            </div>
+            <ContactForm />
           </div>
         </div>
       </main>
-
       <Footer />
-    </div>
+    </>
   );
 }

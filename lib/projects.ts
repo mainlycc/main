@@ -11,15 +11,188 @@ export interface Project {
   client: string;
   year: number;
   url: string;
+  headline?: string;
+  tags?: string[];
+  scope?: string;
+    heroCaption?: string;
+    heroDeviceBadge?: string;
+    caseStudyHtml?: string;
 }
 
 export const projects: Project[] = [
   {
+    id: 19,
+    name: "Football Academy System",
+    slug: "football-academy",
+    image: "/football-academy-ui.png",
+    fallbackImage: "/football-academy-ui.png",
+    description:
+      "System zarządzania akademią piłkarską z przeglądarką modeli 3D, rolami użytkowników i eksportem zasobów - GLB, PNG, SVG.",
+    fullDescription:
+      "Football Academy System to wewnętrzna aplikacja webowa dla akademii piłkarskiej Football Academy. Centrum produktu stanowi interaktywna przeglądarka modeli 3D - galeria osiągnięć i materiałów brandingowych (np. otwarcie oddziału Football Baby) z kontrolą obrotu i oświetlenia oraz eksportem do GLB, PNG i SVG.\n\nSystem obsługuje trzy role: Zawodnik, Trener i Manager - każda z własnym zakresem uprawnień. Interfejs obejmuje przegląd zasobów, listę oraz panel zarządzania z możliwością usuwania pozycji. Dark UI w stylu dashboardu gamingowego.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Three.js",
+      "React Three Fiber",
+      "Tailwind CSS",
+    ],
+    features: [
+      "Interaktywna przeglądarka modeli 3D w przeglądarce",
+      "Kontrola obrotu i oświetlenia sceny",
+      "Eksport zasobów: GLB, PNG, SVG",
+      "Role: Zawodnik, Trener, Manager",
+      "Przegląd, lista i panel zarządzania zasobami",
+      "Galeria osiągnięć i materiałów brandingowych akademii",
+    ],
+    client: "Football Academy",
+    year: 2026,
+    url: "",
+  },
+  {
+    id: 18,
+    name: "Qualibase",
+    slug: "qualibase",
+    image: "/qualibase-hero.png",
+    fallbackImage: "/qualibase-perspectives.png",
+    description:
+      "Platforma rekrutacyjna IT łącząca zweryfikowanych specjalistów z firmami - dwie perspektywy, jeden cel: szybsze zatrudnienie i lepsza kariera.",
+    fullDescription:
+      "Qualibase to platforma rekrutacyjna dla branży IT, która łączy zweryfikowanych kandydatów bezpośrednio z firmami poszukującymi specjalistów. Platforma działa dwutorowo - kandydaci budują anonimowy profil z realnym doświadczeniem, a rekruterzy przeglądają bazę dostępnych specjalistów bez przypadkowych zgłoszeń.\n\nSystem obsługuje React, Python, AWS, TypeScript i PostgreSQL jako kluczowe technologie, wspierając rekrutację w środowisku IT.",
+    technologies: ["React", "Python", "AWS", "TypeScript", "PostgreSQL"],
+    features: [
+      "Baza zweryfikowanych specjalistów IT z oznaczeniem dostępności",
+      "Anonimowe profile kandydatów - firma widzi kompetencje, nie dane osobowe",
+      "Panel rekrutera z dostępem do bazy i filtrowaniem po technologiach",
+      "Panel kandydata z zarządzaniem profilem i ofertami",
+      "Dwuperspektywiczny system: kandydat i rekruter",
+      "Wsparcie dla pracy Remote i hybrydowej",
+    ],
+    client: "Qualibase",
+    year: 2025,
+    url: "https://www.qualibase.pl/",
+  },
+  {
+    id: 17,
+    name: "Wizualizator Grzejników JK Term",
+    slug: "jkterm-wizualizator",
+    image: "/jkterm-wizualizator2.png",
+    fallbackImage: "/jkterm-wizualizator1.png",
+    description:
+      "Generator AI wizualizacji grzejników w realnym wnętrzu - zamiast AutoCAD: wgraj zdjęcie produktu, opisz scenę, pobierz profesjonalne zdjęcie do katalogu i Allegro.",
+    fullDescription:
+      "JK Term to producent grzejników łazienkowych, który do tej pory generował wizualizacje produktów w AutoCAD - proces czasochłonny, wymagający specjalisty i trudny do skalowania przy dużej liczbie wariantów kolorystycznych i rozmiarów.\n\nZbudowałem dedykowany generator AI, który pozwala wgrać zdjęcie produktu, opisać scenę i w kilka sekund otrzymać profesjonalne wizualizacje produktu w realnym otoczeniu łazienki. Generator tworzy też zdjęcia detali do listingów Allegro - bez sesji fotograficznej, bez AutoCAD, bez grafika.",
+    technologies: ["Next.js", "TypeScript", "AI Image Generation", "Tailwind CSS"],
+    features: [
+      "Tryb Scena - produkt w realnym wnętrzu łazienki (3 warianty jednocześnie)",
+      "Tryb Detal - profesjonalne zdjęcia detali do Allegro",
+      "Konfiguracja kąta kamery, koloru produktu i rozmiaru na scenie",
+      "Generowanie wielu wariantów jednym kliknięciem",
+      "Pobieranie gotowych zdjęć do katalogu i listingów",
+      "Brak potrzeby AutoCAD ani sesji fotograficznej",
+    ],
+    client: "JK Term (biuro@jkterm.com)",
+    year: 2025,
+    url: "",
+  },
+  {
+    id: 16,
+    name: "Magia Podróżowania",
+    slug: "magia-podrozowania",
+    image: "/magia-podrozowania-ui.png",
+    fallbackImage: "/magia-podrozowania-rezerwacja.png",
+    description:
+      "Kompleksowy system CRM do zarządzania wycieczkami - rezerwacje, płatności PayNow, umowy PDF i integracje z SaldeoSMART oraz HDI.",
+    fullDescription:
+      "Magia Podróżowania to kompleksowy system CRM do zarządzania wycieczkami dla organizatora turystyki GRUPA DE-PL. Aplikacja obejmuje cały cykl obsługi wycieczki - od tworzenia oferty, przez rezerwacje online i płatności, aż po generowanie umów, faktur i ubezpieczeń.\n\nSystem obejmuje panel organizatora, publiczne strony wycieczek z rezerwacją online, płatności PayNow z podziałem na raty, edytor umów PDF, integrację SaldeoSMART i HDI, komunikację e-mail SMTP oraz panel koordynatora wycieczek.",
+    technologies: ["Next.js", "React", "TypeScript", "Supabase", "PayNow", "Tailwind CSS"],
+    features: [
+      "Panel organizatora wycieczek",
+      "Rezerwacje online z płatnościami PayNow",
+      "Generowanie umów i faktur PDF",
+      "Integracja SaldeoSMART i HDI",
+      "Moduł koordynatora wycieczek",
+      "Komunikacja e-mail z uczestnikami",
+    ],
+    client: "GRUPA DE-PL / Magia Podróżowania",
+    year: 2025,
+    url: "https://mainly.pl/projekty/magia-podrozowania",
+  },
+  {
+    id: 15,
+    name: "Akademia Wiedzy",
+    slug: "akademia-wiedzy",
+    image: "/akademia-wiedzy.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description:
+      "System e-korepetycji dla 40+ korepetytorów i 865+ uczniów - automatyczne lekcje, rozliczenia i płatności PayU.",
+    fullDescription:
+      "Akademia Wiedzy to firma e-korepetycyjna prowadząca zajęcia online dla uczniów w całej Polsce - ponad 40 korepetytorów i 865+ uczniów. Zbudowałem wewnętrzny system webowy, który zastąpił ręczne zarządzanie grafikami, uczniami i rozliczeniami.\n\nAplikacja automatyzuje planowanie lekcji, oferuje panel korepetytora i administratora, publiczny kalendarz rezerwacji dla nowych uczniów, moduł rozliczeń z linkami PayU oraz architekturę Row Level Security w Supabase.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "PayU", "Tailwind CSS"],
+    features: [
+      "Automatyczne generowanie lekcji",
+      "Panel korepetytora i administratora",
+      "Publiczny kalendarz rezerwacji",
+      "Rozliczenia i płatności PayU",
+      "Row Level Security",
+      "865+ uczniów, 40+ korepetytorów",
+    ],
+    client: "Akademia Wiedzy - Kamil Miącz",
+    year: 2026,
+    url: "https://akademia-kamilmiacz.pl/",
+  },
+  {
+    id: 14,
+    name: "Platforma Szkoleniowa AIRSET",
+    slug: "airset-platforma",
+    image: "/airset-platforma.png",
+    fallbackImage: "/placeholder.svg?height=600&width=400",
+    description:
+      "Dedykowany system e-learningowy dla linii lotniczych - szkolenia, testy, raporty i logi audytu z Supabase RLS.",
+    fullDescription:
+      "Platforma Szkoleniowa AIRSET to dedykowany system e-learningowy dla linii lotniczych AIRSET. Obejmuje publikowanie szkoleń z materiałami PDF, PPTX i PNG, kreator testów z sześcioma typami pytań, dashboard postępów, zarządzanie użytkownikami z rolami, raporty miesięczne (PDF, CSV, XLSX) oraz kompleksowe logi audytowe.\n\nBezpieczeństwo oparte jest na Row Level Security - każde zapytanie respektuje uprawnienia użytkownika.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "shadcn/ui"],
+    features: [
+      "Kreator testów (6 typów pytań)",
+      "Dashboard postępów szkoleń",
+      "Zarządzanie użytkownikami i rolami",
+      "Raporty PDF, CSV, XLSX",
+      "Logi audytowe",
+      "Row Level Security",
+    ],
+    client: "AIRSET",
+    year: 2025,
+    url: "https://airset.pl/",
+  },
+  {
+    id: 13,
+    name: "Elomoto.eco",
+    slug: "elomoto-eco",
+    image: "/elomoto-eco.png",
+    fallbackImage: "/elomoto-app.png",
+    description:
+      "SPA dla operatora stacji ładowania EV - 15+ podstron, interaktywna mapa i widget ładowania 0-77 kWh.",
+    fullDescription:
+      "Responsywna aplikacja SPA dla polskiego operatora infrastruktury ładowania pojazdów elektrycznych Elomoto (ekosystem Energomix). Projekt obejmuje ponad 15 podstron - od landing page'a, przez podstrony ofertowe i mapę stacji, po blog, FAQ i formularz kontaktowy.\n\nWyróżniający element to interaktywny widget ładowania reagujący na scroll (0-77 kWh), ciemny motyw z glassmorphism oraz routing SPA bez przeładowań.",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    features: [
+      "15+ podstron ofertowych",
+      "Interaktywna mapa stacji EV",
+      "Widget ładowania 0-77 kWh",
+      "Routing SPA bez przeładowań",
+      "Ciemny motyw z glassmorphism",
+      "Blog, FAQ, formularz kontaktowy",
+    ],
+    client: "Elomoto Sp. z o.o. (Energomix)",
+    year: 2025,
+    url: "https://elomoto.eco/",
+  },
+  {
     id: 12,
     name: "Biblioteka Promptów AI",
     slug: "biblioteka-promptow",
-    image: "/bcsc.png",
-    fallbackImage: "/placeholder.svg?height=600&width=400",
+    image: "/biblioteka-promptow2.png",
+    fallbackImage: "/bibliotekapromptow.png",
     description: "Polskojęzyczna platforma z ponad 1000 gotowych promptów dla ChatGPT, Claude, Midjourney i innych narzędzi AI",
     fullDescription: "Biblioteka Promptów to polskojęzyczna platforma internetowa oferująca ponad 1000 gotowych, szablonowych promptów (poleceń) do popularnych narzędzi sztucznej inteligencji. Projekt ma na celu ułatwić pracę z narzędziami AI, dostarczając sprawdzone prompty, które oszczędzają czas i poprawiają jakość wyników. Platforma obsługuje najpopularniejsze narzędzia AI: ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google), Midjourney, DALL·E oraz Stable Diffusion. Prompty są zorganizowane w sekcje: prompty tekstowe (dla chatbotów i asystentów AI) oraz prompty graficzne (dla narzędzi do generowania obrazów), podzielone na 15+ kategorii tematycznych obejmujących marketing, copywriting, programowanie, analizę danych biznesowych, content creation na social media i inne specjalistyczne obszary. Wszystkie prompty są całkowicie darmowe i mogą być używane zarówno do celów osobistych, jak i komercyjnych.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "OpenAI API", "Claude API"],
@@ -173,10 +346,10 @@ export const projects: Project[] = [
     id: 1,
     name: "Kalkulator GAP",
     slug: "kalkulator-gap",
-    image: "/kalkulator.png",
+    image: "/kalkulator2.png",
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Kalkulator ubezpieczeniowy z intuicyjnym interfejsem",
-    fullDescription: "Kompleksowe narzędzie do obliczania ubezpieczenia GAP z intuicyjnym interfejsem użytkownika. Projekt obejmował pełen proces UX/UI oraz front-end development.",
+    fullDescription: "Kompleksowe narzędzie do obliczania ubezpieczenia GAP z intuicyjnym interfejsem użytkownika. Projekt obejmował pełen proces UX/UI oraz front-end development. Kalkulator umożliwia precyzyjne wyliczenia kosztów ubezpieczenia GAP z uwzględnieniem wszystkich niezbędnych parametrów.",
     technologies: ["Next.js", "Shadcn", "React", "TypeScript", "Tailwind CSS"],
     features: [
       "Intuicyjny interfejs użytkownika",
@@ -192,10 +365,10 @@ export const projects: Project[] = [
     id: 2,
     name: "Cytomania",
     slug: "cytomania",
-    image: "/cytomania.png",
+    image: "/cytomania1.png",
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Portal z cytatami filmowymi",
-    fullDescription: "Społecznościowy portal gromadzący cytaty z filmów i seriali. Użytkownicy mogą dodawać, oceniać i komentować cytaty oraz tworzyć własne kolekcje.",
+    fullDescription: "Społecznościowy portal gromadzący cytaty z filmów i seriali. Użytkownicy mogą dodawać, oceniać i komentować cytaty oraz tworzyć własne kolekcje. Portal oferuje zaawansowaną wyszukiwarkę, system oceniania oraz moduł administratora do zarządzania treścią.",
     technologies: ["Next.js", "Shadcn", "React", "TypeScript", "Tailwind CSS"],
     features: [
       "System użytkowników i kont",
@@ -212,10 +385,10 @@ export const projects: Project[] = [
     id: 3,
     name: "Kulio Studio",
     slug: "kulio-studio",
-    image: "/kulio.png",
+    image: "/kulio2.png",
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Agencja marketingowa",
-    fullDescription: "Strona internetowa dla agencji marketingowej Kulio Studio. Projekt obejmował kompleksowy design, development oraz system CMS do zarządzania portfolio i blogiem.",
+    fullDescription: "Strona internetowa dla agencji marketingowej Kulio Studio. Projekt obejmował kompleksowy design, development oraz system CMS do zarządzania portfolio i blogiem. Strona prezentuje portfolio projektów agencji, zawiera sekcję blogową oraz formularz kontaktowy.",
     technologies: ["Framer", "Spline"],
     features: [
       "Portfolio projektów",
@@ -235,7 +408,7 @@ export const projects: Project[] = [
     image: "/milei.png",
     fallbackImage: "/placeholder.svg?height=600&width=400",
     description: "Dynamiczna strona one-pager dla kryptowaluty $MILEI inspirowanej Javierem Milei.",
-    fullDescription: "Strona internetowa dla tokena $MILEI – kryptowaluty opartej na ideologii libertariańskiej, łączącej memecoin z komentarzem polityczno-ekonomicznym. Projekt obejmował pełny design i wdrożenie we Framerze, integrację wykresu TradingView, dynamicznych tweetów z Twittera/X, sekcji partnerów oraz liczników statystyk. Strona została zaprojektowana tak, aby przyciągać potencjalnych klientów i zachęcać ich do kontaktu.",
+    fullDescription: "Dynamiczna strona one-pager dla kryptowaluty $MILEI inspirowanej Javierem Milei. Strona prezentuje token oparty na ideologii libertariańskiej, łączący memecoin z komentarzem polityczno-ekonomicznym. Projekt obejmował pełny design i wdrożenie we Framerze, integrację wykresu TradingView, dynamicznych tweetów z Twittera/X, sekcji partnerów oraz liczników statystyk.",
     technologies: ["Framer", "TradingView", "Twitter/X embed", "SVG", "Responsywny design"],
     features: [
       "Sekcja Hero z AI-generowanym portretem Javiera Milei i CTA",

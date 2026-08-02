@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local temp / windows reserved
+nul
+_body.html
+_extracted-styles.css
+_extracted.html
+_mobile-audit/
+_sections/
+

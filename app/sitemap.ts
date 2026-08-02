@@ -1,50 +1,64 @@
 import type { MetadataRoute } from 'next'
 import { supabase } from '../lib/supabase'
 import { projects } from '../lib/projects'
+import { SITE_URL } from '../lib/seo'
 
-const baseUrl = 'https://mainly.pl'
+type BlogSitemapPost = {
+  slug: string
+  updated_at: string
+  published_at: string
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Pobierz opublikowane posty z Supabase
-  let blogSlugs: string[] = []
+  let blogPosts: BlogSitemapPost[] = []
   try {
     const { data } = await supabase
       .from('blog_posts')
-      .select('slug, updated_at')
+      .select('slug, updated_at, published_at')
       .eq('published', true)
       .order('published_at', { ascending: false })
-    blogSlugs = (data ?? []).map((p: { slug: string }) => p.slug)
+    blogPosts = (data ?? []) as BlogSitemapPost[]
   } catch {
     // Jeśli Supabase niedostępny podczas buildu, sitemap nadal działa
   }
 
+  const latestBlogDate = blogPosts[0]?.published_at
+    ? new Date(blogPosts[0].published_at)
+    : new Date()
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/projekty`,
+      url: `${SITE_URL}/projekty`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      url: `${SITE_URL}/blog`,
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/kontakt`,
+      url: `${SITE_URL}/kontakt`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/polityka-prywatnosci`,
+      url: `${SITE_URL}/opinie`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${SITE_URL}/polityka-prywatnosci`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
@@ -52,15 +66,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `${baseUrl}/projekty/${project.slug}`,
+    url: `${SITE_URL}/projekty/${project.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
 
-  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
-    url: `${baseUrl}/blog/${slug}`,
-    lastModified: new Date(),
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.updated_at),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))

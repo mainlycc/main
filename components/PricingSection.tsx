@@ -8,7 +8,7 @@ import Link from "next/link";
 const pricingPlans = [
   {
     name: "Podstawowy",
-    price: "od 1,500 zł",
+    price: "od 2,000 zł",
     description: "Idealny dla małych firm i startupów",
     features: [
       "Strona internetowa do 5 podstron",
