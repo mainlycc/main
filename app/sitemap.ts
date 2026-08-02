@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { supabase } from '../lib/supabase'
+import { getSupabase } from '../lib/supabase'
 import { projects } from '../lib/projects'
 import { SITE_URL } from '../lib/seo'
 
@@ -11,15 +11,18 @@ type BlogSitemapPost = {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogPosts: BlogSitemapPost[] = []
-  try {
-    const { data } = await supabase
-      .from('blog_posts')
-      .select('slug, updated_at, published_at')
-      .eq('published', true)
-      .order('published_at', { ascending: false })
-    blogPosts = (data ?? []) as BlogSitemapPost[]
-  } catch {
-    // Jeśli Supabase niedostępny podczas buildu, sitemap nadal działa
+  const supabase = getSupabase()
+  if (supabase) {
+    try {
+      const { data } = await supabase
+        .from('blog_posts')
+        .select('slug, updated_at, published_at')
+        .eq('published', true)
+        .order('published_at', { ascending: false })
+      blogPosts = (data ?? []) as BlogSitemapPost[]
+    } catch {
+      // Jeśli Supabase niedostępny podczas buildu, sitemap nadal działa
+    }
   }
 
   const latestBlogDate = blogPosts[0]?.published_at

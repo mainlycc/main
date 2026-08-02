@@ -12,7 +12,7 @@ import {
   SITE_URL,
   stripHtml,
 } from "@/lib/seo";
-import { supabase, type BlogPost } from "@/lib/supabase";
+import { getSupabase, type BlogPost } from "@/lib/supabase";
 
 export const revalidate = 3600;
 
@@ -57,6 +57,9 @@ export const metadata: Metadata = {
 };
 
 async function getPosts(): Promise<BlogPost[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from("blog_posts")
     .select(

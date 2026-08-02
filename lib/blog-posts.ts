@@ -1,15 +1,4 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import type { BlogPost } from "./supabase";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey =
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-function getSupabase(): SupabaseClient | null {
-  if (!supabaseUrl || !supabaseAnonKey) return null;
-  return createClient(supabaseUrl, supabaseAnonKey);
-}
+import { getSupabase, type BlogPost } from "./supabase";
 
 export type BlogPostInput = {
   slug: string;

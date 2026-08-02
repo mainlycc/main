@@ -20,11 +20,14 @@ import {
   SITE_URL,
   stripHtml,
 } from "@/lib/seo";
-import { supabase, type BlogPost } from "@/lib/supabase";
+import { getSupabase, type BlogPost } from "@/lib/supabase";
 
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
   const { data } = await supabase
     .from("blog_posts")
     .select("slug")
@@ -34,6 +37,9 @@ export async function generateStaticParams() {
 }
 
 async function getPost(slug: string): Promise<BlogPost | null> {
+  const supabase = getSupabase();
+  if (!supabase) return null;
+
   const { data, error } = await supabase
     .from("blog_posts")
     .select("*")
@@ -49,6 +55,9 @@ async function getRelatedPosts(
   slug: string,
   category: string
 ): Promise<BlogPost[]> {
+  const supabase = getSupabase();
+  if (!supabase) return [];
+
   const { data, error } = await supabase
     .from("blog_posts")
     .select("slug,title,excerpt,category,read_time,image_url,published_at")
