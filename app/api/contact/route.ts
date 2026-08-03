@@ -1,63 +1,103 @@
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, message, recipient = 'kontakt@mainly.pl' } = body;
+    const {
+      name,
+      email,
+      message,
+      recipient = "kontakt@mainly.pl",
+      turnstileToken,
+    } = body;
 
-    if (!process.env.EMAIL_PASSWORD) {
-      throw new Error('Brak skonfigurowanego hasła email (EMAIL_PASSWORD)');
+    const turnstile = await verifyTurnstileToken(
+      turnstileToken,
+      request,
+      "contact"
+    );
+    if (!turnstile.ok) {
+      return NextResponse.json(
+        { success: false, error: turnstile.error },
+        { status: 403 }
+      );
     }
 
-    // Konfiguracja transportera Nodemailer dla Zoho
+    if (
+      typeof name !== "string" ||
+      !name.trim() ||
+      typeof email !== "string" ||
+      !email.trim() ||
+      typeof message !== "string" ||
+      !message.trim()
+    ) {
+      return NextResponse.json(
+        { success: false, error: "Proszę wypełnić wszystkie pola." },
+        { status: 400 }
+      );
+    }
+
+    if (!process.env.EMAIL_PASSWORD) {
+      throw new Error("Brak skonfigurowanego hasła email (EMAIL_PASSWORD)");
+    }
+
     const transporter = nodemailer.createTransport({
-      host: 'smtp.zoho.eu',
+      host: "smtp.zoho.eu",
       port: 465,
-      secure: true, // używamy SSL
+      secure: true,
       auth: {
-        user: 'kontakt@mainly.pl',
+        user: "kontakt@mainly.pl",
         pass: process.env.EMAIL_PASSWORD,
       },
     });
 
-    // Definiowanie opcji wiadomości
+    const safeName = name.trim().slice(0, 200);
+    const safeEmail = email.trim().slice(0, 320);
+    const safeMessage = message.trim().slice(0, 5000);
+
     const mailOptions = {
-      from: 'Formularz kontaktowy <kontakt@mainly.pl>',
+      from: "Formularz kontaktowy <kontakt@mainly.pl>",
       to: recipient,
-      subject: `Wiadomość od ${name} poprzez formularz kontaktowy`,
-      text: `Imię i nazwisko: ${name}\nEmail: ${email}\n\nWiadomość:\n${message}`,
-      html: `<p><strong>Imię i nazwisko:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
+      subject: `Wiadomość od ${safeName} poprzez formularz kontaktowy`,
+      text: `Imię i nazwisko: ${safeName}\nEmail: ${safeEmail}\n\nWiadomość:\n${safeMessage}`,
+      html: `<p><strong>Imię i nazwisko:</strong> ${safeName}</p>
+             <p><strong>Email:</strong> ${safeEmail}</p>
              <p><strong>Wiadomość:</strong></p>
-             <p>${message.replace(/\n/g, '<br/>')}</p>`,
+             <p>${safeMessage.replace(/\n/g, "<br/>")}</p>`,
     };
 
-    // Wysyłka wiadomości
     await transporter.sendMail(mailOptions);
-    
-    console.log('Wiadomość kontaktowa wysłana pomyślnie:', { name, email, recipient });
-    
-    return NextResponse.json({ success: true, message: 'Wiadomość wysłana pomyślnie' });
+
+    console.log("Wiadomość kontaktowa wysłana pomyślnie:", {
+      name: safeName,
+      email: safeEmail,
+      recipient,
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Wiadomość wysłana pomyślnie",
+    });
   } catch (error) {
-    // Bardziej szczegółowe logowanie błędu
-    const errorMessage = error instanceof Error ? error.message : 'Nieznany błąd';
+    const errorMessage = error instanceof Error ? error.message : "Nieznany błąd";
     const errorStack = error instanceof Error ? error.stack : undefined;
     const errorName = error instanceof Error ? error.name : undefined;
 
-    console.error('Szczegóły błędu formularza kontaktowego:', {
+    console.error("Szczegóły błędu formularza kontaktowego:", {
       message: errorMessage,
       stack: errorStack,
-      name: errorName
+      name: errorName,
     });
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
-        message: 'Wystąpił błąd podczas wysyłania wiadomości',
-        error: errorMessage
+      {
+        success: false,
+        message: "Wystąpił błąd podczas wysyłania wiadomości",
+        error: errorMessage,
       },
       { status: 500 }
     );
   }
-} 
+}

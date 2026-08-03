@@ -1328,6 +1328,10 @@
   .kontakt-textarea{
     min-height:110px;height:auto;padding:12px 14px;resize:vertical;line-height:1.45;
   }
+  .kontakt-turnstile{
+    margin:2px 0 4px;
+    min-height:65px;
+  }
   .kontakt-submit{
     margin-top:4px;width:100%;
     display:inline-flex;align-items:center;justify-content:center;

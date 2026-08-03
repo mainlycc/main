@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { resend } from "@/lib/resend";
+import { verifyTurnstileToken } from "@/lib/turnstile";
 
 const MAX_LEN_TEXT = 4000;
 const MAX_LEN_SHORT = 200;
@@ -23,7 +24,20 @@ export async function POST(request: Request) {
       opinia,
       zgoda,
       zgodaCaseStudy,
+      turnstileToken,
     } = body ?? {};
+
+    const turnstile = await verifyTurnstileToken(
+      turnstileToken,
+      request,
+      "opinie"
+    );
+    if (!turnstile.ok) {
+      return NextResponse.json(
+        { ok: false, error: turnstile.error },
+        { status: 403 }
+      );
+    }
 
     if (!zgoda) {
       return NextResponse.json(

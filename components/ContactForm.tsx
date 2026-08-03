@@ -1,6 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import TurnstileWidget, {
+  type TurnstileWidgetHandle,
+} from "@/components/TurnstileWidget";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -12,6 +15,8 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,6 +37,10 @@ export default function ContactForm() {
         throw new Error("Proszę wypełnić wszystkie pola");
       }
 
+      if (!turnstileToken) {
+        throw new Error("Dokończ weryfikację antybotową przed wysłaniem.");
+      }
+
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -40,6 +49,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           ...formData,
           recipient: "kontakt@mainly.pl",
+          turnstileToken,
         }),
       });
 
@@ -54,10 +64,14 @@ export default function ContactForm() {
 
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     } catch (err) {
       console.error("Błąd wysyłania formularza:", err);
       setSubmitStatus("error");
       setError(err instanceof Error ? err.message : "Wystąpił nieznany błąd");
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -137,10 +151,18 @@ export default function ContactForm() {
           />
         </div>
 
+        <TurnstileWidget
+          ref={turnstileRef}
+          action="contact"
+          theme="light"
+          className="kontakt-turnstile"
+          onToken={setTurnstileToken}
+        />
+
         <button
           type="submit"
           className="kontakt-submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !turnstileToken}
         >
           {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
         </button>

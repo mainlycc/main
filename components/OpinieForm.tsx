@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Star, CheckCircle2 } from "lucide-react";
+import TurnstileWidget, {
+  type TurnstileWidgetHandle,
+} from "@/components/TurnstileWidget";
 
 export default function OpinieForm() {
   const router = useRouter();
@@ -22,6 +25,8 @@ export default function OpinieForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
 
   useEffect(() => {
     if (showSuccessDialog) {
@@ -38,6 +43,12 @@ export default function OpinieForm() {
 
     if (!opinia.trim() || !zgoda) {
       setWyslano("error");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setWyslano("error");
+      setErrorMsg("Dokończ weryfikację antybotową przed wysłaniem.");
       return;
     }
 
@@ -58,6 +69,7 @@ export default function OpinieForm() {
           opinia,
           zgoda,
           zgodaCaseStudy,
+          turnstileToken,
         }),
       });
 
@@ -70,6 +82,8 @@ export default function OpinieForm() {
             ? data.error
             : "Nie udało się wysłać opinii. Spróbuj proszę ponownie później."
         );
+        setTurnstileToken(null);
+        turnstileRef.current?.reset();
         return;
       }
 
@@ -83,10 +97,14 @@ export default function OpinieForm() {
       setStanowisko("");
       setFirma("");
       setNazwaProjektu("");
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     } catch (err) {
       console.error(err);
       setWyslano("error");
       setErrorMsg("Wystąpił błąd po stronie klienta. Spróbuj ponownie.");
+      setTurnstileToken(null);
+      turnstileRef.current?.reset();
     } finally {
       setIsSubmitting(false);
     }
@@ -360,9 +378,16 @@ export default function OpinieForm() {
             </div>
           </div>
 
+          <TurnstileWidget
+            ref={turnstileRef}
+            action="opinie"
+            theme="light"
+            onToken={setTurnstileToken}
+          />
+
           <Button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !turnstileToken}
             className="bg-[#FA6503] hover:bg-[#FA6503]/90 text-white disabled:opacity-60"
           >
             {isSubmitting ? "Wysyłanie..." : "Wyślij opinię"}
