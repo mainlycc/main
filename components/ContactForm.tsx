@@ -96,7 +96,7 @@ export default function ContactForm() {
       <hr className="kontakt-form-rule" />
 
       {submitStatus === "success" ? (
-        <div className="kontakt-alert kontakt-alert--ok">
+        <div className="kontakt-alert kontakt-alert--ok" role="status">
           Dziękuję za wiadomość! Odpowiem najszybciej jak to możliwe.
         </div>
       ) : submitStatus === "error" ? (

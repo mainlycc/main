@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { getContactConfirmationEmail } from "@/lib/email-confirmation";
 import { verifyTurnstileToken } from "@/lib/turnstile";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(request: Request) {
   try {
@@ -39,6 +42,17 @@ export async function POST(request: Request) {
       );
     }
 
+    const safeName = name.trim().slice(0, 200);
+    const safeEmail = email.trim().slice(0, 320);
+    const safeMessage = message.trim().slice(0, 5000);
+
+    if (!EMAIL_RE.test(safeEmail)) {
+      return NextResponse.json(
+        { success: false, error: "Podaj poprawny adres e-mail." },
+        { status: 400 }
+      );
+    }
+
     if (!process.env.EMAIL_PASSWORD) {
       throw new Error("Brak skonfigurowanego hasła email (EMAIL_PASSWORD)");
     }
@@ -53,13 +67,10 @@ export async function POST(request: Request) {
       },
     });
 
-    const safeName = name.trim().slice(0, 200);
-    const safeEmail = email.trim().slice(0, 320);
-    const safeMessage = message.trim().slice(0, 5000);
-
     const mailOptions = {
       from: "Formularz kontaktowy <kontakt@mainly.pl>",
       to: recipient,
+      replyTo: safeEmail,
       subject: `Wiadomość od ${safeName} poprzez formularz kontaktowy`,
       text: `Imię i nazwisko: ${safeName}\nEmail: ${safeEmail}\n\nWiadomość:\n${safeMessage}`,
       html: `<p><strong>Imię i nazwisko:</strong> ${safeName}</p>
@@ -70,10 +81,33 @@ export async function POST(request: Request) {
 
     await transporter.sendMail(mailOptions);
 
+    let confirmationSent = false;
+    try {
+      const confirmation = getContactConfirmationEmail();
+      await transporter.sendMail({
+        from: "Stanisław · Mainly <kontakt@mainly.pl>",
+        to: safeEmail,
+        replyTo: "kontakt@mainly.pl",
+        subject: confirmation.subject,
+        text: confirmation.text,
+        html: confirmation.html,
+      });
+      confirmationSent = true;
+    } catch (confirmationError) {
+      console.error("Nie udało się wysłać maila potwierdzającego:", {
+        email: safeEmail,
+        error:
+          confirmationError instanceof Error
+            ? confirmationError.message
+            : confirmationError,
+      });
+    }
+
     console.log("Wiadomość kontaktowa wysłana pomyślnie:", {
       name: safeName,
       email: safeEmail,
       recipient,
+      confirmationSent,
     });
 
     return NextResponse.json({
