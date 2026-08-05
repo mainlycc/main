@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import TurnstileWidget, {
   type TurnstileWidgetHandle,
 } from "@/components/TurnstileWidget";
+import { trackMetaLead } from "@/lib/meta-pixel";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -62,6 +63,7 @@ export default function ContactForm() {
         );
       }
 
+      trackMetaLead();
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
       setTurnstileToken(null);

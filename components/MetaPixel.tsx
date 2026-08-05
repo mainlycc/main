@@ -6,16 +6,6 @@ import { useEffect, useRef } from "react";
 
 const META_PIXEL_ID = "1610376864042779";
 
-declare global {
-  interface Window {
-    fbq?: (
-      action: string,
-      eventName: string,
-      params?: Record<string, unknown>
-    ) => void;
-  }
-}
-
 export default function MetaPixel() {
   const pathname = usePathname();
   const isInitialPageView = useRef(true);
