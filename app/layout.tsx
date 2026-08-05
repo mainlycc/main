@@ -2,6 +2,7 @@ import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import MetaPixel from "../components/MetaPixel";
 import Navbar from "../components/Navbar";
 import { fontVariables, geistSans } from "../lib/fonts";
 import {
@@ -78,6 +79,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} text-[var(--fg)] bg-[var(--bg)] antialiased`}
       >
+        <MetaPixel />
         <Navbar />
         {children}
         <Analytics />
