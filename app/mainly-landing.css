@@ -1123,13 +1123,24 @@
   }
   .cta-contact{
     display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    font-size:14px;color:var(--fg-dim);
+    font-size:14px;color:var(--fg-dim);min-width:0;
   }
   .cta-contact .k{
     font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--fg-mute);
+    flex-shrink:0;
   }
-  .cta-contact .v{color:var(--fg);font-weight:500}
+  .cta-contact .v{
+    color:var(--fg);font-weight:500;min-width:0;text-align:right;
+    overflow-wrap:anywhere;word-break:break-word;
+  }
+  .cta-contact .v a{overflow-wrap:anywhere;word-break:break-word}
   .cta-contact .v a:hover{color:var(--ember-soft)}
+  @media (max-width:400px){
+    .cta-contact{
+      flex-direction:column;align-items:flex-start;gap:4px;
+    }
+    .cta-contact .v{text-align:left}
+  }
   .cta-availability{
     display:inline-flex;align-items:center;gap:8px;
     font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--fg-dim);
@@ -1187,7 +1198,7 @@
   .kontakt-page{
     padding:96px 0 48px;
   }
-  .kontakt-shell{width:100%;max-width:1080px;margin-inline:auto}
+  .kontakt-shell{width:100%;max-width:1080px;margin-inline:auto;min-width:0}
 
   .kontakt-card{
     display:grid;
@@ -1196,6 +1207,10 @@
     padding:14px;
     border-radius:28px;
     background:#fff;
+    min-width:0;
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
     box-shadow:
       0 1px 0 rgba(255,255,255,0.06) inset,
       0 30px 80px rgba(0,0,0,0.45);
@@ -1209,7 +1224,7 @@
 
   .kontakt-visual{
     position:relative;isolation:isolate;overflow:hidden;
-    border-radius:20px;min-height:520px;
+    border-radius:20px;min-height:520px;min-width:0;
     background:#0c0a09;
     display:flex;flex-direction:column;
   }
@@ -1290,6 +1305,9 @@
     display:flex;flex-direction:column;
     padding:28px 32px 24px;
     color:#14110f;
+    min-width:0;
+    width:100%;
+    max-width:100%;
     animation:kontakt-copy-in 0.75s cubic-bezier(0.22,1,0.36,1) 0.18s both;
   }
   .kontakt-form-mark{
@@ -1308,12 +1326,16 @@
     border:0;border-top:1px solid #ebebeb;
     margin:18px 0 20px;
   }
-  .kontakt-fields{display:flex;flex-direction:column;gap:16px}
+  .kontakt-fields{
+    display:flex;flex-direction:column;gap:16px;
+    min-width:0;width:100%;max-width:100%;
+  }
+  .kontakt-fields > *{min-width:0;max-width:100%}
   .kontakt-fields label{
     display:block;font-size:13px;font-weight:450;margin-bottom:7px;color:#8e8e8e;
   }
   .kontakt-input{
-    display:block;width:100%;box-sizing:border-box;
+    display:block;width:100%;max-width:100%;box-sizing:border-box;
     height:44px;padding:0 14px;
     border:1px solid #d1d1d1;border-radius:10px;
     background:#fff;color:#14110f;font:inherit;font-size:16px;
@@ -1331,9 +1353,15 @@
   .kontakt-turnstile{
     margin:2px 0 4px;
     min-height:65px;
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+  }
+  .kontakt-turnstile iframe{
+    max-width:100%;
   }
   .kontakt-submit{
-    margin-top:4px;width:100%;
+    margin-top:4px;width:100%;max-width:100%;
     display:inline-flex;align-items:center;justify-content:center;
     height:48px;padding:0 20px;border:0;border-radius:10px;cursor:pointer;
     background:linear-gradient(135deg, #ff5230 0%, #ff1500 55%, #c41e1e 100%);
@@ -1393,7 +1421,25 @@
   @media (max-width:560px){
     .kontakt-card{padding:10px;border-radius:20px}
     .kontakt-visual-inner{padding:20px 18px 18px}
-    .kontakt-form{padding:22px 12px 14px}
+    .kontakt-form{padding:22px 14px 14px}
+  }
+  @media (max-width:400px){
+    .kontakt-page .wrap.kontakt-shell{padding-inline:12px}
+    .kontakt-card{padding:8px;border-radius:18px}
+    .kontakt-visual-inner{padding:18px 14px 16px}
+    .kontakt-contacts{gap:14px}
+    .kontakt-form{padding:18px 12px 12px}
+    .kontakt-input{padding-inline:12px}
+    .kontakt-turnstile{
+      width:100%;
+      max-width:100%;
+      height:65px;
+      overflow:hidden;
+    }
+    .kontakt-turnstile iframe{
+      transform:scale(0.82);
+      transform-origin:0 0;
+    }
   }
 
   @media (prefers-reduced-motion:reduce){

@@ -15,6 +15,7 @@ type TurnstileApi = {
     options: {
       sitekey: string;
       theme?: "light" | "dark" | "auto";
+      size?: "normal" | "compact" | "flexible";
       action?: string;
       callback?: (token: string) => void;
       "expired-callback"?: () => void;
@@ -39,12 +40,13 @@ type TurnstileWidgetProps = {
   onToken: (token: string | null) => void;
   action?: string;
   theme?: "light" | "dark" | "auto";
+  size?: "normal" | "compact" | "flexible";
   className?: string;
 };
 
 const TurnstileWidget = forwardRef<TurnstileWidgetHandle, TurnstileWidgetProps>(
   function TurnstileWidget(
-    { onToken, action, theme = "auto", className },
+    { onToken, action, theme = "auto", size = "normal", className },
     ref
   ) {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -61,12 +63,13 @@ const TurnstileWidget = forwardRef<TurnstileWidgetHandle, TurnstileWidgetProps>(
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
         theme,
+        size,
         action,
         callback: (token) => onTokenRef.current(token),
         "expired-callback": () => onTokenRef.current(null),
         "error-callback": () => onTokenRef.current(null),
       });
-    }, [siteKey, theme, action]);
+    }, [siteKey, theme, size, action]);
 
     useImperativeHandle(ref, () => ({
       reset: () => {
