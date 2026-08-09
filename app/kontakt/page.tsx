@@ -47,14 +47,15 @@ export default function ContactPage() {
               <div className="kontakt-visual-inner">
                 <div className="kontakt-eyebrow">
                   <span className="pulse" />
-                  <span>Bezpłatna konsultacja · 24h</span>
+                  <span>Bezpłatna konsultacja · Odpowiedź do 24h</span>
                 </div>
                 <h1>
-                  Porozmawiajmy o <DisplayEm>Twoim projekcie</DisplayEm>.
+                  Porozmawiajmy o <DisplayEm>Twojej aplikacji</DisplayEm>.
                 </h1>
                 <p className="kontakt-visual-lead">
-                  Masz pytania albo chcesz ruszyć z projektem? Napisz — bez
-                  zobowiązań.
+                  Opowiedz mi, co chcesz usprawnić w swojej firmie. Nie musisz
+                  wiedzieć, jakiego systemu potrzebujesz — wystarczy, że opiszesz
+                  problem.
                 </p>
 
                 <div className="kontakt-contacts">

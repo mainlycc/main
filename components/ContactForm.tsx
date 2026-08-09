@@ -6,12 +6,24 @@ import TurnstileWidget, {
 } from "@/components/TurnstileWidget";
 import { trackMetaLead } from "@/lib/meta-pixel";
 
+const TOPICS = [
+  "Obsługa klientów",
+  "Dokumenty i faktury",
+  "Sprzedaż",
+  "Zadania i pracownicy",
+  "Automatyzacja procesów",
+  "Coś innego",
+] as const;
+
+type Topic = (typeof TOPICS)[number];
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [topics, setTopics] = useState<Topic[]>([]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
@@ -27,6 +39,12 @@ export default function ContactForm() {
     }));
   };
 
+  const toggleTopic = (topic: Topic) => {
+    setTopics((prev) =>
+      prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic]
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -36,6 +54,10 @@ export default function ContactForm() {
     try {
       if (!formData.name || !formData.email || !formData.message) {
         throw new Error("Proszę wypełnić wszystkie pola");
+      }
+
+      if (topics.length === 0) {
+        throw new Error("Wybierz przynajmniej jeden obszar do usprawnienia.");
       }
 
       if (!turnstileToken) {
@@ -49,6 +71,7 @@ export default function ContactForm() {
         },
         body: JSON.stringify({
           ...formData,
+          topics,
           recipient: "kontakt@mainly.pl",
           turnstileToken,
         }),
@@ -66,6 +89,7 @@ export default function ContactForm() {
       trackMetaLead();
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
+      setTopics([]);
       setTurnstileToken(null);
       turnstileRef.current?.reset();
     } catch (err) {
@@ -89,8 +113,8 @@ export default function ContactForm() {
       </div>
 
       <div className="kontakt-form-head">
-        <h2>Napisz do mnie</h2>
-        <p>Witaj w Mainly — zacznijmy od krótkiej wiadomości</p>
+        <h2>Opowiedz mi, czego potrzebujesz</h2>
+        <p>Wypełnienie formularza zajmie około minuty.</p>
       </div>
 
       <hr className="kontakt-form-rule" />
@@ -111,21 +135,21 @@ export default function ContactForm() {
 
       <form onSubmit={handleSubmit} className="kontakt-fields">
         <div>
-          <label htmlFor="name">Imię i nazwisko</label>
+          <label htmlFor="name">Imię</label>
           <input
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Jan Kowalski"
+            placeholder="Jan"
             className="kontakt-input"
             required
-            autoComplete="name"
+            autoComplete="given-name"
           />
         </div>
 
         <div>
-          <label htmlFor="email">Twój email</label>
+          <label htmlFor="email">E-mail</label>
           <input
             id="email"
             name="email"
@@ -139,14 +163,34 @@ export default function ContactForm() {
           />
         </div>
 
+        <fieldset className="kontakt-topics">
+          <legend>Co chcesz usprawnić?</legend>
+          <div className="kontakt-topics-grid" role="group" aria-label="Obszary do usprawnienia">
+            {TOPICS.map((topic) => {
+              const selected = topics.includes(topic);
+              return (
+                <button
+                  key={topic}
+                  type="button"
+                  className={`kontakt-topic${selected ? " is-selected" : ""}`}
+                  aria-pressed={selected}
+                  onClick={() => toggleTopic(topic)}
+                >
+                  {topic}
+                </button>
+              );
+            })}
+          </div>
+        </fieldset>
+
         <div>
-          <label htmlFor="message">Wiadomość</label>
+          <label htmlFor="message">Opisz krótko, czego potrzebujesz</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Opisz swój projekt lub zadaj pytanie..."
+            placeholder="Np. dane klientów trzymamy w Excelu, dokumenty tworzymy ręcznie i chcielibyśmy mieć wszystko w jednym systemie..."
             className="kontakt-input kontakt-textarea"
             required
             rows={4}
@@ -166,13 +210,12 @@ export default function ContactForm() {
           className="kontakt-submit"
           disabled={isSubmitting || !turnstileToken}
         >
-          {isSubmitting ? "Wysyłanie..." : "Wyślij wiadomość"}
+          {isSubmitting ? "Wysyłanie..." : "Chcę omówić rozwiązanie →"}
         </button>
       </form>
 
       <p className="kontakt-form-foot">
-        Wolisz maila?{" "}
-        <a href="mailto:kontakt@mainly.pl">kontakt@mainly.pl</a>
+        Bezpłatna konsultacja · Bez zobowiązań · Odpowiedź do 24h
       </p>
     </div>
   );

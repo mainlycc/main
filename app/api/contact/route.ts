@@ -12,6 +12,7 @@ export async function POST(request: Request) {
       name,
       email,
       message,
+      topics,
       recipient = "kontakt@mainly.pl",
       turnstileToken,
     } = body;
@@ -45,6 +46,13 @@ export async function POST(request: Request) {
     const safeName = name.trim().slice(0, 200);
     const safeEmail = email.trim().slice(0, 320);
     const safeMessage = message.trim().slice(0, 5000);
+    const safeTopics = Array.isArray(topics)
+      ? topics
+          .filter((t): t is string => typeof t === "string" && t.trim().length > 0)
+          .map((t) => t.trim().slice(0, 80))
+          .slice(0, 10)
+      : [];
+    const topicsLine = safeTopics.length > 0 ? safeTopics.join(", ") : "—";
 
     if (!EMAIL_RE.test(safeEmail)) {
       return NextResponse.json(
@@ -72,9 +80,10 @@ export async function POST(request: Request) {
       to: recipient,
       replyTo: safeEmail,
       subject: `Wiadomość od ${safeName} poprzez formularz kontaktowy`,
-      text: `Imię i nazwisko: ${safeName}\nEmail: ${safeEmail}\n\nWiadomość:\n${safeMessage}`,
-      html: `<p><strong>Imię i nazwisko:</strong> ${safeName}</p>
+      text: `Imię: ${safeName}\nEmail: ${safeEmail}\nCo chce usprawnić: ${topicsLine}\n\nWiadomość:\n${safeMessage}`,
+      html: `<p><strong>Imię:</strong> ${safeName}</p>
              <p><strong>Email:</strong> ${safeEmail}</p>
+             <p><strong>Co chce usprawnić:</strong> ${topicsLine}</p>
              <p><strong>Wiadomość:</strong></p>
              <p>${safeMessage.replace(/\n/g, "<br/>")}</p>`,
     };

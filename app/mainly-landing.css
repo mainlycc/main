@@ -1285,7 +1285,7 @@
     -webkit-text-fill-color:transparent;color:transparent;
   }
   .kontakt-visual-lead{
-    margin:0;max-width:32ch;
+    margin:0;max-width:38ch;
     color:rgba(245,241,236,0.62);font-size:15px;line-height:1.5;text-wrap:pretty;
     animation:kontakt-copy-in 0.8s cubic-bezier(0.22,1,0.36,1) 0.22s both;
   }
@@ -1331,8 +1331,36 @@
     min-width:0;width:100%;max-width:100%;
   }
   .kontakt-fields > *{min-width:0;max-width:100%}
-  .kontakt-fields label{
+  .kontakt-fields label,
+  .kontakt-topics legend{
     display:block;font-size:13px;font-weight:450;margin-bottom:7px;color:#8e8e8e;
+  }
+  .kontakt-topics{
+    margin:0;padding:0;border:0;min-width:0;
+  }
+  .kontakt-topics-grid{
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .kontakt-topic{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:9px 12px;border-radius:10px;cursor:pointer;
+    border:1px solid #d1d1d1;background:#fff;color:#14110f;
+    font:inherit;font-size:13px;line-height:1.25;text-align:center;
+    transition:border-color .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
+  }
+  .kontakt-topic:hover{
+    border-color:#b8b8b8;
+  }
+  .kontakt-topic.is-selected{
+    border-color:var(--ember);
+    background:color-mix(in srgb, var(--ember) 8%, #fff);
+    color:#14110f;
+    box-shadow:0 0 0 2px color-mix(in srgb, var(--ember) 16%, transparent);
+  }
+  .kontakt-topic:focus-visible{
+    outline:none;
+    border-color:var(--ember);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--ember) 18%, transparent);
   }
   .kontakt-input{
     display:block;width:100%;max-width:100%;box-sizing:border-box;
