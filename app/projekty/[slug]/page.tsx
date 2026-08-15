@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/seo/JsonLd";
 import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
+import { breadcrumbSchema, ORG_ID } from "@/lib/schema";
+import { absoluteUrl, resolveImageUrl, SITE_URL } from "@/lib/seo";
 import ProjectDetailClient from "./ProjectDetailClient";
 
 export async function generateStaticParams() {
@@ -21,15 +24,22 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${project.name} - Case Study | Mainly`,
+    title: `${project.name} - case study | Mainly`,
     description: project.description,
     alternates: { canonical: `/projekty/${project.slug}` },
     openGraph: {
       title: `${project.name} | Mainly`,
       description: project.description,
-      url: `https://mainly.pl/projekty/${project.slug}`,
-      type: "website",
-      images: [{ url: project.image, width: 1200, height: 630, alt: project.name }],
+      url: absoluteUrl(`/projekty/${project.slug}`),
+      type: "article",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: `${project.name} — projekt zrealizowany przez Mainly`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
@@ -57,5 +67,39 @@ export default async function ProjectDetailPage({
     .filter((item) => item.slug !== slug)
     .slice(0, 3);
 
-  return <ProjectDetailClient project={project} relatedProjects={relatedProjects} />;
+  const projectUrl = absoluteUrl(`/projekty/${project.slug}`);
+
+  const caseStudySchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: project.name,
+    headline: `${project.name} — case study`,
+    description: project.fullDescription || project.description,
+    url: projectUrl,
+    image: resolveImageUrl(project.image),
+    dateCreated: String(project.year),
+    creator: { "@id": ORG_ID },
+    provider: { "@id": ORG_ID },
+    keywords: project.technologies.join(", "),
+    about: {
+      "@type": "Service",
+      name: "Tworzenie aplikacji webowych i stron internetowych",
+      provider: { "@id": ORG_ID },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": projectUrl },
+  };
+
+  return (
+    <>
+      <JsonLd data={caseStudySchema} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Mainly", url: SITE_URL },
+          { name: "Portfolio", url: absoluteUrl("/projekty") },
+          { name: project.name, url: projectUrl },
+        ])}
+      />
+      <ProjectDetailClient project={project} relatedProjects={relatedProjects} />
+    </>
+  );
 }

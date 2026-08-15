@@ -16,18 +16,13 @@ export default function FaqSection() {
           <div>
             <SectionLabel num="07" label="FAQ" />
             <h2 className="sec-title">
-              Często zadawane <DisplayEm>pytania</DisplayEm>.
+              Tworzenie stron i aplikacji webowych —{" "}
+              <DisplayEm>pytania i odpowiedzi</DisplayEm>.
             </h2>
             <p className="sec-lead">
               Nie ma tu twojego pytania?{" "}
-              <Link
-                href="#kontakt"
-                style={{
-                  color: "var(--ember-soft)",
-                  borderBottom: "1px solid currentColor",
-                }}
-              >
-                Napisz do nas →
+              <Link href="#kontakt" className="inline-link">
+                Napisz do mnie →
               </Link>
             </p>
           </div>

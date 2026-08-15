@@ -9,7 +9,8 @@ export default function TechSection() {
       <div className="wrap">
         <SectionLabel num="04" label="Nasz stack" />
         <h2 className="sec-title">
-          Narzędzia, które <DisplayEm>nie zawodzą</DisplayEm>.
+          Technologie, w których buduję strony i{" "}
+          <DisplayEm>aplikacje webowe</DisplayEm>.
         </h2>
         <p className="sec-lead">
           Stack dobieram pod projekt - nie odwrotnie. Nie narzucam technologii

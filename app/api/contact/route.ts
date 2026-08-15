@@ -11,8 +11,10 @@ export async function POST(request: Request) {
     const {
       name,
       email,
+      phone,
       message,
       topics,
+      sourcePath,
       recipient = "kontakt@mainly.pl",
       turnstileToken,
     } = body;
@@ -46,6 +48,14 @@ export async function POST(request: Request) {
     const safeName = name.trim().slice(0, 200);
     const safeEmail = email.trim().slice(0, 320);
     const safeMessage = message.trim().slice(0, 5000);
+    const safePhone =
+      typeof phone === "string" && phone.trim()
+        ? phone.trim().slice(0, 40)
+        : "";
+    const safeSource =
+      typeof sourcePath === "string" && sourcePath.trim()
+        ? sourcePath.trim().slice(0, 200)
+        : "—";
     const safeTopics = Array.isArray(topics)
       ? topics
           .filter((t): t is string => typeof t === "string" && t.trim().length > 0)
@@ -75,15 +85,19 @@ export async function POST(request: Request) {
       },
     });
 
+    const phoneLine = safePhone || "— (nie podano)";
+
     const mailOptions = {
       from: "Formularz kontaktowy <kontakt@mainly.pl>",
       to: recipient,
       replyTo: safeEmail,
       subject: `Wiadomość od ${safeName} poprzez formularz kontaktowy`,
-      text: `Imię: ${safeName}\nEmail: ${safeEmail}\nCo chce usprawnić: ${topicsLine}\n\nWiadomość:\n${safeMessage}`,
+      text: `Imię: ${safeName}\nEmail: ${safeEmail}\nTelefon: ${phoneLine}\nCo chce usprawnić: ${topicsLine}\nStrona źródłowa: ${safeSource}\n\nWiadomość:\n${safeMessage}`,
       html: `<p><strong>Imię:</strong> ${safeName}</p>
              <p><strong>Email:</strong> ${safeEmail}</p>
+             <p><strong>Telefon:</strong> ${phoneLine}</p>
              <p><strong>Co chce usprawnić:</strong> ${topicsLine}</p>
+             <p><strong>Strona źródłowa:</strong> ${safeSource}</p>
              <p><strong>Wiadomość:</strong></p>
              <p>${safeMessage.replace(/\n/g, "<br/>")}</p>`,
     };
@@ -116,6 +130,7 @@ export async function POST(request: Request) {
       name: safeName,
       email: safeEmail,
       recipient,
+      sourcePath: safeSource,
       confirmationSent,
     });
 

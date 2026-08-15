@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import { industries } from "@/lib/industries";
+import { services } from "@/lib/services";
+import { BUSINESS } from "@/lib/site";
 
 export default function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <div className="foot">
+        <div className="foot foot--wide">
           <div className="col foot-brand">
             <div className="brand">
               <span className="icon">
@@ -18,59 +21,86 @@ export default function Footer() {
               zastępują ręczną pracę w firmach.
             </p>
           </div>
+
           <div className="col">
-            <h5>Usługi</h5>
+            <h2 className="foot-heading">Usługi</h2>
             <ul>
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link href={`/uslugi/${service.slug}`}>{service.navLabel}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col">
+            <h2 className="foot-heading">Branże</h2>
+            <ul>
+              {industries.slice(0, 6).map((industry) => (
+                <li key={industry.slug}>
+                  <Link href={`/branze/${industry.slug}`}>
+                    {industry.navLabel}
+                  </Link>
+                </li>
+              ))}
               <li>
-                <Link href="/#cennik">Strony internetowe</Link>
-              </li>
-              <li>
-                <Link href="/#prace">Aplikacje webowe</Link>
-              </li>
-              <li>
-                <Link href="/#proces">UX/UI Design</Link>
-              </li>
-              <li>
-                <Link href="/#faq">SEO i analityka</Link>
+                <Link href="/branze">Wszystkie branże</Link>
               </li>
             </ul>
           </div>
+
           <div className="col">
-            <h5>Firma</h5>
+            <h2 className="foot-heading">Firma</h2>
             <ul>
+              <li>
+                <Link href="/o-mnie">O mnie</Link>
+              </li>
+              <li>
+                <Link href="/proces">Proces współpracy</Link>
+              </li>
+              <li>
+                <Link href="/cennik">Cennik</Link>
+              </li>
+              <li>
+                <Link href="/projekty">Portfolio</Link>
+              </li>
               <li>
                 <Link href="/blog">Blog</Link>
               </li>
               <li>
-                <Link href="/kontakt">Kontakt</Link>
-              </li>
-              <li>
-                <Link href="/#prace">Portfolio</Link>
-              </li>
-              <li>
                 <Link href="/opinie">Opinie klientów</Link>
+              </li>
+              <li>
+                <Link href="/tworzenie-stron-internetowych-warszawa">
+                  Strony internetowe Warszawa
+                </Link>
               </li>
               <li>
                 <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
               </li>
             </ul>
           </div>
+
           <div className="col">
-            <h5>Kontakt</h5>
+            <h2 className="foot-heading">Kontakt</h2>
             <ul>
               <li>
-                <Link href="mailto:kontakt@mainly.pl">kontakt@mainly.pl</Link>
+                <Link href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</Link>
               </li>
               <li>
-                <Link href="tel:+48500789826">+48 500 789 826</Link>
+                <Link href={`tel:${BUSINESS.telephone}`}>
+                  {BUSINESS.telephoneDisplay}
+                </Link>
               </li>
               <li>
-                ul. Filtrowa 83
+                {BUSINESS.street}
                 <br />
-                <small>02-032 Warszawa, Polska</small>
+                <small>
+                  {BUSINESS.postalCode} {BUSINESS.city}, Polska
+                </small>
               </li>
               <li>
-                <small>NIP: 7010961986</small>
+                <small>NIP: {BUSINESS.taxID}</small>
               </li>
             </ul>
           </div>

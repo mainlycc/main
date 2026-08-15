@@ -30,3 +30,310 @@
     @apply border-border;
   }
 }
+
+/* --- Dodatki SEO/CRO --- */
+
+/* Link w treści — używany w sekcjach opisowych i na stronach usług/branż */
+.inline-link {
+  color: var(--ember-soft);
+  border-bottom: 1px solid currentColor;
+  transition: opacity 0.2s ease;
+}
+.inline-link:hover {
+  opacity: 0.75;
+}
+
+/* Sticky CTA na mobile — najkrótsza droga do formularza na małych ekranach */
+.mobile-cta {
+  display: none;
+}
+@media (max-width: 860px) {
+  .mobile-cta {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(10, 9, 8, 0.92);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .mobile-cta-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .mobile-cta-copy strong {
+    font-size: 14px;
+    color: var(--fg);
+  }
+  .mobile-cta-copy span {
+    font-size: 12px;
+    color: var(--fg-dim);
+  }
+  .mobile-cta-btn {
+    flex-shrink: 0;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    background: var(--ember, #ff2a14);
+    color: #fff;
+    white-space: nowrap;
+  }
+  body {
+    padding-bottom: 68px;
+  }
+}
+
+/* Strony usług i branż */
+.page-head {
+  padding-top: 120px;
+  padding-bottom: 8px;
+}
+@media (min-width: 768px) {
+  .page-head {
+    padding-top: 140px;
+  }
+}
+.page-section {
+  padding-bottom: 24px;
+}
+.checklist {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 48px;
+  padding: 0;
+  list-style: none;
+  max-width: 760px;
+}
+.checklist li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--fg-dim);
+  line-height: 1.55;
+}
+.checklist li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--ember-soft);
+}
+.prose-block {
+  max-width: 760px;
+  color: var(--fg-dim);
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.prose-block strong {
+  color: var(--fg);
+}
+.link-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 64px;
+}
+.link-card {
+  display: block;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.link-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+.link-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--fg);
+}
+.link-card p {
+  font-size: 15px;
+  color: var(--fg-dim);
+  line-height: 1.5;
+}
+.link-card .arr {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--ember-soft);
+}
+
+/* Strona podziękowania */
+.thanks-steps {
+  counter-reset: step;
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 48px;
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+}
+.thanks-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 44px;
+  color: var(--fg-dim);
+  line-height: 1.55;
+}
+.thanks-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 13px;
+  color: var(--ember-soft);
+}
+
+/* --- Formularz dwuetapowy --- */
+.kontakt-progress {
+  display: flex;
+  gap: 6px;
+  margin: 14px 0 4px;
+}
+.kontakt-progress span {
+  height: 3px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(20, 17, 15, 0.12);
+  transition: background 0.3s ease;
+}
+.kontakt-progress span.is-done {
+  background: var(--ember);
+}
+.kontakt-back {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  color: rgba(20, 17, 15, 0.55);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.kontakt-back:hover {
+  color: var(--ember);
+}
+.kontakt-optional {
+  font-weight: 400;
+  color: rgba(20, 17, 15, 0.45);
+}
+.kontakt-rodo {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(20, 17, 15, 0.5);
+  margin-top: -4px;
+}
+
+/* Biała karta pod formularz osadzony poza stroną /kontakt */
+.home-form-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.home-form-card .kontakt-form {
+  animation: none;
+}
+.home-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .home-form-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+.home-form-proof {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.home-form-proof blockquote {
+  margin: 0;
+  padding: 16px 18px;
+  border-left: 2px solid var(--ember);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 12px 12px 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-dim);
+}
+.home-form-proof cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 13px;
+  color: rgba(245, 241, 236, 0.45);
+}
+
+/* Tabela widełek cenowych */
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  min-width: 640px;
+}
+.price-table th,
+.price-table td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+.price-table th {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  font-weight: 500;
+}
+.price-table td {
+  color: var(--fg-dim);
+  line-height: 1.5;
+}
+.price-table td strong {
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+/* Stopka z pełną mapą serwisu — więcej kolumn niż wcześniej */
+.foot.foot--wide {
+  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+}
+@media (max-width: 1100px) {
+  .foot.foot--wide {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 760px) {
+  .foot.foot--wide {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .foot.foot--wide {
+    grid-template-columns: 1fr;
+  }
+}

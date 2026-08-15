@@ -1,10 +1,17 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import TurnstileWidget, {
   type TurnstileWidgetHandle,
 } from "@/components/TurnstileWidget";
 import { trackMetaLead } from "@/lib/meta-pixel";
+import {
+  trackFormStart,
+  trackFormStep2,
+  trackGenerateLead,
+} from "@/lib/analytics";
 
 const TOPICS = [
   "Obsługa klientów",
@@ -18,60 +25,82 @@ const TOPICS = [
 type Topic = (typeof TOPICS)[number];
 
 export default function ContactForm() {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [topics, setTopics] = useState<Topic[]>([]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const hasStarted = useRef(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const markStarted = () => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+    trackFormStart();
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    markStarted();
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const toggleTopic = (topic: Topic) => {
+    markStarted();
+    setError(null);
     setTopics((prev) =>
       prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic]
     );
   };
 
+  const goToStep2 = () => {
+    if (topics.length === 0) {
+      setError("Zaznacz przynajmniej jeden obszar — to zajmie sekundę.");
+      return;
+    }
+    setError(null);
+    setStep(2);
+    trackFormStep2();
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus("idle");
     setError(null);
 
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setError("Uzupełnij imię, e-mail i krótki opis.");
+      return;
+    }
+
+    if (!turnstileToken) {
+      setError(
+        "Trwa weryfikacja antybotowa — poczekaj chwilę i kliknij ponownie."
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+
     try {
-      if (!formData.name || !formData.email || !formData.message) {
-        throw new Error("Proszę wypełnić wszystkie pola");
-      }
-
-      if (topics.length === 0) {
-        throw new Error("Wybierz przynajmniej jeden obszar do usprawnienia.");
-      }
-
-      if (!turnstileToken) {
-        throw new Error("Dokończ weryfikację antybotową przed wysłaniem.");
-      }
-
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
           topics,
+          sourcePath: pathname,
           recipient: "kontakt@mainly.pl",
           turnstileToken,
         }),
@@ -87,18 +116,16 @@ export default function ContactForm() {
       }
 
       trackMetaLead();
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      setTopics([]);
-      setTurnstileToken(null);
-      turnstileRef.current?.reset();
+      trackGenerateLead(pathname ?? "/", topics);
+
+      // Przekierowanie na osobny URL — bez tego konwersji nie da się zmierzyć
+      // w GA4 ani powiązać z frazą w Search Console.
+      router.push("/kontakt/dziekujemy");
     } catch (err) {
       console.error("Błąd wysyłania formularza:", err);
-      setSubmitStatus("error");
       setError(err instanceof Error ? err.message : "Wystąpił nieznany błąd");
       setTurnstileToken(null);
       turnstileRef.current?.reset();
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -113,109 +140,148 @@ export default function ContactForm() {
       </div>
 
       <div className="kontakt-form-head">
-        <h2>Opowiedz mi, czego potrzebujesz</h2>
-        <p>Wypełnienie formularza zajmie około minuty.</p>
+        <h2>
+          {step === 1
+            ? "Co chcesz usprawnić?"
+            : "Zostaw kontakt — odezwę się w 24 h"}
+        </h2>
+        <p>
+          {step === 1
+            ? "Zaznacz obszary. Jedno kliknięcie, bez wypełniania niczego."
+            : "Zostały dwa pola i krótki opis. Około minuty."}
+        </p>
+      </div>
+
+      <div className="kontakt-progress" aria-hidden="true">
+        <span className="is-done" />
+        <span className={step === 2 ? "is-done" : ""} />
       </div>
 
       <hr className="kontakt-form-rule" />
 
-      {submitStatus === "success" ? (
-        <div className="kontakt-alert kontakt-alert--ok" role="status">
-          Dziękuję za wiadomość! Odpowiem najszybciej jak to możliwe.
+      {error && (
+        <div className="kontakt-alert kontakt-alert--err" role="alert">
+          <p>{error}</p>
         </div>
-      ) : submitStatus === "error" ? (
-        <div className="kontakt-alert kontakt-alert--err">
-          <p>
-            Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub napisz na{" "}
-            kontakt@mainly.pl.
-          </p>
-          {error && <p className="kontakt-alert-detail">Szczegóły: {error}</p>}
-        </div>
-      ) : null}
+      )}
 
-      <form onSubmit={handleSubmit} className="kontakt-fields">
-        <div>
-          <label htmlFor="name">Imię</label>
-          <input
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Jan"
-            className="kontakt-input"
-            required
-            autoComplete="given-name"
-          />
-        </div>
+      {step === 1 ? (
+        <div className="kontakt-fields">
+          <fieldset className="kontakt-topics">
+            <legend className="sr-only">Obszary do usprawnienia</legend>
+            <div
+              className="kontakt-topics-grid"
+              role="group"
+              aria-label="Obszary do usprawnienia"
+            >
+              {TOPICS.map((topic) => {
+                const selected = topics.includes(topic);
+                return (
+                  <button
+                    key={topic}
+                    type="button"
+                    className={`kontakt-topic${selected ? " is-selected" : ""}`}
+                    aria-pressed={selected}
+                    onClick={() => toggleTopic(topic)}
+                  >
+                    {topic}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
 
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="jan@firma.pl"
-            className="kontakt-input"
-            required
-            autoComplete="email"
-          />
+          <button type="button" className="kontakt-submit" onClick={goToStep2}>
+            Dalej →
+          </button>
         </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="kontakt-fields">
+          <button
+            type="button"
+            className="kontakt-back"
+            onClick={() => setStep(1)}
+          >
+            ← Zmień obszary ({topics.length})
+          </button>
 
-        <fieldset className="kontakt-topics">
-          <legend>Co chcesz usprawnić?</legend>
-          <div className="kontakt-topics-grid" role="group" aria-label="Obszary do usprawnienia">
-            {TOPICS.map((topic) => {
-              const selected = topics.includes(topic);
-              return (
-                <button
-                  key={topic}
-                  type="button"
-                  className={`kontakt-topic${selected ? " is-selected" : ""}`}
-                  aria-pressed={selected}
-                  onClick={() => toggleTopic(topic)}
-                >
-                  {topic}
-                </button>
-              );
-            })}
+          <div>
+            <label htmlFor="name">Imię</label>
+            <input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Jan"
+              className="kontakt-input"
+              autoComplete="given-name"
+            />
           </div>
-        </fieldset>
 
-        <div>
-          <label htmlFor="message">Opisz krótko, czego potrzebujesz</label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Np. dane klientów trzymamy w Excelu, dokumenty tworzymy ręcznie i chcielibyśmy mieć wszystko w jednym systemie..."
-            className="kontakt-input kontakt-textarea"
-            required
-            rows={4}
+          <div>
+            <label htmlFor="email">E-mail</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="jan@firma.pl"
+              className="kontakt-input"
+              autoComplete="email"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="phone">
+              Telefon <span className="kontakt-optional">(opcjonalnie)</span>
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+48 600 000 000"
+              className="kontakt-input"
+              autoComplete="tel"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message">Opisz krótko, czego potrzebujesz</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Np. dane klientów trzymamy w Excelu, dokumenty tworzymy ręcznie i chcielibyśmy mieć wszystko w jednym systemie..."
+              className="kontakt-input kontakt-textarea"
+              rows={4}
+            />
+          </div>
+
+          <TurnstileWidget
+            ref={turnstileRef}
+            action="contact"
+            theme="light"
+            className="kontakt-turnstile"
+            onToken={setTurnstileToken}
           />
-        </div>
 
-        <TurnstileWidget
-          ref={turnstileRef}
-          action="contact"
-          theme="light"
-          className="kontakt-turnstile"
-          onToken={setTurnstileToken}
-        />
+          <button type="submit" className="kontakt-submit" disabled={isSubmitting}>
+            {isSubmitting ? "Wysyłanie..." : "Chcę omówić rozwiązanie →"}
+          </button>
 
-        <button
-          type="submit"
-          className="kontakt-submit"
-          disabled={isSubmitting || !turnstileToken}
-        >
-          {isSubmitting ? "Wysyłanie..." : "Chcę omówić rozwiązanie →"}
-        </button>
-      </form>
+          <p className="kontakt-rodo">
+            Twoje dane trafiają tylko do mnie. Bez newslettera, bez spamu, bez
+            przekazywania dalej.
+          </p>
+        </form>
+      )}
 
       <p className="kontakt-form-foot">
-        Bezpłatna konsultacja · Bez zobowiązań · Odpowiedź do 24h
+        Bezpłatna konsultacja · Bez zobowiązań · Odpowiadam w 24 h w dni robocze
       </p>
     </div>
   );

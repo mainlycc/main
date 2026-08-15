@@ -1,51 +1,50 @@
-import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
+import ContactLinks from "@/components/ContactLinks";
 import DisplayEm from "@/components/DisplayEm";
+import { testimonials } from "@/lib/home-content";
 
+/**
+ * Sekcja konwersyjna strony głównej.
+ *
+ * Formularz jest tu OSADZONY, a nie podlinkowany. Wcześniej ta sekcja była
+ * banerem z odnośnikiem do /kontakt — przy 92 wizytach na "/" i 7 na "/kontakt"
+ * oznaczało to, że ok. 92% ruchu nigdy nie widziało formularza.
+ */
 export default function CtaSection() {
+  const proof = testimonials.slice(0, 2);
+
   return (
     <section id="kontakt">
       <div className="wrap">
-        <div className="cta-banner">
+        <div className="home-form-layout">
           <div>
             <div className="cta-label">
               <span className="pulse" />
               <span>Aktualnie dostępny · odpowiadam tego samego dnia</span>
             </div>
-            <h2>
+            <h2 className="sec-title">
               Zamieńmy Twój pomysł w <DisplayEm>działający produkt</DisplayEm>.
             </h2>
-            <p>
-              Bezpłatna konsultacja online - 30 minut. Omówimy zakres,
-              ustalimy technologię i powiem wprost, ile to zajmie i będzie
-              kosztować. Bez zobowiązań.
+            <p className="sec-lead" style={{ marginBottom: 24 }}>
+              Bezpłatna konsultacja online - 30 minut. Omówimy zakres, ustalimy
+              technologię i powiem wprost, ile to zajmie i będzie kosztować. Bez
+              zobowiązań.
             </p>
+
+            <ContactLinks />
+
+            <div className="home-form-proof">
+              {proof.map((item) => (
+                <blockquote key={item.name}>
+                  {item.text}
+                  <cite>{item.name}</cite>
+                </blockquote>
+              ))}
+            </div>
           </div>
-          <div className="cta-right">
-            <Link href="/kontakt" className="btn-primary">
-              Umów konsultację <span className="arr">↗</span>
-            </Link>
-            <div className="cta-availability">
-              <span className="dot" />
-              <span>Odpowiadam w 24h w dni robocze</span>
-            </div>
-            <div className="cta-contacts">
-              <div className="cta-contact">
-                <span className="k">Email</span>
-                <span className="v">
-                  <Link href="mailto:kontakt@mainly.pl">kontakt@mainly.pl</Link>
-                </span>
-              </div>
-              <div className="cta-contact">
-                <span className="k">Telefon</span>
-                <span className="v">
-                  <Link href="tel:+48500789826">+48 500 789 826</Link>
-                </span>
-              </div>
-              <div className="cta-contact">
-                <span className="k">Biuro</span>
-                <span className="v">Warszawa, Filtrowa 83</span>
-              </div>
-            </div>
+
+          <div className="home-form-card">
+            <ContactForm />
           </div>
         </div>
       </div>

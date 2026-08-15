@@ -17,17 +17,17 @@ export default async function HeroSection() {
           </div>
 
           <h1 className="title">
-            <span>Systemy, które zastępują ręczną pracę</span>
+            <span>Aplikacje webowe i systemy, które zastępują ręczną pracę</span>
             <span className="line2">
               <DisplayEm>w Twojej firmie.</DisplayEm>
             </span>
           </h1>
 
           <p className="hero-lead">
-            Budujemy aplikacje webowe i systemy na miarę – takie, które
-            zastępują arkusze, eliminują ręczne procesy i dają właścicielowi
-            pełną kontrolę w czasie rzeczywistym. Od projektu po wdrożenie, bez
-            podwykonawców.
+            Buduję aplikacje webowe, systemy i strony na zamówienie – takie,
+            które zastępują arkusze, eliminują ręczne procesy i dają
+            właścicielowi pełną kontrolę w czasie rzeczywistym. Od projektu po
+            wdrożenie, bez podwykonawców.
           </p>
 
           <div className="hero-actions">
@@ -54,7 +54,7 @@ export default async function HeroSection() {
                 ★★★★★
               </div>
               <span>
-                Zaufało nam już <strong>36+</strong> firm
+                Zaufało mi już <strong>36+</strong> firm
               </span>
             </div>
           </div>

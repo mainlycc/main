@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { getSupabase } from '../lib/supabase'
+import { industries } from '../lib/industries'
 import { projects } from '../lib/projects'
+import { services } from '../lib/services'
 import { SITE_URL } from '../lib/seo'
 
 type BlogSitemapPost = {
@@ -29,16 +31,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ? new Date(blogPosts[0].published_at)
     : new Date()
 
+  const now = new Date()
+
   const staticRoutes: MetadataRoute.Sitemap = [
+    { url: SITE_URL, lastModified: now, changeFrequency: 'monthly', priority: 1.0 },
     {
-      url: SITE_URL,
-      lastModified: new Date(),
+      url: `${SITE_URL}/uslugi`,
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 1.0,
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/branze`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/cennik`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/proces`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/o-mnie`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.7,
+    },
+    {
+      url: `${SITE_URL}/tworzenie-stron-internetowych-warszawa`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${SITE_URL}/projekty`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
@@ -50,27 +85,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/kontakt`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/opinie`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'monthly',
-      priority: 0.6,
+      priority: 0.5,
     },
     {
       url: `${SITE_URL}/polityka-prywatnosci`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
   ]
 
+  const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${SITE_URL}/uslugi/${service.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.9,
+  }))
+
+  const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
+    url: `${SITE_URL}/branze/${industry.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${SITE_URL}/projekty/${project.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
@@ -82,5 +131,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...projectRoutes, ...blogRoutes]
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...industryRoutes,
+    ...projectRoutes,
+    ...blogRoutes,
+  ]
 }

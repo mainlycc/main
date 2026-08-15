@@ -867,7 +867,7 @@
   .case .thumb .device .preview .card:nth-child(2){background:#222}
   .case .thumb .device .preview .card:nth-child(3){background:#e6e1d8}
   .case .meta{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
-  .case h4{font-family:var(--sans);font-weight:500;font-size:24px;letter-spacing:-0.02em;line-height:1.2}
+  .case h4,.case h2,.case h3{font-family:var(--sans);font-weight:500;font-size:24px;letter-spacing:-0.02em;line-height:1.2}
   .case .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .case .tags span{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-mute);padding:4px 8px;border:1px solid var(--line);border-radius:999px}
   .case .arr{
@@ -905,7 +905,7 @@
     font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--fg-mute);
   }
   .price.featured .tag{color:var(--ember-soft)}
-  .price h4{font-family:var(--sans);font-weight:500;font-size:28px;letter-spacing:-0.02em}
+  .price h4,.price h3{font-family:var(--sans);font-weight:500;font-size:28px;letter-spacing:-0.02em}
   .price .desc{color:var(--fg-dim);font-size:14px;min-height:48px}
   .price .amount{
     display:flex;align-items:baseline;gap:8px;
@@ -1182,7 +1182,7 @@
     .foot .col ul{gap:4px}
     .foot .col a{display:inline-flex;align-items:center;min-height:40px;padding:8px 0}
   }
-  .foot .col h5{
+  .foot .col h5,.foot .col .foot-heading{
     font-family:var(--mono);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--fg-mute);margin-bottom:18px;
   }
   .foot .col ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--fg-dim)}

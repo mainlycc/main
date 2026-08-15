@@ -4,19 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { trackCtaClick } from "@/lib/analytics";
 
+/**
+ * Wszystkie pozycje to realne adresy URL, nie kotwice.
+ * Kotwica (#cennik, #proces) nie przekazuje mocy linkowania i nie może
+ * rankować jako osobny wynik w Google.
+ */
 const navLinks = [
-  { href: "#proces", label: "Proces", anchor: true },
-  { href: "#cennik", label: "Cennik", anchor: true },
-  { href: "/blog", label: "Blog", anchor: false },
-  { href: "/projekty", label: "Portfolio", anchor: false },
-  { href: "/kontakt", label: "Kontakt", anchor: false },
+  { href: "/uslugi", label: "Usługi" },
+  { href: "/branze", label: "Branże" },
+  { href: "/cennik", label: "Cennik" },
+  { href: "/projekty", label: "Portfolio" },
+  { href: "/blog", label: "Blog" },
+  { href: "/kontakt", label: "Kontakt" },
 ];
-
-function resolveHref(pathname: string, href: string, anchor: boolean) {
-  if (!anchor) return href;
-  return pathname === "/" ? href : `/${href}`;
-}
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -64,15 +66,24 @@ export default function Navbar() {
           </Link>
 
           <ul className="nav-desktop">
-            {navLinks.map(({ href, label, anchor }) => (
+            {navLinks.map(({ href, label }) => (
               <li key={label}>
-                <Link href={resolveHref(pathname, href, anchor)}>{label}</Link>
+                <Link
+                  href={href}
+                  aria-current={pathname === href ? "page" : undefined}
+                >
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
 
           <div className="nav-actions">
-            <Link href={ctaHref} className="cta nav-cta">
+            <Link
+              href={ctaHref}
+              className="cta nav-cta"
+              onClick={() => trackCtaClick("navbar")}
+            >
               Umów rozmowę <span className="arr" aria-hidden>→</span>
             </Link>
             <button
@@ -91,15 +102,22 @@ export default function Navbar() {
 
         <div className="nav-mobile" aria-hidden={!menuOpen}>
           <ul>
-            {navLinks.map(({ href, label, anchor }) => (
+            {navLinks.map(({ href, label }) => (
               <li key={label}>
-                <Link href={resolveHref(pathname, href, anchor)} onClick={closeMenu}>
+                <Link href={href} onClick={closeMenu}>
                   {label}
                 </Link>
               </li>
             ))}
           </ul>
-          <Link href={ctaHref} className="cta nav-mobile-cta" onClick={closeMenu}>
+          <Link
+            href={ctaHref}
+            className="cta nav-mobile-cta"
+            onClick={() => {
+              trackCtaClick("nav_mobile");
+              closeMenu();
+            }}
+          >
             Umów rozmowę
           </Link>
         </div>

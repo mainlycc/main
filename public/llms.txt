@@ -1,0 +1,50 @@
+# Mainly
+
+> Jednoosobowa pracownia z Warszawy budująca aplikacje webowe, systemy na
+> zamówienie i strony internetowe dla firm. Projekt UX/UI, kod w Next.js
+> i React, wdrożenie i opieka techniczna — bez podwykonawców.
+> 36 wdrożeń w 9 branżach. Kontakt: kontakt@mainly.pl, +48 500 789 826.
+
+## Usługi
+
+- [Zakres usług](https://www.mainly.pl/uslugi): przegląd wszystkich usług
+- [Aplikacje webowe na zamówienie](https://www.mainly.pl/uslugi/aplikacje-webowe): aplikacje szyte pod proces firmy, od 9 900 zł
+- [Systemy i CRM na zamówienie](https://www.mainly.pl/uslugi/systemy-dla-firm): panele, CRM-y, systemy rezerwacji i raportowania
+- [Automatyzacja procesów](https://www.mainly.pl/uslugi/automatyzacja-procesow): eliminacja ręcznej pracy i przepisywania danych
+- [Tworzenie stron internetowych](https://www.mainly.pl/uslugi/strony-internetowe): strony firmowe i landing page, od 2 900 zł
+- [Platformy B2B i sklepy](https://www.mainly.pl/uslugi/sklepy-i-platformy-b2b): sprzedaż i obsługa klienta biznesowego online
+- [Opieka techniczna](https://www.mainly.pl/uslugi/opieka-techniczna): monitoring, kopie zapasowe i poprawki, od 290 zł/mies.
+
+## Informacje handlowe
+
+- [Cennik](https://www.mainly.pl/cennik): realne widełki cenowe dla stron, aplikacji i systemów
+- [Proces współpracy](https://www.mainly.pl/proces): cztery etapy od briefu po wdrożenie
+- [O mnie](https://www.mainly.pl/o-mnie): kto realizuje projekty i z jakim doświadczeniem
+- [Kontakt](https://www.mainly.pl/kontakt): formularz, bezpłatna konsultacja, wycena w 48 h
+
+## Branże
+
+- [Wszystkie branże](https://www.mainly.pl/branze)
+- [Biura rachunkowe](https://www.mainly.pl/branze/biura-rachunkowe)
+- [Gabinety stomatologiczne](https://www.mainly.pl/branze/gabinety-stomatologiczne)
+- [Kancelarie prawne](https://www.mainly.pl/branze/kancelarie-prawne)
+- [Biura podróży](https://www.mainly.pl/branze/biura-podrozy)
+- [Kluby i akademie sportowe](https://www.mainly.pl/branze/kluby-i-akademie-sportowe)
+- [Leasing i finanse](https://www.mainly.pl/branze/leasing-i-finanse)
+- [Producenci i przemysł](https://www.mainly.pl/branze/producenci-i-przemysl)
+- [Szkoły i edukacja](https://www.mainly.pl/branze/szkoly-i-edukacja)
+
+## Dowody i treści
+
+- [Portfolio](https://www.mainly.pl/projekty): 36 wdrożonych projektów z opisami
+- [Blog](https://www.mainly.pl/blog): artykuły o aplikacjach webowych, automatyzacji i SEO
+- [Opinie klientów](https://www.mainly.pl/opinie)
+
+## Fakty
+
+- Lokalizacja: ul. Filtrowa 83, 02-032 Warszawa, Polska
+- Obszar działania: Warszawa i cała Polska, zdalnie
+- Technologie: Next.js, React, TypeScript, Node.js, Python, Supabase, PostgreSQL, Tailwind, Vercel
+- Widełki cenowe: strony od 2 900 zł, rozbudowane strony od 4 900 zł, aplikacje i systemy od 9 900 zł, opieka od 290 zł/mies.
+- Czas realizacji: strony 1–4 tygodnie, aplikacje i systemy od 6 tygodni
+- Czas odpowiedzi na zapytanie: do 24 h w dni robocze, wycena do 48 h

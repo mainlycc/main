@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: "Zostaw opinię | Mainly",
     description:
       "Podziel się opinią o współpracy z Mainly. Twoja recenzja może zostać opublikowana na stronie wśród referencji.",
-    url: "https://mainly.pl/opinie",
+    url: "https://www.mainly.pl/opinie",
     type: "website",
   },
 };
