@@ -9,8 +9,9 @@
 export const BUSINESS = {
   legalName: "Mainly",
   name: "Mainly",
-  // TODO: uzupełnij pełne imię i nazwisko — potrzebne do schematu Person (E-E-A-T)
-  personName: "Stanisław",
+  personName: "Stanisław Blicharski",
+  personDescription:
+    "Web developer z Warszawy, założyciel Mainly. Buduje aplikacje webowe, systemy CRM i strony internetowe dla firm — od projektu UX/UI po wdrożenie, bez podwykonawców.",
   jobTitle: "Web developer",
   email: "kontakt@mainly.pl",
   telephone: "+48500789826",

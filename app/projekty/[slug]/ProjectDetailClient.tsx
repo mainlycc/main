@@ -6,6 +6,7 @@ import {
   ProjectPostCta,
   RelatedProjects,
 } from "@/components/projects/ProjectPostParts";
+import ProjectExtras from "@/components/projects/ProjectExtras";
 import { enrichProjectWithCaseStudy } from "@/lib/case-studies";
 import {
   getProjectCaseStudyHtml,
@@ -47,41 +48,22 @@ export default function ProjectDetailClient({
   const heroDeviceBadge = enriched.heroDeviceBadge;
   const urlLabel = enriched.url ? getProjectUrlLabel(enriched.url) : "";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: enriched.name,
-    description: enriched.description,
-    dateCreated: String(enriched.year),
-    author: {
-      "@type": "Organization",
-      name: "Mainly",
-      url: "https://mainly.pl",
-    },
-    ...(enriched.url && { url: enriched.url }),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://mainly.pl/projekty/${enriched.slug}`,
-    },
-  };
+  // Dane strukturalne (CreativeWork, BreadcrumbList, FAQPage) generuje
+  // komponent serwerowy w page.tsx — tutaj celowo ich nie ma, żeby nie
+  // duplikować schematu i nie emitować URL-i bez "www".
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       <ReadingProgress />
 
       <header className="art-head">
         <div className="wrap">
-          <nav className="breadcrumb">
+          <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
             <span className="sep">/</span>
-            <Link href="/projekty">Prace</Link>
+            <Link href="/projekty">Portfolio</Link>
             <span className="sep">/</span>
-            <span>{enriched.name}</span>
+            <span aria-current="page">{enriched.name}</span>
           </nav>
 
           <div className="tags">
@@ -139,7 +121,11 @@ export default function ProjectDetailClient({
           className="prose"
           dangerouslySetInnerHTML={{ __html: caseStudyHtml }}
         />
+      </article>
 
+      <ProjectExtras project={enriched} />
+
+      <div className="wrap article">
         <div className="article-end">
           <span className="av" aria-hidden="true" />
           <div className="bio">
@@ -152,7 +138,7 @@ export default function ProjectDetailClient({
             </p>
           </div>
         </div>
-      </article>
+      </div>
 
       <section className="wrap">
         <RelatedProjects projects={relatedProjects} />

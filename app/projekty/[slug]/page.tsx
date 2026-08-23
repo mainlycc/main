@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
+import { buildProjectFaq } from "@/components/projects/ProjectExtras";
 import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
-import { breadcrumbSchema, ORG_ID } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
 import { absoluteUrl, resolveImageUrl, SITE_URL } from "@/lib/seo";
 import ProjectDetailClient from "./ProjectDetailClient";
 
@@ -89,9 +90,12 @@ export default async function ProjectDetailPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": projectUrl },
   };
 
+  const projectFaq = buildProjectFaq(project);
+
   return (
     <>
       <JsonLd data={caseStudySchema} />
+      <JsonLd data={faqPageSchema(projectFaq)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Mainly", url: SITE_URL },

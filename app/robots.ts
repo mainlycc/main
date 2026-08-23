@@ -6,6 +6,8 @@ import { SITE_URL } from '../lib/seo'
  * Wcześniej istniał równolegle statyczny public/robots.txt, który miał
  * pierwszeństwo i sprawiał, że ten plik był martwym kodem.
  *
+ * Trasa /admin została usunięta z projektu, więc nie ma czego blokować.
+ *
  * Boty modeli AI są celowo dopuszczone — cytowanie w ChatGPT, Perplexity
  * i Gemini jest dziś osobnym kanałem pozyskiwania klientów.
  */
@@ -15,7 +17,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/kontakt/dziekujemy'],
+        disallow: ['/api/', '/kontakt/dziekujemy'],
       },
       {
         userAgent: [

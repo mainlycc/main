@@ -23,6 +23,7 @@ export const personSchema = {
   "@type": "Person",
   "@id": PERSON_ID,
   name: BUSINESS.personName,
+  description: BUSINESS.personDescription,
   jobTitle: BUSINESS.jobTitle,
   email: `mailto:${BUSINESS.email}`,
   telephone: BUSINESS.telephone,

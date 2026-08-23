@@ -337,3 +337,17 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Tabela specyfikacji w case study — układ dwukolumnowy */
+.proj-extras .price-table th[scope="row"] {
+  width: 34%;
+  white-space: nowrap;
+  color: var(--fg-mute);
+  font-family: var(--mono);
+}
+.proj-extras .price-table td {
+  color: var(--fg);
+}
+.proj-extras {
+  padding-top: 8px;
+}

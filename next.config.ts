@@ -29,6 +29,10 @@ const nextConfig: NextConfig = {
         destination: "https://www.mainly.pl/:path*",
         permanent: true,
       },
+      // Trust anchor pages — angielskie aliasy dla skanerów agentów AI
+      { source: "/about", destination: "/o-mnie", permanent: true },
+      { source: "/contact", destination: "/kontakt", permanent: true },
+      { source: "/privacy", destination: "/polityka-prywatnosci", permanent: true },
     ];
   },
   // Turbopack configuration (Next.js 16+ uses Turbopack by default)
