@@ -589,3 +589,53 @@
 .post-cta .btn-primary:hover .arr {
   transform: translate(2px, -2px);
 }
+
+/* --- Tabele w treści artykułu ---
+   Dodane pod artykuły porównawcze i cenowe. Tabele są chętnie wyciągane
+   przez Google do wyników rozszerzonych i cytowane przez modele AI,
+   więc warto, żeby były czytelne, a nie tylko obecne. */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.prose table thead th {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line-strong, rgba(255, 255, 255, 0.18));
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-mute);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.prose table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line, rgba(255, 255, 255, 0.08));
+  color: var(--fg-dim);
+  vertical-align: top;
+}
+.prose table td:first-child {
+  color: var(--fg);
+  font-weight: 500;
+}
+.prose table tbody tr:last-child td {
+  border-bottom: none;
+}
+/* Wąskie ekrany: tabela przewija się w poziomie zamiast rozpychać stronę */
+@media (max-width: 760px) {
+  .prose table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .prose table td,
+  .prose table thead th {
+    padding: 10px 12px;
+  }
+}
