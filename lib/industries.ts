@@ -124,7 +124,7 @@ export const industries: LandingPageData[] = [
           "Jeśli używany system ma API — tak. Jeśli nie, rezerwacja może działać jako osobny moduł z eksportem do kalendarza, żeby recepcja miała jedno miejsce z terminami.",
       },
     ],
-    relatedProjects: ["magia-podrozowania", "akademia-wiedzy"],
+    relatedProjects: [],
     relatedLinks: [
       {
         href: "/uslugi/strony-internetowe",
@@ -187,7 +187,7 @@ export const industries: LandingPageData[] = [
           "Formularz działa po HTTPS, ma ochronę antybotową, a treść trafia bezpośrednio na skrzynkę kancelarii bez przechowywania na serwerze pośredniczącym. Dla spraw wymagających wyższego poziomu poufności rekomenduję dodatkowo panel z logowaniem zamiast zwykłego formularza.",
       },
     ],
-    relatedProjects: ["prawkoczechy", "kreator-faktur"],
+    relatedProjects: [],
     relatedLinks: [
       {
         href: "/uslugi/strony-internetowe",
