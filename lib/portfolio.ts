@@ -1,5 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { portfolioCases } from "./home-content";
+import { projectImageFileExists } from "./project-images";
 import { projects, type Project } from "./projects";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -34,6 +35,15 @@ export type PortfolioProjectRow = {
   sort_order: number;
   published: boolean;
   meta_description: string | null;
+  // Kolumny z migracji 015_case_study_columns.sql. Opcjonalne, bo baza
+  // może jeszcze ich nie mieć - wtedy fallbackiem jest case-studies.generated.ts.
+  headline?: string | null;
+  tags?: string[] | null;
+  scope?: string | null;
+  branza?: string | null;
+  obszar?: string | null;
+  hero_caption?: string | null;
+  case_study_html?: string | null;
 };
 
 export type HomepagePortfolioCase = {
@@ -73,7 +83,7 @@ function rowToProject(row: PortfolioProjectRow): Project {
     name: row.name,
     slug: row.slug,
     image: resolveImageUrl(row.slug, row.image_url),
-    fallbackImage: row.fallback_image_url ?? undefined,
+    fallbackImage: resolveFallbackImage(row.slug, row.fallback_image_url),
     description: row.description,
     fullDescription: row.full_description,
     technologies: row.technologies,
@@ -81,25 +91,47 @@ function rowToProject(row: PortfolioProjectRow): Project {
     client: row.client,
     year: row.year,
     url: row.project_url,
+    headline: row.headline ?? undefined,
+    tags: row.tags?.length ? row.tags : undefined,
+    scope: row.scope ?? undefined,
+    heroCaption: row.hero_caption ?? undefined,
+    caseStudyHtml: row.case_study_html ?? undefined,
   };
 }
 
 function resolveImageUrl(slug: string, imageUrl: string | null | undefined): string {
   const localImage = projects.find((p) => p.slug === slug)?.image;
-  const hasRealLocalImage = localImage && !localImage.includes("placeholder");
-  const hasRealRemoteImage = imageUrl && !imageUrl.includes("placeholder");
+  const hasRealLocalImage =
+    localImage &&
+    !localImage.includes("placeholder") &&
+    projectImageFileExists(localImage);
+  const hasRealRemoteImage =
+    imageUrl &&
+    !imageUrl.includes("placeholder") &&
+    projectImageFileExists(imageUrl);
 
   // Lokalny screenshot w projects.ts ma pierwszeństwo - pozwala podmienić
   // obraz bez czekania na UPDATE w Supabase (RLS często blokuje anon).
   if (hasRealLocalImage) return localImage;
   if (hasRealRemoteImage) return imageUrl;
-  return imageUrl || localImage || "/placeholder.svg?height=600&width=800";
+  return "/placeholder.svg?height=600&width=800";
+}
+
+function resolveFallbackImage(
+  slug: string,
+  remoteFallback: string | null | undefined
+): string | undefined {
+  const localFallback = projects.find((p) => p.slug === slug)?.fallbackImage;
+  if (localFallback && projectImageFileExists(localFallback)) return localFallback;
+  if (remoteFallback && projectImageFileExists(remoteFallback)) return remoteFallback;
+  return undefined;
 }
 
 function staticPublishedProjects(): Project[] {
   return projects.map((project) => ({
     ...project,
     image: resolveImageUrl(project.slug, project.image),
+    fallbackImage: resolveFallbackImage(project.slug, project.fallbackImage),
   }));
 }
 
@@ -198,7 +230,14 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 
   if (!supabase) {
     return fallback
-      ? { ...fallback, image: resolveImageUrl(fallback.slug, fallback.image) }
+      ? {
+          ...fallback,
+          image: resolveImageUrl(fallback.slug, fallback.image),
+          fallbackImage: resolveFallbackImage(
+            fallback.slug,
+            fallback.fallbackImage
+          ),
+        }
       : null;
   }
 
@@ -211,7 +250,14 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 
   if (error || !data) {
     return fallback
-      ? { ...fallback, image: resolveImageUrl(fallback.slug, fallback.image) }
+      ? {
+          ...fallback,
+          image: resolveImageUrl(fallback.slug, fallback.image),
+          fallbackImage: resolveFallbackImage(
+            fallback.slug,
+            fallback.fallbackImage
+          ),
+        }
       : null;
   }
   return rowToProject(data as PortfolioProjectRow);

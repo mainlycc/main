@@ -1,3 +1,5 @@
+import { generatedCaseStudies } from "./case-studies.generated";
+
 export const projectCaseStudies: Record<
   string,
   {
@@ -923,8 +925,20 @@ export const projectCaseStudies: Record<
   },
 };
 
-export function enrichProjectWithCaseStudy<T extends { slug: string }>(project: T) {
-  const caseStudy = projectCaseStudies[project.slug];
-  if (!caseStudy) return project;
-  return { ...project, ...caseStudy };
+/**
+ * Kolejność źródeł treści case study, od najważniejszego:
+ *  1. Supabase (pole caseStudyHtml na projekcie) - to, co jest opublikowane.
+ *  2. content/case-studies/*.md przez lib/case-studies.generated.ts - źródło prawdy w repo.
+ *  3. projectCaseStudies powyżej - stare treści, zostają jako zabezpieczenie.
+ */
+export function enrichProjectWithCaseStudy<
+  T extends { slug: string; caseStudyHtml?: string }
+>(project: T) {
+  const legacy = projectCaseStudies[project.slug];
+  const generated = generatedCaseStudies[project.slug];
+
+  if (project.caseStudyHtml) return { ...legacy, ...generated, ...project };
+  if (generated) return { ...project, ...legacy, ...generated };
+  if (legacy) return { ...project, ...legacy };
+  return project;
 }
