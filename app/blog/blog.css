@@ -15,9 +15,6 @@
 .blog-index {
   padding: 140px 0 0;
 }
-.blog-index .intro {
-  max-width: 62ch;
-}
 .blog-index h1 {
   font-family: var(--display);
   font-style: normal;
@@ -41,6 +38,7 @@
   color: var(--fg-dim);
   font-size: clamp(17px, 1.5vw, 21px);
   line-height: 1.5;
+  max-width: 62ch;
   margin-top: 24px;
   text-wrap: pretty;
 }
@@ -114,18 +112,8 @@
   font-size: 96px;
   line-height: 96px;
   letter-spacing: -0.02em;
-  max-width: 780px;
   text-wrap: balance;
   overflow-wrap: break-word;
-}
-.art-head h1 em {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  background: linear-gradient(180deg, var(--ember-soft) 0%, var(--ember) 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 @media (max-width: 760px) {
   .art-head h1 {
@@ -508,15 +496,6 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   text-wrap: balance;
-}
-.rel h4 em {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 400;
-  background: linear-gradient(180deg, var(--ember-soft) 0%, var(--ember) 70%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 .rel .excerpt {
   color: var(--fg-dim);

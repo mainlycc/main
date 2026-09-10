@@ -1,20 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { formatBlogDate, splitTitleEmphasis } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/blog";
 import { stripHtml } from "@/lib/seo";
 import type { BlogPost } from "@/lib/supabase";
 
 export function BlogTitle({ title }: { title: string }) {
-  const parts = splitTitleEmphasis(title);
-  if (!parts) return <>{stripHtml(title)}</>;
-
-  return (
-    <>
-      {parts.before}
-      <em>{parts.emphasis}</em>
-      {parts.after}
-    </>
-  );
+  return <>{stripHtml(title)}</>;
 }
 
 type BlogPostCardProps = {

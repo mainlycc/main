@@ -11,17 +11,57 @@
   transition: width 0.1s linear;
 }
 
-.art-head {
+/* ===== Portfolio index ===== */
+.portfolio-index {
   padding: 140px 0 0;
 }
+.portfolio-index h1 {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 96px;
+  letter-spacing: -0.02em;
+  margin-top: 28px;
+  text-wrap: balance;
+}
+.portfolio-index h1 em {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(180deg, var(--ember-soft) 0%, var(--ember) 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.portfolio-index .lead {
+  color: var(--fg-dim);
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.5;
+  max-width: 62ch;
+  margin-top: 24px;
+  text-wrap: pretty;
+}
+.portfolio-index .showcase {
+  margin: 56px 0 96px;
+}
 @media (max-width: 760px) {
+  .portfolio-index,
   .art-head {
     padding-top: 120px;
+  }
+  .portfolio-index h1 {
+    font-size: clamp(36px, 10vw, 64px);
+    line-height: 1.05;
   }
   .breadcrumb {
     flex-wrap: wrap;
     row-gap: 6px;
   }
+}
+
+.art-head {
+  padding: 140px 0 0;
 }
 .breadcrumb {
   font-family: var(--mono);
@@ -57,13 +97,20 @@
   border-radius: 999px;
 }
 .art-head h1 {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(34px, 5.2vw, 68px);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  max-width: 20ch;
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 96px;
+  line-height: 96px;
+  letter-spacing: -0.02em;
   text-wrap: balance;
+  overflow-wrap: break-word;
+}
+@media (max-width: 760px) {
+  .art-head h1 {
+    font-size: clamp(34px, 9vw, 52px);
+    line-height: 1.08;
+  }
 }
 .art-head h1 em {
   font-family: var(--display);
@@ -246,15 +293,16 @@
 
 .article {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 720px) 1fr;
+  grid-template-columns: 1fr minmax(0, 780px) 1fr;
   gap: 0;
 }
 .article > * {
   grid-column: 2;
 }
 .prose p {
-  font-size: 18px;
-  line-height: 1.7;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
   color: var(--fg-dim);
   margin: 0 0 26px;
   text-wrap: pretty;
@@ -266,7 +314,7 @@
 .prose h2 {
   font-family: var(--sans);
   font-weight: 500;
-  font-size: clamp(26px, 3vw, 36px);
+  font-size: clamp(36px, 4vw, 48px);
   line-height: 1.1;
   letter-spacing: -0.025em;
   color: var(--fg);
@@ -285,7 +333,7 @@
 .prose h3 {
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 22px;
+  font-size: 30px;
   letter-spacing: -0.02em;
   color: var(--fg);
   margin: 40px 0 16px;
@@ -301,15 +349,16 @@
 .prose li {
   position: relative;
   padding-left: 21px;
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
   color: var(--fg-dim);
 }
 .prose li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.55em;
+  top: 12px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
@@ -335,7 +384,7 @@
   font-family: var(--display);
   font-style: italic;
   font-weight: 400;
-  font-size: clamp(24px, 2.8vw, 34px);
+  font-size: clamp(28px, 3.2vw, 40px);
   line-height: 1.25;
   color: var(--fg);
   margin: 0;

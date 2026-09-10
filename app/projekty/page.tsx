@@ -47,34 +47,36 @@ export default async function ProjectsPage() {
         )}
       />
 
-      <main className="pt-[120px] md:pt-[140px] pb-24">
-        <div className="wrap">
+      <main>
+        <section className="wrap portfolio-index">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
             <span className="sep">/</span>
             <span aria-current="page">Portfolio</span>
           </nav>
 
-          <div className="sec-label">
-            <span className="num">Portfolio</span>
-            <span>Wybrane prace</span>
+          <div className="intro">
+            <div className="sec-label">
+              <span className="num">Portfolio</span>
+              <span>Wybrane prace</span>
+            </div>
+            <h1>
+              Projekty, które <DisplayEm>działają</DisplayEm>.
+            </h1>
+            <p className="lead">
+              36+ wdrożonych projektów - systemy CRM, platformy e-learningowe,
+              generatory AI, aplikacje B2B. Każdy projekt to działający produkt
+              dostępny na żywo. Szukasz czegoś podobnego dla swojej firmy?{" "}
+              <Link href="/uslugi" className="inline-link">
+                Zobacz zakres usług
+              </Link>{" "}
+              albo{" "}
+              <Link href="/kontakt" className="inline-link">
+                napisz do mnie
+              </Link>
+              .
+            </p>
           </div>
-          <h1 className="sec-title">
-            Projekty, które <DisplayEm>działają</DisplayEm>.
-          </h1>
-          <p className="sec-lead">
-            36+ wdrożonych projektów - systemy CRM, platformy e-learningowe,
-            generatory AI, aplikacje B2B. Każdy projekt to działający produkt
-            dostępny na żywo. Szukasz czegoś podobnego dla swojej firmy?{" "}
-            <Link href="/uslugi" className="inline-link">
-              Zobacz zakres usług
-            </Link>{" "}
-            albo{" "}
-            <Link href="/kontakt" className="inline-link">
-              napisz do mnie
-            </Link>
-            .
-          </p>
 
           <div className="showcase showcase--projects">
             {projects.map((project) => {
@@ -119,7 +121,7 @@ export default async function ProjectsPage() {
               );
             })}
           </div>
-        </div>
+        </section>
       </main>
       <Footer />
     </>
