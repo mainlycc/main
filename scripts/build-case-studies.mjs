@@ -12,7 +12,7 @@
  * Markdown jest jedynym źródłem prawdy. SQL i TS to artefakty, nie edytuj ich ręcznie.
  */
 
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -144,6 +144,15 @@ function figureFromSlot(ctx, slot) {
   if (!meta.alt) {
     throw new Error(`[${ctx.slug}] {{IMG:${slot}}} — brak pola alt w obrazy[].slot=${slot}`);
   }
+
+  const diskPath = join(ROOT, "public", "projekty", ctx.slug, `${slot}.jpg`);
+  if (!existsSync(diskPath)) {
+    // Zdjęcie jeszcze nie zrobione - nie wstawiamy zepsutego <img>.
+    // Wystarczy wrzucić plik pod tę ścieżkę i przebudować, żeby się pojawiło.
+    missingImages.push(`${ctx.slug}/${slot}.jpg`);
+    return "";
+  }
+
   return figure(
     projectImagePath(ctx.slug, slot),
     meta.alt,
@@ -345,6 +354,7 @@ const files = readdirSync(SRC).filter(
   (f) => f.endsWith(".md") && !f.startsWith("_") && f !== "README.md"
 );
 const docs = [];
+const missingImages = [];
 
 for (const file of files) {
   const raw = readFileSync(join(SRC, file), "utf8");
@@ -473,3 +483,10 @@ writeFileSync(
 console.log(
   `\n${docs.length} case studies -> supabase/016_case_studies.sql, lib/case-studies.generated.ts, content/case-studies/_BRIEF-GRAFICZNY.md`
 );
+
+if (missingImages.length) {
+  console.log(
+    `\n${missingImages.length} brakujących zdjęć (pominięte w HTML, dodaj plik i przebuduj):`
+  );
+  for (const path of missingImages) console.log(`  - public/projekty/${path}`);
+}

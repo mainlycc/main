@@ -23,8 +23,8 @@ dodatkowe:
   - Gotowe pliki idą prosto do katalogu i do listingów, bez obróbki w programie graficznym.
   - Nowy wariant kolorystyczny nie wymaga angażowania osoby znającej AutoCAD.
 opinia:
-  cytat:
-  autor:
+  cytat: Z pełnym przekonaniem polecamy współpracę z Mainly. Proces tworzenia wizualizatora przerósł nasze najśmielsze oczekiwania, efekt końcowy to prawdziwa, rzetelnie wykonana robota. Jesteśmy ogromnie zadowoleni, dlatego zasłużone 5★
+  autor: Julia S.
   rola:
 cta: Sprzedajesz produkt w wielu wariantach i każdy wariant potrzebuje własnego zdjęcia? [Napisz do mnie](/kontakt). To zwykle da się przenieść z sesji zdjęciowej do narzędzia, które obsługuje handlowiec.
 obrazy:
