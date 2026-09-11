@@ -11,6 +11,8 @@ type BlogSitemapPost = {
   published_at: string
 }
 
+export const revalidate = 3600
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogPosts: BlogSitemapPost[] = []
   const supabase = getSupabase()
