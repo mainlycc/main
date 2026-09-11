@@ -29,7 +29,10 @@ export const metadata: Metadata = {
     "marketing cyfrowy",
     "automatyzacja biznesu",
   ],
-  alternates: { canonical: "/blog" },
+  alternates: {
+    canonical: "/blog",
+    types: { "application/rss+xml": "/feed.xml" },
+  },
   openGraph: {
     title: "Blog | Mainly",
     description:

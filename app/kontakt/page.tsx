@@ -5,7 +5,7 @@ import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, ORG_ID } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
 
 const title = "Kontakt i bezpłatna wycena strony lub aplikacji | Mainly";
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       "Napisz do mnie i otrzymaj bezpłatną wycenę w 48 h. Aplikacje webowe, systemy i strony dla firm — Warszawa i cała Polska.",
     url: absoluteUrl("/kontakt"),
     type: "website",
+    images: defaultOgImages("Kontakt i bezpłatna wycena | Mainly"),
   },
 };
 

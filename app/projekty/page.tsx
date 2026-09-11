@@ -6,7 +6,7 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import JsonLd from "../../components/seo/JsonLd";
 import { breadcrumbSchema, itemListSchema } from "../../lib/schema";
-import { absoluteUrl, SITE_URL } from "../../lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = {
   title: "Portfolio: 36 wdrożonych stron i aplikacji | Mainly",
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
       "36 zrealizowanych projektów - strony firmowe, aplikacje webowe, generatory ofert, kalkulatory.",
     url: absoluteUrl("/projekty"),
     type: "website",
+    images: defaultOgImages("Portfolio projektów webowych | Mainly"),
   },
 };
 

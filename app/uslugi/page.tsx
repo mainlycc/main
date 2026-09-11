@@ -4,7 +4,7 @@ import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
       "Aplikacje webowe, systemy na zamówienie, automatyzacja procesów i strony internetowe dla firm.",
     url: absoluteUrl("/uslugi"),
     type: "website",
+    images: defaultOgImages("Usługi | Mainly"),
   },
 };
 

@@ -55,7 +55,7 @@ export default function ProcessSection() {
               }}
             >
               <div className="num">{step.num}</div>
-              <h4>{step.title}</h4>
+              <h3>{step.title}</h3>
               <p>{step.description}</p>
               <span className="dur">{step.duration}</span>
             </div>

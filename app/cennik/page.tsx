@@ -4,7 +4,7 @@ import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cennik stron i aplikacji webowych 2026 | Mainly",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
       "Realne widełki cenowe dla stron, aplikacji i systemów na zamówienie — bez „wyceny indywidualnej” jako jedynej odpowiedzi.",
     url: absoluteUrl("/cennik"),
     type: "website",
+    images: defaultOgImages("Cennik stron i aplikacji webowych | Mainly"),
   },
 };
 

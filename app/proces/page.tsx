@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { processSteps } from "@/lib/home-content";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Jak wygląda współpraca — 4 etapy | Mainly",
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
       "Cztery etapy od briefu po wdrożenie — z terminami i punktami akceptacji.",
     url: absoluteUrl("/proces"),
     type: "website",
+    images: defaultOgImages("Jak wygląda współpraca | Mainly"),
   },
 };
 

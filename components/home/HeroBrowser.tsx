@@ -69,11 +69,13 @@ export default function HeroBrowser({ slides }: HeroBrowserProps) {
       </div>
 
       {slideCount > 1 && (
-        <div className="browser-dots" role="tablist">
+        <div className="browser-dots" role="tablist" aria-label="Wybierz projekt">
           {slides.map((slide, index) => (
             <button
               key={slide.slug}
               type="button"
+              role="tab"
+              aria-selected={active === index}
               className={active === index ? "active" : ""}
               aria-label={slide.label}
               onClick={() => goTo(index)}

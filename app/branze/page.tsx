@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { industries } from "@/lib/industries";
 import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Rozwiązania dla branż — strony i systemy | Mainly",
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
       "Co konkretnie buduję dla firm z Twojej branży — z przykładami wdrożeń.",
     url: absoluteUrl("/branze"),
     type: "website",
+    images: defaultOgImages("Rozwiązania dla branż | Mainly"),
   },
 };
 

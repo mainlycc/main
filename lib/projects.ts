@@ -81,7 +81,7 @@ export const projects: Project[] = [
     image: projectImage("jkterm-wizualizator"),
     fallbackImage: projectImage("jkterm-wizualizator", "proces-detal"),
     description:
-      "Generator AI wizualizacji grzejników w realnym wnętrzu - zamiast AutoCAD: wgraj zdjęcie produktu, opisz scenę, pobierz profesjonalne zdjęcie do katalogu i Allegro.",
+      "Generator AI wizualizacji grzejników - zamiast AutoCAD: wgraj zdjęcie produktu, opisz scenę, pobierz zdjęcie do katalogu i Allegro.",
     fullDescription:
       "JK Term to producent grzejników łazienkowych, który do tej pory generował wizualizacje produktów w AutoCAD - proces czasochłonny, wymagający specjalisty i trudny do skalowania przy dużej liczbie wariantów kolorystycznych i rozmiarów.\n\nZbudowałem dedykowany generator AI, który pozwala wgrać zdjęcie produktu, opisać scenę i w kilka sekund otrzymać profesjonalne wizualizacje produktu w realnym otoczeniu łazienki. Generator tworzy też zdjęcia detali do listingów Allegro - bez sesji fotograficznej, bez AutoCAD, bez grafika.",
     technologies: ["Next.js", "TypeScript", "AI Image Generation", "Tailwind CSS"],

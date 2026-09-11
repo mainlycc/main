@@ -4,7 +4,7 @@ import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
       "Strony i aplikacje webowe dla warszawskich firm. Spotkania na żywo, jeden punkt kontaktu.",
     url: absoluteUrl("/tworzenie-stron-internetowych-warszawa"),
     type: "website",
+    images: defaultOgImages("Tworzenie stron internetowych Warszawa | Mainly"),
   },
 };
 

@@ -2,20 +2,30 @@ import React from 'react'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import Footer from '../../components/Footer'
+import JsonLd from '../../components/seo/JsonLd'
+import { breadcrumbSchema } from '../../lib/schema'
+import { absoluteUrl, defaultOgImages, SITE_URL } from '../../lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Polityka Prywatności | Mainly',
+  title: 'Polityka Prywatności firmy Mainly',
   description: 'Polityka prywatności firmy Mainly. Dowiedz się, jak chronimy Twoje dane osobowe i dbamy o Twoją prywatność.',
   alternates: { canonical: '/polityka-prywatnosci' },
   openGraph: {
     title: 'Polityka Prywatności | Mainly',
     description: 'Polityka prywatności firmy Mainly. Dowiedz się, jak chronimy Twoje dane osobowe i dbamy o Twoją prywatność.',
+    images: defaultOgImages('Polityka Prywatności | Mainly'),
   }
 }
 
 export default function PolitykaPrywatnosci() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Mainly", url: SITE_URL },
+          { name: "Polityka Prywatności", url: absoluteUrl("/polityka-prywatnosci") },
+        ])}
+      />
       <main className="flex-1 container mx-auto py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">Polityka Prywatności</h1>

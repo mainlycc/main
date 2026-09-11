@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { stats, technologies } from "@/lib/home-content";
 import { breadcrumbSchema, PERSON_ID } from "@/lib/schema";
-import { absoluteUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,6 +19,7 @@ export const metadata: Metadata = {
       "Web developer z Warszawy. Aplikacje webowe, systemy i strony dla firm — od projektu po wdrożenie.",
     url: absoluteUrl("/o-mnie"),
     type: "profile",
+    images: defaultOgImages("O mnie | Mainly"),
   },
 };
 

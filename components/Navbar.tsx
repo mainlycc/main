@@ -100,7 +100,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="nav-mobile" aria-hidden={!menuOpen}>
+        <div className="nav-mobile" aria-hidden={!menuOpen} inert={!menuOpen}>
           <ul>
             {navLinks.map(({ href, label }) => (
               <li key={label}>

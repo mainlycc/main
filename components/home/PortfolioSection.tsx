@@ -102,7 +102,7 @@ export default async function PortfolioSection() {
                 </div>
                 <div className="meta">
                   <div>
-                    <h4>{project.title}</h4>
+                    <h3>{project.title}</h3>
                     <div className="tags">
                       {project.tags.map((tag) => (
                         <span key={tag}>{tag}</span>

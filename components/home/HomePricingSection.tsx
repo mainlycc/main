@@ -23,7 +23,7 @@ export default function HomePricingSection() {
               className={`price${plan.featured ? " featured" : ""}`}
             >
               <span className="tag">{plan.tag}</span>
-              <h4>{plan.name}</h4>
+              <h3>{plan.name}</h3>
               <p className="desc">{plan.description}</p>
               <div className="amount">
                 <span className="from">od</span>
@@ -45,7 +45,7 @@ export default function HomePricingSection() {
         <div className="pricing-care">
           <div>
             <span className="pricing-care-tag">Po wdrożeniu</span>
-            <h4>{pricingCare.title}</h4>
+            <h3>{pricingCare.title}</h3>
             <p>{pricingCare.description}</p>
           </div>
           <Link href="#kontakt" className="pricing-care-btn">
