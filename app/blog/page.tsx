@@ -3,6 +3,7 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import { BlogPostCard } from "@/components/blog/BlogPostParts";
 import Footer from "@/components/Footer";
+import { blogHeroImageUrl } from "@/lib/blog-hero-content";
 import {
   absoluteUrl,
   DEFAULT_OG_IMAGE,
@@ -116,7 +117,7 @@ function buildBlogJsonLd(posts: BlogPost[]) {
       description: post.excerpt,
       datePublished: post.published_at,
       url: absoluteUrl(`/blog/${post.slug}`),
-      ...(post.image_url && { image: resolveImageUrl(post.image_url) }),
+      image: resolveImageUrl(post.image_url ?? blogHeroImageUrl(post.slug)),
     })),
   };
 

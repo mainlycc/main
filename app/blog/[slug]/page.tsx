@@ -10,6 +10,7 @@ import {
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import Footer from "@/components/Footer";
 import { formatBlogDate } from "@/lib/blog";
+import { blogHeroImageUrl } from "@/lib/blog-hero-content";
 import {
   absoluteUrl,
   DEFAULT_OG_IMAGE,
@@ -87,10 +88,9 @@ export async function generateMetadata({
 
   const plainTitle = stripHtml(post.title);
   const description = post.meta_description ?? post.excerpt;
-  const ogImages = postOgImages(post.image_url, plainTitle);
-  const twitterImages = post.image_url
-    ? [post.image_url]
-    : [DEFAULT_OG_IMAGE];
+  const heroImageUrl = post.image_url ?? blogHeroImageUrl(post.slug);
+  const ogImages = postOgImages(heroImageUrl, plainTitle);
+  const twitterImages = [heroImageUrl];
 
   return {
     title: `${plainTitle} | Blog Mainly`,
@@ -136,6 +136,7 @@ export default async function BlogPostPage({
   const plainTitle = stripHtml(post.title);
   const description = post.meta_description ?? post.excerpt;
   const postUrl = absoluteUrl(`/blog/${post.slug}`);
+  const heroImageUrl = post.image_url ?? blogHeroImageUrl(post.slug);
 
   const blogPostingJsonLd = {
     "@context": "https://schema.org",
@@ -163,7 +164,7 @@ export default async function BlogPostPage({
       "@type": "WebPage",
       "@id": postUrl,
     },
-    ...(post.image_url && { image: resolveImageUrl(post.image_url) }),
+    image: resolveImageUrl(heroImageUrl),
   };
 
   const breadcrumbJsonLd = {
@@ -243,19 +244,15 @@ export default async function BlogPostPage({
       </header>
 
       <div className="wrap">
-        <div className={`art-hero${post.image_url ? " has-image" : ""}`}>
-          {post.image_url ? (
-            <Image
-              src={post.image_url}
-              alt={plainTitle}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 1320px) 100vw, 1320px"
-            />
-          ) : (
-            <div className="line" />
-          )}
+        <div className="art-hero has-image">
+          <Image
+            src={heroImageUrl}
+            alt={plainTitle}
+            fill
+            className="object-cover"
+            priority
+            sizes="(max-width: 1320px) 100vw, 1320px"
+          />
           <span className="cap">
             {post.category} · {post.read_time}
           </span>

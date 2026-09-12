@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { formatBlogDate } from "@/lib/blog";
+import { blogHeroImageUrl } from "@/lib/blog-hero-content";
 import { stripHtml } from "@/lib/seo";
 import type { BlogPost } from "@/lib/supabase";
 
@@ -24,21 +25,18 @@ type BlogPostCardProps = {
 
 export function BlogPostCard({ post, variant = 1 }: BlogPostCardProps) {
   const plainTitle = stripHtml(post.title);
+  const heroImageUrl = post.image_url ?? blogHeroImageUrl(post.slug);
 
   return (
     <Link href={`/blog/${post.slug}`} className={`rel r${variant}`}>
       <div className="art">
-        {post.image_url ? (
-          <Image
-            src={post.image_url}
-            alt={plainTitle}
-            fill
-            className="object-cover"
-            sizes="(max-width: 880px) 100vw, 33vw"
-          />
-        ) : (
-          <div className="glow" />
-        )}
+        <Image
+          src={heroImageUrl}
+          alt={plainTitle}
+          fill
+          className="object-cover"
+          sizes="(max-width: 880px) 100vw, 33vw"
+        />
       </div>
       <div className="body">
         <div className="meta">
