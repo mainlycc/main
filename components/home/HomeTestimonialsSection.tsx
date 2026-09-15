@@ -51,7 +51,7 @@ export default function HomeTestimonialsSection() {
   const items = [...testimonials, ...testimonials];
 
   return (
-    <section>
+    <section id="opinie">
       <div className="wrap">
         <SectionLabel num="06" label="Opinie" />
         <h2 className="sec-title">

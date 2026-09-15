@@ -68,7 +68,7 @@ export default function Footer() {
                 <Link href="/blog">Blog</Link>
               </li>
               <li>
-                <Link href="/opinie">Opinie klientów</Link>
+                <Link href="/#opinie">Opinie klientów</Link>
               </li>
               <li>
                 <Link href="/tworzenie-stron-internetowych-warszawa">
