@@ -1,9 +1,16 @@
 # Brief graficzny: miniatury/hero artykułów na blogu
 
-Stan na 2026-09-10. Żaden z 9 (wkrótce 10) artykułów na blogu nie ma
-zdjęcia ani hero, ani w treści. `.art-hero` bez `image_url` pokazuje domyślny
-ciemny gradient z linią ember (zdefiniowany w `app/blog/blog.css`) — ładny,
-ale identyczny na każdym artykule.
+Stan na 2026-09-15: **9 z 10 gotowe.** Wygenerowane zdjęcia (wariant
+symboliczny/alegoryczny z tabeli niżej) leżą w `public/blog/<slug>.png`,
+SQL do wgrania `image_url` w `supabase/019_blog_hero_images.sql` (jeszcze
+nie uruchomiony w Supabase). Jedyny brakujący: `konfigurator-3d-dla-producenta-pergoli-i-altan`
+— czeka na prawdziwe zdjęcie pergoli/altany od klienta JK Term.
+
+Poprzednia wersja (commit `cf50bba`) generowała jeden uniwersalny szablon
+tekstowy (`.art-hero` / `/blog-hero/[slug]`, ciemny gradient ember + liczba
+z artykułu) identyczny dla każdego wpisu — to NIE jest to, o co chodziło w
+tym briefie. Ten endpoint zostaje jako fallback tylko dla przyszłych
+artykułów bez ustawionego `image_url`, patrz `app/blog/[slug]/page.tsx`.
 
 ## Zasada
 
