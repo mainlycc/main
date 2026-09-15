@@ -41,7 +41,7 @@ export default function IndustriesHubPage() {
         )}
       />
 
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
@@ -92,7 +92,7 @@ export default function IndustriesHubPage() {
 
           <div className="hero-actions" style={{ marginBottom: 96 }}>
             <Link href="/kontakt" className="btn-primary">
-              Opisz swój proces
+              Umów rozmowę
             </Link>
             <Link href="/uslugi" className="btn-ghost">
               Zobacz zakres usług

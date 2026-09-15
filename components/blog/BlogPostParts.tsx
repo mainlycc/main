@@ -51,9 +51,9 @@ export function BlogPostCard({ post, variant = 1 }: BlogPostCardProps) {
             </>
           ) : null}
         </div>
-        <h4>
+        <h3>
           <BlogTitle title={post.title} />
-        </h4>
+        </h3>
         {post.excerpt ? <p className="excerpt">{post.excerpt}</p> : null}
       </div>
     </Link>
@@ -75,7 +75,7 @@ export function BlogPostCta({ href = "/kontakt" }: BlogPostCtaProps) {
         powiemy, co poprawić w pierwszej kolejności.
       </p>
       <Link href={href} className="btn-primary">
-        Umów bezpłatny audyt <span className="arr">↗</span>
+        Umów rozmowę <span className="arr">↗</span>
       </Link>
     </div>
   );

@@ -42,7 +42,7 @@ export default function AboutPage() {
         ])}
       />
 
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
@@ -153,7 +153,7 @@ export default function AboutPage() {
           </p>
           <div className="hero-actions" style={{ marginBottom: 96 }}>
             <Link href="/kontakt" className="btn-primary">
-              Napisz do mnie
+              Umów rozmowę
             </Link>
             <Link href="/projekty" className="btn-ghost">
               Zobacz realizacje

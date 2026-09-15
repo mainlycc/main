@@ -23,7 +23,7 @@ export default async function LandingPageView({
 
   return (
     <>
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
@@ -58,7 +58,7 @@ export default async function LandingPageView({
 
           <div className="hero-actions" style={{ marginBottom: 24 }}>
             <Link href="/kontakt" className="btn-primary">
-              Umów bezpłatną konsultację
+              Umów rozmowę
             </Link>
             <Link href="/projekty" className="btn-ghost">
               Zobacz realizacje
@@ -176,7 +176,7 @@ export default async function LandingPageView({
             </div>
             <div className="cta-right">
               <Link href="/kontakt" className="btn-primary">
-                Napisz do mnie <span className="arr">↗</span>
+                Umów rozmowę <span className="arr">↗</span>
               </Link>
             </div>
           </div>

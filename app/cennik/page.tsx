@@ -181,7 +181,7 @@ export default function PricingPage() {
         ])}
       />
 
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>
@@ -291,7 +291,7 @@ export default function PricingPage() {
 
           <div className="hero-actions" style={{ marginBottom: 96 }}>
             <Link href="/kontakt" className="btn-primary">
-              Zamów bezpłatną wycenę
+              Umów rozmowę
             </Link>
             <Link href="/proces" className="btn-ghost">
               Zobacz, jak wygląda współpraca
