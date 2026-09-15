@@ -24,11 +24,14 @@ const TOPICS = [
 
 type Topic = (typeof TOPICS)[number];
 
+/**
+ * Formularz zawsze zawiera <form> + pola w HTML SSR (a11y / CRO / boty bez JS).
+ * Wybór obszarów to enhancement UX, nie osobny krok ukrywający pola.
+ */
 export default function ContactForm() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,6 +45,7 @@ export default function ContactForm() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileRef = useRef<TurnstileWidgetHandle>(null);
   const hasStarted = useRef(false);
+  const hasTrackedTopics = useRef(false);
 
   const markStarted = () => {
     if (hasStarted.current) return;
@@ -60,19 +64,16 @@ export default function ContactForm() {
   const toggleTopic = (topic: Topic) => {
     markStarted();
     setError(null);
-    setTopics((prev) =>
-      prev.includes(topic) ? prev.filter((t) => t !== topic) : [...prev, topic]
-    );
-  };
-
-  const goToStep2 = () => {
-    if (topics.length === 0) {
-      setError("Zaznacz przynajmniej jeden obszar — to zajmie sekundę.");
-      return;
-    }
-    setError(null);
-    setStep(2);
-    trackFormStep2();
+    setTopics((prev) => {
+      const next = prev.includes(topic)
+        ? prev.filter((t) => t !== topic)
+        : [...prev, topic];
+      if (next.length > 0 && !hasTrackedTopics.current) {
+        hasTrackedTopics.current = true;
+        trackFormStep2();
+      }
+      return next;
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -118,8 +119,6 @@ export default function ContactForm() {
       trackMetaLead();
       trackGenerateLead(pathname ?? "/", topics);
 
-      // Przekierowanie na osobny URL — bez tego konwersji nie da się zmierzyć
-      // w GA4 ani powiązać z frazą w Search Console.
       router.push("/kontakt/dziekujemy");
     } catch (err) {
       console.error("Błąd wysyłania formularza:", err);
@@ -140,21 +139,11 @@ export default function ContactForm() {
       </div>
 
       <div className="kontakt-form-head">
-        <h2>
-          {step === 1
-            ? "Co chcesz usprawnić?"
-            : "Zostaw kontakt — odezwę się w 24 h"}
-        </h2>
+        <h2>Zostaw kontakt — odezwę się w 24 h</h2>
         <p>
-          {step === 1
-            ? "Zaznacz obszary. Jedno kliknięcie, bez wypełniania niczego."
-            : "Zostały dwa pola i krótki opis. Około minuty."}
+          Zaznacz obszary (opcjonalnie) i napisz krótko, czego potrzebujesz.
+          Około minuty.
         </p>
-      </div>
-
-      <div className="kontakt-progress" aria-hidden="true">
-        <span className="is-done" />
-        <span className={step === 2 ? "is-done" : ""} />
       </div>
 
       <hr className="kontakt-form-rule" />
@@ -165,120 +154,107 @@ export default function ContactForm() {
         </div>
       )}
 
-      {step === 1 ? (
-        <div className="kontakt-fields">
-          <fieldset className="kontakt-topics">
-            <legend className="sr-only">Obszary do usprawnienia</legend>
-            <div
-              className="kontakt-topics-grid"
-              role="group"
-              aria-label="Obszary do usprawnienia"
-            >
-              {TOPICS.map((topic) => {
-                const selected = topics.includes(topic);
-                return (
-                  <button
-                    key={topic}
-                    type="button"
-                    className={`kontakt-topic${selected ? " is-selected" : ""}`}
-                    aria-pressed={selected}
-                    onClick={() => toggleTopic(topic)}
-                  >
-                    {topic}
-                  </button>
-                );
-              })}
-            </div>
-          </fieldset>
-
-          <button type="button" className="kontakt-submit" onClick={goToStep2}>
-            Dalej →
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="kontakt-fields">
-          <button
-            type="button"
-            className="kontakt-back"
-            onClick={() => setStep(1)}
+      <form onSubmit={handleSubmit} className="kontakt-fields" noValidate>
+        <fieldset className="kontakt-topics">
+          <legend className="sr-only">Obszary do usprawnienia (opcjonalnie)</legend>
+          <div
+            className="kontakt-topics-grid"
+            role="group"
+            aria-label="Obszary do usprawnienia"
           >
-            ← Zmień obszary ({topics.length})
-          </button>
-
-          <div>
-            <label htmlFor="name">Imię</label>
-            <input
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Jan"
-              className="kontakt-input"
-              autoComplete="given-name"
-            />
+            {TOPICS.map((topic) => {
+              const selected = topics.includes(topic);
+              return (
+                <button
+                  key={topic}
+                  type="button"
+                  className={`kontakt-topic${selected ? " is-selected" : ""}`}
+                  aria-pressed={selected}
+                  onClick={() => toggleTopic(topic)}
+                >
+                  {topic}
+                </button>
+              );
+            })}
           </div>
+        </fieldset>
 
-          <div>
-            <label htmlFor="email">E-mail</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="jan@firma.pl"
-              className="kontakt-input"
-              autoComplete="email"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="phone">
-              Telefon <span className="kontakt-optional">(opcjonalnie)</span>
-            </label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+48 600 000 000"
-              className="kontakt-input"
-              autoComplete="tel"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="message">Opisz krótko, czego potrzebujesz</label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Np. dane klientów trzymamy w Excelu, dokumenty tworzymy ręcznie i chcielibyśmy mieć wszystko w jednym systemie..."
-              className="kontakt-input kontakt-textarea"
-              rows={4}
-            />
-          </div>
-
-          <TurnstileWidget
-            ref={turnstileRef}
-            action="contact"
-            theme="light"
-            className="kontakt-turnstile"
-            onToken={setTurnstileToken}
+        <div>
+          <label htmlFor="contact-name">Imię</label>
+          <input
+            id="contact-name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Jan"
+            className="kontakt-input"
+            autoComplete="given-name"
+            required
           />
+        </div>
 
-          <button type="submit" className="kontakt-submit" disabled={isSubmitting}>
-            {isSubmitting ? "Wysyłanie..." : "Chcę omówić rozwiązanie →"}
-          </button>
+        <div>
+          <label htmlFor="contact-email">E-mail</label>
+          <input
+            id="contact-email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="jan@firma.pl"
+            className="kontakt-input"
+            autoComplete="email"
+            required
+          />
+        </div>
 
-          <p className="kontakt-rodo">
-            Twoje dane trafiają tylko do mnie. Bez newslettera, bez spamu, bez
-            przekazywania dalej.
-          </p>
-        </form>
-      )}
+        <div>
+          <label htmlFor="contact-phone">
+            Telefon <span className="kontakt-optional">(opcjonalnie)</span>
+          </label>
+          <input
+            id="contact-phone"
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="+48 600 000 000"
+            className="kontakt-input"
+            autoComplete="tel"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="contact-message">Opisz krótko, czego potrzebujesz</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Np. dane klientów trzymamy w Excelu, dokumenty tworzymy ręcznie i chcielibyśmy mieć wszystko w jednym systemie..."
+            className="kontakt-input kontakt-textarea"
+            rows={4}
+            required
+          />
+        </div>
+
+        <TurnstileWidget
+          ref={turnstileRef}
+          action="contact"
+          theme="light"
+          className="kontakt-turnstile"
+          onToken={setTurnstileToken}
+        />
+
+        <button type="submit" className="kontakt-submit" disabled={isSubmitting}>
+          {isSubmitting ? "Wysyłanie..." : "Chcę omówić rozwiązanie →"}
+        </button>
+
+        <p className="kontakt-rodo">
+          Twoje dane trafiają tylko do mnie. Bez newslettera, bez spamu, bez
+          przekazywania dalej.
+        </p>
+      </form>
 
       <p className="kontakt-form-foot">
         Bezpłatna konsultacja · Bez zobowiązań · Odpowiadam w 24 h w dni robocze

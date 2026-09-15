@@ -17,7 +17,7 @@ export default async function HeroSection() {
           </div>
 
           <h1 className="title">
-            <span>Aplikacje webowe i systemy, które zastępują ręczną pracę</span>
+            <span>Aplikacje webowe i systemy, które zastępują ręczną pracę </span>
             <span className="line2">
               <DisplayEm>w Twojej firmie.</DisplayEm>
             </span>

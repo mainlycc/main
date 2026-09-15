@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_URL = "https://www.mainly.pl";
-export const DEFAULT_OG_IMAGE = "/og-image.png";
+export const DEFAULT_OG_IMAGE = "/og-image.jpg";
 export const SITE_NAME = "Mainly";
 export const SITE_LOCALE = "pl_PL";
 

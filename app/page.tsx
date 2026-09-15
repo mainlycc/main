@@ -26,7 +26,7 @@ export default function Home() {
     <>
       <JsonLd data={faqPageSchema(faqItems)} />
 
-      <main>
+      <main id="main">
         <HeroSection />
         <StatsSection />
         <IntroSection />

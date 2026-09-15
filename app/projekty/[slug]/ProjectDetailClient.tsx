@@ -56,6 +56,7 @@ export default function ProjectDetailClient({
     <>
       <ReadingProgress />
 
+      <main id="main">
       <header className="art-head">
         <div className="wrap">
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -144,6 +145,7 @@ export default function ProjectDetailClient({
         <RelatedProjects projects={relatedProjects} />
         <ProjectPostCta />
       </section>
+      </main>
 
       <Footer />
     </>

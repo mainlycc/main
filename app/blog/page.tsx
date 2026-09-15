@@ -150,7 +150,7 @@ export default async function BlogPage() {
         />
       ))}
 
-      <main>
+      <main id="main">
         <section className="wrap blog-index">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>

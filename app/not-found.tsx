@@ -20,7 +20,7 @@ const links = [
 export default function NotFound() {
   return (
     <>
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <div className="sec-label">
             <span className="num">404</span>

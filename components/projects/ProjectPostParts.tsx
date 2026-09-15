@@ -93,7 +93,7 @@ export function ProjectCard({ project, variant = 1 }: ProjectCardProps) {
       </div>
       <div className="body">
         <div className="meta">{meta || project.name}</div>
-        <h4>{project.description}</h4>
+        <h3>{project.description}</h3>
       </div>
     </Link>
   );

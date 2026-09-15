@@ -26,7 +26,7 @@ export default function PolitykaPrywatnosci() {
           { name: "Polityka Prywatności", url: absoluteUrl("/polityka-prywatnosci") },
         ])}
       />
-      <main className="flex-1 container mx-auto py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
+      <main id="main" className="flex-1 container mx-auto py-24 sm:py-32 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl font-bold mb-8">Polityka Prywatności</h1>
           

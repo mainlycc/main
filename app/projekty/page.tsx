@@ -48,7 +48,7 @@ export default async function ProjectsPage() {
         )}
       />
 
-      <main>
+      <main id="main">
         <section className="wrap portfolio-index">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>

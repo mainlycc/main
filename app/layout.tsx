@@ -80,12 +80,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} text-[var(--fg)] bg-[var(--bg)] antialiased`}
       >
-        <JsonLd data={organizationSchema(testimonials.length)} />
+        <JsonLd data={organizationSchema(testimonials.length, testimonials)} />
         <JsonLd data={personSchema} />
         <JsonLd data={websiteSchema} />
 
         <MetaPixel />
         <GoogleAnalytics />
+        <a href="#main" className="skip-link">
+          Przejdź do treści
+        </a>
         <Navbar />
         {children}
         <MobileCta />

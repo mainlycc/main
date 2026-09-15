@@ -205,6 +205,7 @@ export default async function BlogPostPage({
 
       <ReadingProgress />
 
+      <main id="main">
       <header className="art-head">
         <div className="wrap">
           <nav className="breadcrumb" aria-label="Breadcrumb">
@@ -283,6 +284,7 @@ export default async function BlogPostPage({
         <RelatedPosts posts={relatedPosts} />
         <BlogPostCta />
       </section>
+      </main>
 
       <Footer />
     </>

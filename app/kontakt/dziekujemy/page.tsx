@@ -22,7 +22,7 @@ const steps = [
 export default function ThankYouPage() {
   return (
     <>
-      <main>
+      <main id="main">
         <section className="wrap page-head">
           <nav className="breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Mainly</Link>

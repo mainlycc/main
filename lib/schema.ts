@@ -47,7 +47,25 @@ export const personSchema = {
  * Encja firmy. ProfessionalService jest precyzyjniejszym typem niż LocalBusiness
  * dla usług IT, a jednocześnie dziedziczy po LocalBusiness (adres, godziny, mapa).
  */
-export function organizationSchema(reviewCount: number) {
+export function organizationSchema(
+  reviewCount: number,
+  reviews: Array<{ name: string; text: string }> = []
+) {
+  const reviewEntities = reviews.map((item) => ({
+    "@type": "Review" as const,
+    author: {
+      "@type": "Person" as const,
+      name: item.name,
+    },
+    reviewBody: item.text.replace(/^[„"]|[”"]$/g, "").trim(),
+    reviewRating: {
+      "@type": "Rating" as const,
+      ratingValue: "5",
+      bestRating: "5",
+      worstRating: "1",
+    },
+  }));
+
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -106,6 +124,7 @@ export function organizationSchema(reviewCount: number) {
         reviewCount,
       },
     }),
+    ...(reviewEntities.length > 0 && { review: reviewEntities }),
     ...(SOCIAL_PROFILES.length > 0 && { sameAs: SOCIAL_PROFILES }),
   };
 }

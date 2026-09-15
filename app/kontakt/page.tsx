@@ -56,7 +56,7 @@ export default function ContactPage() {
         ])}
       />
 
-      <main className="kontakt-page">
+      <main id="main" className="kontakt-page">
         <div className="wrap kontakt-shell">
           <div className="kontakt-card">
             <aside className="kontakt-visual">
