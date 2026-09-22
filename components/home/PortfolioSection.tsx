@@ -86,7 +86,11 @@ export default async function PortfolioSection() {
                       alt={project.title}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 880px) 100vw, 50vw"
+                      sizes={
+                        project.featured
+                          ? "(max-width: 880px) 100vw, 100vw"
+                          : "(max-width: 880px) 100vw, 50vw"
+                      }
                       priority={project.featured}
                     />
                   ) : (

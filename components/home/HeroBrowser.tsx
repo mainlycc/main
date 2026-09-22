@@ -60,7 +60,7 @@ export default function HeroBrowser({ slides }: HeroBrowserProps) {
                 alt={slide.title}
                 fill
                 className="object-contain object-top"
-                sizes="(max-width: 980px) 100vw, 55vw"
+                sizes="(max-width: 980px) 100vw, min(720px, 55vw)"
                 priority={index === 0}
               />
             </Link>

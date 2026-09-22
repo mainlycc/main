@@ -1,8 +1,8 @@
 export const stats = [
-  { value: "50", suffix: "+", label: "Klientów i zleceń" },
   { value: "36", suffix: "+", label: "Wdrożonych aplikacji i stron" },
-  { value: "865", suffix: "+", label: "Użytkowników największego systemu" },
   { value: "9", suffix: null, label: "Obsłużonych branż" },
+  { value: "865", suffix: "+", label: "Użytkowników największego systemu" },
+  { value: "24", suffix: "h", label: "Czas odpowiedzi na wycenę" },
 ];
 
 export const manifestoItems = [
@@ -50,7 +50,6 @@ export const trustClients = [
   "AIRSET",
   "Akademia Wiedzy",
   "Elomoto.eco",
-  "Lease1",
 ];
 
 export const processSteps = [
@@ -111,9 +110,16 @@ export const afterItems = [
 export const portfolioCases = [
   {
     featured: true,
-    title: "Football Academy System",
-    tags: ["3D", "Next.js", "Three.js", "2026"],
-    slug: "football-academy",
+    title: "Akademia Wiedzy",
+    tags: ["System e-korepetycji", "PayU", "2026"],
+    slug: "akademia-wiedzy",
+    preview: "akademia" as const,
+  },
+  {
+    featured: false,
+    title: "Elomoto.eco",
+    tags: ["SPA", "React", "EV", "2025"],
+    slug: "elomoto-eco",
     preview: "featured" as const,
   },
   {
@@ -125,9 +131,9 @@ export const portfolioCases = [
   },
   {
     featured: false,
-    title: "Elomoto.eco",
-    tags: ["SPA", "React", "EV", "2025"],
-    slug: "elomoto-eco",
+    title: "Football Academy System",
+    tags: ["3D", "Next.js", "Three.js", "2026"],
+    slug: "football-academy",
     preview: "featured" as const,
   },
   {
@@ -136,13 +142,6 @@ export const portfolioCases = [
     tags: ["AI", "Next.js", "Generator", "2025"],
     slug: "jkterm-wizualizator",
     preview: "featured" as const,
-  },
-  {
-    featured: false,
-    title: "Akademia Wiedzy",
-    tags: ["System e-korepetycji", "PayU", "2026"],
-    slug: "akademia-wiedzy",
-    preview: "akademia" as const,
   },
 ];
 

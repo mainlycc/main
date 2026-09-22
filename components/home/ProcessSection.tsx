@@ -68,6 +68,19 @@ export default function ProcessSection() {
             współpracy
           </span>
         </div>
+
+        <ol className="process-list">
+          {processSteps.map((step) => (
+            <li key={`list-${step.num}`} className="process-list-item">
+              <div className="num">{step.num}</div>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+                <span className="dur">{step.duration}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

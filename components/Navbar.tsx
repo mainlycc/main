@@ -59,10 +59,11 @@ export default function Navbar() {
       )}
       <nav className={`top${menuOpen ? " open" : ""}`}>
         <div className="inner">
-          <Link href="/" className="brand" onClick={closeMenu}>
+          <Link href="/" className="brand" onClick={closeMenu} aria-label="Mainly">
             <span className="icon">
-              <Image src="/logom.svg" alt="Mainly" width={80} height={40} priority />
+              <Image src="/logom.svg" alt="" width={80} height={40} priority />
             </span>
+            <span className="mark">Mainly</span>
           </Link>
 
           <ul className="nav-desktop">

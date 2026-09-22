@@ -44,17 +44,17 @@ export default async function HeroSection() {
 
           <div className="trust">
             <div className="avatars" aria-hidden>
-              <span />
-              <span />
-              <span />
-              <span />
+              <span>MP</span>
+              <span>AI</span>
+              <span>AW</span>
+              <span>EL</span>
             </div>
             <div className="trust-meta">
               <div className="trust-stars" aria-label="Ocena 5 na 5">
                 ★★★★★
               </div>
               <span>
-                Zaufało mi już <strong>36+</strong> firm
+                Zaufało mi już <strong>36+</strong> wdrożeń
               </span>
             </div>
           </div>

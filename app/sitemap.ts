@@ -11,7 +11,18 @@ type BlogSitemapPost = {
   published_at: string
 }
 
-export const revalidate = 3600
+/**
+ * Sitemapa generowana przy każdym żądaniu.
+ *
+ * Wcześniej było tu `revalidate = 3600`, ale na produkcji sitemapa
+ * zamarzła na stanie z ostatniego buildu — artykuły dodane przez SQL
+ * w Supabase (bez nowego deployu) w ogóle się w niej nie pojawiały,
+ * mimo że działały na /blog. `force-dynamic` eliminuje ten problem.
+ *
+ * Koszt jest pomijalny: Google pobiera sitemapę rzadko, a zapytanie
+ * do bazy to jeden SELECT po czterech kolumnach.
+ */
+export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let blogPosts: BlogSitemapPost[] = []

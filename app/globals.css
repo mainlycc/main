@@ -6,22 +6,34 @@
 
 @layer base {
   :root {
-    --background: 10 9 8;
-    --foreground: 245 241 236;
-    --primary: 255 42 20;
-    --primary-foreground: 255 255 255;
-    --muted-foreground: 125 119 113;
-    --border: 255 255 255 / 0.08;
+    /* HSL channels synced with mainly-landing palette (--bg / --fg / --ember) */
+    --background: 30 11% 4%;
+    --foreground: 36 33% 94%;
+    --primary: 6 100% 54%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 30 8% 9%;
+    --muted-foreground: 30 5% 47%;
+    --border: 30 5% 20%;
     --radius: 0.75rem;
-    --card: 18 17 16;
-    --card-foreground: 245 241 236;
-    --muted: 26 24 22;
-    --secondary: 26 24 22;
-    --secondary-foreground: 245 241 236;
-    --accent: 26 24 22;
-    --accent-foreground: 245 241 236;
-    --input: 255 255 255 / 0.08;
-    --ring: 255 42 20;
+    --card: 30 6% 7%;
+    --card-foreground: 36 33% 94%;
+    --popover: 30 6% 7%;
+    --popover-foreground: 36 33% 94%;
+    --secondary: 30 8% 9%;
+    --secondary-foreground: 36 33% 94%;
+    --accent: 30 8% 9%;
+    --accent-foreground: 36 33% 94%;
+    --destructive: 6 78% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --input: 30 5% 20%;
+    --ring: 6 100% 54%;
+    --brand: 6 100% 54%;
+    --brand-foreground: 0 0% 100%;
+    --chart-1: 6 100% 54%;
+    --chart-2: 30 8% 40%;
+    --chart-3: 36 33% 70%;
+    --chart-4: 15 60% 45%;
+    --chart-5: 30 5% 25%;
   }
 }
 
@@ -75,6 +87,14 @@
 .inline-link:hover {
   opacity: 0.75;
 }
+@media (max-width: 880px) {
+  .inline-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px 0;
+  }
+}
 
 /* Sticky CTA na mobile — najkrótsza droga do formularza na małych ekranach */
 .mobile-cta {
@@ -102,25 +122,47 @@
     line-height: 1.2;
   }
   .mobile-cta-copy strong {
-    font-size: 14px;
+    font-size: var(--fs-sm, 14px);
     color: var(--fg);
   }
   .mobile-cta-copy span {
-    font-size: 12px;
+    font-size: var(--fs-xs, 12px);
     color: var(--fg-dim);
+  }
+  .mobile-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
   }
   .mobile-cta-btn {
     flex-shrink: 0;
     padding: 10px 18px;
-    border-radius: 999px;
-    font-size: 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--r-pill, 999px);
+    font-size: var(--fs-sm, 14px);
     font-weight: 600;
     background: var(--ember, #ff2a14);
     color: #fff;
     white-space: nowrap;
   }
-  body {
-    padding-bottom: 68px;
+  .mobile-cta-close {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-pill, 999px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--fg-dim);
+    font-size: 22px;
+    line-height: 1;
+  }
+  html.mobile-cta-open body {
+    padding-bottom: 72px;
   }
 }
 

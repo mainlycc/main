@@ -10,41 +10,44 @@ export default {
   theme: {
   	extend: {
   		colors: {
-  			background: 'rgb(var(--background) / <alpha-value>)',
-  			foreground: 'rgb(var(--foreground) / <alpha-value>)',
+  			background: 'hsl(var(--background) / <alpha-value>)',
+  			foreground: 'hsl(var(--foreground) / <alpha-value>)',
   			ember: {
   				DEFAULT: '#ff2a14',
   				deep: '#c41e1e',
   				soft: '#ff6644',
   			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+  				foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
+  				foreground: 'hsl(var(--popover-foreground) / <alpha-value>)'
   			},
   			primary: {
-  				DEFAULT: 'rgb(var(--primary) / <alpha-value>)',
-  				foreground: 'rgb(var(--primary-foreground) / <alpha-value>)',
+  				DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+  				foreground: 'hsl(var(--primary-foreground) / <alpha-value>)',
   			},
   			secondary: {
-  				DEFAULT: 'rgb(var(--secondary) / <alpha-value>)',
-  				foreground: 'rgb(var(--secondary-foreground) / <alpha-value>)',
+  				DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+  				foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
   			},
-  			muted: 'rgb(var(--muted) / <alpha-value>)',
+  			muted: {
+  				DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+  				foreground: 'hsl(var(--muted-foreground) / <alpha-value>)',
+  			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
+  				foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
-  				foreground: 'hsl(var(--destructive-foreground))'
+  				DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+  				foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
   			},
-  			border: 'rgb(51 51 51)',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
+  			border: 'hsl(var(--border) / <alpha-value>)',
+  			input: 'hsl(var(--input) / <alpha-value>)',
+  			ring: 'hsl(var(--ring) / <alpha-value>)',
   			chart: {
   				'1': 'hsl(var(--chart-1))',
   				'2': 'hsl(var(--chart-2))',
@@ -52,9 +55,8 @@ export default {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
-  			brand: 'hsl(var(--brand))',
-  			'brand-foreground': 'hsl(var(--brand-foreground))',
-  			'muted-foreground': 'hsl(var(--muted-foreground))'
+  			brand: 'hsl(var(--brand) / <alpha-value>)',
+  			'brand-foreground': 'hsl(var(--brand-foreground) / <alpha-value>)',
   		},
   		borderRadius: {
   			DEFAULT: '0.5rem',

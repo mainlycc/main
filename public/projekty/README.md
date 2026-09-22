@@ -33,6 +33,9 @@ W Markdownie case study:
 Jak w `content/case-studies/_BRIEF-GRAFICZNY.md`: realne UI, bez mockupów laptopa,
 bez podmienionych liczb, dane osobowe anonimizuj w aplikacji przed zrzutem.
 
+**Kadry na listing / homepage:** `hero.jpg` w proporcji **16:10** (ok. 1600×1000),
+wykadrowany na konkretny ekran aplikacji — bez pustych viewerów i bez ucinania CTA.
+
 ## Checklist braków
 
 ```bash
