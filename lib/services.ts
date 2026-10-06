@@ -19,7 +19,7 @@ export const services: LandingPageData[] = [
     sections: [
       {
         heading: "Czym jest aplikacja webowa i kiedy warto ją zbudować",
-        body: "Aplikacja webowa na zamówienie to oprogramowanie dostępne przez przeglądarkę — loguje się do niej jak do bankowości online, a cała logika działa na serwerze. W odróżnieniu od gotowego SaaS-a (jak Asana, Trello czy Pipedrive), system na zamówienie robi dokładnie to, czego wymaga Twój proces — bez obchodzenia ograniczeń cudzego narzędzia i bez abonamentu za użytkownika. Warto ją zbudować, gdy gotowe oprogramowanie nie pasuje do procesu, który jest Twoją przewagą konkurencyjną — albo gdy miesięczne abonamenty za kilkanaście osób przekraczają koszt jednorazowego wdrożenia.",
+        body: "Aplikacja webowa na zamówienie (nazywana też systemem webowym na zamówienie) to oprogramowanie dostępne przez przeglądarkę — loguje się do niej jak do bankowości online, a cała logika działa na serwerze. W odróżnieniu od gotowego SaaS-a (jak Asana, Trello czy Pipedrive), system na zamówienie robi dokładnie to, czego wymaga Twój proces — bez obchodzenia ograniczeń cudzego narzędzia i bez abonamentu za użytkownika. Warto zbudować własny system webowy, gdy gotowe oprogramowanie nie pasuje do procesu, który jest Twoją przewagą konkurencyjną — albo gdy miesięczne abonamenty za kilkanaście osób przekraczają koszt jednorazowego wdrożenia.",
         bullets: [
           "Dane krążą między Excelem, mailem i systemem księgowym, a ktoś je przepisuje ręcznie",
           "Klient mógłby część rzeczy załatwić sam online, ale nie ma gdzie",
@@ -39,7 +39,7 @@ export const services: LandingPageData[] = [
           "Generatory ofert i konfiguratory produktów — klient sam składa specyfikację, widzi cenę i pobiera PDF — np. generator dla producenta rolet",
           "Systemy rezerwacji terminów z kalendarzem, przypomnieniami e-mail/SMS i płatnościami",
           "Systemy wewnętrzne z rolami użytkowników — np. Football Academy System z panelem zawodnika, trenera i managera",
-          "Integracje z zewnętrznymi usługami: fakturowanie, płatności (PayU, PayNow, Stripe), KSeF, API pocztowe, kalendarze",
+          "Integracje z zewnętrznymi usługami: płatności (PayU, PayNow), fakturowanie (SaldeoSMART), poczta e-mail, kalendarze",
         ],
       },
       {
@@ -48,7 +48,7 @@ export const services: LandingPageData[] = [
         bullets: [
           "Warsztat i analiza (3–5 dni) — mapowanie procesu, wymagań i ról użytkowników; ustalenie zakresu MVP i harmonogramu",
           "Projekt UX/UI (1–2 tygodnie) — wireframy kluczowych ekranów, projekt graficzny w Figmie, dwie rundy poprawek w cenie",
-          "Budowa MVP (4–12 tygodni) — kod w Next.js, React i TypeScript, baza danych, logika biznesowa, integracje; pokaz postępu co tydzień",
+          "Budowa MVP (2–4 tygodnie dla prostych aplikacji, dłużej dla rozbudowanych) — kod w Next.js, React i TypeScript, baza danych, logika biznesowa, integracje; pokaz postępu co tydzień",
           "Wdrożenie i testy (1–2 tygodnie) — uruchomienie na produkcji, migracja danych z arkuszy lub poprzedniego systemu, szkolenie zespołu",
           "Utrzymanie i rozwój (opcjonalne) — opieka techniczna od 290 zł/mies., monitoring, kopie zapasowe, reakcja na zgłoszenia w 48 h, rozbudowa o nowe funkcje",
         ],
@@ -70,7 +70,7 @@ export const services: LandingPageData[] = [
         bullets: [
           "Prosta aplikacja z jednym procesem i panelem admina: 15 000–30 000 zł",
           "System z wieloma rolami, płatnościami i integracjami: 35 000–80 000 zł",
-          "Platforma z integracją ERP lub zaawansowaną logiką: 60 000–120 000 zł",
+          "Platforma B2B z integracją ERP: 40 000–120 000 zł",
           "Płatność: zaliczka 50% na start, pozostałe 50% po wdrożeniu; przy większych projektach dzielę na etapy",
         ],
       },
@@ -112,7 +112,7 @@ export const services: LandingPageData[] = [
       {
         question: "Czy aplikacja będzie się integrować z innymi systemami?",
         answer:
-          "Tak, jeśli zewnętrzny system udostępnia API. Najczęściej integruję z płatnościami (PayU, PayNow, Stripe), fakturowaniem (SaldeoSMART, wFirma, KSeF), pocztą e-mail (SMTP, SendGrid), kalendarzami (Google Calendar) i CRM-ami. Zakres integracji sprawdzam przed wyceną.",
+          "Tak, jeśli zewnętrzny system udostępnia API. Najczęściej integruję z płatnościami (PayU, PayNow), fakturowaniem (SaldeoSMART), pocztą e-mail i kalendarzami. Zakres integracji sprawdzam przed wyceną.",
       },
       {
         question: "Co jeśli po roku będę potrzebować nowych funkcji?",
@@ -135,34 +135,34 @@ export const services: LandingPageData[] = [
     ],
     relatedLinks: [
       {
+        href: "/blog/ile-kosztuje-aplikacja-webowa-na-zamowienie",
+        label: "Ile kosztuje aplikacja webowa na zamówienie?",
+        description:
+          "Rozbicie kosztów budowy aplikacji — od czego zależy cena i co wpływa na wycenę.",
+      },
+      {
+        href: "/blog/jak-wybrac-firme-do-stworzenia-aplikacji-webowej",
+        label: "Jak wybrać firmę do stworzenia aplikacji?",
+        description:
+          "Na co zwrócić uwagę przy wyborze wykonawcy systemu na zamówienie.",
+      },
+      {
+        href: "/blog/gotowy-crm-czy-system-na-zamowienie",
+        label: "Gotowy CRM czy system na zamówienie?",
+        description:
+          "Kiedy wybrać abonamentowe narzędzie, a kiedy budować własne.",
+      },
+      {
+        href: "/blog/jak-przeniesc-firme-z-excela-do-systemu",
+        label: "Jak przenieść firmę z Excela do systemu?",
+        description:
+          "Migracja z arkuszy do dedykowanego oprogramowania krok po kroku.",
+      },
+      {
         href: "/cennik",
         label: "Cennik aplikacji i systemów",
         description:
           "Realne widełki cenowe dla stron, aplikacji i systemów na zamówienie.",
-      },
-      {
-        href: "/uslugi/systemy-dla-firm",
-        label: "Systemy i CRM na zamówienie",
-        description:
-          "Gdy potrzebujesz wewnętrznego narzędzia dla zespołu — CRM, panel obsługi zleceń, system rezerwacji.",
-      },
-      {
-        href: "/branze/szkoly-i-edukacja",
-        label: "Platformy e-learningowe",
-        description:
-          "Systemy dla szkół, kursów i firm szkoleniowych z zapisami, płatnościami i panelem ucznia.",
-      },
-      {
-        href: "/uslugi/automatyzacja-procesow",
-        label: "Automatyzacja procesów",
-        description:
-          "Gdy wystarczy połączyć istniejące narzędzia integracjami, bez budowania całej aplikacji.",
-      },
-      {
-        href: "/projekty",
-        label: "Wszystkie realizacje",
-        description:
-          "36+ wdrożonych projektów — aplikacje, systemy i strony dla firm z 9 branż.",
       },
       {
         href: "/kontakt",
