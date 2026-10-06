@@ -69,6 +69,7 @@ export default async function IndustryPage({
       <LandingPageView
         data={industry}
         breadcrumb={{ label: "Branże", href: "/branze" }}
+        industrySlug={slug}
       />
     </>
   );

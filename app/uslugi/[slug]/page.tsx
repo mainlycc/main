@@ -69,6 +69,7 @@ export default async function ServicePage({
       <LandingPageView
         data={service}
         breadcrumb={{ label: "Usługi", href: "/uslugi" }}
+        serviceSlug={slug}
       />
     </>
   );

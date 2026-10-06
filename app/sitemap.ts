@@ -31,75 +31,63 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const latestBlogDate = blogPosts[0]?.published_at
     ? new Date(blogPosts[0].published_at)
-    : new Date()
-
-  const now = new Date()
+    : undefined
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: SITE_URL, lastModified: now, changeFrequency: 'monthly', priority: 1.0 },
+    { url: SITE_URL, changeFrequency: 'monthly', priority: 1.0 },
     {
       url: `${SITE_URL}/uslugi`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/branze`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/cennik`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/proces`,
-      lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/o-mnie`,
-      lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.7,
     },
     {
       url: `${SITE_URL}/tworzenie-stron-internetowych-warszawa`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/projekty`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/blog`,
-      lastModified: latestBlogDate,
+      ...(latestBlogDate && { lastModified: latestBlogDate }),
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/kontakt`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${SITE_URL}/opinie`,
-      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
       url: `${SITE_URL}/polityka-prywatnosci`,
-      lastModified: now,
       changeFrequency: 'yearly',
       priority: 0.3,
     },
@@ -107,21 +95,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${SITE_URL}/uslugi/${service.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.9,
   }))
 
   const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
     url: `${SITE_URL}/branze/${industry.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
 
   const projectRoutes: MetadataRoute.Sitemap = projects.map((project) => ({
     url: `${SITE_URL}/projekty/${project.slug}`,
-    lastModified: now,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))

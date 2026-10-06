@@ -7,9 +7,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Star, CheckCircle2 } from "lucide-react";
-import TurnstileWidget, {
-  type TurnstileWidgetHandle,
-} from "@/components/TurnstileWidget";
+import LazyTurnstileWidget, {
+  type LazyTurnstileWidgetHandle,
+} from "@/components/LazyTurnstileWidget";
 
 export default function OpinieForm() {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function OpinieForm() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const turnstileRef = useRef<LazyTurnstileWidgetHandle>(null);
 
   useEffect(() => {
     if (showSuccessDialog) {
@@ -122,9 +122,9 @@ export default function OpinieForm() {
   return (
     <>
       <div className="bg-white/95 text-zinc-900 rounded-2xl shadow-lg shadow-black/30 border border-white/10 p-6 sm:p-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-950">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-zinc-950">
           Zostaw opinię o naszych usługach
-        </h1>
+        </h2>
         <p className="text-zinc-600 mb-6">
           Twoja opinia pomaga nam rozwijać się i pokazuje innym, jak wygląda
           współpraca z Mainly. Jeśli wyrazisz na to zgodę, możemy opublikować
@@ -226,7 +226,11 @@ export default function OpinieForm() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6"
+          onFocus={() => turnstileRef.current?.load()}
+        >
           <div className="space-y-4">
             <div className="space-y-2">
               <label
@@ -378,7 +382,7 @@ export default function OpinieForm() {
             </div>
           </div>
 
-          <TurnstileWidget
+          <LazyTurnstileWidget
             ref={turnstileRef}
             action="opinie"
             theme="light"

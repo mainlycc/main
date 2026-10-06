@@ -3,8 +3,9 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildProjectFaq } from "@/components/projects/ProjectExtras";
 import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
+import { getProjectMetaTitle } from "@/lib/project-meta";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
-import { absoluteUrl, resolveImageUrl, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, DEFAULT_OG_IMAGE, resolveImageUrl, SITE_URL } from "@/lib/seo";
 import ProjectDetailClient from "./ProjectDetailClient";
 
 export async function generateStaticParams() {
@@ -24,18 +25,21 @@ export async function generateMetadata({
     return { title: "Projekt nie znaleziony | Mainly" };
   }
 
+  const metaTitle = getProjectMetaTitle(slug, project.name);
+  const ogImage = isValidOgImage(project.image) ? project.image : DEFAULT_OG_IMAGE;
+
   return {
-    title: `${project.name} - case study | Mainly`,
+    title: metaTitle,
     description: project.description,
     alternates: { canonical: `/projekty/${project.slug}` },
     openGraph: {
-      title: `${project.name} | Mainly`,
+      title: metaTitle,
       description: project.description,
       url: absoluteUrl(`/projekty/${project.slug}`),
       type: "article",
       images: [
         {
-          url: project.image,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${project.name} — projekt zrealizowany przez Mainly`,
@@ -44,11 +48,18 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.name} | Mainly`,
+      title: metaTitle,
       description: project.description,
-      images: [project.image],
+      images: [ogImage],
     },
   };
+}
+
+function isValidOgImage(url: string): boolean {
+  if (!url) return false;
+  if (url.includes("placeholder")) return false;
+  if (url.endsWith(".svg")) return false;
+  return true;
 }
 
 export default async function ProjectDetailPage({
