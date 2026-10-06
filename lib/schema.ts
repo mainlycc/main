@@ -1,4 +1,5 @@
-import { BUSINESS, SOCIAL_PROFILES } from "./site";
+import { getCompanySameAs, getOwnerSameAs } from "./site-profiles";
+import { BUSINESS } from "./site";
 import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "./seo";
 
 export const ORG_ID = `${SITE_URL}/#organization`;
@@ -18,54 +19,48 @@ const postalAddress = {
  * Osoba stojąca za firmą. Kluczowe dla E-E-A-T przy jednoosobowej działalności
  * oraz dla powiązania encji w modelach AI.
  */
-export const personSchema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": PERSON_ID,
-  name: BUSINESS.personName,
-  description: BUSINESS.personDescription,
-  jobTitle: BUSINESS.jobTitle,
-  email: `mailto:${BUSINESS.email}`,
-  telephone: BUSINESS.telephone,
-  url: absoluteUrl("/o-mnie"),
-  worksFor: { "@id": ORG_ID },
-  knowsAbout: [
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "aplikacje webowe",
-    "systemy CRM na zamówienie",
-    "automatyzacja procesów biznesowych",
-    "optymalizacja SEO",
-  ],
-  address: postalAddress,
-  ...(SOCIAL_PROFILES.length > 0 && { sameAs: SOCIAL_PROFILES }),
-};
+export function getPersonSchema() {
+  const ownerSameAs = getOwnerSameAs();
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: BUSINESS.personName,
+    description: BUSINESS.personDescription,
+    jobTitle: BUSINESS.jobTitle,
+    email: `mailto:${BUSINESS.email}`,
+    telephone: BUSINESS.telephone,
+    url: absoluteUrl("/o-mnie"),
+    worksFor: { "@id": ORG_ID },
+    knowsAbout: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "aplikacje webowe",
+      "systemy CRM na zamówienie",
+      "automatyzacja procesów biznesowych",
+      "optymalizacja SEO",
+    ],
+    address: postalAddress,
+    ...(ownerSameAs.length > 0 && { sameAs: ownerSameAs }),
+  };
+}
+
+/** @deprecated Use getPersonSchema() instead */
+export const personSchema = getPersonSchema();
 
 /**
  * Encja firmy. ProfessionalService jest precyzyjniejszym typem niż LocalBusiness
  * dla usług IT, a jednocześnie dziedziczy po LocalBusiness (adres, godziny, mapa).
+ *
+ * UWAGA: AggregateRating i Review zostały celowo usunięte.
+ * Google nie wyświetla gwiazdek dla "self-serving reviews" (opinii o firmie
+ * publikowanych na jej własnej stronie). Opinie są widoczne jako treść
+ * na stronie /opinie — dla rich snippets należy zbierać je w Google Business Profile.
  */
-export function organizationSchema(
-  reviewCount: number,
-  reviews: Array<{ name: string; text: string }> = []
-) {
-  const reviewEntities = reviews.map((item) => ({
-    "@type": "Review" as const,
-    author: {
-      "@type": "Person" as const,
-      name: item.name,
-    },
-    reviewBody: item.text.replace(/^[„"]|[”"]$/g, "").trim(),
-    reviewRating: {
-      "@type": "Rating" as const,
-      ratingValue: "5",
-      bestRating: "5",
-      worstRating: "1",
-    },
-  }));
-
+export function organizationSchema() {
+  const companySameAs = getCompanySameAs();
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -109,23 +104,7 @@ export function organizationSchema(
       { "@type": "Country", name: "Polska" },
     ],
     knowsLanguage: ["pl", "en"],
-    /**
-     * Uwaga: Google nie wyświetla gwiazdek dla opinii o własnej firmie
-     * umieszczonych na własnej stronie. Ten fragment działa na rzecz
-     * zrozumienia encji przez modele AI i Bing — gwiazdki w Google
-     * pochodzą z Profilu Firmy, nie stąd.
-     */
-    ...(reviewCount > 0 && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5",
-        bestRating: "5",
-        worstRating: "1",
-        reviewCount,
-      },
-    }),
-    ...(reviewEntities.length > 0 && { review: reviewEntities }),
-    ...(SOCIAL_PROFILES.length > 0 && { sameAs: SOCIAL_PROFILES }),
+    ...(companySameAs.length > 0 && { sameAs: companySameAs }),
   };
 }
 
@@ -224,5 +203,45 @@ export function itemListSchema(
       name: item.name,
       url: item.url,
     })),
+  };
+}
+
+/**
+ * Schema dla artykułów blogowych. Używa @id dla powiązania autora i wydawcy
+ * z głównymi encjami (Person i Organization).
+ */
+export function blogPostingSchema({
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  articleSection,
+  url,
+  imageUrl,
+}: {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  articleSection: string;
+  url: string;
+  imageUrl: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline,
+    description,
+    datePublished,
+    dateModified,
+    author: { "@id": PERSON_ID },
+    publisher: { "@id": ORG_ID },
+    articleSection,
+    url,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    image: imageUrl,
   };
 }

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Strona nie znaleziona | Mainly",
   description: "Ta strona nie istnieje. Wróć do strony głównej lub skorzystaj z mapy witryny.",
-  robots: { index: false, follow: true },
+  robots: "noindex, follow",
 };
 
 const links = [

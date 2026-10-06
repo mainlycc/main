@@ -26,7 +26,7 @@ export const BUSINESS = {
   // TODO: zweryfikuj współrzędne w Google Maps dla dokładnego adresu
   latitude: 52.2183,
   longitude: 20.9878,
-  priceRange: "2900-9900 PLN",
+  priceRange: "2900-120000 PLN",
   foundingDate: "2024",
   openingHours: {
     days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
@@ -36,13 +36,7 @@ export const BUSINESS = {
 } as const;
 
 /**
- * Profile w serwisach zewnętrznych — budują encję firmy w Google i modelach AI.
- * TODO: uzupełnij realnymi adresami. Puste wpisy NIE są emitowane do schematu.
+ * Profile zewnętrzne są teraz zarządzane w lib/site-profiles.ts
+ * Zobacz: getOwnerSameAs(), getCompanySameAs(), getActiveOwnerProfiles()
  */
-export const SOCIAL_PROFILES: string[] = [
-  // "https://www.facebook.com/...",
-  // "https://www.instagram.com/...",
-  // "https://www.linkedin.com/in/...",
-  // "https://github.com/...",
-  // "https://clutch.co/profile/...",
-].filter(Boolean);
+export { getOwnerSameAs, getCompanySameAs, getActiveOwnerProfiles, getActiveCompanyProfiles } from "./site-profiles";

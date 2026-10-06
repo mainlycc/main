@@ -7,6 +7,7 @@ import { stats, technologies } from "@/lib/home-content";
 import { breadcrumbSchema, PERSON_ID } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
+import { getActiveOwnerProfiles } from "@/lib/site-profiles";
 
 export const metadata: Metadata = {
   title: "Stanisław — web developer z Warszawy | Mainly",
@@ -30,6 +31,29 @@ const profilePageSchema = {
   url: absoluteUrl("/o-mnie"),
   mainEntity: { "@id": PERSON_ID },
 };
+
+function ProfileLinks() {
+  const profiles = getActiveOwnerProfiles();
+  if (profiles.length === 0) return null;
+
+  return (
+    <div className="profile-links" style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+      {profiles.map((profile) => (
+        <a
+          key={profile.id}
+          href={profile.url}
+          target="_blank"
+          rel={profile.relMe ? "me noopener" : "noopener"}
+          className="btn-ghost"
+          style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}
+        >
+          {profile.label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -64,6 +88,7 @@ export default function AboutPage() {
             wdrażam i sam odpowiadam na zgłoszenia. Za mną 36 wdrożeń w 9
             branżach, w tym system obsługujący ponad 865 użytkowników.
           </p>
+          <ProfileLinks />
         </section>
 
         <section className="wrap page-section">

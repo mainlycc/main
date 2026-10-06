@@ -8,8 +8,7 @@ import Navbar from "../components/Navbar";
 import GoogleAnalytics from "../components/seo/GoogleAnalytics";
 import JsonLd from "../components/seo/JsonLd";
 import { fontVariables, geistSans } from "../lib/fonts";
-import { testimonials } from "../lib/home-content";
-import { organizationSchema, personSchema, websiteSchema } from "../lib/schema";
+import { organizationSchema, getPersonSchema, websiteSchema } from "../lib/schema";
 import {
   DEFAULT_OG_IMAGE,
   SITE_LOCALE,
@@ -80,8 +79,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} text-[var(--fg)] bg-[var(--bg)] antialiased`}
       >
-        <JsonLd data={organizationSchema(testimonials.length, testimonials)} />
-        <JsonLd data={personSchema} />
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={getPersonSchema()} />
         <JsonLd data={websiteSchema} />
 
         <MetaPixel />
