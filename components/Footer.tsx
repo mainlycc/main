@@ -3,6 +3,29 @@ import Link from "next/link";
 import { industries } from "@/lib/industries";
 import { services } from "@/lib/services";
 import { BUSINESS } from "@/lib/site";
+import { getActiveCompanyProfiles } from "@/lib/site-profiles";
+
+function ProfileLinks() {
+  const profiles = getActiveCompanyProfiles();
+  if (profiles.length === 0) return null;
+
+  return (
+    <>
+      {profiles.map((profile) => (
+        <li key={profile.id}>
+          <a
+            href={profile.url}
+            target="_blank"
+            rel={profile.relMe ? "me noopener" : "noopener"}
+            aria-label={`Profil na ${profile.label}`}
+          >
+            {profile.label}
+          </a>
+        </li>
+      ))}
+    </>
+  );
+}
 
 export default function Footer() {
   return (
@@ -102,6 +125,7 @@ export default function Footer() {
               <li>
                 <small>NIP: {BUSINESS.taxID}</small>
               </li>
+              <ProfileLinks />
             </ul>
           </div>
         </div>

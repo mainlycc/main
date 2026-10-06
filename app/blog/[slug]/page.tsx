@@ -12,9 +12,9 @@ import ReadingProgress from "@/components/blog/ReadingProgress";
 import Footer from "@/components/Footer";
 import { formatBlogDate } from "@/lib/blog";
 import { blogHeroImageUrl } from "@/lib/blog-hero-content";
+import { blogPostingSchema } from "@/lib/schema";
 import {
   absoluteUrl,
-  DEFAULT_OG_IMAGE,
   postOgImages,
   resolveImageUrl,
   SITE_LOCALE,
@@ -22,6 +22,8 @@ import {
   SITE_URL,
   stripHtml,
 } from "@/lib/seo";
+import { BUSINESS } from "@/lib/site";
+import { getActiveOwnerProfiles } from "@/lib/site-profiles";
 import { getSupabase, type BlogPost } from "@/lib/supabase";
 import { STATIC_BLOG_POSTS } from "@/lib/static-blog-posts";
 
@@ -82,6 +84,40 @@ async function getRelatedPosts(
   return [...sameCategory, ...others].slice(0, 3) as BlogPost[];
 }
 
+function AuthorBox() {
+  const profiles = getActiveOwnerProfiles();
+
+  return (
+    <div className="article-end">
+      <span className="av" aria-hidden="true" />
+      <div className="bio">
+        <strong>{BUSINESS.personName}</strong>
+        <div className="role">Założyciel Mainly</div>
+        <p>
+          Web developer z Warszawy. Buduję aplikacje webowe, systemy CRM i
+          strony dla firm — od projektu po wdrożenie, bez podwykonawców.
+        </p>
+        <div className="author-links" style={{ display: "flex", gap: "0.75rem", marginTop: "0.75rem", flexWrap: "wrap" }}>
+          <Link href="/o-mnie" className="author-link">
+            Więcej o mnie
+          </Link>
+          {profiles.map((profile) => (
+            <a
+              key={profile.id}
+              href={profile.url}
+              target="_blank"
+              rel={profile.relMe ? "me noopener" : "noopener"}
+              className="author-link"
+            >
+              {profile.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -115,7 +151,7 @@ export async function generateMetadata({
       section: post.category,
       publishedTime: post.published_at,
       modifiedTime: post.updated_at,
-      authors: [post.author],
+      authors: [BUSINESS.personName],
       tags: post.tags,
       images: ogImages,
     },
@@ -146,34 +182,15 @@ export default async function BlogPostPage({
   const postUrl = absoluteUrl(`/blog/${post.slug}`);
   const heroImageUrl = post.image_url ?? blogHeroImageUrl(post.slug);
 
-  const blogPostingJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+  const blogPostingJsonLd = blogPostingSchema({
     headline: plainTitle,
     description,
     datePublished: post.published_at,
     dateModified: post.updated_at,
-    author: {
-      "@type": "Person",
-      name: post.author,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl(DEFAULT_OG_IMAGE),
-      },
-    },
     articleSection: post.category,
     url: postUrl,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": postUrl,
-    },
-    image: resolveImageUrl(heroImageUrl),
-  };
+    imageUrl: resolveImageUrl(heroImageUrl),
+  });
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -238,7 +255,7 @@ export default async function BlogPostPage({
           <div className="byline">
             <span className="av" aria-hidden="true" />
             <div className="who">
-              <strong>{post.author}</strong>
+              <strong>{BUSINESS.personName}</strong>
               <span>Mainly</span>
             </div>
             <div className="when">
@@ -276,18 +293,7 @@ export default async function BlogPostPage({
 
         <ServiceCta category={post.category} tags={post.tags} />
 
-        <div className="article-end">
-          <span className="av" aria-hidden="true" />
-          <div className="bio">
-            <strong>{post.author}</strong>
-            <div className="role">Mainly · custom web development</div>
-            <p>
-              Freelancer z Warszawy. Buduję szybkie strony, aplikacje webowe i
-              systemy szyte na miarę - od projektu po wdrożenie. Zwolennik
-              zasady „im mniej kodu, tym lepiej”.
-            </p>
-          </div>
-        </div>
+        <AuthorBox />
       </article>
 
       <section className="wrap">
