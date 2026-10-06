@@ -127,6 +127,37 @@ export const serviceTimeline: Record<string, string> = {
  * Dlaczego akurat ta technologia. Zdania są prawdziwe i niezależne od projektu —
  * unikalna jest kombinacja, która pojawia się na danej stronie.
  */
+/**
+ * Ulepszone tytuły meta dla case studies - z frazą usługową zamiast
+ * generycznego "Nazwa - case study | Mainly".
+ * Format: "Nazwa: opis usługi | Mainly" (~50-60 znaków)
+ */
+export const projectMetaTitles: Record<string, string> = {
+  "football-academy": "Football Academy: system zarządzania akademią sportową | Mainly",
+  qualibase: "Qualibase: platforma rekrutacyjna IT | Mainly",
+  "jkterm-wizualizator": "JK Term: wizualizator grzejników z AI | Mainly",
+  "magia-podrozowania": "Magia Podróżowania: CRM dla biura podróży | Mainly",
+  "akademia-wiedzy": "Akademia Wiedzy: system e-korepetycji | Mainly",
+  "airset-platforma": "AIRSET: platforma szkoleniowa dla linii lotniczych | Mainly",
+  "elomoto-eco": "Elomoto.eco: strona operatora stacji EV | Mainly",
+  "biblioteka-promptow": "Biblioteka Promptów: platforma z promptami AI | Mainly",
+  "music-pad": "Music Pad: aplikacja do tworzenia muzyki | Mainly",
+  "lease1-leasing": "Lease1: platforma dla firmy leasingowej | Mainly",
+  "bcsc-ksiegowosc": "Business Care SC: strona biura rachunkowego | Mainly",
+  "generator-ofert-rolety": "Generator Ofert: automatyzacja wycen | Mainly",
+  "kreator-faktur": "Kreator Faktur: narzędzie do faktur VAT | Mainly",
+  audiogen: "Audiogen: landing page z automatyzacją leadów | Mainly",
+  "kalkulator-gap": "Kalkulator GAP: narzędzie ubezpieczeniowe | Mainly",
+  cytomania: "Cytomania: portal z cytatami filmowymi | Mainly",
+  "kulio-studio": "Kulio Studio: strona agencji marketingowej | Mainly",
+  "milei-coin": "Milei Coin: strona kryptowaluty | Mainly",
+  prawkoczechy: "Prawo Jazdy w Czechach: strona z Google Ads | Mainly",
+};
+
+export function getProjectMetaTitle(slug: string, fallbackName: string): string {
+  return projectMetaTitles[slug] ?? `${fallbackName} – case study | Mainly`;
+}
+
 export const techRationale: Record<string, string> = {
   "Next.js":
     "renderowanie po stronie serwera daje szybkie pierwsze wczytanie i poprawne SEO — w odróżnieniu od aplikacji, które budują treść dopiero w przeglądarce",

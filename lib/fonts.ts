@@ -8,11 +8,14 @@ export const instrumentSerif = Instrument_Serif({
   weight: ["400"],
   style: ["normal", "italic"],
   variable: "--font-display",
+  display: "swap",
 });
 
 export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin", "latin-ext"],
   variable: "--font-mono",
+  display: "swap",
+  preload: false,
 });
 
 export const fontVariables = `${geistSans.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable}`;

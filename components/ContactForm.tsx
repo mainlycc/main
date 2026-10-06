@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
-import TurnstileWidget, {
-  type TurnstileWidgetHandle,
-} from "@/components/TurnstileWidget";
+import LazyTurnstileWidget, {
+  type LazyTurnstileWidgetHandle,
+} from "@/components/LazyTurnstileWidget";
 import { trackMetaLead } from "@/lib/meta-pixel";
 import {
   trackFormStart,
@@ -43,7 +43,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const turnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const turnstileRef = useRef<LazyTurnstileWidgetHandle>(null);
   const hasStarted = useRef(false);
   const hasTrackedTopics = useRef(false);
 
@@ -51,6 +51,7 @@ export default function ContactForm() {
     if (hasStarted.current) return;
     hasStarted.current = true;
     trackFormStart();
+    turnstileRef.current?.load();
   };
 
   const handleChange = (
@@ -238,7 +239,7 @@ export default function ContactForm() {
           />
         </div>
 
-        <TurnstileWidget
+        <LazyTurnstileWidget
           ref={turnstileRef}
           action="contact"
           theme="light"

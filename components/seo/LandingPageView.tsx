@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
+import RelatedArticles from "@/components/RelatedArticles";
 import type { LandingPageData } from "@/lib/landing";
 import { getPublishedProjects } from "@/lib/portfolio";
 
@@ -12,9 +13,13 @@ function formatPrice(value: number) {
 export default async function LandingPageView({
   data,
   breadcrumb,
+  serviceSlug,
+  industrySlug,
 }: {
   data: LandingPageData;
   breadcrumb: { label: string; href: string };
+  serviceSlug?: string;
+  industrySlug?: string;
 }) {
   const allProjects = await getPublishedProjects();
   const proof = data.relatedProjects
@@ -122,6 +127,24 @@ export default async function LandingPageView({
                 </Link>
               ))}
             </div>
+
+            <RelatedArticles
+              serviceSlug={serviceSlug}
+              industrySlug={industrySlug}
+              keywords={[data.navLabel]}
+              maxArticles={3}
+            />
+          </section>
+        )}
+
+        {proof.length === 0 && (serviceSlug || industrySlug) && (
+          <section className="wrap page-section">
+            <RelatedArticles
+              serviceSlug={serviceSlug}
+              industrySlug={industrySlug}
+              keywords={[data.navLabel]}
+              maxArticles={3}
+            />
           </section>
         )}
 

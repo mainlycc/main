@@ -1,4 +1,5 @@
 import { getSupabase, type BlogPost } from "./supabase";
+import { STATIC_BLOG_POSTS, type StaticBlogPost } from "./static-blog-posts";
 
 export type BlogPostInput = {
   slug: string;
@@ -34,9 +35,28 @@ export type BlogPostListItem = Pick<
 const LIST_COLUMNS =
   "id,slug,title,excerpt,author,published_at,read_time,category,image_url,tags,published";
 
+function staticToListItem(post: StaticBlogPost): BlogPostListItem {
+  return {
+    id: post.slug,
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    author: "Stanisław Blicharski",
+    published_at: post.published_at,
+    read_time: post.read_time,
+    category: post.category,
+    image_url: post.image_url,
+    tags: post.tags,
+    published: true,
+  };
+}
+
 export async function getPublishedBlogPosts(): Promise<BlogPostListItem[]> {
   const supabase = getSupabase();
-  if (!supabase) return [];
+  
+  if (!supabase) {
+    return STATIC_BLOG_POSTS.map(staticToListItem);
+  }
 
   const { data, error } = await supabase
     .from("blog_posts")
@@ -44,7 +64,10 @@ export async function getPublishedBlogPosts(): Promise<BlogPostListItem[]> {
     .eq("published", true)
     .order("published_at", { ascending: false });
 
-  if (error || !data) return [];
+  if (error || !data || data.length === 0) {
+    return STATIC_BLOG_POSTS.map(staticToListItem);
+  }
+  
   return data as BlogPostListItem[];
 }
 

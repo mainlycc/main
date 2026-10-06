@@ -7,12 +7,12 @@ import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Cennik stron i aplikacji webowych 2026 | Mainly",
+  title: "Cennik stron i aplikacji webowych 2026: od 2 900 zł | Mainly",
   description:
     "Ile kosztuje strona internetowa, aplikacja webowa i system na zamówienie w 2026. Realne widełki, od czego zależy cena i co wchodzi w każdy pakiet.",
   alternates: { canonical: "/cennik" },
   openGraph: {
-    title: "Cennik stron i aplikacji webowych | Mainly",
+    title: "Cennik stron i aplikacji webowych: od 2 900 zł | Mainly",
     description:
       "Realne widełki cenowe dla stron, aplikacji i systemów na zamówienie — bez „wyceny indywidualnej” jako jedynej odpowiedzi.",
     url: absoluteUrl("/cennik"),

@@ -249,11 +249,11 @@ export const services: LandingPageData[] = [
   {
     slug: "strony-internetowe",
     navLabel: "Strony internetowe",
-    metaTitle: "Tworzenie stron internetowych dla firm | Mainly",
+    metaTitle: "Strona internetowa dla firmy w Next.js: od 2 900 zł | Mainly",
     metaDescription:
       "Strony firmowe kodowane w Next.js — szybkie, gotowe pod SEO i nastawione na zapytania od klientów. Od 2 900 zł, realizacja 1–4 tygodnie.",
     eyebrow: "Usługa",
-    h1: "Strony internetowe, które sprzedają — nie tylko wyglądają",
+    h1: "Strona firmowa w Next.js — szybka, gotowa pod SEO i konwersję",
     teaser:
       "Strona kodowana od zera: ładuje się poniżej sekundy i jest zbudowana pod pozyskiwanie zapytań.",
     intro:
