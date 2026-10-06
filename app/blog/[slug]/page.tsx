@@ -7,6 +7,7 @@ import {
   BlogTitle,
   RelatedPosts,
 } from "@/components/blog/BlogPostParts";
+import ServiceCta from "@/components/blog/ServiceCta";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import Footer from "@/components/Footer";
 import { formatBlogDate } from "@/lib/blog";
@@ -24,19 +25,26 @@ import {
 import { BUSINESS } from "@/lib/site";
 import { getActiveOwnerProfiles } from "@/lib/site-profiles";
 import { getSupabase, type BlogPost } from "@/lib/supabase";
+import { STATIC_BLOG_POSTS } from "@/lib/static-blog-posts";
 
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const supabase = getSupabase();
-  if (!supabase) return [];
+  if (!supabase) {
+    return STATIC_BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  }
 
   const { data } = await supabase
     .from("blog_posts")
     .select("slug")
     .eq("published", true);
 
-  return (data ?? []).map((post: { slug: string }) => ({ slug: post.slug }));
+  if (!data || data.length === 0) {
+    return STATIC_BLOG_POSTS.map((post) => ({ slug: post.slug }));
+  }
+
+  return data.map((post: { slug: string }) => ({ slug: post.slug }));
 }
 
 async function getPost(slug: string): Promise<BlogPost | null> {
@@ -282,6 +290,8 @@ export default async function BlogPostPage({
           className="prose"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        <ServiceCta category={post.category} tags={post.tags} />
 
         <AuthorBox />
       </article>

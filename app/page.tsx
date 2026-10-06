@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import AppsSection from "@/components/home/AppsSection";
 import BenefitsSection from "@/components/home/BenefitsSection";
+import BlogSection from "@/components/home/BlogSection";
 import CtaSection from "@/components/home/CtaSection";
 import FaqSection from "@/components/home/FaqSection";
 import HeroSection from "@/components/home/HeroSection";
@@ -35,6 +36,7 @@ export default function Home() {
         <ProcessSection />
         <AppsSection />
         <PortfolioSection />
+        <BlogSection />
         <TechSection />
         <HomePricingSection />
         <HomeTestimonialsSection />

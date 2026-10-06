@@ -2,6 +2,7 @@ import type React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import CookieConsent from "../components/CookieConsent";
 import MetaPixel from "../components/MetaPixel";
 import MobileCta from "../components/MobileCta";
 import Navbar from "../components/Navbar";
@@ -16,7 +17,7 @@ import {
   SITE_URL,
 } from "../lib/seo";
 
-const DEFAULT_TITLE = "Aplikacje webowe i strony dla firm | Mainly Warszawa";
+const DEFAULT_TITLE = "Mainly: aplikacje webowe i strony dla firm, Warszawa";
 const DEFAULT_DESCRIPTION =
   "Buduję aplikacje webowe, systemy i strony na zamówienie — od projektu po wdrożenie, bez podwykonawców. 36 wdrożeń w 9 branżach. Bezpłatna wycena w 24 h.";
 
@@ -91,6 +92,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MobileCta />
+        <CookieConsent />
         <Analytics />
       </body>
     </html>
