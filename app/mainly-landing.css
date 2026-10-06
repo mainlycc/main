@@ -1582,6 +1582,70 @@
     text-align:center;
   }
 
+  /* ========================= SERVICE CTA IN BLOG ========================= */
+  .service-cta{
+    margin:32px 0 24px;
+  }
+  .service-cta-link{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 20px 14px 16px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--line);
+    border-radius:10px;
+    text-decoration:none;
+    transition:background .2s, border-color .2s;
+  }
+  .service-cta-link:hover{
+    background:rgba(255,255,255,0.06);
+    border-color:var(--line-strong);
+  }
+  .service-cta-link .icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;height:40px;
+    background:var(--ember);
+    border-radius:8px;
+    color:#fff;
+    flex-shrink:0;
+  }
+  .service-cta-link .text{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    min-width:0;
+  }
+  .service-cta-link .label{
+    font-size:12px;
+    color:var(--fg-mute);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+  }
+  .service-cta-link .name{
+    font-size:15px;
+    font-weight:500;
+    color:var(--fg);
+  }
+  .service-cta-link .arr{
+    color:var(--fg-mute);
+    margin-left:auto;
+    transition:color .2s, transform .2s;
+  }
+  .service-cta-link:hover .arr{
+    color:var(--ember-soft);
+    transform:translateX(3px);
+  }
+  @media(max-width:640px){
+    .service-cta-link{
+      padding:12px 16px 12px 14px;
+      gap:10px;
+    }
+    .service-cta-link .icon{width:36px;height:36px}
+    .service-cta-link .name{font-size:14px}
+  }
+
   /* ========================= COOKIE CONSENT BANNER ========================= */
   .cookie-banner{
     position:fixed;

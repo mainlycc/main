@@ -42,7 +42,7 @@ const INDUSTRY_ARTICLE_MAP: Record<string, string[]> = {
   "kluby-i-akademie-sportowe": [],
   "leasing-i-finanse": [],
   "producenci-i-przemysl": [
-    "konfigurator-3d-na-strone-internetowa",
+    "konfigurator-3d-dla-producenta-pergoli-i-altan",
   ],
   "szkoly-i-edukacja": [],
 };

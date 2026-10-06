@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildProjectFaq } from "@/components/projects/ProjectExtras";
 import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
+import { projectImageFileExists } from "@/lib/project-images";
 import { getProjectMetaTitle } from "@/lib/project-meta";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
 import { absoluteUrl, DEFAULT_OG_IMAGE, resolveImageUrl, SITE_URL } from "@/lib/seo";
@@ -59,7 +60,7 @@ function isValidOgImage(url: string): boolean {
   if (!url) return false;
   if (url.includes("placeholder")) return false;
   if (url.endsWith(".svg")) return false;
-  return true;
+  return projectImageFileExists(url);
 }
 
 export default async function ProjectDetailPage({

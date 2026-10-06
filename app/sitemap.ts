@@ -4,10 +4,11 @@ import { industries } from '../lib/industries'
 import { projects } from '../lib/projects'
 import { services } from '../lib/services'
 import { SITE_URL } from '../lib/seo'
+import { STATIC_BLOG_POSTS } from '../lib/static-blog-posts'
 
 type BlogSitemapPost = {
   slug: string
-  updated_at: string
+  updated_at?: string
   published_at: string
 }
 
@@ -23,10 +24,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         .select('slug, updated_at, published_at')
         .eq('published', true)
         .order('published_at', { ascending: false })
-      blogPosts = (data ?? []) as BlogSitemapPost[]
+      if (data && data.length > 0) {
+        blogPosts = data as BlogSitemapPost[]
+      }
     } catch {
-      // Jeśli Supabase niedostępny podczas buildu, sitemap nadal działa
+      // Jeśli Supabase niedostępny podczas buildu, użyj statycznych danych
     }
+  }
+
+  if (blogPosts.length === 0) {
+    blogPosts = STATIC_BLOG_POSTS.map((post) => ({
+      slug: post.slug,
+      published_at: post.published_at,
+    }))
   }
 
   const latestBlogDate = blogPosts[0]?.published_at
@@ -113,7 +123,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.updated_at),
+    ...(post.updated_at && { lastModified: new Date(post.updated_at) }),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
