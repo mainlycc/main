@@ -4,54 +4,95 @@ export const services: LandingPageData[] = [
   {
     slug: "aplikacje-webowe",
     navLabel: "Aplikacje webowe",
-    metaTitle: "Aplikacje webowe na zamówienie | Mainly",
+    metaTitle: "Aplikacje webowe na zamówienie dla firm | Mainly",
     metaDescription:
-      "Aplikacje webowe pisane pod proces Twojej firmy — od briefu po wdrożenie, bez podwykonawców. Next.js i React. Od 9 900 zł. Wycena w 48 h.",
+      "Aplikacje webowe na zamówienie od 9 900 zł — systemy szyte pod proces Twojej firmy. Jeden deweloper, bez podwykonawców. Wycena w 48 h.",
     eyebrow: "Usługa",
-    h1: "Aplikacje webowe na zamówienie — od briefu po wdrożenie",
+    h1: "Aplikacje webowe na zamówienie dla firm",
     teaser:
       "Aplikacja pisana pod Twój proces, nie proces dopasowany do gotowego oprogramowania.",
     intro:
-      "Aplikacja webowa na zamówienie to oprogramowanie działające w przeglądarce, napisane pod konkretny proces firmy zamiast kupowane z półki. Nie wymaga instalacji, działa na komputerze i telefonie, a dostęp kontrolujesz rolami użytkowników. Buduję je w Next.js i React — od projektu interfejsu, przez kod i integracje, po wdrożenie i opiekę techniczną.",
+      "Aplikacja webowa na zamówienie to oprogramowanie działające w przeglądarce, stworzone pod konkretny proces firmy zamiast kupowane z półki jako gotowy SaaS. Nie wymaga instalacji — działa na komputerze, tablecie i telefonie, a dostęp kontrolujesz rolami użytkowników. Buduję je samodzielnie w Next.js, React i TypeScript — od warsztatu i projektu UX, przez kod i integracje, aż po wdrożenie produkcyjne i opiekę techniczną. Mam za sobą ponad 36 wdrożonych projektów, w tym system obsługujący 865+ użytkowników.",
     priceFrom: 9900,
     priceNote:
-      "Widełki zależą od liczby ról, integracji i tego, czy potrzebujesz płatności online.",
+      "Widełki zależą od liczby ról użytkowników, integracji i tego, czy potrzebujesz płatności online. Szczegóły na stronie cennika.",
     sections: [
       {
-        heading: "Kiedy aplikacja webowa ma sens, a kiedy szkoda pieniędzy",
-        body: "Aplikacja na zamówienie opłaca się wtedy, gdy Twój proces jest na tyle nietypowy, że gotowe narzędzie wymagałoby obchodzenia go od kuchni — albo gdy ręczna obsługa zaczyna kosztować więcej niż jednorazowe wdrożenie. Jeśli Twój proces mieści się w standardowym CRM-ie z abonamentem, powiem Ci to wprost na bezpłatnej konsultacji, zamiast sprzedawać projekt na siłę.",
+        heading: "Czym jest aplikacja webowa i kiedy warto ją zbudować",
+        body: "Aplikacja webowa na zamówienie to oprogramowanie dostępne przez przeglądarkę — loguje się do niej jak do bankowości online, a cała logika działa na serwerze. W odróżnieniu od gotowego SaaS-a (jak Asana, Trello czy Pipedrive), system na zamówienie robi dokładnie to, czego wymaga Twój proces — bez obchodzenia ograniczeń cudzego narzędzia i bez abonamentu za użytkownika. Warto ją zbudować, gdy gotowe oprogramowanie nie pasuje do procesu, który jest Twoją przewagą konkurencyjną — albo gdy miesięczne abonamenty za kilkanaście osób przekraczają koszt jednorazowego wdrożenia.",
         bullets: [
           "Dane krążą między Excelem, mailem i systemem księgowym, a ktoś je przepisuje ręcznie",
           "Klient mógłby część rzeczy załatwić sam online, ale nie ma gdzie",
           "Gotowe narzędzia wymuszają zmianę procesu, który u Ciebie działa dobrze",
           "Skalowanie oznacza zatrudnienie kolejnej osoby do tej samej powtarzalnej pracy",
           "Potrzebujesz raportów, których żaden abonamentowy panel nie pokazuje",
+          "Abonament za użytkownika rośnie z zespołem i przekracza koszt własnego systemu",
         ],
       },
       {
-        heading: "Co dostajesz w ramach wdrożenia",
-        body: "Prowadzę całość samodzielnie — jeden punkt kontaktu od pierwszej rozmowy po wsparcie po starcie. Nie ma etapu, na którym odpowiedź brzmi „to pytanie do grafika”.",
+        heading: "Jakie aplikacje webowe buduję najczęściej",
+        body: "Przez ostatnie lata zrealizowałem ponad 36 projektów w 9 branżach. Większość aplikacji kręci się wokół kilku powtarzalnych potrzeb: obsłużyć klienta online, zautomatyzować dokumenty, rozdzielić pracę w zespole i wiedzieć na bieżąco, co się dzieje w firmie. Oto typy systemów, które wdrażam najczęściej — z konkretnymi przykładami realizacji.",
         bullets: [
-          "Warsztat i mapowanie procesu — zanim powstanie pierwsza linia kodu",
-          "Projekt UX/UI w Figmie z dwiema rundami poprawek w cenie",
-          "Kod w Next.js, React i TypeScript, hostowany na Vercel",
-          "Panel administracyjny z rolami i uprawnieniami użytkowników",
-          "Integracje: płatności, fakturowanie, poczta, kalendarze, API zewnętrzne",
-          "Migracja danych z arkuszy lub poprzedniego systemu",
-          "Szkolenie zespołu i dokumentacja",
-          "14 dni na poprawki po wdrożeniu w cenie",
+          "Systemy CRM i bazy klientów z historią kontaktu, statusami zleceń i raportowaniem — np. system dla biura podróży Magia Podróżowania z rezerwacjami i płatnościami online",
+          "Panele klienta, w których użytkownik sam sprawdza status, pobiera dokumenty i składa zamówienia — bez dzwonienia i mailowania",
+          "Platformy szkoleniowe i e-learningowe z materiałami, testami i płatnościami — np. Akademia Wiedzy (865+ uczniów, 40+ korepetytorów) i platforma AIRSET dla linii lotniczych",
+          "Generatory ofert i konfiguratory produktów — klient sam składa specyfikację, widzi cenę i pobiera PDF — np. generator dla producenta rolet",
+          "Systemy rezerwacji terminów z kalendarzem, przypomnieniami e-mail/SMS i płatnościami",
+          "Systemy wewnętrzne z rolami użytkowników — np. Football Academy System z panelem zawodnika, trenera i managera",
+          "Integracje z zewnętrznymi usługami: fakturowanie, płatności (PayU, PayNow, Stripe), KSeF, API pocztowe, kalendarze",
+        ],
+      },
+      {
+        heading: "Jak wygląda proces budowy aplikacji krok po kroku",
+        body: "Prowadzę całość samodzielnie — jeden punkt kontaktu od pierwszej rozmowy po wsparcie po starcie. Nie ma etapu, na którym odpowiedź brzmi «to pytanie do grafika». Proces dzielę na pięć faz, z których każda kończy się Twoją akceptacją przed przejściem dalej.",
+        bullets: [
+          "Warsztat i analiza (3–5 dni) — mapowanie procesu, wymagań i ról użytkowników; ustalenie zakresu MVP i harmonogramu",
+          "Projekt UX/UI (1–2 tygodnie) — wireframy kluczowych ekranów, projekt graficzny w Figmie, dwie rundy poprawek w cenie",
+          "Budowa MVP (4–12 tygodni) — kod w Next.js, React i TypeScript, baza danych, logika biznesowa, integracje; pokaz postępu co tydzień",
+          "Wdrożenie i testy (1–2 tygodnie) — uruchomienie na produkcji, migracja danych z arkuszy lub poprzedniego systemu, szkolenie zespołu",
+          "Utrzymanie i rozwój (opcjonalne) — opieka techniczna od 290 zł/mies., monitoring, kopie zapasowe, reakcja na zgłoszenia w 48 h, rozbudowa o nowe funkcje",
+        ],
+      },
+      {
+        heading: "Technologia, którą stosuję — i dlaczego ma to znaczenie dla Twojej firmy",
+        body: "Buduję aplikacje w stacku Next.js, React, TypeScript, Supabase i PostgreSQL, hostuję na Vercel. To nie są przypadkowe decyzje ani moda — każda z tych technologii rozwiązuje konkretny problem biznesowy.",
+        bullets: [
+          "Next.js — renderowanie po stronie serwera daje szybkie pierwsze wczytanie i poprawne SEO, co ma znaczenie dla aplikacji z publicznymi stronami (katalogi, oferty)",
+          "TypeScript — typy wyłapują błędy zanim kod trafi na produkcję; przy systemie, który ktoś będzie rozwijał za rok, to oszczędność liczona w dniach debugowania",
+          "Supabase i PostgreSQL — relacyjna baza danych z uwierzytelnianiem i kontrolą dostępu na poziomie wiersza (Row Level Security); dane widzi tylko ten użytkownik, który ma prawo je widzieć",
+          "Vercel — wdrożenie przy każdym zapisie kodu, automatyczne skalowanie i certyfikat SSL w standardzie; nagły ruch nie kładzie aplikacji",
+          "Kod, który da się rozwijać — architekturę projektuję tak, żeby dokładanie funkcji nie wymagało przepisywania wszystkiego od zera",
+        ],
+      },
+      {
+        heading: "Ile kosztuje aplikacja webowa i od czego zależy cena",
+        body: "Aplikacje webowe na zamówienie zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15 000–30 000 zł. Rozbudowany system z płatnościami online, wieloma rolami użytkowników i integracjami zewnętrznymi — 35 000–80 000 zł. Na cenę wpływa przede wszystkim liczba ról użytkowników, złożoność logiki biznesowej i zakres integracji, a nie sama liczba ekranów. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji. Pełne widełki dla różnych typów wdrożeń znajdziesz na stronie cennika.",
+        bullets: [
+          "Prosta aplikacja z jednym procesem i panelem admina: 15 000–30 000 zł",
+          "System z wieloma rolami, płatnościami i integracjami: 35 000–80 000 zł",
+          "Platforma z integracją ERP lub zaawansowaną logiką: 60 000–120 000 zł",
+          "Płatność: zaliczka 50% na start, pozostałe 50% po wdrożeniu; przy większych projektach dzielę na etapy",
         ],
       },
       {
         heading: "Ile trwa budowa aplikacji webowej",
-        body: "Prosta aplikacja z jednym procesem i panelem administracyjnym to zwykle 6–8 tygodni. Rozbudowany system z wieloma rolami, płatnościami i integracjami — 3–5 miesięcy. Harmonogram z kamieniami milowymi ustalamy przed startem, a postęp widzisz co tydzień. Każdy etap wymaga Twojej akceptacji, zanim przejdziemy dalej.",
+        body: "Prosta aplikacja z jednym procesem i panelem administracyjnym to zwykle 6–8 tygodni od warsztatu do wdrożenia. Rozbudowany system z wieloma rolami, płatnościami i integracjami — 3–5 miesięcy. Harmonogram z kamieniami milowymi ustalamy przed startem, a postęp widzisz co tydzień na wspólnych spotkaniach. Każdy etap wymaga Twojej akceptacji, zanim przejdziemy dalej — nie ma zaskoczenia pod koniec projektu.",
+      },
+      {
+        heading: "Dlaczego jeden deweloper, a nie agencja",
+        body: "W agencji projekt przechodzi przez ręce kilku osób — project manager, projektant UX, grafik, frontend developer, backend developer, tester. Każde przekazanie to miejsce, w którym gubi się kontekst, a odpowiedzialność rozmywa się między ludźmi. U mnie rozmawiasz z osobą, która zaprojektuje interfejs i napisze kod — jeden punkt kontaktu od pierwszego maila po wsparcie po wdrożeniu. Odpowiadam na wiadomości w 24 h w dni robocze, a poprawki wdrażam bez czekania na «zgodę zespołu». Nie zatrudniam podwykonawców, więc wiem dokładnie, co dzieje się w projekcie na każdym etapie.",
       },
     ],
     faq: [
       {
         question: "Ile kosztuje aplikacja webowa na zamówienie?",
         answer:
-          "Aplikacje zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 10–25 tys. zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 30–80 tys. zł. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
+          "Aplikacje webowe zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15 000–30 000 zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 35 000–80 000 zł. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
+      },
+      {
+        question: "Ile trwa budowa aplikacji webowej?",
+        answer:
+          "Prosta aplikacja to 6–8 tygodni od warsztatu do wdrożenia. Rozbudowany system z wieloma rolami, płatnościami i integracjami — 3–5 miesięcy. Harmonogram ustalamy przed startem, a postęp widzisz co tydzień.",
       },
       {
         question: "Czy będę właścicielem kodu?",
@@ -59,34 +100,75 @@ export const services: LandingPageData[] = [
           "Tak. Po opłaceniu ostatniej faktury przekazuję pełne prawa do kodu i repozytorium. Nie uzależniam klientów od siebie — możesz rozwijać aplikację samodzielnie albo z innym zespołem.",
       },
       {
+        question: "Czym różni się aplikacja webowa od aplikacji mobilnej?",
+        answer:
+          "Aplikacja webowa działa w przeglądarce — na komputerze, tablecie i telefonie — bez instalacji i bez obecności w App Store czy Google Play. Aplikacja mobilna wymaga instalacji i akceptacji sklepu. Dla większości systemów biznesowych aplikacja webowa wystarcza i jest tańsza w utrzymaniu; natywną aplikację mobilną rekomenduję tylko wtedy, gdy potrzebujesz dostępu offline lub funkcji sprzętowych telefonu.",
+      },
+      {
+        question: "Kto utrzymuje aplikację po wdrożeniu?",
+        answer:
+          "Możesz przejąć utrzymanie sam (przekazuję kod i dokumentację) albo skorzystać z opieki technicznej od 290 zł miesięcznie: monitoring dostępności, kopie zapasowe, aktualizacje zależności i reakcja na zgłoszenia w 48 h.",
+      },
+      {
+        question: "Czy aplikacja będzie się integrować z innymi systemami?",
+        answer:
+          "Tak, jeśli zewnętrzny system udostępnia API. Najczęściej integruję z płatnościami (PayU, PayNow, Stripe), fakturowaniem (SaldeoSMART, wFirma, KSeF), pocztą e-mail (SMTP, SendGrid), kalendarzami (Google Calendar) i CRM-ami. Zakres integracji sprawdzam przed wyceną.",
+      },
+      {
         question: "Co jeśli po roku będę potrzebować nowych funkcji?",
         answer:
           "Architekturę projektuję pod rozbudowę. Dokładanie modułów — płatności, raportowania, kolejnego typu użytkownika — nie wymaga przepisywania aplikacji od zera. Nowe funkcje wyceniam osobno, na podstawie zakresu.",
       },
       {
-        question: "Kto utrzymuje aplikację po wdrożeniu?",
+        question: "Czy mogę przenieść dane z Excela lub poprzedniego systemu?",
         answer:
-          "Możesz przejąć utrzymanie sam albo skorzystać z opieki technicznej od 290 zł miesięcznie: monitoring, kopie zapasowe, aktualizacje zależności i reakcja na zgłoszenia w 48 h.",
+          "Tak. Migrację danych planuję jako osobny etap wdrożenia — najpierw importuję historię, potem uruchamiamy system równolegle ze starym obiegiem, a dopiero po potwierdzeniu wyłączamy poprzedni proces. Zespół nie traci dostępu do danych ani na dzień.",
       },
     ],
-    relatedProjects: ["airset-platforma", "akademia-wiedzy", "football-academy"],
+    relatedProjects: [
+      "akademia-wiedzy",
+      "magia-podrozowania",
+      "airset-platforma",
+      "qualibase",
+      "generator-ofert-rolety",
+      "football-academy",
+    ],
     relatedLinks: [
+      {
+        href: "/cennik",
+        label: "Cennik aplikacji i systemów",
+        description:
+          "Realne widełki cenowe dla stron, aplikacji i systemów na zamówienie.",
+      },
       {
         href: "/uslugi/systemy-dla-firm",
         label: "Systemy i CRM na zamówienie",
         description:
-          "Gdy potrzebujesz narzędzia wewnętrznego dla zespołu, a nie aplikacji dla klientów.",
+          "Gdy potrzebujesz wewnętrznego narzędzia dla zespołu — CRM, panel obsługi zleceń, system rezerwacji.",
+      },
+      {
+        href: "/branze/szkoly-i-edukacja",
+        label: "Platformy e-learningowe",
+        description:
+          "Systemy dla szkół, kursów i firm szkoleniowych z zapisami, płatnościami i panelem ucznia.",
       },
       {
         href: "/uslugi/automatyzacja-procesow",
         label: "Automatyzacja procesów",
         description:
-          "Gdy proces da się usprawnić integracjami, bez budowania całej aplikacji.",
+          "Gdy wystarczy połączyć istniejące narzędzia integracjami, bez budowania całej aplikacji.",
       },
       {
-        href: "/cennik",
-        label: "Cennik",
-        description: "Realne widełki dla stron, aplikacji i systemów.",
+        href: "/projekty",
+        label: "Wszystkie realizacje",
+        description:
+          "36+ wdrożonych projektów — aplikacje, systemy i strony dla firm z 9 branż.",
+      },
+      {
+        href: "/kontakt",
+        label: "Umów bezpłatną konsultację",
+        description:
+          "30 minut rozmowy online. Opisz problem — wycena z harmonogramem w 48 h.",
       },
     ],
   },
