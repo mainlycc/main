@@ -1,5 +1,5 @@
 -- ============================================================
--- 016: Treści case studies (19 projektów)
+-- 016: Treści case studies (20 projektów)
 -- WYGENEROWANE z content/case-studies/*.md - nie edytuj ręcznie.
 -- Regeneracja: node scripts/build-case-studies.mjs
 -- Wymaga wcześniej: 015_case_study_columns.sql
@@ -175,6 +175,43 @@ UPDATE portfolio_projects SET
   case_study_data = '{"rezultaty":[{"v":"1000+","l":"gotowych promptów w katalogu"},{"v":"15+","l":"kategorii tematycznych"},{"v":6,"l":"obsługiwanych narzędzi AI"}],"proces":[],"dodatkowe":["Prompty tekstowe i graficzne mają osobne sekcje, bo służą do czego innego.","Kopiowanie jednym kliknięciem, bez zaznaczania tekstu myszką.","Cały katalog jest darmowy, także do użytku komercyjnego."],"opinia":{"cytat":"","autor":"","rola":""}}'::jsonb,
   image_brief     = '[{"slot":"hero","typ":"screenshot","opis":"Widok katalogu z kartami promptów, filtrem kategorii i wyszukiwarką u góry.","zasada":"Realne prompty z serwisu, czytelne w zrzucie. Bez dorysowanego licznika \"1247 promptów\", jeśli aplikacja go nie wyświetla.","alt":"Katalog promptów na bibliotekapromptow.pl z kartami i filtrem kategorii","podpis":"Katalog: wyszukiwarka, kategorie i karty promptów gotowe do skopiowania"},{"slot":"proces-kategorie","typ":"crop","opis":"Wycinek nawigacji kategorii z widocznym podziałem na prompty tekstowe i graficzne.","zasada":"Pokaż realną listę kategorii, także jeśli jest długa."},{"slot":"proces-prompt","typ":"crop","opis":"Pojedyncza karta promptu w stanie po kliknięciu przycisku kopiowania.","zasada":"Bez dodawania emoji i konfetti do potwierdzenia skopiowania."}]'::jsonb
 WHERE slug = 'biblioteka-promptow';
+
+-- brewhaus
+UPDATE portfolio_projects SET
+  headline        = 'Jak sklep z ekspresami kolbowymi sprzedaje przez porównanie parametrów, a nie przez zdjęcie produktu?',
+  tags            = ARRAY['Sklep internetowy', 'React', 'SEO', 'Paynow']::text[],
+  scope           = 'Design, kod, SEO, płatności',
+  branza          = 'E-commerce / sprzęt kawowy',
+  obszar          = 'Sklep internetowy i treść sprzedażowa',
+  hero_caption    = 'Katalog ekspresów · brewhausshop.pl',
+  description     = 'Butikowy sklep Brewhaus z 10 ekspresami kolbowymi. Filtry po kolbie, młynku i systemie grzewczym, porównywarka, poradniki SEO i płatności Paynow.',
+  case_study_html = '<p>Kupujący ekspres kolbowy nie szuka "ładnego urządzenia do kawy". Szuka średnicy kolby, typu młynka, systemu grzewczego i tego, czy model zmieści się na blacie. Typowy sklep z kategorią "ekspresy" tego nie pokazuje na wejściu.</p>
+<p>Zbudowałem Brewhaus jako specjalistyczny sklep, w którym wybór zaczyna się od parametrów. Dziesięć modeli, filtry techniczne, porównywarka, podstrony SEO i checkout przez Paynow.</p>
+<div class="stat-band"><div class="s"><div class="v">10</div><div class="l">modeli ekspresów w katalogu z kartami porównawczymi</div></div><div class="s"><div class="v">5</div><div class="l">podstron kategorii pod frazy zakupowe</div></div><div class="s"><div class="v">4</div><div class="l">poradniki baristyczne z JSON-LD i linkowaniem wewnętrznym</div></div></div>
+<h2><span class="idx">01 / Wyzwanie</span>Zdjęcie ekspresu nie odpowiada na pytanie zakupowe</h2>
+<p>W tej niszy decyzja trwa dłużej niż w typowym e-commerce. Klient czyta fora, porównuje De''Longhi z Sage i Gaggią, a potem wraca na stronę z listą parametrów w głowie. Jeśli sklep pokazuje tylko cenę i miniaturę, rozmowa i tak ląduje w wiadomości.</p>
+<ul><li>Średnica kolby (51 do 58 mm) i obecność młynka decydują o zakupie bardziej niż branding.</li><li>Porównanie kilku modeli w osobnych kartach Allegro albo w Excelu klienta jest wolniejsze niż jedna tabela na stronie.</li><li>Treści o PID, thermoblocku i grupie E61 generują ruch, którego sama lista produktów nie złapie.</li><li>Płatność musi działać bez wychodzenia do zewnętrznej platformy marketplace.</li></ul>
+<div class="pullquote"><p>W sprzęcie kawowym wygrywa ten, kto pozwala porównać parametry zanim klient zapyta o cenę.</p></div>
+<h2><span class="idx">02 / Rozwiązanie</span>Katalog pod parametry, treść pod wyszukiwarkę, checkout pod sprzedaż</h2>
+<p>Sklep działa jako SPA na React i Vite, z crawlable adresami produktów, kategorii i poradników. Front filtruje katalog po młynku, kolbie, systemie grzewczym, spienianiu, marce, cenie, PID i szerokości. Backend Express obsługuje Paynow poza przeglądarką.</p>
+<figure style="margin:28px 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg-2);"><img src="/projekty/brewhaus/hero.jpg" alt="Strona główna Brewhaus z katalogiem ekspresów kolbowych" style="width:100%;height:auto;display:block;" /><figcaption style="padding:12px 16px;font-size:13px;color:var(--fg-dim);">Strona główna: katalog ekspresów kolbowych i atelier baristy</figcaption></figure>
+<h3>Karty i porównywarka zamiast ogólnej listy SKU</h3>
+<p>Każdy model ma ten sam szablon parametrów, więc da się je postawić obok siebie. Ulubione i porównanie skracają listę do kilku kandydatów, zamiast zmuszać do otwierania dziesięciu kart naraz.</p>
+<figure style="margin:28px 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg-2);"><img src="/projekty/brewhaus/proces-katalog.jpg" alt="Katalog Brewhaus z filtrami parametrów technicznych" style="width:100%;height:auto;display:block;" /><figcaption style="padding:12px 16px;font-size:13px;color:var(--fg-dim);">Katalog: filtry po kolbie, młynku, grzaniu i poziomie zaawansowania</figcaption></figure>
+<div class="callout"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg></span><div class="t"><b>Podstrony kategorii łapią intencję zakupową</b><p>Osobne landingu na ekspresy z młynkiem, kolbę 58 mm, PID z bojlerem, małe kuchnie i automatyczne mleko odpowiadają na frazy, które w zwykłym sklepie giną w filtrze.</p></div></div>
+<h3>Poradniki i słownik jako część ścieżki sprzedaży</h3>
+<p>Cztery poradniki i słownik z FAQ tłumaczą różnice techniczne w języku osoby, która kupuje pierwszy albo drugi ekspres. JSON-LD, canonical i sitemap są częścią wdrożenia, nie dopiskiem na końcu.</p>
+<figure style="margin:28px 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--bg-2);"><img src="/projekty/brewhaus/proces-porownywarka.jpg" alt="Karta produktu ekspresu kolbowego w Brewhaus" style="width:100%;height:auto;display:block;" /><figcaption style="padding:12px 16px;font-size:13px;color:var(--fg-dim);">Karta produktu: parametry, warianty koloru, koszyk i porównanie z innymi modelami</figcaption></figure>
+<h3>Koszyk z Paynow</h3>
+<p>Dodanie do koszyka i płatność idą przez API serwerowe. Klucze Paynow nie wychodzą do frontendu, a powrót z płatności ma własną ścieżkę statusu.</p>
+<h2><span class="idx">03 / Rezultat</span>Sklep, który pomaga wybrać, zanim zacznie sprzedawać</h2>
+<p>Brewhaus ma wąski katalog dziesięciu ekspresów, ale pełną ścieżkę od porównania parametrów do płatności. Klient może odfiltrować modele, zestawić je w tabeli, przeczytać poradnik i zapłacić bez wychodzenia do marketplace.</p>
+<h2><span class="idx">Dodatkowo</span>Co jeszcze przy okazji się udało</h2><ul><li>Koszyk i płatności Paynow działają po stronie serwera, bez wystawiania kluczy w przeglądarce.</li><li>Ulubione i porównywarka pomagają wrócić do krótkiej listy zamiast zaczynać od zera.</li><li>Słownik i FAQ zbierają pytania, które zwykle kończą się telefonem do sprzedawcy.</li></ul>
+<p>Sprzedajesz produkty, które klient porównuje po parametrach technicznych? <a href="/kontakt" class="link">Napisz do mnie</a>. Filtry i porównywarka zwykle robią więcej niż kolejny baner na stronie głównej.</p>
+<div class="tech-tags"><span>React 19</span><span>TypeScript</span><span>Vite</span><span>Tailwind CSS</span><span>Express</span><span>Paynow</span><span>Motion</span></div>',
+  case_study_data = '{"rezultaty":[{"v":10,"l":"modeli ekspresów w katalogu z kartami porównawczymi"},{"v":5,"l":"podstron kategorii pod frazy zakupowe"},{"v":4,"l":"poradniki baristyczne z JSON-LD i linkowaniem wewnętrznym"}],"proces":[],"dodatkowe":["Koszyk i płatności Paynow działają po stronie serwera, bez wystawiania kluczy w przeglądarce.","Ulubione i porównywarka pomagają wrócić do krótkiej listy zamiast zaczynać od zera.","Słownik i FAQ zbierają pytania, które zwykle kończą się telefonem do sprzedawcy."],"opinia":{"cytat":"","autor":"","rola":""}}'::jsonb,
+  image_brief     = '[{"slot":"hero","typ":"screenshot","opis":"Strona główna Brewhaus z hero i wejściem do katalogu ekspresów kolbowych.","zasada":"Realny zrzut ze strony produkcyjnej brewhausshop.pl. Bez dorysowanych plakietek rabatowych.","alt":"Strona główna Brewhaus z katalogiem ekspresów kolbowych","podpis":"Strona główna: katalog ekspresów kolbowych i atelier baristy"},{"slot":"proces-katalog","typ":"screenshot","opis":"Widok katalogu z filtrami (kolba, młynek, system grzewczy) i kartami produktów.","zasada":"Pokaż realne nazwy modeli i ceny ze sklepu. Bez podmieniania cen na ładniejsze.","alt":"Katalog Brewhaus z filtrami parametrów technicznych","podpis":"Katalog: filtry po kolbie, młynku, grzaniu i poziomie zaawansowania"},{"slot":"proces-porownywarka","typ":"screenshot","opis":"Karta produktu z packshotem 2D, wariantami koloru, parametrami i CTA do koszyka oraz porównania.","zasada":"Parametry i ceny muszą pochodzić z realnej karty produktu.","alt":"Karta produktu ekspresu kolbowego w Brewhaus","podpis":"Karta produktu: parametry, warianty koloru, koszyk i porównanie z innymi modelami"}]'::jsonb
+WHERE slug = 'brewhaus';
 
 -- cytomania
 UPDATE portfolio_projects SET

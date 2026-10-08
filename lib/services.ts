@@ -312,7 +312,7 @@ export const services: LandingPageData[] = [
           "Domena to ok. 60–120 zł rocznie, hosting na Vercel dla typowej strony firmowej jest bezpłatny lub kosztuje ok. 20 USD miesięcznie przy większym ruchu. Opcjonalna opieka techniczna zaczyna się od 290 zł miesięcznie.",
       },
     ],
-    relatedProjects: ["elomoto-eco", "qualibase", "magia-podrozowania"],
+    relatedProjects: ["brewhaus", "elomoto-eco", "qualibase"],
     relatedLinks: [
       {
         href: "/uslugi/opieka-techniczna",
@@ -381,7 +381,7 @@ export const services: LandingPageData[] = [
           "Niekoniecznie. Można obsłużyć oba kanały w jednej platformie, rozdzielając logikę cenową według typu konta. Decyzję podejmujemy na etapie mapowania procesu — czasem osobne rozwiązania wychodzą taniej w utrzymaniu.",
       },
     ],
-    relatedProjects: ["generator-ofert-rolety", "airset-platforma", "kulio-studio"],
+    relatedProjects: ["brewhaus", "generator-ofert-rolety", "airset-platforma"],
     relatedLinks: [
       {
         href: "/uslugi/aplikacje-webowe",

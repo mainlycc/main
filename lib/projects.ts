@@ -23,6 +23,37 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 20,
+    name: "Brewhaus",
+    slug: "brewhaus",
+    image: projectImage("brewhaus"),
+    fallbackImage: projectImage("brewhaus", "proces-katalog"),
+    description:
+      "Butikowy sklep z ekspresami kolbowymi: filtry parametrów, porównywarka, poradniki SEO i płatności Paynow.",
+    fullDescription:
+      "Brewhaus to specjalistyczny sklep internetowy z ekspresami kolbowymi do espresso. Katalog obejmuje 10 modeli (De'Longhi, Sage, Breville, Gaggia, Lelit, Rancilio) z filtrami po średnicy kolby, młynku, systemie grzewczym, spienianiu i poziomie zaawansowania.\n\nSklep ma porównywarkę parametrów, ulubione, koszyk z Paynow, podstrony kategorii pod frazy zakupowe, poradniki baristyczne oraz słownik z FAQ. SPA na React i Vite, backend Express do płatności, wdrożenie na Vercel.",
+    technologies: [
+      "React 19",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Express",
+      "Paynow",
+      "Motion",
+    ],
+    features: [
+      "Katalog 10 ekspresów kolbowych z kartami porównawczymi",
+      "Filtry: kolba, młynek, grzanie, mleko, marka, PID, szerokość",
+      "Porównywarka modeli i lista ulubionych",
+      "Koszyk i płatności Paynow (API serwerowe)",
+      "5 podstron kategorii i 4 poradniki SEO z JSON-LD",
+      "Słownik baristy i FAQ",
+    ],
+    client: "Brewhaus",
+    year: 2026,
+    url: "https://www.brewhausshop.pl/",
+  },
+  {
     id: 19,
     name: "Football Academy System",
     slug: "football-academy",

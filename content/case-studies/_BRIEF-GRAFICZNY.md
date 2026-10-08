@@ -190,6 +190,37 @@ Pojedyncza karta promptu w stanie po kliknięciu przycisku kopiowania.
 
 ---
 
+## Jak sklep z ekspresami kolbowymi sprzedaje przez porównanie parametrów, a nie przez zdjęcie produktu?
+
+`/projekty/brewhaus`
+
+### hero  `screenshot`
+
+plik: `/projekty/brewhaus/hero.jpg`
+
+Strona główna Brewhaus z hero i wejściem do katalogu ekspresów kolbowych.
+
+> Ograniczenie: Realny zrzut ze strony produkcyjnej brewhausshop.pl. Bez dorysowanych plakietek rabatowych.
+
+### proces-katalog  `screenshot`
+
+plik: `/projekty/brewhaus/proces-katalog.jpg`
+
+Widok katalogu z filtrami (kolba, młynek, system grzewczy) i kartami produktów.
+
+> Ograniczenie: Pokaż realne nazwy modeli i ceny ze sklepu. Bez podmieniania cen na ładniejsze.
+
+### proces-porownywarka  `screenshot`
+
+plik: `/projekty/brewhaus/proces-porownywarka.jpg`
+
+Karta produktu z packshotem 2D, wariantami koloru, parametrami i CTA do koszyka oraz porównania.
+
+> Ograniczenie: Parametry i ceny muszą pochodzić z realnej karty produktu.
+
+
+---
+
 ## Jak przenieść grupę na Facebooku do serwisu, w którym da się cokolwiek znaleźć?
 
 `/projekty/cytomania`

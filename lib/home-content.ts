@@ -118,6 +118,13 @@ export const portfolioCases = [
   },
   {
     featured: false,
+    title: "Brewhaus",
+    tags: ["Sklep", "React", "SEO", "2026"],
+    slug: "brewhaus",
+    preview: "featured" as const,
+  },
+  {
+    featured: false,
     title: "Magia Podróżowania",
     tags: ["CRM", "PayNow", "Next.js", "2025"],
     slug: "magia-podrozowania",
@@ -136,13 +143,6 @@ export const portfolioCases = [
     tags: ["AI", "Next.js", "Generator", "2025"],
     slug: "jkterm-wizualizator",
     preview: "featured" as const,
-  },
-  {
-    featured: false,
-    title: "Akademia Wiedzy",
-    tags: ["System e-korepetycji", "PayU", "2026"],
-    slug: "akademia-wiedzy",
-    preview: "akademia" as const,
   },
 ];
 

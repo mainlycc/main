@@ -1,3 +1,4 @@
+import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -60,8 +61,11 @@ const nextConfig: NextConfig = {
       { source: "/rss.xml", destination: "/feed.xml", permanent: true },
     ];
   },
-  // Turbopack configuration (Next.js 16+ uses Turbopack by default)
-  turbopack: {},
+  // Root projektu mainly — bez tego Turbopack bierze C:\Users\sblic
+  // (tam leży drugi pnpm-lock.yaml) i Tailwind pada na ENOENT przy hot reload.
+  turbopack: {
+    root: path.join(__dirname),
+  },
   // Webpack configuration (kept for backward compatibility, but Turbopack takes precedence)
   webpack: (config, { dev, isServer }) => {
     // Optymalizacje dla produkcji
