@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "../../components/Footer";
 import JsonLd from "../../components/seo/JsonLd";
-import { breadcrumbSchema, itemListSchema } from "../../lib/schema";
+import { breadcrumbSchema, itemListSchema, webPageSchema } from "../../lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "../../lib/seo";
 
 export const metadata: Metadata = {
@@ -32,6 +32,14 @@ export default async function ProjectsPage() {
 
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/projekty",
+          name: String(metadata.title),
+          description: String(metadata.description),
+          type: "CollectionPage",
+        })}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Mainly", url: SITE_URL },

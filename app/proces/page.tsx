@@ -4,7 +4,7 @@ import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { processSteps } from "@/lib/home-content";
-import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -94,6 +94,13 @@ const howToSchema = {
 export default function ProcessPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/proces",
+          name: String(metadata.title),
+          description: String(metadata.description),
+        })}
+      />
       <JsonLd data={howToSchema} />
       <JsonLd data={faqPageSchema(faq)} />
       <JsonLd

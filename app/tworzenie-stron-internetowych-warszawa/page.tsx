@@ -3,7 +3,7 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
 
@@ -48,6 +48,13 @@ const faq = [
 export default function WarsawPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/tworzenie-stron-internetowych-warszawa",
+          name: String(metadata.title),
+          description: String(metadata.description),
+        })}
+      />
       <JsonLd data={faqPageSchema(faq)} />
       <JsonLd
         data={breadcrumbSchema([

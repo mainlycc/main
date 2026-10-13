@@ -3,7 +3,7 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
+import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -172,6 +172,13 @@ const offerCatalogSchema = {
 export default function PricingPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/cennik",
+          name: String(metadata.title),
+          description: String(metadata.description),
+        })}
+      />
       <JsonLd data={offerCatalogSchema} />
       <JsonLd data={faqPageSchema(faq)} />
       <JsonLd

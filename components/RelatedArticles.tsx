@@ -19,6 +19,8 @@ const SERVICE_ARTICLE_MAP: Record<string, string[]> = {
     "jak-przeniesc-firme-z-excela-do-systemu",
   ],
   "strony-internetowe": [
+    "ile-kosztuje-strona-nextjs-headless-cms",
+    "nextjs-czy-wordpress-strona-firmowa",
     "jak-stworzyc-nowoczesna-strone-internetowa-2025",
     "strona-internetowa-ktora-sprzedaje-7-elementow",
     "kazda-sekunda-ladowania-to-utracone-leady",

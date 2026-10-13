@@ -11,15 +11,13 @@ import JsonLd from "../components/seo/JsonLd";
 import { fontVariables, geistSans } from "../lib/fonts";
 import { organizationSchema, getPersonSchema, websiteSchema } from "../lib/schema";
 import {
+  DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
+  DEFAULT_TITLE,
   SITE_LOCALE,
   SITE_NAME,
   SITE_URL,
 } from "../lib/seo";
-
-const DEFAULT_TITLE = "Mainly: aplikacje webowe i strony dla firm, Warszawa";
-const DEFAULT_DESCRIPTION =
-  "Buduję aplikacje webowe, systemy i strony na zamówienie — od projektu po wdrożenie, bez podwykonawców. 36 wdrożeń w 9 branżach. Bezpłatna wycena w 24 h.";
 
 export const metadata: Metadata = {
   title: DEFAULT_TITLE,

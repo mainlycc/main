@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
 import LandingPageView from "@/components/seo/LandingPageView";
 import { getIndustryBySlug, industries } from "@/lib/industries";
-import { breadcrumbSchema, faqPageSchema, serviceSchema } from "@/lib/schema";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  serviceSchema,
+  webPageSchema,
+} from "@/lib/schema";
 import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
@@ -48,6 +53,13 @@ export default async function IndustryPage({
 
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: `/branze/${industry.slug}`,
+          name: industry.metaTitle,
+          description: industry.metaDescription,
+        })}
+      />
       <JsonLd
         data={serviceSchema({
           name: industry.h1,

@@ -43,6 +43,14 @@ export const BLOG_HERO_CONTENT: Record<string, BlogHeroContent> = {
     main: "0",
     sub: "wtyczek do aktualizowania",
   },
+  "nextjs-czy-webflow-strona-firmowa": {
+    main: "100%",
+    sub: "kodu na własność",
+  },
+  "ile-kosztuje-strona-nextjs-headless-cms": {
+    main: "2 900 zł",
+    sub: "za stronę w Next.js",
+  },
 };
 
 const FALLBACK: BlogHeroContent = { main: "Mainly" };

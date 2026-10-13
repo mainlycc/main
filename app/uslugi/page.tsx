@@ -2,8 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
+import RelatedArticles from "@/components/RelatedArticles";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, itemListSchema } from "@/lib/schema";
+import { processSteps } from "@/lib/home-content";
+import {
+  breadcrumbSchema,
+  faqPageSchema,
+  itemListSchema,
+  webPageSchema,
+} from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { services } from "@/lib/services";
 
@@ -22,9 +29,90 @@ export const metadata: Metadata = {
   },
 };
 
+const problemToService = [
+  {
+    problem: "Zespół przepisuje dane między Excelem, mailem i programem księgowym",
+    slug: "automatyzacja-procesow",
+    label: "Automatyzacja procesów",
+    note: "Często wystarczy jedno połączenie między istniejącymi narzędziami, bez budowy nowego systemu.",
+  },
+  {
+    problem: "Gotowy CRM wymusza zmianę procesu, który u Ciebie działa",
+    slug: "systemy-dla-firm",
+    label: "Systemy i CRM",
+    note: "Narzędzie wewnętrzne zbudowane pod to, jak już pracujecie — bez opłaty za każdego użytkownika.",
+  },
+  {
+    problem: "Klienci dzwonią o rzeczy, które mogliby załatwić sami online",
+    slug: "aplikacje-webowe",
+    label: "Aplikacje webowe",
+    note: "Panel klienta, zapisy, płatności albo kalkulator — aplikacja, z której korzysta Twój klient.",
+  },
+  {
+    problem: "Strona wygląda dobrze, ale nie przynosi zapytań",
+    slug: "strony-internetowe",
+    label: "Strony internetowe",
+    note: "Szybka strona kodowana od zera, zbudowana pod SEO i pozyskiwanie kontaktów.",
+  },
+  {
+    problem: "Kontrahenci hurtowi zamawiają telefonicznie i mailowo",
+    slug: "sklepy-i-platformy-b2b",
+    label: "Platformy B2B i sklepy",
+    note: "Indywidualne cenniki, limity kredytowe i historia zamówień w jednym panelu.",
+  },
+  {
+    problem: "Nikt nie pilnuje strony ani aplikacji po wdrożeniu",
+    slug: "opieka-techniczna",
+    label: "Opieka techniczna",
+    note: "Monitoring, kopie zapasowe i aktualizacje, zanim problem zauważy klient.",
+  },
+];
+
+const timelines: Record<string, string> = {
+  "strony-internetowe": "realizacja 1–4 tygodnie",
+  "aplikacje-webowe": "6–8 tygodni, rozbudowane 3–5 miesięcy",
+  "systemy-dla-firm": "od 6 tygodni, rozbudowane 3–5 miesięcy",
+  "opieka-techniczna": "bez umowy na czas określony",
+};
+
+const faq = [
+  {
+    question: "Czy pracujesz sam, czy z zespołem podwykonawców?",
+    answer:
+      "Sam. Projekt interfejsu, kod, wdrożenie i opiekę prowadzę osobiście, więc rozmawiasz z osobą, która faktycznie pisze kod. Nie przekazuję projektów podwykonawcom.",
+  },
+  {
+    question: "Od czego zacząć, jeśli nie wiem, której usługi potrzebuję?",
+    answer:
+      "Od bezpłatnej konsultacji. Opisujesz problem, a ja proponuję najtańsze rozwiązanie, które go załatwia — czasem to system na zamówienie, a czasem jedna automatyzacja albo gotowe narzędzie, które wystarczy skonfigurować.",
+  },
+  {
+    question: "Jak szybko dostanę wycenę?",
+    answer:
+      "Wycenę z zakresem i harmonogramem przygotowuję w ciągu 48 godzin od konsultacji. Nowe funkcje, które pojawią się w trakcie projektu, wyceniam osobno, zanim zaczniemy je robić.",
+  },
+  {
+    question: "Czy po wdrożeniu kod należy do mnie?",
+    answer:
+      "Tak. Po opłaceniu ostatniej faktury przekazuję pełne prawa do kodu i repozytorium. Możesz rozwijać projekt samodzielnie, z innym wykonawcą albo zostać u mnie w ramach opieki technicznej.",
+  },
+];
+
+function formatPrice(value: number) {
+  return new Intl.NumberFormat("pl-PL").format(value);
+}
+
 export default function ServicesHubPage() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/uslugi",
+          name: String(metadata.title),
+          description: String(metadata.description),
+          type: "CollectionPage",
+        })}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Mainly", url: SITE_URL },
@@ -40,6 +128,8 @@ export default function ServicesHubPage() {
           }))
         )}
       />
+
+      <JsonLd data={faqPageSchema(faq)} />
 
       <main id="main">
         <section className="wrap page-head">
@@ -84,6 +174,110 @@ export default function ServicesHubPage() {
             ))}
           </div>
 
+        </section>
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Która usługa rozwiąże Twój problem
+          </h2>
+          <p className="prose-block">
+            Klienci rzadko przychodzą z gotową specyfikacją — przychodzą z
+            objawem. Poniżej najczęstsze objawy i usługa, od której zwykle
+            zaczynamy rozmowę.
+          </p>
+          <div className="link-cards">
+            {problemToService.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/uslugi/${item.slug}`}
+                className="link-card"
+              >
+                <h3>„{item.problem}”</h3>
+                <p>{item.note}</p>
+                <span className="arr">{item.label} ↗</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Ile to kosztuje i ile trwa
+          </h2>
+          <p className="prose-block">
+            Ceny netto, od których zaczyna się każda usługa. Dokładna kwota
+            zależy od liczby ról użytkowników, integracji i zakresu treści —
+            wycenę z harmonogramem dostajesz po konsultacji. Pełne widełki i
+            pakiety są na stronie{" "}
+            <Link href="/cennik" className="inline-link">
+              cennika
+            </Link>
+            .
+          </p>
+          <ul className="checklist">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <strong>
+                  <Link href={`/uslugi/${service.slug}`} className="inline-link">
+                    {service.navLabel}
+                  </Link>
+                </strong>
+                {service.priceFrom
+                  ? ` — od ${formatPrice(service.priceFrom)} zł${
+                      service.slug === "opieka-techniczna" ? " miesięcznie" : ""
+                    }`
+                  : ""}
+                {timelines[service.slug] ? `, ${timelines[service.slug]}` : ""}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Jak wygląda współpraca
+          </h2>
+          <p className="prose-block">
+            Niezależnie od usługi proces ma te same cztery etapy, a każdy
+            kończy się Twoją akceptacją, zanim przejdziemy dalej. Szczegóły
+            opisuję na stronie{" "}
+            <Link href="/proces" className="inline-link">
+              procesu współpracy
+            </Link>
+            .
+          </p>
+          <ul className="checklist">
+            {processSteps.map((step) => (
+              <li key={step.num}>
+                <strong>{step.title}</strong> ({step.duration}) —{" "}
+                {step.description}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Najczęstsze pytania
+          </h2>
+          <div className="faq-list" style={{ maxWidth: 860, marginBottom: 32 }}>
+            {faq.map((item) => (
+              <div key={item.question} className="faq-item open">
+                <h3 className="faq-q" style={{ cursor: "default" }}>
+                  <span>{item.question}</span>
+                </h3>
+                <div className="faq-a">{item.answer}</div>
+              </div>
+            ))}
+          </div>
+
+          <RelatedArticles
+            keywords={["aplikac", "system", "CRM", "Excel"]}
+            maxArticles={4}
+          />
+        </section>
+
+        <section className="wrap page-section">
           <h2 className="sec-title" style={{ fontSize: 30 }}>
             Nie wiesz, czego potrzebujesz?
           </h2>

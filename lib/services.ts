@@ -51,7 +51,7 @@ export const services: LandingPageData[] = [
       {
         question: "Ile kosztuje aplikacja webowa na zamówienie?",
         answer:
-          "Aplikacje zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 10–25 tys. zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 30–80 tys. zł. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
+          "Aplikacje zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15–30 tys. zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 35–80 tys. zł. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
       },
       {
         question: "Czy będę właścicielem kodu?",

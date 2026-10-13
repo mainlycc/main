@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import Footer from '../../components/Footer'
 import JsonLd from '../../components/seo/JsonLd'
-import { breadcrumbSchema } from '../../lib/schema'
+import { breadcrumbSchema, webPageSchema } from '../../lib/schema'
 import { absoluteUrl, defaultOgImages, SITE_URL } from '../../lib/seo'
 
 export const metadata: Metadata = {
@@ -20,6 +20,13 @@ export const metadata: Metadata = {
 export default function PolitykaPrywatnosci() {
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
+      <JsonLd
+        data={webPageSchema({
+          path: "/polityka-prywatnosci",
+          name: String(metadata.title),
+          description: String(metadata.description),
+        })}
+      />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Mainly", url: SITE_URL },

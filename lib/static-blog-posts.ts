@@ -15,6 +15,26 @@ export type StaticBlogPost = {
 
 export const STATIC_BLOG_POSTS: StaticBlogPost[] = [
   {
+    slug: "ile-kosztuje-strona-nextjs-headless-cms",
+    title: "Strona w Next.js: cena i kiedy headless CMS",
+    excerpt: "Wizytówka w Next.js to 2 900–4 500 zł netto, strona firmowa z blogiem 4 900–9 000 zł, rozbudowany serwis od 10 000 zł. Headless CMS bywa potrzebny znacznie rzadziej, niż sugerują agencje.",
+    category: "Next.js",
+    published_at: "2026-10-13T10:00:00+00:00",
+    read_time: "5 min czytania",
+    image_url: null,
+    tags: ["Next.js", "Headless CMS", "Cennik", "Strony internetowe"],
+  },
+  {
+    slug: "nextjs-czy-webflow-strona-firmowa",
+    title: "Next.js czy Webflow na stronę firmową?",
+    excerpt: "Webflow sprawdza się w rękach marketingu. Next.js wygrywa, gdy strona ma łączyć się z systemami firmy, rosnąć w aplikację i nie zależeć od abonamentu jednej platformy.",
+    category: "Next.js",
+    published_at: "2026-10-13T09:00:00+00:00",
+    read_time: "5 min czytania",
+    image_url: null,
+    tags: ["Next.js", "Webflow", "No-code", "Porównanie"],
+  },
+  {
     slug: "nextjs-czy-wordpress-strona-firmowa",
     title: "Next.js czy WordPress na stronę firmową? Szczera opinia programisty",
     excerpt: "WordPress wygrywa tam, gdzie liczy się samodzielna edycja treści i niski budżet startowy. Next.js tam, gdzie liczy się szybkość, bezpieczeństwo i to, że strona ma urosnąć w system.",

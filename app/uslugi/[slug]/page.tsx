@@ -6,6 +6,7 @@ import {
   breadcrumbSchema,
   faqPageSchema,
   serviceSchema,
+  webPageSchema,
 } from "@/lib/schema";
 import { absoluteUrl, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { getServiceBySlug, services } from "@/lib/services";
@@ -50,6 +51,13 @@ export default async function ServicePage({
 
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: `/uslugi/${service.slug}`,
+          name: service.metaTitle,
+          description: service.metaDescription,
+        })}
+      />
       <JsonLd
         data={serviceSchema({
           name: service.navLabel,

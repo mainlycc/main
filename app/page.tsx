@@ -16,7 +16,8 @@ import TechSection from "@/components/home/TechSection";
 import TrustLogosSection from "@/components/home/TrustLogosSection";
 import JsonLd from "@/components/seo/JsonLd";
 import { faqItems } from "@/lib/home-content";
-import { faqPageSchema } from "@/lib/schema";
+import { faqPageSchema, webPageSchema } from "@/lib/schema";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -25,6 +26,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd
+        data={webPageSchema({
+          path: "/",
+          name: DEFAULT_TITLE,
+          description: DEFAULT_DESCRIPTION,
+        })}
+      />
       <JsonLd data={faqPageSchema(faqItems)} />
 
       <main id="main">

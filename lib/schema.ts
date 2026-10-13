@@ -118,6 +118,36 @@ export const websiteSchema = {
   publisher: { "@id": ORG_ID },
 };
 
+/**
+ * Encja strony (WebPage lub podtyp, np. CollectionPage) powiązana z WebSite
+ * i Organization przez @id. Spina graf encji dla stron bez innego typu strony.
+ */
+export function webPageSchema({
+  path,
+  name,
+  description,
+  type = "WebPage",
+}: {
+  path: string;
+  name: string;
+  description: string;
+  type?: "WebPage" | "CollectionPage";
+}) {
+  const url = absoluteUrl(path);
+  return {
+    "@context": "https://schema.org",
+    "@type": type,
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: "pl-PL",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
 export type Crumb = { name: string; url: string };
 
 export function breadcrumbSchema(crumbs: Crumb[]) {

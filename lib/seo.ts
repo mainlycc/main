@@ -5,6 +5,10 @@ export const DEFAULT_OG_IMAGE = "/og-image.jpg";
 export const SITE_NAME = "Mainly";
 export const SITE_LOCALE = "pl_PL";
 
+export const DEFAULT_TITLE = "Mainly: aplikacje webowe i strony dla firm, Warszawa";
+export const DEFAULT_DESCRIPTION =
+  "Buduję aplikacje webowe, systemy i strony na zamówienie — od projektu po wdrożenie, bez podwykonawców. 36 wdrożeń w 9 branżach. Bezpłatna wycena w 24 h.";
+
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
   return `${SITE_URL}${normalized}`;
