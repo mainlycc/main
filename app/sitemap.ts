@@ -76,6 +76,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     {
+      url: `${SITE_URL}/aplikacje-webowe-warszawa`,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${SITE_URL}/projekty`,
       changeFrequency: 'monthly',
       priority: 0.8,

@@ -15,17 +15,17 @@ import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Usługi: aplikacje, systemy i strony dla firm | Mainly",
+  title: "Oprogramowanie na zamówienie dla firm | Mainly",
   description:
-    "Aplikacje webowe, systemy CRM na zamówienie, automatyzacja procesów, strony internetowe, platformy B2B i opieka techniczna. Wycena w 48 h.",
+    "Oprogramowanie na zamówienie dla firm: aplikacje webowe, systemy i CRM, automatyzacje, strony i platformy B2B. Bez podwykonawców. Wycena w 48 h.",
   alternates: { canonical: "/uslugi" },
   openGraph: {
-    title: "Usługi | Mainly",
+    title: "Oprogramowanie na zamówienie dla firm | Mainly",
     description:
-      "Aplikacje webowe, systemy na zamówienie, automatyzacja procesów i strony internetowe dla firm.",
+      "Aplikacje webowe, systemy, automatyzacja procesów i strony internetowe pisane pod proces Twojej firmy.",
     url: absoluteUrl("/uslugi"),
     type: "website",
-    images: defaultOgImages("Usługi | Mainly"),
+    images: defaultOgImages("Oprogramowanie na zamówienie dla firm | Mainly"),
   },
 };
 
@@ -76,6 +76,16 @@ const timelines: Record<string, string> = {
 };
 
 const faq = [
+  {
+    question: "Ile kosztuje oprogramowanie na zamówienie?",
+    answer:
+      "Zależy od zakresu. Pojedyncza automatyzacja zaczyna się od 2 900 zł netto, aplikacja webowa lub system od 9 900 zł. Prosta aplikacja z jednym procesem i panelem administracyjnym to zwykle 15–30 tys. zł, rozbudowany system z płatnościami, rolami i integracjami 35–80 tys. zł. Wycenę z harmonogramem dostajesz w 48 h po konsultacji.",
+  },
+  {
+    question: "Kiedy oprogramowanie na zamówienie się opłaca, a kiedy lepszy jest gotowy program?",
+    answer:
+      "Gotowy program wystarcza, gdy Twój proces jest standardowy, a abonament nie rośnie szybciej niż firma. Oprogramowanie na zamówienie zaczyna się opłacać, gdy gotowe narzędzie wymusza obchodzenie procesu, ręczna praca kosztuje więcej niż jednorazowe wdrożenie albo płacisz za dziesiątki kont, z których każde używa ułamka funkcji. Jeśli gotowe narzędzie wystarczy, powiem Ci to na konsultacji.",
+  },
   {
     question: "Czy pracujesz sam, czy z zespołem podwykonawców?",
     answer:
@@ -144,10 +154,12 @@ export default function ServicesHubPage() {
             <span>Co robię</span>
           </div>
           <h1 className="sec-title">
-            Aplikacje, systemy i strony <DisplayEm>na zamówienie</DisplayEm>.
+            Oprogramowanie <DisplayEm>na zamówienie</DisplayEm> dla firm.
           </h1>
           <p className="sec-lead">
-            Sześć usług, jeden punkt kontaktu. Projekt, kod, wdrożenie i opieka —
+            Aplikacje webowe, systemy, automatyzacje i strony pisane pod
+            proces Twojej firmy. Sześć usług, jeden punkt kontaktu. Projekt,
+            kod, wdrożenie i opieka —
             wszystko po mojej stronie, bez podwykonawców. Nie wiesz, która
             usługa odpowiada Twojemu problemowi? Opisz go w{" "}
             <Link href="/kontakt" className="inline-link">
@@ -272,7 +284,7 @@ export default function ServicesHubPage() {
           </div>
 
           <RelatedArticles
-            keywords={["aplikac", "system", "CRM", "Excel"]}
+            keywords={["aplikac", "system", "CRM", "Excel", "zamówienie"]}
             maxArticles={4}
           />
         </section>

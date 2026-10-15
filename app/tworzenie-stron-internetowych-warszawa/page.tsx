@@ -154,7 +154,7 @@ export default function WarsawPage() {
               </p>
               <span className="arr">Zobacz ↗</span>
             </Link>
-            <Link href="/uslugi/aplikacje-webowe" className="link-card">
+            <Link href="/aplikacje-webowe-warszawa" className="link-card">
               <h3>Aplikacje webowe</h3>
               <p>
                 Aplikacje szyte pod proces firmy — panele klienta, systemy

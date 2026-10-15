@@ -29,6 +29,25 @@ export const services: LandingPageData[] = [
         ],
       },
       {
+        heading: "Aplikacja na zamówienie, gotowy SaaS czy no-code",
+        body: "To trzy różne odpowiedzi na ten sam problem i każda ma swoje miejsce. Gotowy SaaS wygrywa, gdy proces jest standardowy, a abonament za użytkownika nie rośnie szybciej niż firma. No-code (Airtable, Bubble, Make) sprawdza się przy prototypie i małym zespole, ale przy setkach rekordów, uprawnieniach i płatnościach zaczyna się obchodzenie ograniczeń narzędzia. Aplikacja na zamówienie kosztuje więcej na starcie, za to nie płacisz za każde konto, kod należy do Ciebie, a system rośnie razem z procesem zamiast go ograniczać.",
+        bullets: [
+          "Gotowy SaaS: szybki start, ale proces dopasowujesz do narzędzia, a koszt rośnie z liczbą użytkowników",
+          "No-code: tani prototyp, ale limity przy większej skali, rolach i integracjach",
+          "Aplikacja na zamówienie: wyższy koszt wejścia, pełna własność kodu i brak opłat za konto",
+        ],
+      },
+      {
+        heading: "Przykłady aplikacji webowych, które zbudowałem",
+        body: "Każda z tych aplikacji zastąpiła arkusz, folder z plikami albo ręczną pracę, która przestała się skalować. Pełne opisy z decyzjami technicznymi znajdziesz w portfolio.",
+        bullets: [
+          "Akademia Wiedzy: system e-korepetycji dla 865 uczniów i 40 korepetytorów, z grafikiem, automatycznymi rozliczeniami i płatnościami PayU",
+          "AIRSET: platforma szkoleń dla personelu lotniczego z kreatorem testów, logami audytowymi i raportami w PDF, CSV i XLSX",
+          "Rolety3miasto: generator ofert, w którym handlowiec ustawia parametry produktu i od razu wysyła gotowy PDF z wyceną",
+          "JK Term: wizualizator produktów oparty na AI, który zastąpił przygotowywanie wizualizacji w AutoCAD",
+        ],
+      },
+      {
         heading: "Co dostajesz w ramach wdrożenia",
         body: "Prowadzę całość samodzielnie — jeden punkt kontaktu od pierwszej rozmowy po wsparcie po starcie. Nie ma etapu, na którym odpowiedź brzmi „to pytanie do grafika”.",
         bullets: [
@@ -68,9 +87,25 @@ export const services: LandingPageData[] = [
         answer:
           "Możesz przejąć utrzymanie sam albo skorzystać z opieki technicznej od 290 zł miesięcznie: monitoring, kopie zapasowe, aktualizacje zależności i reakcja na zgłoszenia w 48 h.",
       },
+      {
+        question: "Czy aplikacja webowa będzie działać na telefonie?",
+        answer:
+          "Tak. Aplikacja działa w przeglądarce, więc otwiera się na komputerze, tablecie i telefonie bez instalacji, a interfejs dopasowuje się do ekranu. Nie buduję natywnych aplikacji do App Store i Google Play — specjalizuję się w aplikacjach przeglądarkowych.",
+      },
+      {
+        question: "Czy spotykasz się z klientami na miejscu?",
+        answer:
+          "Tak, jeśli firma jest w Warszawie lub okolicy. Biuro mam na Filtrowej 83, a przy większych wdrożeniach warsztat w Twojej firmie oszczędza tygodnie domysłów. Z firmami z reszty Polski pracuję zdalnie.",
+      },
     ],
-    relatedProjects: ["airset-platforma", "akademia-wiedzy", "football-academy"],
+    relatedProjects: ["akademia-wiedzy", "airset-platforma", "generator-ofert-rolety"],
     relatedLinks: [
+      {
+        href: "/aplikacje-webowe-warszawa",
+        label: "Aplikacje webowe w Warszawie",
+        description:
+          "Warsztaty i wdrożenia na miejscu dla firm z Warszawy i okolic.",
+      },
       {
         href: "/uslugi/systemy-dla-firm",
         label: "Systemy i CRM na zamówienie",

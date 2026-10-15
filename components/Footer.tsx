@@ -99,6 +99,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/aplikacje-webowe-warszawa">
+                  Aplikacje webowe Warszawa
+                </Link>
+              </li>
+              <li>
                 <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
               </li>
             </ul>
