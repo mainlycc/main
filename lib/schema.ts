@@ -72,9 +72,9 @@ export function organizationSchema() {
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: absoluteUrl(DEFAULT_OG_IMAGE),
-      width: 1200,
-      height: 630,
+      url: absoluteUrl("/logo-square.png"),
+      width: 512,
+      height: 512,
     },
     image: absoluteUrl(DEFAULT_OG_IMAGE),
     telephone: BUSINESS.telephone,
@@ -204,14 +204,12 @@ export function serviceSchema({
       offers: {
         "@type": "Offer",
         priceCurrency: "PLN",
-        price: priceFrom,
         priceSpecification: {
           "@type": "PriceSpecification",
           priceCurrency: "PLN",
           minPrice: priceFrom,
           valueAddedTaxIncluded: false,
         },
-        availability: "https://schema.org/InStock",
         url: absoluteUrl(path),
       },
     }),

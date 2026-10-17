@@ -88,7 +88,7 @@ export default async function ProjectsPage() {
           </div>
 
           <div className="showcase showcase--projects">
-            {projects.map((project) => {
+            {projects.map((project, index) => {
               const showImage = hasRealImage(project.image);
 
               return (
@@ -106,7 +106,10 @@ export default async function ProjectsPage() {
                           .join(", ")} — projekt zrealizowany przez Mainly`}
                         fill
                         className="object-cover object-top"
-                        sizes="(max-width: 980px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 33vw"
+                        preload={index === 0}
+                        fetchPriority={index === 0 ? "high" : undefined}
+                        loading={index < 3 ? "eager" : "lazy"}
                       />
                     ) : (
                       <div className="flex h-full items-center justify-center bg-[#1a1816] text-sm text-[var(--fg-mute)]">
@@ -117,6 +120,9 @@ export default async function ProjectsPage() {
                   <div className="meta">
                     <div>
                       <h2>{project.name}</h2>
+                      {project.description && (
+                        <p className="desc">{project.description}</p>
+                      )}
                       <div className="tags">
                         {project.technologies.slice(0, 3).map((tech) => (
                           <span key={tech}>{tech}</span>

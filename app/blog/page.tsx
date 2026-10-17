@@ -13,6 +13,7 @@ import {
   SITE_URL,
   stripHtml,
 } from "@/lib/seo";
+import { ORG_ID } from "@/lib/schema";
 import { getSupabase, type BlogPost } from "@/lib/supabase";
 
 export const revalidate = 3600;
@@ -102,15 +103,7 @@ function buildBlogJsonLd(posts: BlogPost[]) {
     name: "Blog Mainly",
     description: blogDescription,
     url: absoluteUrl("/blog"),
-    publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl(DEFAULT_OG_IMAGE),
-      },
-    },
+    publisher: { "@id": ORG_ID },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       headline: stripHtml(post.title),

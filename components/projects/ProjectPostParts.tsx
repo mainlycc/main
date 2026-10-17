@@ -93,7 +93,7 @@ export function ProjectCard({ project, variant = 1 }: ProjectCardProps) {
       </div>
       <div className="body">
         <div className="meta">{meta || project.name}</div>
-        <h3>{project.description}</h3>
+        <p className="rel-title">{project.description}</p>
       </div>
     </Link>
   );
@@ -131,9 +131,9 @@ type ProjectPostCtaProps = {
 export function ProjectPostCta({ href = "/kontakt" }: ProjectPostCtaProps) {
   return (
     <div className="post-cta">
-      <h3>
+      <p className="post-cta-title">
         Masz podobny <em>proces do zautomatyzowania</em>?
-      </h3>
+      </p>
       <p>
         Bezpłatna rozmowa - 30 minut. Powiem wprost, czy warto budować
         system i ile by to kosztowało w Twoim przypadku.

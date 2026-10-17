@@ -868,6 +868,7 @@
   .case .thumb .device .preview .card:nth-child(3){background:#e6e1d8}
   .case .meta{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
   .case h2,.case h3{font-family:var(--sans);font-weight:500;font-size:24px;letter-spacing:-0.02em;line-height:1.2}
+  .case .desc{margin-top:8px;font-size:14px;line-height:1.45;color:var(--fg-dim)}
   .case .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .case .tags span{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-mute);padding:4px 8px;border:1px solid var(--line);border-radius:999px}
   .case .arr{
@@ -1036,13 +1037,15 @@
   }
   .faq-q .plus::before{width:12px;height:1.5px}
   .faq-q .plus::after{width:1.5px;height:12px;transition:transform .3s}
-  .faq-item.open .faq-q .plus{background:var(--ember);border-color:var(--ember);color:#fff}
-  .faq-item.open .faq-q .plus::after{transform:rotate(90deg)}
+  summary.faq-q{cursor:pointer;list-style:none}
+  summary.faq-q::-webkit-details-marker{display:none}
+  .faq-item.open .faq-q .plus,.faq-item[open] .faq-q .plus{background:var(--ember);border-color:var(--ember);color:#fff}
+  .faq-item.open .faq-q .plus::after,.faq-item[open] .faq-q .plus::after{transform:rotate(90deg)}
   .faq-a{
     max-height:0;overflow:hidden;color:var(--fg-dim);font-size:16px;line-height:1.6;
     transition:max-height .3s ease, padding .3s ease;padding:0 64px 0 0;
   }
-  .faq-item.open .faq-a{max-height:300px;padding-bottom:24px}
+  .faq-item.open .faq-a,.faq-item[open] .faq-a{max-height:300px;padding-bottom:24px}
   @media (max-width:760px){
     .faq-a{padding-right:0}
     .faq-q{font-size:17px;padding-right:48px}
@@ -1585,6 +1588,7 @@
   /* ========================= SERVICE CTA IN BLOG ========================= */
   .service-cta{
     margin:32px 0 24px;
+    display:flex;flex-wrap:wrap;gap:12px;
   }
   .service-cta-link{
     display:inline-flex;

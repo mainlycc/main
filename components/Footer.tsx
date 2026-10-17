@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="col">
             <h2 className="foot-heading">Branże</h2>
             <ul>
-              {industries.slice(0, 6).map((industry) => (
+              {industries.map((industry) => (
                 <li key={industry.slug}>
                   <Link href={`/branze/${industry.slug}`}>
                     {industry.navLabel}
@@ -91,7 +91,7 @@ export default function Footer() {
                 <Link href="/blog">Blog</Link>
               </li>
               <li>
-                <Link href="/#opinie">Opinie klientów</Link>
+                <Link href="/opinie">Opinie klientów</Link>
               </li>
               <li>
                 <Link href="/tworzenie-stron-internetowych-warszawa">

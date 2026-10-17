@@ -1,14 +1,9 @@
-"use client";
-
 import DisplayEm from "@/components/DisplayEm";
 import Link from "next/link";
-import { useState } from "react";
 import { faqItems } from "@/lib/home-content";
 import SectionLabel from "./SectionLabel";
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState(0);
-
   return (
     <section id="faq">
       <div className="wrap">
@@ -29,22 +24,18 @@ export default function FaqSection() {
 
           <div className="faq-list">
             {faqItems.map((item, index) => (
-              <div
+              // Natywne <details>: działa bez JavaScriptu, nic do hydracji.
+              <details
                 key={item.question}
-                className={`faq-item${openIndex === index ? " open" : ""}`}
+                className="faq-item"
+                open={index === 0}
               >
-                <button
-                  className="faq-q"
-                  type="button"
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? -1 : index)
-                  }
-                >
+                <summary className="faq-q">
                   <span>{item.question}</span>
                   <span className="plus" />
-                </button>
+                </summary>
                 <div className="faq-a">{item.answer}</div>
-              </div>
+              </details>
             ))}
           </div>
         </div>

@@ -5,6 +5,7 @@ import { buildProjectFaq } from "@/components/projects/ProjectExtras";
 import { getProjectBySlug, getPublishedProjects } from "@/lib/portfolio";
 import { projectImageFileExists } from "@/lib/project-images";
 import { getProjectMetaTitle } from "@/lib/project-meta";
+import { pickRelatedProjects } from "@/lib/related";
 import { breadcrumbSchema, faqPageSchema, ORG_ID } from "@/lib/schema";
 import { absoluteUrl, DEFAULT_OG_IMAGE, resolveImageUrl, SITE_URL } from "@/lib/seo";
 import ProjectDetailClient from "./ProjectDetailClient";
@@ -76,9 +77,7 @@ export default async function ProjectDetailPage({
   }
 
   const allProjects = await getPublishedProjects();
-  const relatedProjects = allProjects
-    .filter((item) => item.slug !== slug)
-    .slice(0, 3);
+  const relatedProjects = pickRelatedProjects(project, allProjects);
 
   const projectUrl = absoluteUrl(`/projekty/${project.slug}`);
 

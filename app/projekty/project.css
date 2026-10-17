@@ -330,6 +330,17 @@
   margin-bottom: 10px;
   font-weight: 500;
 }
+.prose .h2-idx {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ember);
+  letter-spacing: 0.1em;
+  margin: 56px 0 10px;
+  font-weight: 500;
+}
+.prose .h2-idx + h2 {
+  margin-top: 0;
+}
 .prose h3 {
   font-family: var(--sans);
   font-weight: 500;
@@ -586,7 +597,8 @@
   text-transform: uppercase;
   color: var(--fg-mute);
 }
-.rel h3 {
+.rel h3,
+.rel .rel-title {
   font-family: var(--sans);
   font-weight: 500;
   font-size: 18px;
@@ -626,7 +638,9 @@
   position: relative;
   z-index: 1;
 }
-.post-cta h3 {
+.post-cta h3,
+.post-cta .post-cta-title {
+  color: var(--fg);
   font-family: var(--sans);
   font-weight: 500;
   font-size: clamp(26px, 3.4vw, 42px);
@@ -636,7 +650,8 @@
   margin: 0 auto 14px;
   text-wrap: balance;
 }
-.post-cta h3 em {
+.post-cta h3 em,
+.post-cta .post-cta-title em {
   font-family: var(--display);
   font-style: italic;
   font-weight: 400;

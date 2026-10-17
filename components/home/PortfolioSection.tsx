@@ -87,7 +87,6 @@ export default async function PortfolioSection() {
                       fill
                       className="object-cover object-top"
                       sizes="(max-width: 880px) 100vw, 50vw"
-                      priority={project.featured}
                     />
                   ) : (
                     <div className="device">

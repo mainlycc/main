@@ -112,12 +112,12 @@ export default function OpinieForm() {
 
   const previewText =
     opinia.trim() ||
-    "System zamówień online, który stworzył dla nas Stanisław, całkowicie uporządkował proces przyjmowania zleceń. Panel jest intuicyjny nawet dla nowych pracowników, a klienci chwalą prostotę formularza. Dzięki automatycznym powiadomieniom i integracji z fakturowaniem oszczędzamy kilka godzin tygodniowo na ręcznej obsłudze.";
+    "Tu pojawi się podgląd Twojej opinii. Zacznij pisać w polu obok, żeby zobaczyć, jak będzie wyglądać po publikacji.";
 
-  const previewName = imieNazwisko.trim() || "Anna N.";
+  const previewName = imieNazwisko.trim() || "Twoje imię";
   const previewMeta =
     (stanowisko.trim() && firma.trim() && `${stanowisko}, ${firma}`) ||
-    "Marketing Manager, TechNova Sp. z o.o.";
+    "Stanowisko, firma";
 
   return (
     <>
@@ -275,7 +275,7 @@ export default function OpinieForm() {
                 id="firma"
                 value={firma}
                 onChange={(e) => setFirma(e.target.value)}
-                placeholder="Np. TechNova Sp. z o.o."
+                placeholder="Nazwa Twojej firmy"
                 className="bg-white border-zinc-300 text-zinc-900"
               />
             </div>

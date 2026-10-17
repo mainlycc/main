@@ -18,6 +18,18 @@ export function stripHtml(text: string): string {
   return text.replace(/<[^>]*>/g, "").trim();
 }
 
+/**
+ * Wyjmuje etykietę sekcji ("01 / Widełki") z <h2> do osobnego akapitu nad nim.
+ * Wewnątrz nagłówka sklejała się z tytułem ("01 / WidełkiIle kosztuje…")
+ * dla Google i wyszukiwarek AI.
+ */
+export function liftHeadingLabels(html: string): string {
+  return html.replace(
+    /<h2([^>]*)>\s*<span class="idx">([\s\S]*?)<\/span>/g,
+    '<p class="h2-idx" aria-hidden="true">$2</p><h2$1>'
+  );
+}
+
 export function defaultOgImages(alt = `${SITE_NAME} - Strony, które rozpalają biznes`) {
   return [
     {

@@ -249,6 +249,17 @@
   margin-bottom: 10px;
   font-weight: 500;
 }
+.prose .h2-idx {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ember);
+  letter-spacing: 0.1em;
+  margin: 56px 0 10px;
+  font-weight: 500;
+}
+.prose .h2-idx + h2 {
+  margin-top: 0;
+}
 .prose h3 {
   font-family: var(--sans);
   font-weight: 500;

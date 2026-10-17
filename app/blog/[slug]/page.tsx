@@ -12,6 +12,7 @@ import ReadingProgress from "@/components/blog/ReadingProgress";
 import Footer from "@/components/Footer";
 import { formatBlogDate } from "@/lib/blog";
 import { blogHeroImageUrl } from "@/lib/blog-hero-content";
+import { pickRelatedPosts } from "@/lib/related";
 import { blogPostingSchema } from "@/lib/schema";
 import {
   absoluteUrl,
@@ -20,6 +21,7 @@ import {
   SITE_LOCALE,
   SITE_NAME,
   SITE_URL,
+  liftHeadingLabels,
   stripHtml,
 } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
@@ -62,26 +64,19 @@ async function getPost(slug: string): Promise<BlogPost | null> {
   return data as BlogPost;
 }
 
-async function getRelatedPosts(
-  slug: string,
-  category: string
-): Promise<BlogPost[]> {
+async function getRelatedPosts(post: BlogPost): Promise<BlogPost[]> {
   const supabase = getSupabase();
   if (!supabase) return [];
 
   const { data, error } = await supabase
     .from("blog_posts")
-    .select("slug,title,excerpt,category,read_time,image_url,published_at")
+    .select("slug,title,excerpt,category,tags,read_time,image_url,published_at")
     .eq("published", true)
-    .neq("slug", slug)
-    .order("published_at", { ascending: false })
-    .limit(6);
+    .order("published_at", { ascending: false });
 
   if (error || !data) return [];
 
-  const sameCategory = data.filter((post) => post.category === category);
-  const others = data.filter((post) => post.category !== category);
-  return [...sameCategory, ...others].slice(0, 3) as BlogPost[];
+  return pickRelatedPosts(post, data as BlogPost[]);
 }
 
 function AuthorBox() {
@@ -174,7 +169,7 @@ export default async function BlogPostPage({
 
   if (!post) notFound();
 
-  const relatedPosts = await getRelatedPosts(slug, post.category);
+  const relatedPosts = await getRelatedPosts(post);
   const tagItems =
     post.tags.length > 0 ? post.tags : [post.category].filter(Boolean);
   const plainTitle = stripHtml(post.title);
@@ -211,7 +206,7 @@ export default async function BlogPostPage({
       {
         "@type": "ListItem",
         position: 3,
-        name: post.category,
+        name: stripHtml(post.title),
         item: postUrl,
       },
     ],
@@ -288,7 +283,7 @@ export default async function BlogPostPage({
       <article className="wrap article">
         <div
           className="prose"
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: liftHeadingLabels(post.content) }}
         />
 
         <ServiceCta category={post.category} tags={post.tags} />

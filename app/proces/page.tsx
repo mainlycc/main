@@ -73,24 +73,6 @@ const faq = [
   },
 ];
 
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Jak wygląda współpraca przy tworzeniu strony lub aplikacji w Mainly",
-  description:
-    "Cztery etapy realizacji projektu: strategia i brief, projekt UX/UI, kod i wdrożenie, start i opieka techniczna.",
-  url: absoluteUrl("/proces"),
-  totalTime: "P6W",
-  step: details.map((detail, index) => ({
-    "@type": "HowToStep",
-    position: index + 1,
-    name: detail.heading,
-    text: detail.body,
-    url: `${absoluteUrl("/proces")}#etap-${index + 1}`,
-  })),
-  provider: { "@id": ORG_ID },
-};
-
 export default function ProcessPage() {
   return (
     <>
@@ -101,7 +83,6 @@ export default function ProcessPage() {
           description: String(metadata.description),
         })}
       />
-      <JsonLd data={howToSchema} />
       <JsonLd data={faqPageSchema(faq)} />
       <JsonLd
         data={breadcrumbSchema([
