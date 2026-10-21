@@ -163,7 +163,12 @@ export function breadcrumbSchema(crumbs: Crumb[]) {
   };
 }
 
-export type FaqEntry = { question: string; answer: string };
+export type FaqEntry = {
+  question: string;
+  answer: string;
+  /** Link pod odpowiedzią; nie trafia do JSON-LD FAQPage */
+  link?: { href: string; label: string };
+};
 
 export function faqPageSchema(items: readonly FaqEntry[]) {
   return {

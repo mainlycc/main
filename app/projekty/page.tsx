@@ -73,7 +73,7 @@ export default async function ProjectsPage() {
               Projekty, które <DisplayEm>działają</DisplayEm>.
             </h1>
             <p className="lead">
-              36+ wdrożonych projektów - systemy CRM, platformy e-learningowe,
+              36 wdrożonych projektów - systemy CRM, platformy e-learningowe,
               generatory AI, aplikacje B2B. Każdy projekt to działający produkt
               dostępny na żywo. Szukasz czegoś podobnego dla swojej firmy?{" "}
               <Link href="/uslugi" className="inline-link">

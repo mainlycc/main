@@ -79,3 +79,5 @@ Sekcja z opiniami klientów jest częścią strony, więc dowód wiarygodności 
 ## 03 / Rezultat · Strona, która filtruje zamiast przyciągać wszystkich
 
 Business Care SC ma serwis mówiący do jednej grupy, z policzalną wyceną i z treścią, która obsługuje wejścia z wyszukiwarki. Treści i wpisy da się edytować bez kontaktu z programistą.
+
+Business Care SC prowadzi trzy działalności. Dla jej działu ubezpieczeń zrobiłem [kalkulator ubezpieczenia GAP](/projekty/kalkulator-gap).

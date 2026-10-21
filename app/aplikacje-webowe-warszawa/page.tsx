@@ -3,8 +3,8 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
-import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
+import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema, type FaqEntry } from "@/lib/schema";
+import { absoluteUrl, defaultOgImages, PRICE_GUIDE_LINK, SITE_URL } from "@/lib/seo";
 import { BUSINESS } from "@/lib/site";
 
 const PATH = "/aplikacje-webowe-warszawa";
@@ -57,11 +57,12 @@ const appTypes = [
   },
 ];
 
-const faq = [
+const faq: FaqEntry[] = [
   {
     question: "Ile kosztuje aplikacja webowa w Warszawie?",
     answer:
-      "Ceny nie zależą od miasta. Aplikacje i systemy zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym to zwykle 15–30 tys. zł, rozbudowany system z płatnościami, wieloma rolami i integracjami 35–80 tys. zł. Spotkanie na miejscu w Warszawie nie zmienia wyceny.",
+      "Ceny nie zależą od miasta. Aplikacje i systemy zaczynają się od 9 900 zł netto, a spotkanie na miejscu w Warszawie nie zmienia wyceny.",
+    link: PRICE_GUIDE_LINK,
   },
   {
     question: "Czy warsztat na miejscu jest płatny?",
@@ -291,7 +292,17 @@ export default function WarsawAppsPage() {
                 <h3 className="faq-q" style={{ cursor: "default" }}>
                   <span>{item.question}</span>
                 </h3>
-                <div className="faq-a">{item.answer}</div>
+                <div className="faq-a">
+                  {item.answer}
+                  {item.link ? (
+                    <>
+                      {" "}
+                      <Link href={item.link.href} className="inline-link">
+                        {item.link.label}
+                      </Link>
+                    </>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>

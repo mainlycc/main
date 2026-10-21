@@ -2,7 +2,7 @@
 slug: kalkulator-gap
 naglowek: Jak sprzedawać ubezpieczenie GAP, którego klient nie umie sobie wycenić?
 zajawka: Kalkulator ubezpieczenia GAP z pełnym procesem UX i front-endem. Klient podaje dane pojazdu i widzi składkę, zanim porozmawia z agentem.
-klient: Business Care, ubezpieczenia
+klient: Business Care SC, dział ubezpieczeń
 branza: Ubezpieczenia
 obszar: Sprzedaż online
 zakres: UX, UI, front-end
@@ -75,3 +75,5 @@ Kwota nie pochodzi z uproszczonego wzoru wbudowanego w stronę, tylko z integrac
 ## 03 / Rezultat · Cena przestała być powodem do wyjścia ze strony
 
 Business Care ma kalkulator, w którym klient dostaje wysokość składki od razu, bez kontaktu z agentem i bez wysyłania zapytania. Wyliczenie pochodzi z systemu ubezpieczyciela, więc rozmowa z klientem zaczyna się od decyzji, a nie od podawania ceny.
+
+Business Care SC prowadzi trzy działalności. Dla jej biura rachunkowego zrobiłem też [osobną stronę skierowaną do młodych firm](/projekty/bcsc-ksiegowosc).

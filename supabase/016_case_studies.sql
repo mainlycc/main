@@ -136,6 +136,7 @@ UPDATE portfolio_projects SET
 <p>Sekcja z opiniami klientów jest częścią strony, więc dowód wiarygodności działa również dla kogoś, kto nigdy nie napisze pierwszej wiadomości.</p>
 <h2><span class="idx">03 / Rezultat</span>Strona, która filtruje zamiast przyciągać wszystkich</h2>
 <p>Business Care SC ma serwis mówiący do jednej grupy, z policzalną wyceną i z treścią, która obsługuje wejścia z wyszukiwarki. Treści i wpisy da się edytować bez kontaktu z programistą.</p>
+<p>Business Care SC prowadzi trzy działalności. Dla jej działu ubezpieczeń zrobiłem <a href="/projekty/kalkulator-gap" class="link">kalkulator ubezpieczenia GAP</a>.</p>
 <h2><span class="idx">Dodatkowo</span>Co jeszcze przy okazji się udało</h2><ul><li>Opinie klientów są na stronie, a nie w podpisie maila.</li><li>Blog z poradami księgowymi obsługuje wejścia z wyszukiwarki.</li><li>Formularze kontaktowe rozdzielają typ sprawy, więc zapytanie od razu trafia we właściwe ręce.</li></ul>
 <p>Prowadzisz usługi profesjonalne i konkurujesz z firmami, które wyglądają identycznie? <a href="/kontakt" class="link">Napisz do mnie</a>. Zawężenie grupy docelowej zwykle robi więcej niż zmiana kolorów.</p>
 <div class="tech-tags"><span>Next.js</span><span>TypeScript</span><span>shadcn/ui</span><span>Tailwind CSS</span></div>',
@@ -405,6 +406,7 @@ UPDATE portfolio_projects SET
 <div class="callout"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg></span><div class="t"><b>Telefon jest tu urządzeniem podstawowym, nie wersją zapasową</b><p>O GAP klienci pytają najczęściej w trakcie zakupu auta, czyli poza biurkiem. Formularz musi się mieścić na ekranie telefonu bez powiększania i przewijania w bok.</p></div></div>
 <h2><span class="idx">03 / Rezultat</span>Cena przestała być powodem do wyjścia ze strony</h2>
 <p>Business Care ma kalkulator, w którym klient dostaje wysokość składki od razu, bez kontaktu z agentem i bez wysyłania zapytania. Wyliczenie pochodzi z systemu ubezpieczyciela, więc rozmowa z klientem zaczyna się od decyzji, a nie od podawania ceny.</p>
+<p>Business Care SC prowadzi trzy działalności. Dla jej biura rachunkowego zrobiłem też <a href="/projekty/bcsc-ksiegowosc" class="link">osobną stronę skierowaną do młodych firm</a>.</p>
 <h2><span class="idx">Dodatkowo</span>Co jeszcze przy okazji się udało</h2><ul><li>Formularz prowadzi przez parametry w kolejności, w jakiej klient je zna.</li><li>Wyliczenie idzie do API ubezpieczyciela, więc kwota jest tą, którą klient faktycznie zapłaci.</li><li>Interfejs działa tak samo na telefonie, gdzie zaczyna się większość takich wyszukiwań.</li></ul>
 <p>Sprzedajesz produkt, którego cena zależy od kilku parametrów i dlatego nie ma jej na stronie? <a href="/kontakt" class="link">Napisz do mnie</a>. Kalkulator zwykle zarabia na siebie szybciej niż kolejna podstrona z opisem.</p>
 <div class="tech-tags"><span>Next.js</span><span>React</span><span>TypeScript</span><span>shadcn/ui</span><span>Tailwind CSS</span></div>',

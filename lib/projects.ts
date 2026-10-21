@@ -381,7 +381,7 @@ export const projects: Project[] = [
       "Zaawansowane algorytmy kalkulacyjne",
       "Integracja z API ubezpieczeniowym"
     ],
-    client: "Firma Ubezpieczeniowa Business Care",
+    client: "Business Care SC, dział ubezpieczeń",
     year: 2025,
     url: "https://gapauto.pl"
   },

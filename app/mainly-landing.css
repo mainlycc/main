@@ -1730,3 +1730,16 @@
     .cookie-banner-actions{width:100%}
     .cookie-btn{flex:1;text-align:center}
   }
+
+  /* ========================= RENDEROWANIE POZA EKRANEM =========================
+     Przeglądarka pomija styl i layout sekcji poniżej pierwszego ekranu, dopóki
+     nie zbliżą się do widoku. Na telefonie (CPU ×4) pierwsze malowanie strony
+     głównej spada z ok. 1,2 s do 0,9 s (audyt 17.10.2026, LCP mobile). */
+  main#main > :not(:first-child),
+  body > footer{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 900px;
+  }
+  /* Na czas skoku do kotwicy (components/AnchorScrollFix.tsx) */
+  html.cv-off main#main > *,
+  html.cv-off body > footer{content-visibility:visible}

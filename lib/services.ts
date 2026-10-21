@@ -1,4 +1,5 @@
 import type { LandingPageData } from "./landing";
+import { PRICE_GUIDE_LINK } from "./seo";
 
 export const services: LandingPageData[] = [
   {
@@ -70,7 +71,8 @@ export const services: LandingPageData[] = [
       {
         question: "Ile kosztuje aplikacja webowa na zamówienie?",
         answer:
-          "Aplikacje zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15–30 tys. zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 35–80 tys. zł. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
+          "Aplikacje zaczynają się od 9 900 zł netto. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
+        link: PRICE_GUIDE_LINK,
       },
       {
         question: "Czy będę właścicielem kodu?",

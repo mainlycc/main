@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "../components/CookieConsent";
 import MetaPixel from "../components/MetaPixel";
+import AnchorScrollFix from "../components/AnchorScrollFix";
 import MobileCta from "../components/MobileCta";
 import Navbar from "../components/Navbar";
 import GoogleAnalytics from "../components/seo/GoogleAnalytics";
@@ -90,6 +91,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MobileCta />
+        <AnchorScrollFix />
         <CookieConsent />
         <Analytics />
       </body>

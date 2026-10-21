@@ -10,8 +10,9 @@ import {
   faqPageSchema,
   itemListSchema,
   webPageSchema,
+  type FaqEntry,
 } from "@/lib/schema";
-import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
+import { absoluteUrl, defaultOgImages, PRICE_GUIDE_LINK, SITE_URL } from "@/lib/seo";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -75,11 +76,12 @@ const timelines: Record<string, string> = {
   "opieka-techniczna": "bez umowy na czas określony",
 };
 
-const faq = [
+const faq: FaqEntry[] = [
   {
     question: "Ile kosztuje oprogramowanie na zamówienie?",
     answer:
-      "Zależy od zakresu. Pojedyncza automatyzacja zaczyna się od 2 900 zł netto, aplikacja webowa lub system od 9 900 zł. Prosta aplikacja z jednym procesem i panelem administracyjnym to zwykle 15–30 tys. zł, rozbudowany system z płatnościami, rolami i integracjami 35–80 tys. zł. Wycenę z harmonogramem dostajesz w 48 h po konsultacji.",
+      "Zależy od zakresu. Pojedyncza automatyzacja zaczyna się od 2 900 zł netto, aplikacja webowa lub system od 9 900 zł. Wycenę z harmonogramem dostajesz w 48 h po konsultacji.",
+    link: PRICE_GUIDE_LINK,
   },
   {
     question: "Kiedy oprogramowanie na zamówienie się opłaca, a kiedy lepszy jest gotowy program?",
@@ -278,7 +280,17 @@ export default function ServicesHubPage() {
                 <h3 className="faq-q" style={{ cursor: "default" }}>
                   <span>{item.question}</span>
                 </h3>
-                <div className="faq-a">{item.answer}</div>
+                <div className="faq-a">
+                  {item.answer}
+                  {item.link ? (
+                    <>
+                      {" "}
+                      <Link href={item.link.href} className="inline-link">
+                        {item.link.label}
+                      </Link>
+                    </>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>

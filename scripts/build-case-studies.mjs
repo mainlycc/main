@@ -185,7 +185,7 @@ function callout(title, body) {
 
 function renderMarkdown(md, ctx) {
   const out = [];
-  const lines = md.split("\n");
+  const lines = md.split(/\r?\n/);
   let i = 0;
 
   while (i < lines.length) {

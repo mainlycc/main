@@ -65,7 +65,7 @@ export default async function PortfolioSection() {
           Nie mockupy. <DisplayEm>Działające produkty</DisplayEm>.
         </h2>
         <p className="sec-lead">
-          36+ projektów - systemy CRM, platformy e-learningowe, generatory AI,
+          36 projektów - systemy CRM, platformy e-learningowe, generatory AI,
           aplikacje B2B. Każdy projekt to wdrożony, działający produkt.
         </p>
 

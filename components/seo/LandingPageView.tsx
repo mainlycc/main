@@ -158,7 +158,17 @@ export default async function LandingPageView({
                 <h3 className="faq-q" style={{ cursor: "default" }}>
                   <span>{item.question}</span>
                 </h3>
-                <div className="faq-a">{item.answer}</div>
+                <div className="faq-a">
+                  {item.answer}
+                  {item.link ? (
+                    <>
+                      {" "}
+                      <Link href={item.link.href} className="inline-link">
+                        {item.link.label}
+                      </Link>
+                    </>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>

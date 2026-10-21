@@ -3,8 +3,8 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
-import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
-import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
+import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema, type FaqEntry } from "@/lib/schema";
+import { absoluteUrl, defaultOgImages, PRICE_GUIDE_LINK, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Cennik stron i aplikacji webowych 2026: od 2 900 zł | Mainly",
@@ -112,7 +112,7 @@ const ranges = [
   },
 ];
 
-const faq = [
+const faq: FaqEntry[] = [
   {
     question: "Ile kosztuje strona internetowa w 2026 roku?",
     answer:
@@ -121,7 +121,8 @@ const faq = [
   {
     question: "Ile kosztuje aplikacja webowa na zamówienie?",
     answer:
-      "Aplikacje zaczynają się od 9 900 zł netto. Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w 15 000–30 000 zł, rozbudowany system z płatnościami, wieloma rolami i integracjami — 35 000–80 000 zł. Największy wpływ na cenę ma liczba ról użytkowników i integracji, nie liczba ekranów.",
+      "Aplikacje zaczynają się od 9 900 zł netto. Największy wpływ na cenę ma liczba ról użytkowników i integracji, nie liczba ekranów.",
+    link: PRICE_GUIDE_LINK,
   },
   {
     question: "Dlaczego nie ma jednej ceny za stronę?",
@@ -289,7 +290,17 @@ export default function PricingPage() {
                 <h3 className="faq-q" style={{ cursor: "default" }}>
                   <span>{item.question}</span>
                 </h3>
-                <div className="faq-a">{item.answer}</div>
+                <div className="faq-a">
+                  {item.answer}
+                  {item.link ? (
+                    <>
+                      {" "}
+                      <Link href={item.link.href} className="inline-link">
+                        {item.link.label}
+                      </Link>
+                    </>
+                  ) : null}
+                </div>
               </div>
             ))}
           </div>

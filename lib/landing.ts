@@ -1,4 +1,4 @@
-export type LandingFaq = { question: string; answer: string };
+export type LandingFaq = import("./schema").FaqEntry;
 
 export type LandingSection = {
   heading: string;

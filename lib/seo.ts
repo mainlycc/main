@@ -7,7 +7,7 @@ export const SITE_LOCALE = "pl_PL";
 
 export const DEFAULT_TITLE = "Mainly: aplikacje webowe i strony dla firm, Warszawa";
 export const DEFAULT_DESCRIPTION =
-  "Buduję aplikacje webowe, systemy i strony na zamówienie — od projektu po wdrożenie, bez podwykonawców. 36 wdrożeń w 9 branżach. Bezpłatna wycena w 24 h.";
+  "Buduję aplikacje webowe, systemy i strony na zamówienie — od projektu po wdrożenie, bez podwykonawców. 36 wdrożeń w 9 branżach. Bezpłatna wycena w 48 h.";
 
 export function absoluteUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -57,3 +57,12 @@ export function resolveImageUrl(imageUrl: string): string {
   }
   return absoluteUrl(imageUrl);
 }
+
+/**
+ * Jedyna strona docelowa dla frazy „ile kosztuje aplikacja webowa” (audyt 17.10.2026, #10).
+ * Cennik, usługi i strona warszawska podają jedno zdanie i linkują tutaj.
+ */
+export const PRICE_GUIDE_LINK = {
+  href: "/blog/ile-kosztuje-aplikacja-webowa-na-zamowienie",
+  label: "Pełne widełki i od czego zależy cena aplikacji →",
+};

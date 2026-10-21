@@ -86,7 +86,7 @@ export const STATIC_BLOG_POSTS: StaticBlogPost[] = [
   },
   {
     slug: "ile-kosztuje-aplikacja-webowa-na-zamowienie",
-    title: "Ile kosztuje aplikacja webowa na zamówienie?",
+    title: "Ile kosztuje aplikacja webowa w 2026? Widełki cen",
     excerpt: "Od 9 900 zł za wdrożenie startowe, 15–30 tys. za typową aplikację z panelem, 35–80 tys. za rozbudowany system. Rozkładam widełki na czynniki.",
     category: "Cennik",
     published_at: "2026-08-18T09:00:00+00:00",

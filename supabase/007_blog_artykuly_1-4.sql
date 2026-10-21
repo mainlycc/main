@@ -19,7 +19,7 @@ INSERT INTO blog_posts (
   'Ile kosztuje aplikacja webowa na zamówienie w 2026? Realne widełki: 9 900–80 000 zł. Od czego zależy cena, ukryte koszty i jak wygląda wycena.',
   'ile kosztuje aplikacja webowa, cena aplikacji webowej, aplikacja webowa na zamówienie cena, wycena aplikacji webowej, koszt oprogramowania dedykowanego',
   true,
-  '<p><strong>Krótka odpowiedź: aplikacja webowa na zamówienie kosztuje w Polsce od 10 000 do 80 000 zł netto.</strong> Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15 000–30 000 zł. Rozbudowany system z płatnościami online, wieloma rolami użytkowników i integracjami — 35 000–80 000 zł. Poniżej rozkładam na części, co dokładnie generuje tę różnicę.</p>
+  '<p><strong>Krótka odpowiedź: aplikacja webowa na zamówienie kosztuje u mnie od 9 900 do 80 000 zł netto.</strong> Prosta aplikacja z jednym procesem i panelem administracyjnym mieści się zwykle w przedziale 15 000–30 000 zł. Rozbudowany system z płatnościami online, wieloma rolami użytkowników i integracjami — 35 000–80 000 zł. Poniżej rozkładam na części, co dokładnie generuje tę różnicę.</p>
 
 <p>To pytanie dostaję na pierwszej rozmowie w jakichś dziewięciu przypadkach na dziesięć — i najczęściej pada zaraz po zdaniu „wiem, że to zależy, ale…". Zależy. Ale to nie znaczy, że nie da się podać widełek i wytłumaczyć, co je przesuwa. Większość agencji odpowiada „wycena indywidualna", bo tak jest wygodniej. Mnie to zawsze wkurzało jako klienta, więc u siebie robię inaczej.</p>
 

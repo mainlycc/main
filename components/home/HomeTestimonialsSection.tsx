@@ -55,10 +55,10 @@ export default function HomeTestimonialsSection() {
       <div className="wrap">
         <SectionLabel num="06" label="Opinie" />
         <h2 className="sec-title">
-          Co mówią <DisplayEm>nasi klienci</DisplayEm>?
+          Co mówią <DisplayEm>moi klienci</DisplayEm>?
         </h2>
         <p className="sec-lead">
-          Zobacz, jak nasze projekty pomagają rozwijać biznesy i budować silną
+          Zobacz, jak moje projekty pomagają rozwijać biznesy i budować silną
           markę w internecie.
         </p>
 
