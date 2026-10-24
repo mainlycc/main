@@ -1,0 +1,186 @@
+<p><strong>Krótka odpowiedź: 21 października 2026 r. ujawniono dwie krytyczne luki w PHP (CVE-2026-109618 i CVE-2026-109619, nazwane PHP2Shell). Jeśli Twoja strona działa na WordPressie, Joomli, WooCommerce albo innym systemie opartym na PHP, poproś hosting o potwierdzenie, że PHP zaktualizowano co najmniej do wersji 8.2.35, 8.3.36, 8.4.27 lub 8.5.12.</strong></p>
+
+<p>W ostatnich dniach świat cyberbezpieczeństwa postawiono w stan podwyższonej gotowości. W PHP, technologii, na której działają miliony stron internetowych, odkryto dwie krytyczne luki. Zagrożenie okazało się na tyle poważne, że część instytucji publicznych w Polsce tymczasowo wyłączyła swoje serwisy.</p>
+
+<p>Problem może dotyczyć również zwykłych stron firmowych, sklepów internetowych i witryn na WordPressie. Poniżej wyjaśniam bez technicznego żargonu, co się wydarzyło, czy dane Twoich klientów mogą być zagrożone i jak sprawdzić, czy Twoja strona jest zabezpieczona.</p>
+
+<div class="stat-band">
+  <div class="s"><div class="v">9,2</div><div class="l">punktu w skali CVSS 4.0 (na 10 możliwych) dostała każda z dwóch luk</div></div>
+  <div class="s"><div class="v">5.4+</div><div class="l">wszystkie wersje PHP od 5.4 wzwyż są podatne według CERT Polska</div></div>
+  <div class="s"><div class="v">21.10</div><div class="l">tego dnia ukazały się poprawki: PHP 8.2.35, 8.3.36, 8.4.27 i 8.5.12</div></div>
+</div>
+
+<h2><span class="idx">01 / Co się stało</span>Dlaczego w Polsce wyłączono strony internetowe?</h2>
+
+<p>21 października 2026 roku CERT Polska opublikował ostrzeżenie o dwóch krytycznych podatnościach w PHP, oznaczonych jako <strong>CVE-2026-109618 oraz CVE-2026-109619</strong>. Odkrywcy nazwali problem PHP2Shell.</p>
+
+<p>Obie luki oceniono na 9,2 punktu w skali CVSS 4.0, która służy do oceny powagi podatności i kończy się na 10.</p>
+
+<p>Najbardziej niepokojące jest to, że w określonych warunkach atakujący może zdalnie wykonywać polecenia na podatnym serwerze, bez znajomości loginu czy hasła.</p>
+
+<p>Następnego dnia, 22 października, Ministerstwo Cyfryzacji poinformowało o prewencyjnym wyłączeniu stron Biuletynu Informacji Publicznej działających w systemie SSDIP. Decyzję podjęto, żeby wdrożyć zabezpieczenia. Nie oznacza to, że wyłączone strony zostały zaatakowane ani że doszło do wycieku danych.</p>
+
+<p>Podobne środki ostrożności podjęto za granicą. Holenderskie Narodowe Centrum Cyberbezpieczeństwa (NCSC) tymczasowo wyłączyło własną witrynę.</p>
+
+<p>Kolejne analizy wskazały, że wykorzystanie luk jest trudniejsze, niż początkowo zakładano, a holenderskie NCSC obniżyło ocenę ryzyka masowych ataków. CERT Polska odnotował jednak już pierwsze próby takich ataków. Podstawowe zalecenie ekspertów się nie zmieniło: <strong>podatne instalacje PHP trzeba jak najszybciej zaktualizować.</strong></p>
+
+<p>Cała sytuacja pokazuje, że nawet bardzo popularne technologie mogą latami zawierać poważne błędy, których nikt nie zauważył.</p>
+
+<h2><span class="idx">02 / PHP w Twojej firmie</span>Czym jest PHP i dlaczego problem może dotyczyć Twojej firmy?</h2>
+
+<p>Jeśli nie zajmujesz się tworzeniem stron, nazwa PHP może niewiele Ci mówić. Najprościej wyobrazić sobie stronę internetową jako restaurację.</p>
+
+<p>To, co widzi klient, czyli wygląd strony, zdjęcia, przyciski i formularze, to sala restauracyjna. PHP to część zaplecza, w której realizuje się zamówienia i przetwarza informacje. Może odpowiadać między innymi za:</p>
+
+<ul>
+  <li>logowanie użytkowników,</li>
+  <li>przetwarzanie formularzy kontaktowych,</li>
+  <li>działanie koszyka w sklepie internetowym,</li>
+  <li>komunikację z bazą danych,</li>
+  <li>wyświetlanie dynamicznej zawartości strony.</li>
+</ul>
+
+<p>Na PHP działają popularne systemy zarządzania treścią, takie jak WordPress i Joomla, a także sklepy WooCommerce. Problem nie ogranicza się więc do dużych portali czy systemów instytucji publicznych. <strong>Może dotyczyć również niewielkiej strony lokalnej firmy, sklepu internetowego czy strony usługowej.</strong></p>
+
+<p>Nie znaczy to, że każda witryna na PHP została zhakowana albo pozostaje podatna. Liczy się zainstalowana wersja PHP, wdrożone poprawki i konfiguracja serwera.</p>
+
+<h2><span class="idx">03 / Skutki ataku</span>Co haker może zrobić, wykorzystując lukę?</h2>
+
+<p>Wyobraź sobie, że prowadzisz sklep internetowy. Na stronie są informacje o klientach, historia zamówień i adresy dostawy. Do zarządzania nimi zwykle potrzebne są uprawnienia, ale niektóre podatności pozwalają ominąć część zabezpieczeń.</p>
+
+<p>W przypadku PHP2Shell zagrożenie polega na tym, że osoba nieuprawniona może wykonać polecenia na podatnym serwerze. W zależności od konfiguracji i uprawnień skuteczny atak może prowadzić do:</p>
+
+<ul>
+  <li>dostępu do poufnych informacji,</li>
+  <li>zmiany zawartości strony,</li>
+  <li>umieszczenia na niej złośliwego oprogramowania,</li>
+  <li>wykorzystania serwera do kolejnych ataków,</li>
+  <li>zakłócenia działania serwisu lub sklepu.</li>
+</ul>
+
+<p>Nie każdy atak kończy się przejęciem całego serwera i nie każdy oznacza wyciek danych klientów. Możliwe skutki są jednak na tyle poważne, że nie warto ignorować takich ostrzeżeń, zwłaszcza jeśli strona przyjmuje zamówienia, przechowuje dane klientów albo jest ważnym źródłem nowych zleceń.</p>
+
+<h2><span class="idx">04 / WordPress</span>Czy WordPress jest zagrożony?</h2>
+
+<p>WordPress to jeden z najpopularniejszych systemów do budowy stron. Wiele firm korzysta z niego, nawet o tym nie wiedząc, bo konfiguracją zajmowała się agencja albo programista.</p>
+
+<p>WordPress działa na PHP, więc luki w PHP mają znaczenie także dla stron na WordPressie.</p>
+
+<div class="callout">
+  <span class="ic">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path></svg>
+  </span>
+  <div class="t">
+    <b>Aktualizacja WordPressa to nie to samo co aktualizacja PHP</b>
+    To dwa różne elementy. Możesz mieć najnowszego WordPressa, a jednocześnie przestarzałe PHP na serwerze. Do tego aktualizacji wymagają wtyczki i motywy, które mogą mieć własne luki.
+  </div>
+</div>
+
+<p>Dlatego dbanie o stronę to nie tylko zmiany wyglądu i nowe treści, ale też kontrola technologii, na których działa. Jeśli rozważasz zmianę technologii, porównałem obie drogi w tekście <a href="/blog/nextjs-czy-wordpress-strona-firmowa" class="link">Next.js czy WordPress na stronę firmową</a>.</p>
+
+<h2><span class="idx">05 / Sprawdź swoją stronę</span>Jak sprawdzić, czy Twoja strona jest bezpieczna?</h2>
+
+<p>Nie musisz być programistą, żeby wykonać kilka podstawowych kroków.</p>
+
+<h3>1. Sprawdź, czy strona korzysta z PHP</h3>
+
+<p>Jeśli używasz WordPressa, Joomli lub WooCommerce, PHP na pewno jest częścią Twojej strony. W innych przypadkach zapytaj wykonawcę strony albo dostawcę hostingu.</p>
+
+<h3>2. Sprawdź wersję PHP</h3>
+
+<p>Wersję PHP zwykle znajdziesz w panelu hostingu. W WordPressie wejdź w <strong>Narzędzia → Stan witryny → Informacje → Serwer</strong>.</p>
+
+<p>21 października 2026 roku wydano wersje z poprawkami obu luk:</p>
+
+<table>
+  <thead>
+    <tr><th>Linia PHP</th><th>Wersja z poprawkami</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>PHP 8.2</td><td>8.2.35</td></tr>
+    <tr><td>PHP 8.3</td><td>8.3.36</td></tr>
+    <tr><td>PHP 8.4</td><td>8.4.27</td></tr>
+    <tr><td>PHP 8.5</td><td>8.5.12</td></tr>
+  </tbody>
+</table>
+
+<p>Jeśli strona działa na starszej wersji, sprawdź z hostingiem, czy wdrożono poprawki. Niektórzy dostawcy łatają własne pakiety bez zmiany numeru wersji, więc sam numer nie zawsze przesądza o bezpieczeństwie. Starsze, niewspierane wersje PHP (np. 7.4, 8.0, 8.1) nie dostają regularnych aktualizacji, więc warto zaplanować przejście na wspieraną wersję.</p>
+
+<h3>3. Napisz do dostawcy hostingu</h3>
+
+<p>To najprostszy sposób weryfikacji. Możesz wysłać taką wiadomość:</p>
+
+<div class="pullquote">„Dzień dobry, chcę się upewnić, że PHP obsługujące moją stronę zostało zabezpieczone przed podatnościami CVE-2026-109618 i CVE-2026-109619. Proszę o potwierdzenie, że wymagane aktualizacje zostały wdrożone.”</div>
+
+<p>Przy hostingu zarządzanym dostawca mógł już wdrożyć zabezpieczenia.</p>
+
+<h3>4. Zaktualizuj WordPressa i wtyczki</h3>
+
+<p>Nawet po zabezpieczeniu PHP strona może mieć inne luki. Sprawdź, czy:</p>
+
+<ul>
+  <li>WordPress jest aktualny,</li>
+  <li>wszystkie używane wtyczki dostają aktualizacje,</li>
+  <li>niepotrzebne wtyczki zostały usunięte,</li>
+  <li>motyw strony jest aktualny,</li>
+  <li>dostęp do panelu administratora jest dobrze chroniony.</li>
+</ul>
+
+<p>Przed większymi aktualizacjami zrób kopię zapasową i sprawdź, czy da się ją przywrócić.</p>
+
+<h3>5. Rozważ audyt bezpieczeństwa</h3>
+
+<p>Aktualizacje są konieczne, ale nie rozwiązują wszystkiego. Strona może działać na najnowszym oprogramowaniu i mimo to mieć niebezpieczną konfigurację, źle zabezpieczone formularze albo błędy w przechowywaniu danych. Dlatego warto co jakiś czas zlecić przegląd bezpieczeństwa.</p>
+
+<h2><span class="idx">06 / Ukryte pliki</span>Strona może ujawniać dane, nawet jeśli PHP jest aktualne</h2>
+
+<p>Luki w PHP to tylko jeden rodzaj zagrożenia. Innym, często niedocenianym problemem są pliki, które przez pomyłkę są dostępne publicznie.</p>
+
+<p>Przy budowie strony programista korzysta z plików konfiguracyjnych. Niektóre zawierają hasła do baz danych, klucze do zewnętrznych usług albo informacje o infrastrukturze. Przykładem jest plik <code>.env</code>, który nigdy nie powinien być dostępny dla osób z zewnątrz.</p>
+
+<p>Przy błędnej konfiguracji serwera taki plik da się po prostu pobrać, nawet jeśli na stronie nie ma do niego żadnego linku. Odwiedzający nie wiedzą o jego istnieniu, ale automatyczne skanery sprawdzają takie adresy masowo. To samo dotyczy przypadkowo udostępnionych kopii zapasowych i plików projektu.</p>
+
+<p>To inny problem niż PHP2Shell, ale dobrze pokazuje, że bezpieczeństwo strony to więcej niż aktualizacje. <strong>Dobry audyt sprawdza zarówno aktualność technologii, jak i to, jak zabezpieczona jest cała aplikacja.</strong></p>
+
+<h2><span class="idx">07 / Profilaktyka</span>5 rzeczy, które chronią stronę internetową</h2>
+
+<p>Nie da się wyeliminować wszystkich zagrożeń, ale kilka podstawowych działań wyraźnie zmniejsza ryzyko.</p>
+
+<ol>
+  <li><strong>Regularnie aktualizuj oprogramowanie.</strong> Nie tylko WordPressa, ale też PHP, wtyczki, motywy i resztę systemu.</li>
+  <li><strong>Rób kopie zapasowe.</strong> Trzymaj je w bezpiecznym miejscu, niedostępnym publicznie, i regularnie sprawdzaj, czy da się z nich odtworzyć stronę.</li>
+  <li><strong>Zabezpiecz konta administratorów.</strong> Unikalne hasła, logowanie dwuskładnikowe tam, gdzie się da, i osobne konto dla każdej osoby.</li>
+  <li><strong>Ogranicz dostęp do wrażliwych danych.</strong> Pliki konfiguracyjne i kopie baz danych nie mogą być publiczne, a każdy powinien mieć tylko te uprawnienia, których naprawdę potrzebuje.</li>
+  <li><strong>Regularnie sprawdzaj bezpieczeństwo.</strong> Nowe luki pojawiają się cały czas, a każda aktualizacja czy zmiana konfiguracji może coś zmienić. Wcześnie wykryty problem zwykle kosztuje dużo mniej.</li>
+</ol>
+
+<h2><span class="idx">08 / Małe firmy</span>Czy małe firmy też powinny się obawiać?</h2>
+
+<p>Wielu przedsiębiorców zakłada, że ich firma jest za mała, żeby zainteresowali się nią cyberprzestępcy. To niebezpieczne przekonanie.</p>
+
+<p>Wiele ataków nie jest wymierzonych w konkretną firmę. Automatyczne programy przeszukują internet w poszukiwaniu stron z podatną technologią albo błędną konfiguracją. Dla takiego programu nie ma znaczenia, czy strona należy do korporacji, czy do lokalnego salonu kosmetycznego.</p>
+
+<p>Dla małej firmy skutki bywają szczególnie dotkliwe. Niedziałający sklep to utracone zamówienia, zainfekowana strona odstrasza klientów, a wyciek danych osobowych oznacza dodatkowe obowiązki prawne i utratę zaufania. Bezpieczeństwo strony to element odpowiedzialnego prowadzenia firmy, a nie tylko sprawa programistów.</p>
+
+<h2><span class="idx">09 / Podsumowanie</span>Nie czekaj na pierwszy incydent</h2>
+
+<p>Październikowe luki w PHP pokazują, jak szybko zmienia się sytuacja. Technologia, która kilka dni wcześniej działała bez zastrzeżeń, nagle wymaga pilnej aktualizacji.</p>
+
+<p>Nie trzeba panikować. Warto natomiast sprawdzić, czy oprogramowanie jest aktualne i kto odpowiada za jego bezpieczeństwo. Jeśli prowadzisz stronę firmową, sklep albo aplikację z danymi klientów, upewnij się, że aktualizacje, kopie zapasowe i przeglądy bezpieczeństwa są stałą częścią jej utrzymania. Na tym polega <a href="/uslugi/opieka-techniczna" class="link">opieka techniczna nad stroną</a>.</p>
+
+<p><strong>Strona nie musi przestać działać, żeby mieć poważny problem z bezpieczeństwem.</strong></p>
+
+<h2><span class="idx">10 / Sprawdzę Twoją stronę</span>Chcesz sprawdzić stan techniczny swojej strony?</h2>
+
+<p>Buduję i rozwijam strony oraz aplikacje internetowe dla firm. Jeśli nie masz pewności, czy Twoja strona wymaga aktualizacji, zmian albo dodatkowych zabezpieczeń, <a href="/kontakt" class="link">napisz do mnie</a>. Pomogę ustalić, co warto zrobić, żeby działała bezpiecznie i bez przerw.</p>
+
+<h2>Źródła</h2>
+
+<ul>
+  <li><a href="https://moje.cert.pl/komunikaty/2026/196/krytyczne-podatnosci-w-php-umozliwiajace-zdalne-wykonanie-kodu-php2shell/" class="link" rel="noopener" target="_blank">CERT Polska: krytyczne podatności PHP2Shell, 21 października 2026</a></li>
+  <li><a href="https://www.gov.pl/web/cyfryzacja/wazny-komunikat---luki-w-oprogramowaniu-php" class="link" rel="noopener" target="_blank">Ministerstwo Cyfryzacji: komunikat o lukach w PHP, 22 października 2026</a></li>
+  <li><a href="https://www.php.net/archive/2026.php" class="link" rel="noopener" target="_blank">PHP.net: oficjalne komunikaty o wydaniach bezpieczeństwa</a></li>
+  <li><a href="https://www.ncsc.nl/en/alerts/update-php-vulnerabilities-remain-a-reason-for-immediate-patching" class="link" rel="noopener" target="_blank">NCSC Holandia: aktualizacja oceny zagrożenia, 23 października 2026</a></li>
+</ul>
+
+<p><em>Stan informacji na 24 października 2026 roku.</em></p>

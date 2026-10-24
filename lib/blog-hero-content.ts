@@ -51,6 +51,10 @@ export const BLOG_HERO_CONTENT: Record<string, BlogHeroContent> = {
     main: "2 900 zł",
     sub: "za stronę w Next.js",
   },
+  "luka-php2shell-czy-twoja-strona-jest-bezpieczna": {
+    main: "9,2 / 10",
+    sub: "tak groźna jest luka PHP2Shell",
+  },
 };
 
 const FALLBACK: BlogHeroContent = { main: "Mainly" };

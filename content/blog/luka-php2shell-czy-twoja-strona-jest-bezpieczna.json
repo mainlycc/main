@@ -1,0 +1,14 @@
+{
+  "slug": "luka-php2shell-czy-twoja-strona-jest-bezpieczna",
+  "title": "Luka PHP2Shell: czy Twoja <em>strona</em> jest bezpieczna?",
+  "excerpt": "21 października ujawniono dwie krytyczne luki w PHP (PHP2Shell), a w Polsce prewencyjnie wyłączono część stron BIP. Wyjaśniam, kogo to dotyczy, jak sprawdzić wersję PHP na swojej stronie i co napisać do hostingu.",
+  "category": "Bezpieczeństwo",
+  "author": "Stanisław Blicharski",
+  "published_at": "2026-10-24T06:00:00+00:00",
+  "read_time": "7 min czytania",
+  "tags": ["Bezpieczeństwo", "PHP", "WordPress", "Opieka techniczna"],
+  "image_url": null,
+  "meta_description": "Luki PHP2Shell (CVE-2026-109618, CVE-2026-109619) dotyczą stron na PHP i WordPressie. Sprawdź wersję PHP, napisz do hostingu i zabezpiecz stronę.",
+  "keywords": "php2shell, luka php, cve-2026-109618, cve-2026-109619, bezpieczeństwo strony internetowej, wordpress luka php, aktualizacja php",
+  "published": true
+}

@@ -15,6 +15,16 @@ export type StaticBlogPost = {
 
 export const STATIC_BLOG_POSTS: StaticBlogPost[] = [
   {
+    slug: "luka-php2shell-czy-twoja-strona-jest-bezpieczna",
+    title: "Luka PHP2Shell: czy Twoja strona jest bezpieczna?",
+    excerpt: "21 października ujawniono dwie krytyczne luki w PHP (PHP2Shell), a w Polsce prewencyjnie wyłączono część stron BIP. Kogo to dotyczy, jak sprawdzić wersję PHP i co napisać do hostingu.",
+    category: "Bezpieczeństwo",
+    published_at: "2026-10-24T06:00:00+00:00",
+    read_time: "7 min czytania",
+    image_url: null,
+    tags: ["Bezpieczeństwo", "PHP", "WordPress", "Opieka techniczna"],
+  },
+  {
     slug: "ile-kosztuje-strona-nextjs-headless-cms",
     title: "Strona w Next.js: cena i kiedy headless CMS",
     excerpt: "Wizytówka w Next.js to 2 900–4 500 zł netto, strona firmowa z blogiem 4 900–9 000 zł, rozbudowany serwis od 10 000 zł. Headless CMS bywa potrzebny znacznie rzadziej, niż sugerują agencje.",
