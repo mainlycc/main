@@ -54,7 +54,7 @@ export const COMPANY_PROFILES: SocialProfile[] = [
   {
     id: "github",
     label: "GitHub",
-    url: "https://github.com/mainlycc",
+    url: "",
     icon: "github",
     relMe: false,
   },

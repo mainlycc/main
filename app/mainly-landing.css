@@ -1743,3 +1743,66 @@
   /* Na czas skoku do kotwicy (components/AnchorScrollFix.tsx) */
   html.cv-off main#main > *,
   html.cv-off body > footer{content-visibility:visible}
+
+  /* ========================= CLIENT LOGOS =========================
+     Jeden przewijany rząd. Wysokość stała, szerokość z proporcji.
+     max-width: none zdejmuje globalne img{max-width:100%}, które
+     ściskało szerokie napisy i robiło je nieczytelne. */
+  .client-logos{
+    overflow:hidden;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:28px 0;
+    -webkit-mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+  .client-logos__track{
+    display:flex;
+    width:max-content;
+    animation:marquee 100s linear infinite;
+  }
+  @media (hover:hover) and (pointer:fine){
+    .client-logos__track:hover{animation-play-state:paused}
+  }
+  .client-logos__set{
+    display:flex;
+    align-items:center;
+    gap:72px;
+    padding-right:72px;
+  }
+  .client-logo{
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+  }
+  .client-logo img{
+    height:48px;
+    width:auto;
+    max-width:none;
+    opacity:.88;
+    transition:opacity .2s ease;
+  }
+  .client-logo:hover img{opacity:1}
+  .client-logo--text span{
+    font-family:var(--sans);font-weight:600;font-size:22px;letter-spacing:.16em;
+    color:var(--fg);opacity:.88;transition:opacity .2s ease;white-space:nowrap;
+  }
+  .client-logo--text:hover span{opacity:1}
+  @media (max-width:700px){
+    .client-logos{
+      width:calc(100% + 2 * var(--pad));
+      margin-left:calc(-1 * var(--pad));
+      padding:22px 0;
+      border-radius:0;
+      border-left:0;
+      border-right:0;
+    }
+    .client-logos__set{gap:48px;padding-right:48px}
+    .client-logo img{height:42px}
+    .client-logo--text span{font-size:18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .client-logos{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+    .client-logos__track{animation:none}
+    .client-logos__set[aria-hidden="true"]{display:none}
+  }
