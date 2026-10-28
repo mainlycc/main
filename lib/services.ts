@@ -5,21 +5,21 @@ export const services: LandingPageData[] = [
   {
     slug: "aplikacje-webowe",
     navLabel: "Aplikacje webowe",
-    metaTitle: "Aplikacje webowe na zamówienie | Mainly",
+    metaTitle: "Aplikacja webowa na zamówienie | Mainly",
     metaDescription:
-      "Aplikacje webowe pisane pod proces Twojej firmy — od briefu po wdrożenie, bez podwykonawców. Next.js i React. Od 9 900 zł. Wycena w 48 h.",
+      "Aplikacja lub system webowy na zamówienie pod Twój proces — Next.js, własność kodu, od 9 900 zł. Widełki cen → osobny artykuł. Wycena w 48 h.",
     eyebrow: "Usługa",
-    h1: "Aplikacje webowe na zamówienie — od briefu po wdrożenie",
+    h1: "Aplikacja webowa na zamówienie — system pod Twój proces",
     teaser:
       "Aplikacja pisana pod Twój proces, nie proces dopasowany do gotowego oprogramowania.",
     intro:
-      "Aplikacja webowa na zamówienie to oprogramowanie działające w przeglądarce, napisane pod konkretny proces firmy zamiast kupowane z półki. Nie wymaga instalacji, działa na komputerze i telefonie, a dostęp kontrolujesz rolami użytkowników. Buduję je w Next.js i React — od projektu interfejsu, przez kod i integracje, po wdrożenie i opiekę techniczną.",
+      "Aplikacja webowa (lub system webowy) na zamówienie to oprogramowanie w przeglądarce napisane pod Twój proces, nie pod cudzy abonament. Buduję je w Next.js i React: od briefu, przez UX i kod, po wdrożenie i opiekę. Szukasz widełek cen? Są w osobnym artykule o kosztach aplikacji webowej. Tu znajdziesz: kiedy to ma sens, co dostajesz i jak wygląda współpraca.",
     priceFrom: 9900,
     priceNote:
       "Widełki zależą od liczby ról, integracji i tego, czy potrzebujesz płatności online.",
     sections: [
       {
-        heading: "Kiedy aplikacja webowa ma sens, a kiedy szkoda pieniędzy",
+        heading: "Kiedy aplikacja lub system webowy na zamówienie ma sens",
         body: "Aplikacja na zamówienie opłaca się wtedy, gdy Twój proces jest na tyle nietypowy, że gotowe narzędzie wymagałoby obchodzenia go od kuchni — albo gdy ręczna obsługa zaczyna kosztować więcej niż jednorazowe wdrożenie. Jeśli Twój proces mieści się w standardowym CRM-ie z abonamentem, powiem Ci to wprost na bezpłatnej konsultacji, zamiast sprzedawać projekt na siłę.",
         bullets: [
           "Dane krążą między Excelem, mailem i systemem księgowym, a ktoś je przepisuje ręcznie",
@@ -39,7 +39,16 @@ export const services: LandingPageData[] = [
         ],
       },
       {
-        heading: "Przykłady aplikacji webowych, które zbudowałem",
+        heading: "Aplikacja webowa a system webowy na zamówienie — co wybierasz",
+        body: "Różnica praktyczna: „aplikacja webowa" to zwykle jeden proces (panel klienta, generator ofert, kalkulator). „System webowy" to kilka ról, wiele procesów, integracje (CRM + faktury + raporty). Oba buduję tym samym stackiem — Next.js i React. Zakres i cena rosną z liczbą ról i integracji, nie z liczbą ekranów. Wahasz się gotowy CRM vs system na zamówienie? Porównanie znajdziesz w artykule o wyborze CRM. Interesują Cię widełki cen? Szczegóły w artykule o kosztach aplikacji webowej.",
+        bullets: [
+          "Aplikacja webowa: jeden proces, prostsza logika, szybsze wdrożenie",
+          "System webowy: wiele ról, złożone uprawnienia, integracje z ERP i księgowością",
+          "Stack ten sam — różni się zakres, czas realizacji i budżet",
+        ],
+      },
+      {
+        heading: "Przykłady aplikacji i systemów webowych z portfolio",
         body: "Każda z tych aplikacji zastąpiła arkusz, folder z plikami albo ręczną pracę, która przestała się skalować. Pełne opisy z decyzjami technicznymi znajdziesz w portfolio.",
         bullets: [
           "Akademia Wiedzy: system e-korepetycji dla 865 uczniów i 40 korepetytorów, z grafikiem, automatycznymi rozliczeniami i płatnościami PayU",
@@ -69,10 +78,18 @@ export const services: LandingPageData[] = [
     ],
     faq: [
       {
-        question: "Ile kosztuje aplikacja webowa na zamówienie?",
+        question: "Od jakiej kwoty zaczyna się aplikacja webowa na zamówienie?",
         answer:
-          "Aplikacje zaczynają się od 9 900 zł netto. Dokładną wycenę z harmonogramem dostajesz w 48 h po bezpłatnej konsultacji.",
-        link: PRICE_GUIDE_LINK,
+          "Od 9 900 zł netto za wdrożenie startowe. Typowa aplikacja z panelem: 15–30 tys. zł; rozbudowany system z rolami i płatnościami: 35–80 tys. zł. Po 30-minutowej konsultacji dostajesz konkretną wycenę w 48 h.",
+        link: {
+          href: "/blog/ile-kosztuje-aplikacja-webowa-na-zamowienie",
+          label: "Pełne widełki i od czego zależy cena →",
+        },
+      },
+      {
+        question: "Czym różni się system webowy na zamówienie od aplikacji webowej?",
+        answer:
+          "Aplikacja zwykle obsługuje jeden proces (np. generowanie ofert PDF). System webowy łączy kilka procesów i ról (handlowiec, magazyn, księgowość) w jednym panelu. Stack ten sam (Next.js/React); różni się zakres i budżet.",
       },
       {
         question: "Czy będę właścicielem kodu?",
@@ -80,33 +97,34 @@ export const services: LandingPageData[] = [
           "Tak. Po opłaceniu ostatniej faktury przekazuję pełne prawa do kodu i repozytorium. Nie uzależniam klientów od siebie — możesz rozwijać aplikację samodzielnie albo z innym zespołem.",
       },
       {
-        question: "Co jeśli po roku będę potrzebować nowych funkcji?",
+        question: "Robisz też dedykowane aplikacje webowe dla firm spoza Warszawy?",
         answer:
-          "Architekturę projektuję pod rozbudowę. Dokładanie modułów — płatności, raportowania, kolejnego typu użytkownika — nie wymaga przepisywania aplikacji od zera. Nowe funkcje wyceniam osobno, na podstawie zakresu.",
+          "Tak — zdalnie w całej Polsce. Spotkania na miejscu w Warszawie (Filtrowa 83) przy większych wdrożeniach. Proces: warsztat → UX → kod → wdrożenie.",
+      },
+      {
+        question: "Czy aplikacja webowa będzie działać na telefonie?",
+        answer:
+          "Tak. Aplikacja działa w przeglądarce, więc otwiera się na komputerze, tablecie i telefonie bez instalacji, a interfejs dopasowuje się do ekranu. Nie buduję natywnych aplikacji do App Store i Google Play.",
       },
       {
         question: "Kto utrzymuje aplikację po wdrożeniu?",
         answer:
           "Możesz przejąć utrzymanie sam albo skorzystać z opieki technicznej od 290 zł miesięcznie: monitoring, kopie zapasowe, aktualizacje zależności i reakcja na zgłoszenia w 48 h.",
       },
-      {
-        question: "Czy aplikacja webowa będzie działać na telefonie?",
-        answer:
-          "Tak. Aplikacja działa w przeglądarce, więc otwiera się na komputerze, tablecie i telefonie bez instalacji, a interfejs dopasowuje się do ekranu. Nie buduję natywnych aplikacji do App Store i Google Play — specjalizuję się w aplikacjach przeglądarkowych.",
-      },
-      {
-        question: "Czy spotykasz się z klientami na miejscu?",
-        answer:
-          "Tak, jeśli firma jest w Warszawie lub okolicy. Biuro mam na Filtrowej 83, a przy większych wdrożeniach warsztat w Twojej firmie oszczędza tygodnie domysłów. Z firmami z reszty Polski pracuję zdalnie.",
-      },
     ],
     relatedProjects: ["akademia-wiedzy", "airset-platforma", "generator-ofert-rolety"],
     relatedLinks: [
       {
-        href: "/aplikacje-webowe-warszawa",
-        label: "Aplikacje webowe w Warszawie",
+        href: "/blog/ile-kosztuje-aplikacja-webowa-na-zamowienie",
+        label: "Ile kosztuje aplikacja webowa — widełki 2026",
         description:
-          "Warsztaty i wdrożenia na miejscu dla firm z Warszawy i okolic.",
+          "Pełne widełki cen, czynniki wpływające na koszt i ukryte wydatki po wdrożeniu.",
+      },
+      {
+        href: "/blog/gotowy-crm-czy-system-na-zamowienie",
+        label: "Gotowy CRM czy system na zamówienie",
+        description:
+          "Porównanie kosztów, próg opłacalności i trzecia droga między nimi.",
       },
       {
         href: "/uslugi/systemy-dla-firm",
@@ -119,11 +137,6 @@ export const services: LandingPageData[] = [
         label: "Automatyzacja procesów",
         description:
           "Gdy proces da się usprawnić integracjami, bez budowania całej aplikacji.",
-      },
-      {
-        href: "/cennik",
-        label: "Cennik",
-        description: "Realne widełki dla stron, aplikacji i systemów.",
       },
     ],
   },
