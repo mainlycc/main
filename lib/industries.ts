@@ -444,6 +444,11 @@ export const industries: LandingPageData[] = [
         label: "Case study: JK Term",
         description: "Wizualizator grzejników z AI.",
       },
+      {
+        href: "/blog/automatyzacja-ofertowania-generator-ofert-pdf",
+        label: "Automatyzacja ofertowania: generator ofert PDF",
+        description: "Jak generator ofert PDF przyspiesza wyceny u producenta.",
+      },
     ],
   },
   {

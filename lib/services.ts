@@ -281,6 +281,11 @@ export const services: LandingPageData[] = [
         label: "Jak wygląda współpraca",
         description: "Cztery etapy od briefu po wdrożenie.",
       },
+      {
+        href: "/blog/automatyzacja-ofertowania-generator-ofert-pdf",
+        label: "Automatyzacja ofertowania: generator ofert PDF",
+        description: "Jak działa generator ofert PDF i dlaczego automatyzacja ofertowania oszczędza godziny tygodniowo.",
+      },
     ],
   },
   {
