@@ -175,7 +175,11 @@ export default async function BlogPostPage({
   const plainTitle = stripHtml(post.title);
   const description = post.meta_description ?? post.excerpt;
   const postUrl = absoluteUrl(`/blog/${post.slug}`);
-  const heroImageUrl = post.image_url ?? blogHeroImageUrl(post.slug);
+  // TYMCZASOWE: lokalny podgląd próbnego zdjęcia KSeF, docelowo image_url w Supabase.
+  const heroImageUrl =
+    post.slug === "integracja-ksef-z-wlasnym-systemem"
+      ? "/blog/integracja-ksef-samolot.jpg"
+      : (post.image_url ?? blogHeroImageUrl(post.slug));
 
   const blogPostingJsonLd = blogPostingSchema({
     headline: plainTitle,

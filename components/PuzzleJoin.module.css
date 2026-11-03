@@ -1,0 +1,96 @@
+.root {
+  --puzzle-color: #fe4828;
+  --puzzle-bg: var(--bg, #0a0908);
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--puzzle-color);
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--puzzle-color) 55%, transparent));
+  cursor: pointer;
+}
+
+.outline {
+  fill: currentColor;
+}
+
+/* Wypełnienie tłem zasłania tę część kafelka z tyłu, która chowa się pod kafelkiem z przodu. */
+.backing {
+  fill: var(--puzzle-bg);
+}
+
+/* Przesunięcia liczone wzdłuż osi łączenia: wektor (172, 106.6) przenosi lewy-górny bok
+   kafelka na jego prawy-dolny bok, czyli wypustkę jednego w wcięcie drugiego. */
+.a,
+.b {
+  transition:
+    transform 0.7s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.35s ease;
+}
+
+/* Drugi kafelek czeka z prawej, nad stołem, niewidoczny. Przy zjechaniu myszką szybko gaśnie. */
+.b {
+  opacity: 0;
+  transform: translate(206px, 65.3px);
+  transition:
+    transform 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.2s ease;
+}
+
+/* Stan połączony: oba kafelki rozjeżdżają się o pół wektora i zamykają zamek. */
+.root:hover .a,
+.root[data-joined] .a,
+:global(.diff-cell:hover) .a {
+  transform: translate(-86px, -53.3px);
+}
+
+.root:hover .b,
+.root[data-joined] .b,
+:global(.diff-cell:hover) .b {
+  opacity: 1;
+  transform: translate(86px, 53.3px);
+  animation: snap 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.root:hover,
+.root[data-joined],
+:global(.diff-cell:hover) .root {
+  animation: glow 0.9s ease-out 0.55s;
+}
+
+/* Najpierw zawisa nad wcięciem, potem opada i wsuwa się w zamek. */
+@keyframes snap {
+  0% {
+    opacity: 0;
+    transform: translate(206px, 65.3px);
+  }
+  55% {
+    opacity: 1;
+    transform: translate(96px, 23.3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(86px, 53.3px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px color-mix(in srgb, var(--puzzle-color) 55%, transparent));
+  }
+  30% {
+    filter: drop-shadow(0 0 16px var(--puzzle-color));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a,
+  .b {
+    transition: opacity 0.2s ease;
+    animation: none !important;
+  }
+  .root {
+    animation: none !important;
+  }
+}

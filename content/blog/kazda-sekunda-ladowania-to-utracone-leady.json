@@ -1,0 +1,19 @@
+{
+  "slug": "kazda-sekunda-ladowania-to-utracone-leady",
+  "title": "Każda sekunda ładowania to <em>utracone leady</em>",
+  "excerpt": "Google uznaje stronę za szybką, gdy główna treść pojawia się w 2,5 sekundy. Pokazuję progi Core Web Vitals, co najczęściej spowalnia strony firmowe i jak sprawdzić swoją w 5 minut.",
+  "author": "Stanisław Blicharski",
+  "published_at": "2026-05-28T00:00:00+00:00",
+  "category": "Konwersja",
+  "tags": [
+    "Konwersja",
+    "Wydajność",
+    "Core Web Vitals",
+    "Next.js"
+  ],
+  "image_url": "/blog/kazda-sekunda-ladowania-to-utracone-leady.png",
+  "read_time": "6 min czytania",
+  "meta_description": "Próg LCP to 2,5 s. Vodafone po przyspieszeniu strony o 31% sprzedał 8% więcej. Co spowalnia strony firmowe i jak sprawdzić swoją w PageSpeed Insights.",
+  "keywords": "szybkość strony, czas ładowania, konwersja, Core Web Vitals, LCP, wydajność strony internetowej",
+  "published": true
+}

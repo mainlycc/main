@@ -1,0 +1,147 @@
+<p><strong>Krótka odpowiedź: jeśli faktury dla firm powstają u Ciebie we własnym CRM, sklepie albo aplikacji, najpóźniej od 1 stycznia 2027 r. każda taka faktura musi przejść przez KSeF. Masz dwie drogi: przepisywać dane do osobnego programu z KSeF albo podłączyć do KSeF system, w którym faktura i tak już powstaje.</strong> Ten tekst pomoże Ci wybrać. Pokazuję, jak taka integracja działa w praktyce, gdzie najczęściej coś się psuje i od czego zależy koszt. Piszę językiem właściciela firmy, bez kodu.</p>
+
+<p>Piszę z perspektywy programisty, który buduje <a href="/uslugi/systemy-dla-firm" class="link">systemy dla firm</a> i ma własny system do wystawiania faktur podłączony do KSeF (<a href="/projekty/kreator-faktur" class="link">Kreator Faktur</a>). Terminy i zasady sprawdziłem na oficjalnych stronach Ministerstwa Finansów w październiku 2026 r. Przepisy wokół KSeF wciąż się zmieniają, więc przed decyzją zajrzyj też na <a href="https://ksef.podatki.gov.pl/" class="link" rel="noopener" target="_blank">ksef.podatki.gov.pl</a>.</p>
+
+<div class="stat-band">
+  <div class="s"><div class="v">1.02.2026</div><div class="l">od tego dnia każda firma odbiera faktury zakupowe przez KSeF</div></div>
+  <div class="s"><div class="v">1.04.2026</div><div class="l">od tego dnia faktury w KSeF wystawia większość firm</div></div>
+  <div class="s"><div class="v">1.01.2027</div><div class="l">koniec zwolnienia dla firm, które wystawiają faktury na mniej niż 10 000 zł brutto miesięcznie</div></div>
+</div>
+
+<h2><span class="idx">01 / Terminy</span>Kogo i od kiedy obowiązuje KSeF</h2>
+
+<p>KSeF (Krajowy System e-Faktur) to rządowa platforma, przez którą przechodzą faktury między firmami. Faktura nie jest już plikiem PDF wysłanym mailem. To ustrukturyzowany dokument, który trafia do systemu Ministerstwa Finansów i dostaje tam swój unikalny numer KSeF. Harmonogram według <a href="https://ksef.podatki.gov.pl/informacje-ogolne-ksef-20/zakres-obowiazkowego-ksef/" class="link" rel="noopener" target="_blank">ksef.podatki.gov.pl</a>:</p>
+
+<ul>
+  <li><strong>Od 1 lutego 2026 r.</strong> faktury w KSeF wystawiają firmy, których sprzedaż z VAT przekroczyła w 2024 r. 200 mln zł. Od tego samego dnia <strong>wszystkie firmy odbierają faktury przez KSeF</strong>.</li>
+  <li><strong>Od 1 kwietnia 2026 r.</strong> faktury w KSeF wystawiają pozostali podatnicy.</li>
+  <li><strong>Do 31 grudnia 2026 r.</strong> faktury poza KSeF (papierowe albo PDF) można jeszcze wystawiać, o ile ich łączna wartość z VAT w danym miesiącu nie przekracza 10 000 zł. Gdy firma przekroczy limit, od faktury, która go przekroczyła, musi już wystawiać w KSeF.</li>
+  <li><strong>Od 1 stycznia 2027 r.</strong> to zwolnienie znika i KSeF obowiązuje praktycznie wszystkich przedsiębiorców.</li>
+</ul>
+
+<p>Faktury dla konsumentów (osób bez działalności) nie muszą trafiać do KSeF. Można je tam wystawiać dobrowolnie.</p>
+
+<div class="callout">
+  <span class="ic">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"></path></svg>
+  </span>
+  <div class="t">
+    <b>Kary i tokeny: co się zmieniło jesienią 2026</b>
+    <p>Według obowiązujących dziś przepisów kary za błędy w KSeF (do 100% VAT z faktury albo do 18,7% kwoty brutto, gdy faktura nie ma VAT) miały być stosowane od 1 stycznia 2027 r. 16 września 2026 r. Ministerstwo Finansów zapowiedziało przesunięcie tego terminu do końca 2027 r., ale wymaga to zmiany ustawy. Odroczenie kar nie zwalnia z obowiązku wystawiania faktur w KSeF. Podobnie z tokenami: pierwotnie miały działać tylko do końca 2026 r., ale MF zdecydowało, że zostaną bezterminowo, a rozporządzenie zostanie zmienione. Tryby awaryjne i tak wymagają certyfikatu KSeF, więc warto go mieć niezależnie od losu tokenów.</p>
+  </div>
+</div>
+
+<h2><span class="idx">02 / Dwie drogi</span>Gotowy program z KSeF czy integracja we własnym systemie</h2>
+
+<p>Jeśli faktury wystawiasz ręcznie, kilka razy w miesiącu, i nie masz własnego systemu, sprawa jest prosta. Ministerstwo udostępnia bezpłatną Aplikację Podatnika KSeF, a programy do fakturowania i księgowe mają KSeF wbudowany. Integracja na zamówienie nie ma wtedy sensu.</p>
+
+<p>Inaczej jest, gdy faktura <strong>rodzi się w Twoim systemie</strong>: po opłaconym zamówieniu w sklepie, po potwierdzonej rezerwacji, po wygranym dealu w CRM. Wtedy masz do wyboru:</p>
+
+<table>
+  <thead>
+    <tr><th>Sposób</th><th>Jak to wygląda na co dzień</th><th>Kiedy ma sens</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Przepisywanie do osobnego programu z KSeF</td><td>Ktoś kopiuje dane klienta i pozycje z systemu do programu do faktur</td><td>Kilka faktur w miesiącu, zero budżetu na zmiany</td></tr>
+    <tr><td>Twój system połączony z programem do faktur</td><td>System przekazuje dane do programu, a program wysyła fakturę do KSeF</td><td>Masz już program do faktur z KSeF i chcesz w nim zostać</td></tr>
+    <tr><td>Bezpośrednia integracja z KSeF</td><td>System sam tworzy fakturę, wysyła ją do KSeF i zapisuje numer KSeF przy zamówieniu</td><td>Dużo faktur, nietypowy proces, chcesz mieć wszystko w jednym miejscu</td></tr>
+  </tbody>
+</table>
+
+<p>Wybór rzadko zależy od technologii. Zwykle decyduje <strong>liczba faktur i koszt pomyłek</strong>. Każde przepisanie NIP-u, kwoty czy stawki VAT to okazja do błędu, a w KSeF błędna faktura nie znika z szuflady. Poprawia się ją fakturą korygującą, bo noty korygujące zniknęły z przepisów 1 lutego 2026 r. O tym, kiedy własny system wygrywa z gotowym, piszę szerzej w tekście <a href="/blog/gotowy-crm-czy-system-na-zamowienie" class="link">gotowy CRM czy system na zamówienie</a>.</p>
+
+<h2><span class="idx">03 / W praktyce</span>Jak działa integracja z KSeF, krok po kroku</h2>
+
+<p>Pomijam szczegóły techniczne. Poniżej jest to, co powinieneś rozumieć jako właściciel, żeby zadać wykonawcy dobre pytania.</p>
+
+<h3>1. System loguje się do KSeF w imieniu firmy</h3>
+<p>Żeby wysyłać faktury, system musi się uwierzytelnić. Do wyboru jest token wygenerowany w KSeF albo certyfikat KSeF. Certyfikaty są dwa: jeden do logowania, drugi do faktur wystawianych w trybie offline. Każdy jest ważny najwyżej 2 lata, więc ktoś musi pamiętać o odnowieniu.</p>
+
+<h3>2. Faktura powstaje jako plik według wzoru FA(3)</h3>
+<p>Od 1 lutego 2026 r. obowiązuje struktura FA(3). To ściśle określony format danych, a nie ładny dokument. PDF, który wysyłasz klientowi, staje się tylko „wizualizacją” faktury. Wiążąca jest wersja w KSeF. Jeśli w danych czegoś brakuje albo coś się nie zgadza ze wzorem, KSeF fakturę odrzuci.</p>
+
+<h3>3. KSeF nadaje numer i potwierdza odbiór</h3>
+<p>Po przyjęciu faktury KSeF nadaje jej unikalny numer. System powinien zapisać go przy zamówieniu albo kliencie, razem z urzędowym poświadczeniem odbioru (UPO). Dzięki temu w karcie klienta widzisz od razu, które faktury są w KSeF, a które czekają albo zostały odrzucone.</p>
+
+<h3>4. PDF dla klienta dostaje kod QR</h3>
+<p>Gdy przekazujesz fakturę poza KSeF, np. jako PDF w mailu albo wydruk, musi ona mieć kod QR z numerem KSeF pod spodem. Faktura wystawiona offline i jeszcze niewysłana do KSeF potrzebuje dwóch kodów QR, z napisami „OFFLINE” i „CERTYFIKAT”.</p>
+
+<h3>5. Faktury zakupowe wracają do Twojego systemu</h3>
+<p>Od lutego 2026 r. faktury od dostawców przychodzą przez KSeF. Integracja może je pobierać automatycznie, np. żeby przypisać koszty do zlecenia, oznaczyć zapłacone albo przekazać je do biura rachunkowego bez przesyłania plików mailem.</p>
+
+<h3>6. Tryby awaryjne, czyli co robić, gdy KSeF nie odpowiada</h3>
+<ul>
+  <li><strong>Offline24:</strong> każdy może wystawić fakturę bez połączenia z KSeF, np. przy problemach z internetem. Trzeba ją wysłać najpóźniej w następnym dniu roboczym.</li>
+  <li><strong>Niedostępność KSeF</strong> ogłoszona przez MF (np. prace serwisowe): fakturę wysyła się najpóźniej w następnym dniu roboczym po zakończeniu przerwy.</li>
+  <li><strong>Awaria KSeF:</strong> na wysłanie jest 7 dni roboczych od jej zakończenia. Przy awarii całkowitej, ogłoszonej w mediach, faktur nie dosyła się wcale.</li>
+</ul>
+<p>Dobra integracja ma kolejkę. Faktura wystawiona w czasie przerwy nie ginie, tylko czeka i wysyła się sama, a system pilnuje terminu dosłania.</p>
+
+<div class="pullquote">
+  <p>W KSeF fakturą jest plik w systemie Ministerstwa, a nie PDF w mailu. Integracja ma sprawić, żeby ten plik powstawał tam, gdzie już masz dane: w zamówieniu, rezerwacji albo karcie klienta.</p>
+</div>
+
+<h2><span class="idx">04 / Scenariusze</span>Własny CRM, sklep, system rezerwacji, platforma B2B</h2>
+
+<ul>
+  <li><strong>Własny CRM.</strong> Faktura powstaje z karty klienta albo dealu jednym kliknięciem, a numer KSeF i status widać w historii klienta. To najczęstszy przypadek, gdy firma ma już <a href="/uslugi/aplikacje-webowe" class="link">aplikację webową</a> do obsługi sprzedaży.</li>
+  <li><strong>Sklep internetowy na zamówienie.</strong> Zamówienia firmowe (z NIP) idą do KSeF, a paragony i faktury dla konsumentów zostają jak dotąd, chyba że zdecydujesz inaczej. Kluczowe jest osobne pole na NIP w koszyku i sprawdzanie danych firmy przed wystawieniem faktury. Popularne platformy sklepowe mają gotowe dodatki do KSeF. Integracja na zamówienie ma sens przy sklepach i <a href="/uslugi/sklepy-i-platformy-b2b" class="link">platformach B2B</a> pisanych od zera.</li>
+  <li><strong>System rezerwacji.</strong> Zaliczka i dopłata to często dwie faktury. Integracja może wystawić obie automatycznie w chwili płatności, zamiast zostawiać to recepcji.</li>
+  <li><strong>Platforma B2B z dużą liczbą faktur.</strong> KSeF obsługuje też wysyłkę wsadową, czyli wiele faktur naraz. Przy setkach dokumentów dziennie to istotna różnica w porównaniu z wysyłaniem pojedynczo.</li>
+</ul>
+
+<h2><span class="idx">05 / Przykład</span>Kreator Faktur: mój system podłączony do KSeF</h2>
+
+<p><a href="/projekty/kreator-faktur" class="link">Kreator Faktur</a> zaczynał jako prosta aplikacja do wystawiania faktur VAT w PDF: formularz, automatyczne przeliczenia netto, VAT i brutto oraz baza kontrahentów. Dziś jest podłączony do KSeF.</p>
+
+<p>Ten projekt dobrze pokazuje, na czym polega przejście na KSeF w systemie, który już działa. Formularz, przeliczenia i baza kontrahentów to część, którą firma zwykle już ma. Nowe jest to, co dzieje się po kliknięciu „wystaw”. Żeby faktura trafiła do KSeF, jej dane muszą pasować do wzoru FA(3), system musi uwierzytelnić się w KSeF, a numer nadany przez KSeF powinien wrócić do systemu, choćby po to, żeby znalazł się pod kodem QR na PDF-ie. PDF przestaje być „fakturą” i staje się jej czytelną wersją dla ludzi.</p>
+
+<p>To samo dotyczy Twojego CRM czy sklepu. Integracja z KSeF zwykle nie oznacza budowania systemu od nowa, tylko dołożenie modułu w miejscu, w którym faktura już dziś powstaje.</p>
+
+<h2><span class="idx">06 / Pułapki</span>Gdzie integracje z KSeF najczęściej się wykładają</h2>
+
+<ul>
+  <li><strong>Złe dane klienta w systemie.</strong> Brakujący lub błędny NIP, adres wpisany w jednym polu, stawki VAT trzymane jako tekst. KSeF jest bezlitosny dla bałaganu, który PDF wybaczał. Porządek w danych to często połowa pracy. Podobny problem opisuję przy <a href="/blog/jak-przeniesc-firme-z-excela-do-systemu" class="link">przenoszeniu firmy z Excela do systemu</a>.</li>
+  <li><strong>Brak kolejki i trybu offline.</strong> System, który przy pierwszym błędzie KSeF pokazuje „spróbuj później”, zostawia fakturę w zawieszeniu. Ktoś musi wtedy pamiętać o terminie dosłania.</li>
+  <li><strong>Wygasły certyfikat.</strong> Działa przez 2 lata, a potem pewnego ranka faktury przestają wychodzić. Przypomnienie z wyprzedzeniem to drobiazg, który oszczędza nerwów.</li>
+  <li><strong>Niejasne uprawnienia.</strong> Trzeba ustalić, kto w firmie może wystawiać faktury w KSeF i w czyim imieniu. Token ma zapisane uprawnienia z chwili wygenerowania, a certyfikat służy tylko do potwierdzenia tożsamości.</li>
+  <li><strong>Korekty „po staremu”.</strong> Not korygujących już nie ma, a faktura w KSeF nie da się „podmienić”. System musi umieć wystawić fakturę korygującą.</li>
+  <li><strong>Brak testów.</strong> Ministerstwo udostępnia środowisko testowe i przedprodukcyjne KSeF. Integrację sprawdza się tam, a nie na prawdziwych fakturach klientów.</li>
+</ul>
+
+<h2><span class="idx">07 / Koszt i czas</span>Od czego zależy cena integracji z KSeF</h2>
+
+<p>Nie podam jednej kwoty, bo integracja do systemu z czystymi danymi i jednym źródłem faktur to zupełnie inny projekt niż platforma z kilkoma firmami i fakturami zakupowymi. Na koszt i czas najbardziej wpływa:</p>
+
+<ul>
+  <li>ile miejsc w systemie wystawia faktury (sklep, CRM, rezerwacje);</li>
+  <li>czy pobierasz też faktury zakupowe i co ma się z nimi dziać;</li>
+  <li>czy potrzebujesz trybu offline z kolejką i pilnowaniem terminów;</li>
+  <li>ile firm (NIP-ów) obsługuje system i kto ma mieć uprawnienia;</li>
+  <li>w jakim stanie są dane klientów i produktów;</li>
+  <li>czy łączysz się bezpośrednio z KSeF, czy przez program do faktur, którego już używasz.</li>
+</ul>
+
+<p>Ogólne widełki dla aplikacji, systemów i automatyzacji znajdziesz w <a href="/cennik" class="link">cenniku</a>. Integracje z fakturowaniem i zewnętrznymi API są tam częścią pakietu dla aplikacji i systemów. Konkretną wycenę integracji z KSeF dostajesz po bezpłatnej konsultacji, w ciągu 48 godzin. Jeśli chodzi głównie o zautomatyzowanie jednego procesu wokół faktur, zobacz też usługę <a href="/uslugi/automatyzacja-procesow" class="link">automatyzacji procesów</a>.</p>
+
+<h2><span class="idx">08 / FAQ</span>Najczęstsze pytania o integrację KSeF z własnym systemem</h2>
+
+<h3>Czy muszę wymieniać cały system, żeby podłączyć go do KSeF?</h3>
+<p>Zwykle nie. Integracja to dodatkowy moduł w miejscu, w którym faktura już powstaje: przygotowanie danych w formacie FA(3), wysyłka, zapis numeru KSeF i obsługa błędów. Przebudowa ma sens tylko wtedy, gdy system nie przechowuje danych potrzebnych na fakturze.</p>
+
+<h3>Mam sprzedaż na fakturach poniżej 10 000 zł miesięcznie. Mogę poczekać?</h3>
+<p>Z wystawianiem w KSeF do 31 grudnia 2026 r. tak, o ile nie przekroczysz limitu. Od 1 stycznia 2027 r. zwolnienie znika. Faktury od dostawców już od 1 lutego 2026 r. przychodzą przez KSeF, więc i tak musisz umieć je odebrać.</p>
+
+<h3>Token czy certyfikat KSeF?</h3>
+<p>Token jest prostszy na start i według zapowiedzi MF zostanie na stałe, choć przepisy wymagają jeszcze zmiany. Do faktur w trybie offline potrzebny jest certyfikat KSeF, więc w systemie, który ma działać także podczas przerw w KSeF, warto przewidzieć certyfikaty od początku.</p>
+
+<h3>Co się stanie z fakturą, gdy KSeF nie działa?</h3>
+<p>Wystawiasz ją w trybie offline i dosyłasz w terminie: w następnym dniu roboczym przy offline24 i niedostępności albo w ciągu 7 dni roboczych od zakończenia awarii. Dobrze zrobiona integracja robi to sama.</p>
+
+<h3>Czy faktury dla klientów indywidualnych też muszą iść przez KSeF?</h3>
+<p>Nie. Faktury dla konsumentów nie są objęte obowiązkiem, ale można je wystawiać w KSeF dobrowolnie. Wtedy klient dostaje fakturę w uzgodniony sposób, np. jako PDF z kodem QR.</p>
+
+<h3>Czy zrobisz integrację z KSeF do systemu, którego nie budowałeś?</h3>
+<p>To zależy od tego, czy jest dostęp do kodu albo do API systemu. Zaczynam od przeglądu: skąd biorą się dane na fakturze, gdzie integracja ma się wpiąć i czy taniej nie będzie połączyć system z programem do faktur, którego już używasz.</p>
+
+<p><strong>Masz własny CRM, sklep albo aplikację i chcesz, żeby faktury trafiały do KSeF bez przepisywania?</strong> <a href="/kontakt" class="link">Napisz do mnie</a>. Opisz, gdzie dziś powstają Twoje faktury, a ja podpowiem, która z trzech dróg ma u Ciebie sens, zanim zaczniesz cokolwiek budować.</p>

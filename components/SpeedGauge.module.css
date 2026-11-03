@@ -1,0 +1,124 @@
+/* Rejestrujemy zmienne, żeby przeglądarka umiała je płynnie animować
+   (zwykłe custom properties przeskakują bez przejścia). */
+@property --gauge-p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@property --gauge-n {
+  syntax: "<integer>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.root {
+  --gauge-p: 0;
+  --gauge-n: 0;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  container-type: inline-size;
+  cursor: pointer;
+  transition:
+    --gauge-p 0.9s cubic-bezier(0.65, 0, 0.35, 1),
+    --gauge-n 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.root svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Stan wypełniony: koło i licznik dochodzą do wartości docelowej. */
+.root:hover,
+.root[data-active],
+:global(.diff-cell:hover) .root {
+  --gauge-p: var(--target);
+  --gauge-n: var(--target);
+  transition:
+    --gauge-p 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    --gauge-n 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.track {
+  fill: none;
+  stroke-width: 36;
+}
+
+.tick {
+  fill: rgba(255, 255, 255, 0.45);
+}
+
+/* Ten sam koral co w PuzzleJoin. */
+.arc {
+  stroke: #fe4828;
+  fill: none;
+  stroke-width: 36;
+  stroke-dasharray: var(--gauge-p) 100;
+  filter: drop-shadow(0 0 6px rgba(254, 72, 40, 0.55)) drop-shadow(0 0 18px rgba(254, 72, 40, 0.3));
+}
+
+/* Rozbłysk po dojściu do wartości, jak przy zatrzaśnięciu puzzli. */
+.root:hover .arc,
+.root[data-active] .arc,
+:global(.diff-cell:hover) .arc {
+  animation: glow 0.9s ease-out 0.9s;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(254, 72, 40, 0.55)) drop-shadow(0 0 18px rgba(254, 72, 40, 0.3));
+  }
+  30% {
+    filter: drop-shadow(0 0 16px #fe4828) drop-shadow(0 0 34px rgba(254, 72, 40, 0.6));
+  }
+}
+
+.readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.value {
+  counter-reset: gauge var(--gauge-n);
+  font-family: var(--sans, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 700;
+  font-size: clamp(36px, 15cqi, 64px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #f5f1ec;
+  font-variant-numeric: tabular-nums;
+}
+
+.value::before {
+  content: counter(gauge);
+}
+
+.label {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--fg-dim, #b8b0a6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root,
+  .root:hover,
+  .root[data-active],
+  :global(.diff-cell:hover) .root {
+    transition: none;
+  }
+  .arc {
+    animation: none !important;
+  }
+}

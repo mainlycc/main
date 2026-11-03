@@ -57,8 +57,10 @@ export function ProjectHero({
         alt={name}
         fill
         className="object-contain object-center"
-        priority
-        sizes="(max-width: 1320px) 100vw, 1320px"
+        quality={60}
+        loading="eager"
+        fetchPriority="low"
+        sizes="(max-width: 1320px) calc(100vw - 48px), 1208px"
       />
       {caption ? <span className="cap">{caption}</span> : null}
     </div>
@@ -85,7 +87,8 @@ export function ProjectCard({ project, variant = 1 }: ProjectCardProps) {
             alt={project.name}
             fill
             className="object-cover object-top"
-            sizes="(max-width: 880px) 100vw, 33vw"
+            quality={60}
+            sizes="(max-width: 880px) calc(100vw - 48px), 360px"
           />
         ) : (
           <div className="glow" />

@@ -299,6 +299,11 @@
 .article > * {
   grid-column: 2;
 }
+.prose figure img {
+  width: 100%;
+  height: auto;
+  background: var(--bg-3);
+}
 .prose p {
   font-size: 24px;
   font-weight: 300;

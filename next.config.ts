@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       },
     ],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    qualities: [60, 75],
     minimumCacheTTL: 31536000,
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
@@ -75,7 +76,18 @@ const nextConfig: NextConfig = {
       { source: "/contact", destination: "/kontakt", permanent: true },
       { source: "/privacy", destination: "/polityka-prywatnosci", permanent: true },
       { source: "/rss.xml", destination: "/feed.xml", permanent: true },
+      // Artykuł z 2025 połączony z nowszym (audyt SEO 17.10.2026, #16)
+      {
+        source: "/blog/jak-stworzyc-nowoczesna-strone-internetowa-2025",
+        destination: "/blog/strona-internetowa-ktora-sprzedaje-7-elementow",
+        permanent: true,
+      },
     ];
+  },
+  // CSS w <style> zamiast trzech blokujących plików. Działa tylko w buildzie produkcyjnym.
+  // Dzięki temu nagłówek (element LCP) maluje się bez czekania na osobne żądania CSS.
+  experimental: {
+    inlineCss: true,
   },
   // Root projektu mainly — bez tego Turbopack bierze C:\Users\sblic
   // (tam leży drugi pnpm-lock.yaml) i Tailwind pada na ENOENT przy hot reload.

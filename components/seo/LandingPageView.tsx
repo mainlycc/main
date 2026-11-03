@@ -3,6 +3,7 @@ import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import RelatedArticles from "@/components/RelatedArticles";
+import StyleTrialCarousel from "@/components/StyleTrialCarousel";
 import type { LandingPageData } from "@/lib/landing";
 import { getPublishedProjects } from "@/lib/portfolio";
 
@@ -45,6 +46,8 @@ export default async function LandingPageView({
 
           <h1 className="sec-title">{data.h1}</h1>
 
+          {industrySlug === "biura-rachunkowe" && <StyleTrialCarousel />}
+
           {/* Definicja 40–60 słów — fragment wyciągany przez wyszukiwarki i modele AI */}
           <p className="sec-lead" style={{ marginBottom: 32 }}>
             {data.intro}
@@ -84,6 +87,35 @@ export default async function LandingPageView({
                 ))}
               </ul>
             )}
+            {section.table && (
+              <div style={{ overflowX: "auto", marginBottom: 24 }}>
+                <table className="price-table">
+                  <thead>
+                    <tr>
+                      {section.table.head.map((cell) => (
+                        <th key={cell}>{cell}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.table.rows.map((row) => (
+                      <tr key={row[0]}>
+                        {row.map((cell, i) => (
+                          <td key={i}>{cell}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+            {section.link && (
+              <p className="prose-block">
+                <Link href={section.link.href} className="inline-link">
+                  {section.link.label}
+                </Link>
+              </p>
+            )}
           </section>
         ))}
 
@@ -109,7 +141,8 @@ export default async function LandingPageView({
                       alt={`${project.name} — projekt zrealizowany przez Mainly`}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 980px) 50vw, 33vw"
+                      quality={60}
+                      sizes="(max-width: 980px) calc(100vw - 48px), 400px"
                     />
                   </div>
                   <div className="meta">

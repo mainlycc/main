@@ -86,7 +86,8 @@ export default async function PortfolioSection() {
                       alt={project.title}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 880px) 100vw, 50vw"
+                      quality={60}
+                      sizes="(max-width: 880px) calc(100vw - 48px), 560px"
                     />
                   ) : (
                     <div className="device">

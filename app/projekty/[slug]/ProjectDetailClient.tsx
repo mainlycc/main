@@ -8,6 +8,7 @@ import {
 } from "@/components/projects/ProjectPostParts";
 import ProjectExtras from "@/components/projects/ProjectExtras";
 import { enrichProjectWithCaseStudy } from "@/lib/case-studies";
+import { optimizeCaseStudyImages } from "@/lib/case-study-images";
 import { liftHeadingLabels } from "@/lib/seo";
 import {
   getProjectCaseStudyHtml,
@@ -43,7 +44,9 @@ export default function ProjectDetailClient({
   const enriched = enrichProjectWithCaseStudy(project);
   const tags = getProjectTags(enriched);
   const headline = getProjectHeadline(enriched);
-  const caseStudyHtml = liftHeadingLabels(getProjectCaseStudyHtml(enriched));
+  const caseStudyHtml = optimizeCaseStudyImages(
+    liftHeadingLabels(getProjectCaseStudyHtml(enriched))
+  );
   const scope = enriched.scope ?? "Strategia, UX, kod";
   const heroCaption = enriched.heroCaption;
   const heroDeviceBadge = enriched.heroDeviceBadge;

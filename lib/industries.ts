@@ -106,6 +106,32 @@ export const industries: LandingPageData[] = [
           "Formularz ankiety medycznej wypełniany przed wizytą",
         ],
       },
+      {
+        heading: "Jak wygląda rezerwacja wizyty z perspektywy pacjenta i recepcji",
+        body: "Przykładowy przebieg w systemie rezerwacji, który buduję dla gabinetu. Pacjent nie zakłada konta i nie instaluje aplikacji: rezerwacja działa w przeglądarce, także na telefonie. Recepcja widzi te same terminy w jednym grafiku i nie musi przepisywać niczego z maili ani z kartek.",
+        bullets: [
+          "Pacjent wybiera zabieg, a system pokazuje tylko lekarzy, którzy go wykonują, i ich wolne terminy",
+          "Rezerwacja wymaga imienia, telefonu i zgody na przetwarzanie danych; ankieta medyczna przychodzi osobnym linkiem",
+          "24 h przed wizytą pacjent dostaje SMS z linkiem do potwierdzenia, przełożenia albo odwołania terminu",
+          "Zwolniony termin od razu trafia do osób z listy rezerwowej",
+          "Recepcja widzi grafik wszystkich lekarzy i może ręcznie dopisać pacjenta, który zadzwonił",
+        ],
+      },
+      {
+        heading: "Dane pacjentów, RODO i umowa powierzenia",
+        body: "Informacje o zdrowiu to szczególna kategoria danych w RODO (art. 9), więc system dla gabinetu projektuję inaczej niż zwykły formularz kontaktowy. Gabinet pozostaje administratorem danych, a ja jako wykonawca i opiekun techniczny systemu przetwarzam je w jego imieniu, dlatego przed startem podpisujemy umowę powierzenia przetwarzania danych (art. 28 RODO).",
+        bullets: [
+          "Baza danych na serwerach w Unii Europejskiej, połączenia szyfrowane (HTTPS)",
+          "Formularz rezerwacji zbiera tylko dane potrzebne do umówienia wizyty; ankieta medyczna jest oddzielona i dostępna tylko dla uprawnionych osób",
+          "Osobne konta i role dla lekarzy i recepcji, z zapisem, kto i kiedy otwierał dane pacjenta",
+          "Kopie zapasowe i możliwość usunięcia lub eksportu danych pacjenta na jego żądanie",
+          "Umowa powierzenia przetwarzania danych podpisywana przed wdrożeniem",
+        ],
+        link: {
+          href: "/blog/strona-internetowa-dla-dentysty-2026",
+          label: "Poradnik: strona internetowa dla dentysty w 2026 roku →",
+        },
+      },
     ],
     faq: [
       {
@@ -122,6 +148,11 @@ export const industries: LandingPageData[] = [
         question: "Czy rezerwacja połączy się z naszym systemem gabinetowym?",
         answer:
           "Jeśli używany system ma API — tak. Jeśli nie, rezerwacja może działać jako osobny moduł z eksportem do kalendarza, żeby recepcja miała jedno miejsce z terminami.",
+      },
+      {
+        question: "Czy podpiszesz umowę powierzenia przetwarzania danych?",
+        answer:
+          "Tak. Przy każdym systemie, który przechowuje dane pacjentów, podpisujemy umowę powierzenia przed startem prac. Dane trzymam na serwerach w UE, a dostęp do nich mają tylko osoby, którym nadasz uprawnienia.",
       },
     ],
     relatedProjects: [],

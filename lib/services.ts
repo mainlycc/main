@@ -130,15 +130,15 @@ export const services: LandingPageData[] = [
   {
     slug: "systemy-dla-firm",
     navLabel: "Systemy i CRM",
-    metaTitle: "Systemy i CRM na zamówienie dla firm | Mainly",
+    metaTitle: "Dedykowany CRM i system dla firmy na zamówienie | Mainly",
     metaDescription:
       "System CRM szyty pod proces Twojej firmy zamiast abonamentu, który nie pasuje. Panel, role, raporty, integracje. Od 9 900 zł. Wycena w 48 h.",
     eyebrow: "Usługa",
-    h1: "Systemy szyte na miarę Twojego procesu",
+    h1: "System CRM i oprogramowanie dla firmy na zamówienie",
     teaser:
       "CRM, panel klienta, system rezerwacji albo raportowania — zbudowany dokładnie pod to, jak pracujesz.",
     intro:
-      "System na zamówienie to wewnętrzne narzędzie firmy — CRM, panel obsługi zleceń, system rezerwacji albo moduł raportowania — zbudowany pod istniejący proces, a nie kupowany w abonamencie. Płacisz raz zamiast co miesiąc za użytkownika, dane zostają u Ciebie, a funkcje odpowiadają temu, jak faktycznie pracuje Twój zespół.",
+      "System na zamówienie to wewnętrzne narzędzie firmy — dedykowany CRM, panel obsługi zleceń, system rezerwacji albo moduł raportowania — zbudowany pod istniejący proces, a nie kupowany w abonamencie. Płacisz raz zamiast co miesiąc za użytkownika, dane zostają u Ciebie, a funkcje odpowiadają temu, jak faktycznie pracuje Twój zespół.",
     priceFrom: 9900,
     priceNote:
       "Koszt rośnie głównie z liczbą ról użytkowników i integracji, nie z liczbą ekranów.",
@@ -152,6 +152,24 @@ export const services: LandingPageData[] = [
           "Gotowiec: płacisz za moduły, których nie używasz",
           "Na zamówienie: dokładnie to, co potrzebne — i miejsce na rozbudowę",
         ],
+      },
+      {
+        heading: "Ile kosztuje gotowy CRM, a ile własny, w 3 lata",
+        body: "Rachunek dla zespołu 15 osób i gotowego narzędzia za 150 zł miesięcznie od użytkownika, w porównaniu z dedykowanym CRM-em za 35 000 zł i opieką techniczną za 290 zł miesięcznie. Twoje liczby będą inne, ale wzór jest ten sam: abonament × liczba użytkowników × 36 miesięcy. Przy trzech osobach wynik się odwraca i gotowiec jest wyraźnie tańszy, dlatego przy małych zespołach zwykle go polecam.",
+        table: {
+          head: ["Pozycja", "Gotowy CRM (abonament)", "CRM szyty na miarę"],
+          rows: [
+            ["Koszt startowy", "0–2 000 zł (konfiguracja)", "35 000 zł (wdrożenie)"],
+            ["Koszt miesięczny", "150 zł × 15 osób = 2 250 zł", "290 zł (opieka techniczna)"],
+            ["Razem w 3 lata", "81 000–83 000 zł", "45 440 zł"],
+            ["Nowy pracownik", "+150 zł miesięcznie", "0 zł"],
+            ["Po 3 latach", "Płacisz dalej albo tracisz dostęp", "System i kod należą do Ciebie"],
+          ],
+        },
+        link: {
+          href: "/blog/gotowy-crm-czy-system-na-zamowienie",
+          label: "Gotowy CRM czy system na zamówienie: pełne porównanie →",
+        },
       },
       {
         heading: "Co najczęściej buduję",
@@ -168,6 +186,18 @@ export const services: LandingPageData[] = [
       {
         heading: "Migracja z Excela bez przestoju",
         body: "Najczęstszy punkt startowy to arkusze, w których firma trzyma wszystko od lat. Przenoszę dane etapami: najpierw importuję historię, potem uruchamiamy system równolegle z arkuszem, a dopiero po potwierdzeniu, że wszystko się zgadza, wyłączamy stary obieg. Zespół nie traci dostępu do danych ani na dzień.",
+        link: {
+          href: "/blog/jak-przeniesc-firme-z-excela-do-systemu",
+          label: "Jak przenieść firmę z Excela do systemu, krok po kroku →",
+        },
+      },
+      {
+        heading: "Przykład: system rezerwacji wizyt dla gabinetu",
+        body: "Pacjent wybiera zabieg i wolny termin online, 24 h przed wizytą dostaje SMS z linkiem do potwierdzenia albo przełożenia, a recepcja widzi grafik wszystkich lekarzy w jednym miejscu. Dane pacjentów są na serwerach w UE, a przed startem podpisujemy umowę powierzenia przetwarzania danych. Ten sam schemat sprawdza się w każdej firmie, która sprzedaje czas: w gabinecie, kancelarii czy szkole.",
+        link: {
+          href: "/branze/gabinety-stomatologiczne",
+          label: "System rezerwacji i strona dla gabinetu stomatologicznego →",
+        },
       },
     ],
     faq: [

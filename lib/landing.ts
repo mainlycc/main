@@ -4,6 +4,10 @@ export type LandingSection = {
   heading: string;
   body: string;
   bullets?: string[];
+  /** Tabela pod tekstem: pierwszy wiersz to nagłówki kolumn */
+  table?: { head: string[]; rows: string[][] };
+  /** Link kontekstowy pod sekcją */
+  link?: { href: string; label: string };
 };
 
 export type LandingLink = {

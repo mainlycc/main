@@ -1,24 +1,27 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import DisplayEm from "@/components/DisplayEm";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, faqPageSchema, ORG_ID, webPageSchema } from "@/lib/schema";
 import { absoluteUrl, defaultOgImages, SITE_URL } from "@/lib/seo";
+import { testimonials } from "@/lib/home-content";
+import { getPublishedProjects } from "@/lib/portfolio";
 import { BUSINESS } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Tworzenie stron internetowych Warszawa | Mainly",
+  title: "Tworzenie stron internetowych Warszawa: cennik 2026 | Mainly",
   description:
-    "Strony internetowe i aplikacje webowe dla firm z Warszawy. Biuro na Filtrowej, spotkania na żywo, kod bez szablonów. Od 2 900 zł, wycena w 48 h.",
+    "Strony internetowe dla firm z Warszawy: od 2 900 zł netto, realizacja 1–4 tygodnie. Biuro na Ochocie, spotkania na żywo, kod bez szablonów. Wycena w 48 h.",
   alternates: { canonical: "/tworzenie-stron-internetowych-warszawa" },
   openGraph: {
-    title: "Tworzenie stron internetowych Warszawa | Mainly",
+    title: "Tworzenie stron internetowych Warszawa: cennik 2026 | Mainly",
     description:
-      "Strony i aplikacje webowe dla warszawskich firm. Spotkania na żywo, jeden punkt kontaktu.",
+      "Strony dla warszawskich firm od 2 900 zł. Spotkania na żywo, jeden punkt kontaktu.",
     url: absoluteUrl("/tworzenie-stron-internetowych-warszawa"),
     type: "website",
-    images: defaultOgImages("Tworzenie stron internetowych Warszawa | Mainly"),
+    images: defaultOgImages("Tworzenie stron internetowych Warszawa: cennik 2026 | Mainly"),
   },
 };
 
@@ -36,7 +39,17 @@ const faq = [
   {
     question: "Ile kosztuje strona internetowa w Warszawie?",
     answer:
-      "Ceny nie zależą od miasta. Strona firmowa zaczyna się u mnie od 2 900 zł netto, strona z blogiem i integracjami od 4 900 zł, aplikacje i systemy od 9 900 zł. Pełne widełki są na stronie cennika.",
+      "Strona wizytówka do 5 podstron kosztuje u mnie 2 900–4 500 zł netto, strona firmowa z blogiem do 10 podstron 4 900–9 000 zł netto. Cena obejmuje projekt graficzny, kod, SEO techniczne, panel do edycji treści i wdrożenie. Dokładną kwotę podaję w wycenie w ciągu 48 h od rozmowy.",
+  },
+  {
+    question: "Dlaczego strona kosztuje 2 900 zł, skoro na OLX są oferty za kilkaset złotych?",
+    answer:
+      "Strona za kilkaset złotych to zwykle gotowy szablon WordPressa z wtyczkami, bez projektu i bez SEO technicznego. Ja projektuję wygląd pod Twoją firmę i koduję stronę od zera, więc ładuje się szybko, nie wymaga aktualizacji wtyczek, a kod i domena należą do Ciebie.",
+  },
+  {
+    question: "Ile trwa zrobienie strony?",
+    answer:
+      "Strona wizytówka to 1–2 tygodnie, strona firmowa z blogiem 3–4 tygodnie. Najwięcej czasu zwykle zajmuje zebranie tekstów i zdjęć, więc pomagam przygotować je równolegle z projektem.",
   },
   {
     question: "Jak szybko możesz zacząć?",
@@ -45,7 +58,62 @@ const faq = [
   },
 ];
 
-export default function WarsawPage() {
+const priceRows = [
+  {
+    what: "Strona wizytówka (do 5 podstron)",
+    range: "2 900 – 4 500 zł",
+    time: "1–2 tygodnie",
+    fits: "Firma usługowa, gabinet, kancelaria: oferta, o nas, kontakt",
+  },
+  {
+    what: "Strona firmowa z blogiem (do 10 podstron)",
+    range: "4 900 – 9 000 zł",
+    time: "3–4 tygodnie",
+    fits: "Firma, która chce zdobywać klientów z Google dzięki artykułom",
+  },
+  {
+    what: "Kalkulator lub konfigurator produktu",
+    range: "8 000 – 25 000 zł",
+    time: "ustalany w wycenie",
+    fits: "Producent albo firma, która wycenia zamówienia indywidualnie",
+  },
+  {
+    what: "Opieka techniczna po wdrożeniu",
+    range: "od 290 zł / mies.",
+    time: "—",
+    fits: "Monitoring, kopie zapasowe, drobne zmiany na zgłoszenie",
+  },
+];
+
+const steps = [
+  {
+    title: "Rozmowa (30 minut)",
+    text: "Online albo na Ochocie. Mówisz, czym zajmuje się firma, kto jest klientem i co strona ma robić. Jeśli wystarczy Ci coś prostszego, powiem to od razu.",
+  },
+  {
+    title: "Wycena w 48 h",
+    text: "Dostajesz zakres, kwotę i harmonogram na piśmie. Wycena jest ważna 14 dni, zaliczka wynosi 50%, resztę płacisz po wdrożeniu.",
+  },
+  {
+    title: "Projekt w Figmie",
+    text: "Zanim powstanie kod, widzisz, jak będzie wyglądała strona na komputerze i telefonie. W cenie są dwie rundy poprawek.",
+  },
+  {
+    title: "Kod, testy i wdrożenie",
+    text: "Koduję stronę w Next.js, podłączam domenę, Google Analytics i Search Console i pokazuję, jak edytować treści. Przez 14 dni po starcie poprawki są w cenie.",
+  },
+];
+
+const websiteProjectSlugs = ["brewhaus", "elomoto-eco", "magia-podrozowania", "prawkoczechy"];
+const websiteTestimonialNames = ["Katarzyna Z.", "Paweł L.", "Grzegorz W."];
+
+export default async function WarsawPage() {
+  const allProjects = await getPublishedProjects();
+  const projects = websiteProjectSlugs
+    .map((slug) => allProjects.find((project) => project.slug === slug))
+    .filter((project): project is NonNullable<typeof project> => Boolean(project));
+  const reviews = testimonials.filter((item) => websiteTestimonialNames.includes(item.name));
+
   return (
     <>
       <JsonLd
@@ -102,11 +170,11 @@ export default function WarsawPage() {
             Tworzenie stron internetowych <DisplayEm>w Warszawie</DisplayEm>.
           </h1>
           <p className="sec-lead" style={{ marginBottom: 32 }}>
-            Projektuję i koduję strony internetowe oraz aplikacje webowe dla firm
-            z Warszawy. Biuro mam na Filtrowej 83 na Ochocie, więc przy większych
-            wdrożeniach możemy spotkać się na żywo zamiast rozmawiać przez
-            ekran. Strony buduję bez szablonów — w Next.js, z pełnym SEO
-            technicznym i czasem ładowania poniżej sekundy.
+            Projektuję i koduję strony internetowe dla firm z Warszawy: od
+            wizytówki za 2 900 zł netto po stronę firmową z blogiem. Biuro mam
+            na Filtrowej 83 na Ochocie, więc możemy spotkać się na żywo, a cały
+            projekt prowadzi jedna osoba, od pierwszej rozmowy po wdrożenie.
+            Strony buduję bez szablonów, w Next.js, z SEO technicznym w cenie.
           </p>
 
           <div className="hero-actions" style={{ marginBottom: 24 }}>
@@ -121,62 +189,189 @@ export default function WarsawPage() {
 
         <section className="wrap page-section">
           <h2 className="sec-title" style={{ fontSize: 30 }}>
-            Co daje współpraca z kimś na miejscu
+            Cennik stron internetowych w Warszawie (2026)
           </h2>
           <p className="prose-block">
-            Przy stronie wizytówkowej lokalizacja nie ma większego znaczenia —
-            cała współpraca spokojnie może toczyć się zdalnie. Robi się istotna
-            przy wdrożeniach, w których trzeba zobaczyć proces na własne oczy:
-            magazyn, recepcję, obieg dokumentów, sposób pracy zespołu. Godzina
-            warsztatu na miejscu potrafi wtedy oszczędzić tydzień domysłów.
+            Ceny netto, takie same jak w{" "}
+            <Link href="/cennik" className="inline-link">
+              cenniku
+            </Link>
+            . W każdej kwocie jest projekt graficzny, kod, wersja na telefon, SEO
+            techniczne (metadane, dane strukturalne, mapa strony), formularz
+            kontaktowy z ochroną przed spamem, panel do edycji treści i
+            wdrożenie. Nie doliczam opłat za „uruchomienie” ani za licencję
+            szablonu, bo szablonu nie używam.
+          </p>
+          <div style={{ overflowX: "auto", marginBottom: 24 }}>
+            <table className="price-table">
+              <thead>
+                <tr>
+                  <th>Rodzaj strony</th>
+                  <th>Cena (netto)</th>
+                  <th>Czas realizacji</th>
+                  <th>Dla kogo</th>
+                </tr>
+              </thead>
+              <tbody>
+                {priceRows.map((row) => (
+                  <tr key={row.what}>
+                    <td>{row.what}</td>
+                    <td>
+                      <strong>{row.range}</strong>
+                    </td>
+                    <td>{row.time}</td>
+                    <td>{row.fits}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="prose-block">
+            W Warszawie znajdziesz strony od kilkuset złotych i od kilkudziesięciu
+            tysięcy. Tańsze oferty to zwykle gotowy szablon z wtyczkami, który
+            trzeba co miesiąc aktualizować i który zwalnia z każdym dodatkiem.
+            Agencje liczą więcej, bo w projekcie pracuje kilka osób i
+            koordynator. Ja jestem pośrodku: strona jest projektowana i kodowana
+            od zera, ale płacisz za pracę jednej osoby, a nie całego zespołu.
+            Domena, kod i konta należą do Ciebie od pierwszego dnia.
+          </p>
+        </section>
+
+        {projects.length > 0 && (
+          <section className="wrap page-section">
+            <h2 className="sec-title" style={{ fontSize: 30 }}>
+              Wybrane strony, które zbudowałem
+            </h2>
+            <p className="prose-block">
+              Każda z tych stron działa na żywo. W opisie projektu znajdziesz
+              zakres prac, użyte technologie i to, co było najtrudniejsze.
+            </p>
+            <div className="showcase showcase--projects">
+              {projects.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={`/projekty/${project.slug}`}
+                  className="case"
+                >
+                  <div className="thumb relative has-image">
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} — strona zrealizowana przez Mainly`}
+                      fill
+                      className="object-cover object-top"
+                      quality={60}
+                      sizes="(max-width: 980px) calc(100vw - 48px), 400px"
+                    />
+                  </div>
+                  <div className="meta">
+                    <div>
+                      <h3>{project.name}</h3>
+                      <div className="tags">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <span key={tech}>{tech}</span>
+                        ))}
+                        <span>{project.year}</span>
+                      </div>
+                    </div>
+                    <div className="arr">↗</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <p className="prose-block">
+              <Link href="/projekty" className="inline-link">
+                Wszystkie realizacje →
+              </Link>
+            </p>
+          </section>
+        )}
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Jak wygląda współpraca krok po kroku
+          </h2>
+          <ol className="checklist">
+            {steps.map((step) => (
+              <li key={step.title}>
+                <strong>{step.title}.</strong> {step.text}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="wrap page-section">
+          <h2 className="sec-title" style={{ fontSize: 30 }}>
+            Co daje współpraca z kimś z Warszawy
+          </h2>
+          <p className="prose-block">
+            Przy prostej stronie zwykle wystarczą dwie rozmowy, ale wiele osób
+            woli zobaczyć wykonawcę i projekt na żywo, zamiast oglądać go na
+            ekranie. Przy większych wdrożeniach spotkanie jest jeszcze ważniejsze:
+            godzina w Twojej firmie, przy recepcji, w magazynie albo przy obiegu
+            dokumentów, oszczędza tydzień zgadywania, jak naprawdę pracuje
+            zespół.
           </p>
           <ul className="checklist">
-            <li>Warsztat u Ciebie w firmie zamiast wideorozmowy z opisem</li>
+            <li>Spotkanie w biurze na Ochocie albo u Ciebie w firmie</li>
             <li>
-              Szkolenie zespołu na miejscu po wdrożeniu, na sprzęcie, na którym
-              faktycznie pracują
+              Szkolenie z panelu na Twoim komputerze, a nie na nagraniu
             </li>
-            <li>Ta sama strefa czasowa, ten sam kalendarz świąt, ten sam kontekst rynkowy</li>
             <li>Faktura VAT, umowa po polsku, rozliczenie w złotówkach</li>
           </ul>
         </section>
 
+        {reviews.length > 0 && (
+          <section className="wrap page-section">
+            <h2 className="sec-title" style={{ fontSize: 30 }}>
+              Co mówią klienci
+            </h2>
+            <div className="link-cards">
+              {reviews.map((review) => (
+                <figure key={review.name} className="link-card" style={{ margin: 0 }}>
+                  <blockquote style={{ margin: 0 }}>
+                    <p>{review.text}</p>
+                  </blockquote>
+                  <figcaption>
+                    <strong>{review.name}</strong>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="prose-block">
+              <Link href="/opinie" className="inline-link">
+                Wszystkie opinie →
+              </Link>
+            </p>
+          </section>
+        )}
+
         <section className="wrap page-section">
           <h2 className="sec-title" style={{ fontSize: 30 }}>
-            Co buduję dla warszawskich firm
+            Potrzebujesz czegoś więcej niż strony?
           </h2>
-          <div className="link-cards">
-            <Link href="/uslugi/strony-internetowe" className="link-card">
-              <h3>Strony internetowe</h3>
-              <p>
-                Strony firmowe i landing page kodowane w Next.js. Od 2 900 zł,
-                realizacja 1–4 tygodnie.
-              </p>
-              <span className="arr">Zobacz ↗</span>
+          <p className="prose-block">
+            Jeśli chodzi Ci o panel dla klientów, system rezerwacji albo
+            narzędzie, które zastąpi arkusze, zobacz{" "}
+            <Link href="/aplikacje-webowe-warszawa" className="inline-link">
+              aplikacje webowe w Warszawie
+            </Link>{" "}
+            albo{" "}
+            <Link href="/uslugi/systemy-dla-firm" className="inline-link">
+              systemy i CRM na zamówienie
             </Link>
-            <Link href="/aplikacje-webowe-warszawa" className="link-card">
-              <h3>Aplikacje webowe</h3>
-              <p>
-                Aplikacje szyte pod proces firmy — panele klienta, systemy
-                rezerwacji, platformy.
-              </p>
-              <span className="arr">Zobacz ↗</span>
-            </Link>
-            <Link href="/uslugi/systemy-dla-firm" className="link-card">
-              <h3>Systemy i CRM</h3>
-              <p>
-                Narzędzia wewnętrzne zamiast abonamentu, który nie pasuje do
-                Twojego procesu.
-              </p>
-              <span className="arr">Zobacz ↗</span>
-            </Link>
-          </div>
+            .
+          </p>
         </section>
 
         <section className="wrap page-section">
           <h2 className="sec-title" style={{ fontSize: 30 }}>
-            Kontakt
+            Gdzie mnie znaleźć
           </h2>
+          <p className="prose-block">
+            Biuro jest na Ochocie, przy ulicy Filtrowej. Na spotkania dojeżdżam
+            też do firm w innych dzielnicach, m.in. na Mokotów, Wolę i do
+            Śródmieścia. Z firmami spoza Warszawy pracuję zdalnie.
+          </p>
           <p className="prose-block">
             <strong>Mainly</strong>
             <br />
@@ -185,6 +380,15 @@ export default function WarsawPage() {
             {BUSINESS.postalCode} {BUSINESS.city}
             <br />
             NIP: {BUSINESS.taxID}
+            <br />
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Filtrowa+83%2C+02-032+Warszawa"
+              className="inline-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Otwórz w Mapach Google
+            </a>
           </p>
           <p className="prose-block">
             <Link href={`tel:${BUSINESS.telephone}`} className="inline-link">

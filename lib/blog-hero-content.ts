@@ -9,14 +9,13 @@ export type BlogHeroContent = {
  * artykułu (excerpt/tytuł) - patrz content/blog-miniatury-brief.md.
  */
 export const BLOG_HERO_CONTENT: Record<string, BlogHeroContent> = {
-  "jak-stworzyc-nowoczesna-strone-internetowa-2025": { main: "2025" },
   "strona-internetowa-ktora-sprzedaje-7-elementow": {
     main: "7",
     sub: "elementów strony, która sprzedaje",
   },
   "kazda-sekunda-ladowania-to-utracone-leady": {
-    main: "0,9s",
-    sub: "zamiast 5,8 sekundy ładowania",
+    main: "2,5 s",
+    sub: "tyle Google daje stronie na załadowanie",
   },
   "strona-internetowa-dla-dentysty-2026": {
     main: "8 sek",
