@@ -26,7 +26,7 @@ opinia:
   cytat:
   autor:
   rola:
-cta: Twoi handlowcy składają oferty ręcznie w Wordzie albo Excelu? [Napisz do mnie](/kontakt). To zwykle pierwszy proces, który warto przenieść do narzędzia.
+cta: Twoi handlowcy składają oferty ręcznie w Wordzie albo Excelu? [Napisz do mnie](/kontakt). To zwykle pierwszy proces, który warto przenieść do narzędzia. Więcej o tym, jak działa [automatyzacja ofertowania: generator ofert PDF](/blog/automatyzacja-ofertowania-generator-ofert-pdf).
 obrazy:
   - slot: hero
     typ: screenshot
